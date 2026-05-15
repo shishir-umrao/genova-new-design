@@ -1,0 +1,2706 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>HDA Review — McKesson Document Intelligence</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=DM+Mono:wght@400;500&display=swap"
+    rel="stylesheet" />
+  <style>
+    :root {
+      --mk-blue: #174EA0;
+      --mk-blue-dk: #0f3470;
+      --mk-blue-lt: #dbe8f8;
+      --mk-blue-pale: #eef4fc;
+      --mk-or: #F29130;
+      --mk-or-dk: #c4711a;
+      --mk-or-lt: #fde9cf;
+      --mk-or-pale: #fff5eb;
+      --bg: #f4f6fa;
+      --bg-p: #ffffff;
+      --bg-c: #ffffff;
+      --bg-h: #eef2f9;
+      --bdr: #e2e8f0;
+      --bdr-m: #c8d4e6;
+      --t1: #0d1a2e;
+      --t2: #475872;
+      --t3: #94a3b8;
+      --ac: #174EA0;
+      --ac-lt: #dbe8f8;
+      --ac-pale: #eef4fc;
+      --gr: #16a34a;
+      --gr-lt: #dcfce7;
+      --gr-pale: #f0fdf4;
+      --am: #b45309;
+      --am-lt: #fde68a;
+      --am-pale: #fffbeb;
+      --rd: #dc2626;
+      --rd-lt: #fecaca;
+      --rd-pale: #fef2f2;
+      --sh-sm: 0 1px 3px rgba(14, 30, 60, .08), 0 1px 2px rgba(14, 30, 60, .05);
+      --sh-md: 0 4px 14px rgba(14, 30, 60, .1), 0 2px 5px rgba(14, 30, 60, .06);
+      --r: 10px;
+      --rs: 6px;
+      --fh: 'DM Mono', sans-serif;
+      --fb: 'DM Sans', sans-serif;
+      --fm: 'DM Mono', monospace;
+    }
+
+    [data-theme=dark] {
+      --bg: #0c0e14;
+      --bg-p: #111520;
+      --bg-c: #181c2a;
+      --bg-h: #1d2235;
+      --bdr: #232a3e;
+      --bdr-m: #2c3650;
+      --t1: #e8edf8;
+      --t2: #8090b0;
+      --t3: #44526a;
+      --ac: #4f8ef7;
+      --ac-lt: #172040;
+      --ac-pale: #0e1528;
+      --gr: #34d474;
+      --gr-lt: #0c2e1a;
+      --gr-pale: #081810;
+      --am: #fbbf24;
+      --am-lt: #322208;
+      --am-pale: #1e1404;
+      --rd: #f87171;
+      --rd-lt: #320c0c;
+      --rd-pale: #1e0808;
+      --mk-blue-lt: #172040;
+      --mk-blue-pale: #0e1528;
+      --mk-or-lt: #3a2008;
+      --mk-or-pale: #211204;
+      --sh-sm: 0 1px 3px rgba(0, 0, 0, .3);
+      --sh-md: 0 4px 14px rgba(0, 0, 0, .45);
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0
+    }
+
+    html,
+    body {
+      height: 100%
+    }
+
+    body {
+      font-family: var(--fb);
+      background: var(--bg);
+      color: var(--t1);
+      font-size: 14px;
+      line-height: 1.5;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: background .2s, color .2s
+    }
+
+    /* NAV */
+    .nav {
+      height: 52px;
+      background: var(--mk-blue);
+      display: flex;
+      align-items: center;
+      padding: 0 16px;
+      flex-shrink: 0;
+      box-shadow: 0 2px 8px rgba(23, 78, 160, .35);
+      z-index: 20;
+      position: relative
+    }
+
+    .n-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-right: 18px
+    }
+
+    .n-mark {
+      width: 30px;
+      height: 30px;
+      border-radius: 7px;
+      overflow: hidden;
+      flex-shrink: 0
+    }
+
+    .n-mark svg {
+      display: block
+    }
+
+    .n-txt {
+      font-family: var(--fh);
+      font-size: 15px;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: -.02em;
+      white-space: nowrap
+    }
+
+    .n-txt span {
+      color: var(--mk-or)
+    }
+
+    .n-div {
+      width: 1px;
+      height: 18px;
+      background: rgba(255, 255, 255, .22);
+      margin: 0 14px;
+      flex-shrink: 0
+    }
+
+    .n-prod {
+      font-size: 11px;
+      color: rgba(255, 255, 255, .65);
+      letter-spacing: .04em;
+      font-weight: 500;
+      white-space: nowrap
+    }
+
+    .n-tabs {
+      display: flex;
+      align-items: center;
+      gap: 2px;
+      flex: 1;
+      margin-left: 18px
+    }
+
+    .n-tab {
+      padding: 5px 12px;
+      font-size: 12px;
+      color: rgba(255, 255, 255, .65);
+      background: none;
+      border: none;
+      border-radius: var(--rs);
+      cursor: pointer;
+      font-family: var(--fb);
+      font-weight: 500;
+      transition: all .15s
+    }
+
+    .n-tab:hover {
+      color: #fff;
+      background: rgba(255, 255, 255, .12)
+    }
+
+    .n-tab.active {
+      color: #fff;
+      background: rgba(255, 255, 255, .18)
+    }
+
+    .n-right {
+      display: flex;
+      align-items: center;
+      gap: 8px
+    }
+
+    .n-badge {
+      background: var(--mk-or);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 99px;
+      font-family: var(--fm)
+    }
+
+    .t-btn {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, .15);
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      transition: background .15s;
+      flex-shrink: 0
+    }
+
+    .t-btn:hover {
+      background: rgba(255, 255, 255, .25)
+    }
+
+    .t-btn svg {
+      width: 15px;
+      height: 15px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2
+    }
+
+    .n-av {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: var(--mk-or);
+      font-size: 10px;
+      font-weight: 700;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--fh);
+      border: 2px solid rgba(255, 255, 255, .3);
+      flex-shrink: 0
+    }
+
+    /* LAYOUT */
+    .ws {
+      display: flex;
+      flex: 1;
+      overflow: hidden
+    }
+
+    /* SIDEBAR */
+    .sb {
+      width: 280px;
+      min-width: 280px;
+      background: var(--bg-p);
+      border-right: 1px solid var(--bdr);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      transition: background .2s
+    }
+
+    .sb-top {
+      padding: 12px 12px 9px;
+      border-bottom: 1px solid var(--bdr)
+    }
+
+    .sb-hd {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 9px
+    }
+
+    .sb-lbl {
+      font-family: var(--fh);
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--t3);
+      letter-spacing: .1em;
+      text-transform: uppercase
+    }
+
+    .sb-ct {
+      font-family: var(--fm);
+      font-size: 10px;
+      color: var(--t3);
+      background: var(--bg-h);
+      padding: 2px 7px;
+      border-radius: 99px;
+      border: 1px solid var(--bdr)
+    }
+
+    .srch {
+      position: relative;
+      margin-bottom: 7px
+    }
+
+    .srch-ic {
+      position: absolute;
+      left: 8px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--t3);
+      pointer-events: none
+    }
+
+    .srch-ic svg {
+      width: 12px;
+      height: 12px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.8
+    }
+
+    .srch-inp {
+      width: 100%;
+      padding: 7px 9px 7px 27px;
+      background: var(--bg);
+      border: 1px solid var(--bdr);
+      border-radius: var(--rs);
+      color: var(--t1);
+      font-size: 12px;
+      font-family: var(--fb);
+      outline: none;
+      transition: border-color .15s, background .2s
+    }
+
+    .srch-inp::placeholder {
+      color: var(--t3)
+    }
+
+    .srch-inp:focus {
+      border-color: var(--ac)
+    }
+
+    .chips {
+      display: flex;
+      gap: 4px;
+      margin-bottom: 8px;
+      flex-wrap: wrap
+    }
+
+    .chip {
+      padding: 3px 9px;
+      font-size: 11px;
+      font-weight: 500;
+      border-radius: 99px;
+      border: 1px solid var(--bdr);
+      background: transparent;
+      color: var(--t2);
+      cursor: pointer;
+      font-family: var(--fb);
+      transition: all .15s
+    }
+
+    .chip:hover {
+      border-color: var(--bdr-m);
+      color: var(--t1)
+    }
+
+    .chip.on {
+      background: var(--ac-pale);
+      color: var(--ac);
+      border-color: var(--ac-lt)
+    }
+
+    .sts {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 5px
+    }
+
+    .sc {
+      background: var(--bg);
+      border: 1px solid var(--bdr);
+      border-radius: var(--rs);
+      padding: 6px;
+      text-align: center
+    }
+
+    .sc-n {
+      font-family: var(--fm);
+      font-size: 14px;
+      font-weight: 500;
+      display: block
+    }
+
+    .sc-l {
+      font-size: 9px;
+      color: var(--t3);
+      display: block;
+      margin-top: 1px;
+      text-transform: uppercase;
+      letter-spacing: .05em
+    }
+
+    .c-p {
+      color: var(--am)
+    }
+
+    .c-r {
+      color: var(--ac)
+    }
+
+    .c-d {
+      color: var(--gr)
+    }
+
+    .queue {
+      flex: 1;
+      overflow-y: auto;
+      padding: 8px
+    }
+
+    .queue::-webkit-scrollbar {
+      width: 3px
+    }
+
+    .queue::-webkit-scrollbar-thumb {
+      background: var(--bdr-m);
+      border-radius: 99px
+    }
+
+    .qi {
+      padding: 10px 11px;
+      border-radius: var(--r);
+      border: 1px solid var(--bdr);
+      background: var(--bg-c);
+      margin-bottom: 5px;
+      cursor: pointer;
+      transition: all .15s;
+      position: relative;
+      overflow: hidden
+    }
+
+    .qi::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      background: transparent;
+      transition: background .15s
+    }
+
+    .qi:hover {
+      border-color: var(--bdr-m);
+      background: var(--bg-h)
+    }
+
+    .qi.active {
+      border-color: var(--mk-blue-lt);
+      background: var(--ac-pale)
+    }
+
+    .qi.active::after {
+      background: var(--ac)
+    }
+
+    .qi.flagged.active {
+      border-color: var(--rd-lt);
+      background: var(--rd-pale)
+    }
+
+    .qi.flagged.active::after {
+      background: var(--rd)
+    }
+
+    .qi-r1 {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 6px;
+      margin-bottom: 2px
+    }
+
+    .qi-n {
+      font-family: var(--fh);
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--t1);
+      flex: 1;
+      line-height: 1.3
+    }
+
+    .bdg {
+      font-size: 10px;
+      padding: 2px 7px;
+      border-radius: 99px;
+      font-weight: 600;
+      white-space: nowrap;
+      font-family: var(--fm);
+      border: 1px solid transparent
+    }
+
+    .b-p {
+      background: var(--am-pale);
+      color: var(--am);
+      border-color: var(--am-lt)
+    }
+
+    .b-r {
+      background: var(--ac-pale);
+      color: var(--ac);
+      border-color: var(--ac-lt)
+    }
+
+    .b-d {
+      background: var(--gr-pale);
+      color: var(--gr);
+      border-color: var(--gr-lt)
+    }
+
+    .b-f {
+      background: var(--rd-pale);
+      color: var(--rd);
+      border-color: var(--rd-lt)
+    }
+
+    .qi-m {
+      font-size: 10px;
+      color: var(--t3);
+      margin-bottom: 5px;
+      font-family: var(--fm)
+    }
+
+    .qi-c {
+      display: flex;
+      align-items: center;
+      gap: 6px
+    }
+
+    .ct {
+      flex: 1;
+      height: 3px;
+      background: var(--bdr);
+      border-radius: 99px;
+      overflow: hidden
+    }
+
+    .cf {
+      height: 100%;
+      border-radius: 99px
+    }
+
+    .cf-g {
+      background: var(--gr)
+    }
+
+    .cf-a {
+      background: var(--am)
+    }
+
+    .cf-r {
+      background: var(--rd)
+    }
+
+    .cp {
+      font-size: 10px;
+      color: var(--t3);
+      font-family: var(--fm);
+      min-width: 24px;
+      text-align: right
+    }
+
+    /* MAIN */
+    .main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden
+    }
+
+    .doc-hd {
+      padding: 11px 17px;
+      background: var(--bg-p);
+      border-bottom: 1px solid var(--bdr);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-shrink: 0;
+      box-shadow: var(--sh-sm)
+    }
+
+    .doc-tb {
+      display: flex;
+      align-items: center;
+      gap: 11px
+    }
+
+    .doc-ic {
+      width: 34px;
+      height: 34px;
+      background: var(--ac-pale);
+      border: 1px solid var(--ac-lt);
+      border-radius: var(--rs);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0
+    }
+
+    .doc-ic svg {
+      width: 16px;
+      height: 16px;
+      fill: var(--ac)
+    }
+
+    .doc-ttl {
+      font-family: var(--fh);
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--t1);
+      letter-spacing: -.01em
+    }
+
+    .doc-sub {
+      font-size: 10px;
+      color: var(--t3);
+      margin-top: 1px;
+      font-family: var(--fm)
+    }
+
+    .doc-acts {
+      display: flex;
+      align-items: center;
+      gap: 7px
+    }
+
+    .btn {
+      padding: 6px 12px;
+      font-size: 12px;
+      font-weight: 500;
+      font-family: var(--fb);
+      border-radius: var(--rs);
+      border: 1px solid var(--bdr-m);
+      background: var(--bg-c);
+      color: var(--t2);
+      cursor: pointer;
+      transition: all .15s;
+      display: flex;
+      align-items: center;
+      gap: 5px
+    }
+
+    .btn svg {
+      width: 12px;
+      height: 12px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.8
+    }
+
+    .btn:hover {
+      color: var(--t1);
+      background: var(--bg-h)
+    }
+
+    .btn-flag {
+      border-color: var(--rd-lt);
+      color: var(--rd);
+      background: var(--rd-pale)
+    }
+
+    .btn-flag:hover {
+      background: var(--rd-lt)
+    }
+
+    .btn-done {
+      border-color: var(--mk-blue);
+      color: #fff;
+      background: var(--mk-blue)
+    }
+
+    .btn-done:hover {
+      background: var(--mk-blue-dk);
+      border-color: var(--mk-blue-dk)
+    }
+
+    /* REVIEW BODY */
+    .rev {
+      flex: 1;
+      display: flex;
+      overflow: hidden
+    }
+
+    /* PDF */
+    .pdf-sec {
+      flex: 1.15;
+      display: flex;
+      flex-direction: column;
+      border-right: 1px solid var(--bdr);
+      overflow: hidden
+    }
+
+    .pdf-bar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 13px;
+      background: var(--bg-p);
+      border-bottom: 1px solid var(--bdr);
+      font-size: 12px;
+      color: var(--t2);
+      flex-shrink: 0
+    }
+
+    .pdf-bb {
+      padding: 3px 8px;
+      background: var(--bg);
+      border: 1px solid var(--bdr);
+      border-radius: var(--rs);
+      color: var(--t2);
+      font-size: 11px;
+      cursor: pointer;
+      font-family: var(--fb);
+      transition: all .15s
+    }
+
+    .pdf-bb:hover {
+      color: var(--t1);
+      border-color: var(--bdr-m)
+    }
+
+    .pdf-sep {
+      color: var(--bdr-m)
+    }
+
+    .hl-tog {
+      margin-left: auto;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 11px;
+      color: var(--ac);
+      font-weight: 500
+    }
+
+    .hl-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--ac)
+    }
+
+    .pdf-scr {
+      flex: 1;
+      overflow-y: auto;
+      padding: 18px;
+      background: var(--bg);
+      display: flex;
+      justify-content: center;
+      align-items: flex-start
+    }
+
+    .pdf-scr::-webkit-scrollbar {
+      width: 4px
+    }
+
+    .pdf-scr::-webkit-scrollbar-thumb {
+      background: var(--bdr-m);
+      border-radius: 99px
+    }
+
+    .pdf-pg {
+      width: 100%;
+      max-width: 450px;
+      background: #fff;
+      border-radius: 4px;
+      padding: 26px 30px;
+      box-shadow: var(--sh-md), 0 0 0 1px rgba(0, 0, 0, .06);
+      min-height: 540px;
+      color: #1f2937
+    }
+
+    .pp-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 18px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid #e5e7eb
+    }
+
+    .pp-co {
+      font-family: var(--fh);
+      font-size: 16px;
+      font-weight: 700;
+      color: #174EA0
+    }
+
+    .pp-co-s {
+      font-size: 8px;
+      color: #9ca3af;
+      margin-top: 2px
+    }
+
+    .pp-tag {
+      text-align: right
+    }
+
+    .pp-hda {
+      font-size: 10px;
+      font-weight: 700;
+      color: #fff;
+      background: #174EA0;
+      padding: 3px 9px;
+      border-radius: 4px;
+      font-family: var(--fm)
+    }
+
+    .pp-id {
+      font-size: 8px;
+      color: #9ca3af;
+      margin-top: 3px;
+      font-family: var(--fm)
+    }
+
+    .pp-gr {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px 16px;
+      margin-bottom: 16px
+    }
+
+    .pfl {
+      font-size: 7px;
+      font-weight: 700;
+      color: #9ca3af;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      margin-bottom: 2px
+    }
+
+    .pfv {
+      font-size: 11px;
+      color: #1f2937;
+      font-family: var(--fm);
+      padding: 3px 5px;
+      border-radius: 3px
+    }
+
+    .hl-b {
+      background: rgba(59, 130, 246, .12);
+      border-left: 2px solid #3b82f6
+    }
+
+    .hl-o {
+      background: rgba(242, 145, 48, .14);
+      border-left: 2px solid #F29130
+    }
+
+    .hl-g {
+      background: rgba(22, 163, 74, .11);
+      border-left: 2px solid #16a34a
+    }
+
+    .hl-r {
+      background: rgba(220, 38, 38, .1);
+      border-left: 2px solid #dc2626
+    }
+
+    .pp-dv {
+      height: 1px;
+      background: #e5e7eb;
+      margin: 12px 0
+    }
+
+    .pp-st {
+      font-size: 7px;
+      font-weight: 700;
+      color: #6b7280;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      margin-bottom: 7px
+    }
+
+    .pp-thr {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 3px;
+      padding: 4px 5px;
+      background: #f9fafb;
+      border-radius: 3px;
+      margin-bottom: 3px
+    }
+
+    .pp-th {
+      font-size: 7px;
+      font-weight: 700;
+      color: #6b7280;
+      text-transform: uppercase
+    }
+
+    .pp-tr {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 3px;
+      padding: 4px 5px;
+      border-bottom: 1px solid #f3f4f6
+    }
+
+    .pp-td {
+      font-size: 9px;
+      color: #374151;
+      font-family: var(--fm)
+    }
+
+    .hl-row {
+      background: rgba(242, 145, 48, .07);
+      border-radius: 3px
+    }
+
+    .pp-sgr {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 18px
+    }
+
+    .pp-sg {
+      border-top: 1px solid #d1d5db;
+      padding-top: 5px
+    }
+
+    .pp-sgn {
+      font-size: 10px;
+      color: #374151;
+      font-family: var(--fm);
+      font-style: italic
+    }
+
+    .pp-sgl {
+      font-size: 7px;
+      color: #9ca3af;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      margin-top: 2px
+    }
+
+    .hl-sig {
+      background: rgba(220, 38, 38, .07);
+      border: 1px dashed #dc2626;
+      border-radius: 3px;
+      padding: 2px 4px
+    }
+
+    /* FIELDS PANEL */
+    .fp {
+      width: 358px;
+      min-width: 340px;
+      background: var(--bg-p);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden
+    }
+
+    .fp-top {
+      padding: 13px 14px 0;
+      border-bottom: 1px solid var(--bdr)
+    }
+
+    .fp-hd {
+      font-family: var(--fh);
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--t1);
+      margin-bottom: 10px
+    }
+
+    .fp-tabs {
+      display: flex;
+      margin-bottom: 8px
+    }
+
+    .ftab {
+      flex: 1;
+      padding: 7px 5px;
+      font-size: 11px;
+      font-weight: 500;
+      font-family: var(--fb);
+      background: none;
+      border: none;
+      border-bottom: 2px solid transparent;
+      color: var(--t3);
+      cursor: pointer;
+      transition: all .15s;
+      text-align: center
+    }
+
+    .ftab[style*="display: none"] {
+      display: none !important
+    }
+
+    .ftab:hover {
+      color: var(--t2)
+    }
+
+    .ftab.on {
+      color: var(--ac);
+      border-bottom-color: var(--ac)
+    }
+
+    .fp-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 4px
+    }
+
+    .fp-nav-btn {
+      width: 28px;
+      height: 28px;
+      border-radius: 6px;
+      border: 1px solid var(--bdr);
+      background: var(--bg);
+      color: var(--t2);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all .15s
+    }
+
+    .fp-nav-btn:hover {
+      border-color: var(--ac);
+      color: var(--ac);
+      background: var(--ac-pale)
+    }
+
+    .fp-nav-btn svg {
+      width: 14px;
+      height: 14px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2.5
+    }
+
+    .fp-nav-info {
+      font-size: 10px;
+      color: var(--t3);
+      font-family: var(--fm);
+      text-align: center
+    }
+
+    .fp-scr {
+      flex: 1;
+      overflow-x: auto;
+      overflow-y: hidden;
+      padding: 10px;
+      display: flex;
+      gap: 10px;
+      align-items: flex-start
+    }
+
+    .fp-scr::-webkit-scrollbar {
+      height: 3px
+    }
+
+    .fp-scr::-webkit-scrollbar-thumb {
+      background: var(--bdr-m);
+      border-radius: 99px
+    }
+
+    /* FIELD CARD */
+    .fc {
+      background: var(--bg-c);
+      border: 1px solid var(--bdr);
+      border-radius: var(--r);
+      overflow: hidden;
+      transition: border-color .15s, background .15s;
+      min-width: 320px;
+      max-width: 320px;
+      flex-shrink: 0
+    }
+
+    .fc.st-ac {
+      border-color: var(--gr-lt)
+    }
+
+    .fc.st-rj {
+      border-color: var(--rd-lt)
+    }
+
+    .fc.st-ed {
+      border-color: var(--ac-lt)
+    }
+
+    .fc-hd {
+      padding: 10px 12px 0
+    }
+
+    .fc-r1 {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px
+    }
+
+    .fc-lbl {
+      font-size: 9px;
+      font-weight: 700;
+      color: var(--t3);
+      text-transform: uppercase;
+      letter-spacing: .09em;
+      font-family: var(--fh)
+    }
+
+    .cpil {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      padding: 2px 8px;
+      border-radius: 99px;
+      font-size: 10px;
+      font-family: var(--fm);
+      font-weight: 500;
+      border: 1px solid transparent
+    }
+
+    .cp-h {
+      background: var(--gr-pale);
+      color: var(--gr);
+      border-color: var(--gr-lt)
+    }
+
+    .cp-m {
+      background: var(--am-pale);
+      color: var(--am);
+      border-color: var(--am-lt)
+    }
+
+    .cp-l {
+      background: var(--rd-pale);
+      color: var(--rd);
+      border-color: var(--rd-lt)
+    }
+
+    .cp-d {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%
+    }
+
+    .cp-h .cp-d {
+      background: var(--gr)
+    }
+
+    .cp-m .cp-d {
+      background: var(--am)
+    }
+
+    .cp-l .cp-d {
+      background: var(--rd)
+    }
+
+    /* Data rows */
+    .drw {
+      padding: 0 12px 4px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px
+    }
+
+    .dr {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      padding: 6px 8px;
+      background: var(--bg);
+      border: 1px solid var(--bdr);
+      border-radius: var(--rs)
+    }
+
+    .dr-ic {
+      width: 20px;
+      height: 20px;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px
+    }
+
+    .dr-ic svg {
+      width: 11px;
+      height: 11px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2
+    }
+
+    .ic-ex {
+      background: var(--ac-pale);
+      color: var(--ac)
+    }
+
+    .ic-kg {
+      background: var(--mk-or-pale);
+      color: var(--mk-or)
+    }
+
+    .ic-rv {
+      background: var(--gr-pale);
+      color: var(--gr)
+    }
+
+    .dr-b {
+      flex: 1;
+      min-width: 0
+    }
+
+    .dr-tp {
+      font-size: 9px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .07em;
+      color: var(--t3);
+      margin-bottom: 2px
+    }
+
+    .dr-v {
+      font-size: 12px;
+      font-family: var(--fm);
+      color: var(--t1);
+      word-break: break-all
+    }
+
+    .dr-v.sk {
+      text-decoration: line-through;
+      color: var(--t3)
+    }
+
+    .dr-s {
+      font-size: 10px;
+      color: var(--t3);
+      margin-top: 1px
+    }
+
+    /* Actions */
+    .fc-acts {
+      padding: 7px 12px 10px;
+      display: flex;
+      gap: 4px
+    }
+
+    .fa {
+      flex: 1;
+      padding: 6px 4px;
+      font-size: 11px;
+      font-weight: 500;
+      font-family: var(--fb);
+      border-radius: var(--rs);
+      border: 1px solid var(--bdr);
+      background: var(--bg);
+      color: var(--t2);
+      cursor: pointer;
+      transition: all .15s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 3px
+    }
+
+    .fa svg {
+      width: 11px;
+      height: 11px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2
+    }
+
+    .fa:hover {
+      color: var(--t1);
+      border-color: var(--bdr-m);
+      background: var(--bg-h)
+    }
+
+    .fa.f-ac {
+      border-color: var(--gr-lt);
+      color: var(--gr);
+      background: var(--gr-pale)
+    }
+
+    .fa.f-ac:hover {
+      background: var(--gr-lt)
+    }
+
+    .fa.f-ac.on {
+      border-color: var(--gr);
+      font-weight: 600
+    }
+
+    .fa.f-ed {
+      border-color: var(--ac-lt);
+      color: var(--ac);
+      background: var(--ac-pale)
+    }
+
+    .fa.f-ed:hover {
+      background: var(--ac-lt)
+    }
+
+    .fa.f-rj {
+      border-color: var(--rd-lt);
+      color: var(--rd);
+      background: var(--rd-pale)
+    }
+
+    .fa.f-rj:hover {
+      background: var(--rd-lt)
+    }
+
+    .fa.f-rj.on {
+      border-color: var(--rd);
+      font-weight: 600
+    }
+
+    /* EDIT PANEL */
+    .ep {
+      background: var(--ac-pale);
+      border-top: 1px solid var(--ac-lt);
+      padding: 11px 12px
+    }
+
+    .ep-ttl {
+      font-size: 9px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: var(--ac);
+      margin-bottom: 9px;
+      display: flex;
+      align-items: center;
+      gap: 5px
+    }
+
+    .ep-ttl svg {
+      width: 12px;
+      height: 12px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2
+    }
+
+    .ep-opts {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 10px
+    }
+
+    .ep-opt {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 10px;
+      border: 1px solid var(--bdr);
+      border-radius: var(--rs);
+      background: var(--bg-c);
+      cursor: pointer;
+      transition: all .15s
+    }
+
+    .ep-opt:hover {
+      border-color: var(--ac-lt);
+      background: var(--bg-h)
+    }
+
+    .ep-opt.sel {
+      border-color: var(--ac);
+      background: var(--bg-c)
+    }
+
+    .eo-rd {
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      border: 2px solid var(--bdr-m);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: all .15s
+    }
+
+    .ep-opt.sel .eo-rd {
+      border-color: var(--ac);
+      background: var(--ac)
+    }
+
+    .eo-dt {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: #fff;
+      display: none
+    }
+
+    .ep-opt.sel .eo-dt {
+      display: block
+    }
+
+    .eo-b {
+      flex: 1
+    }
+
+    .eo-lbl {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--t1)
+    }
+
+    .eo-val {
+      font-size: 11px;
+      font-family: var(--fm);
+      color: var(--t2);
+      margin-top: 1px
+    }
+
+    .man-sec {
+      display: none;
+      padding-top: 4px
+    }
+
+    .man-inp {
+      width: 100%;
+      padding: 7px 9px;
+      background: var(--bg-c);
+      border: 1px solid var(--bdr-m);
+      border-radius: var(--rs);
+      color: var(--t1);
+      font-family: var(--fm);
+      font-size: 12px;
+      outline: none;
+      margin-bottom: 8px;
+      transition: border-color .15s
+    }
+
+    .man-inp:focus {
+      border-color: var(--ac)
+    }
+
+    .man-inp::placeholder {
+      color: var(--t3);
+      font-family: var(--fb)
+    }
+
+    /* NDC Section Separator - disabled for horizontal layout */
+    /* .ndc-sep {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 12px;
+      margin: 8px 0 4px;
+      background: var(--bg-h);
+      border-radius: var(--rs);
+      border-left: 3px solid var(--ac)
+    }
+
+    .ndc-sep-lbl {
+      font-family: var(--fh);
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--t1)
+    }
+
+    .ndc-sep-status {
+      font-size: 10px;
+      color: var(--t3);
+      font-family: var(--fm);
+      padding: 2px 8px;
+      background: var(--bg-c);
+      border-radius: 99px;
+      border: 1px solid var(--bdr)
+    }
+
+    .ndc-sep.active {
+      border-left-color: var(--gr);
+      background: var(--gr-pale)
+    } */
+
+    .rea-lbl {
+      font-size: 9px;
+      font-weight: 600;
+      color: var(--t3);
+      text-transform: uppercase;
+      letter-spacing: .07em;
+      margin-bottom: 5px
+    }
+
+    .rea-sel {
+      width: 100%;
+      padding: 7px 28px 7px 9px;
+      background: var(--bg-c);
+      border: 1px solid var(--bdr-m);
+      border-radius: var(--rs);
+      color: var(--t1);
+      font-family: var(--fb);
+      font-size: 12px;
+      outline: none;
+      -webkit-appearance: none;
+      appearance: none;
+      cursor: pointer;
+      margin-bottom: 6px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 9px center;
+      transition: border-color .15s
+    }
+
+    .rea-sel:focus {
+      border-color: var(--ac)
+    }
+
+    .cust-ta {
+      width: 100%;
+      padding: 7px 9px;
+      background: var(--bg-c);
+      border: 1px solid var(--bdr-m);
+      border-radius: var(--rs);
+      color: var(--t1);
+      font-family: var(--fb);
+      font-size: 12px;
+      outline: none;
+      resize: none;
+      height: 56px;
+      margin-bottom: 6px;
+      transition: border-color .15s
+    }
+
+    .cust-ta:focus {
+      border-color: var(--ac)
+    }
+
+    .cust-ta::placeholder {
+      color: var(--t3)
+    }
+
+    .ep-ftr {
+      display: flex;
+      gap: 5px;
+      margin-top: 3px
+    }
+
+    .ep-btn {
+      flex: 1;
+      padding: 7px 0;
+      font-size: 12px;
+      font-weight: 600;
+      font-family: var(--fb);
+      border-radius: var(--rs);
+      cursor: pointer;
+      transition: all .15s;
+      text-align: center
+    }
+
+    .ep-cn {
+      border: 1px solid var(--bdr-m);
+      background: var(--bg-c);
+      color: var(--t2)
+    }
+
+    .ep-cn:hover {
+      background: var(--bg-h)
+    }
+
+    .ep-sv {
+      border: 1px solid var(--ac);
+      background: var(--ac);
+      color: #fff
+    }
+
+    .ep-sv:hover {
+      background: var(--mk-blue-dk);
+      border-color: var(--mk-blue-dk)
+    }
+
+    /* FOOTER */
+    .fp-ftr {
+      padding: 12px 14px;
+      border-top: 1px solid var(--bdr);
+      background: var(--bg-p)
+    }
+
+    .pr-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 5px
+    }
+
+    .pr-lbl {
+      font-size: 11px;
+      color: var(--t2);
+      font-weight: 500
+    }
+
+    .pr-fr {
+      font-family: var(--fm);
+      font-size: 11px;
+      color: var(--t3)
+    }
+
+    .pr-tr {
+      height: 5px;
+      background: var(--bdr);
+      border-radius: 99px;
+      margin-bottom: 12px;
+      overflow: hidden
+    }
+
+    .pr-fl {
+      height: 100%;
+      border-radius: 99px;
+      background: linear-gradient(90deg, var(--mk-blue), var(--mk-or));
+      transition: width .4s ease
+    }
+
+    .nt-lbl {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--t3);
+      margin-bottom: 5px
+    }
+
+    .nt-ta {
+      width: 100%;
+      padding: 7px 9px;
+      background: var(--bg);
+      border: 1px solid var(--bdr);
+      border-radius: var(--rs);
+      color: var(--t1);
+      font-family: var(--fb);
+      font-size: 12px;
+      resize: none;
+      height: 50px;
+      outline: none;
+      margin-bottom: 10px;
+      transition: border-color .15s
+    }
+
+    .nt-ta::placeholder {
+      color: var(--t3)
+    }
+
+    .nt-ta:focus {
+      border-color: var(--ac)
+    }
+
+    .ftr-bs {
+      display: flex;
+      gap: 6px
+    }
+
+    .fb {
+      flex: 1;
+      padding: 7px 0;
+      font-size: 12px;
+      font-weight: 600;
+      font-family: var(--fb);
+      border-radius: var(--rs);
+      cursor: pointer;
+      transition: all .15s;
+      border: 1px solid var(--bdr-m);
+      background: var(--bg-c);
+      color: var(--t2)
+    }
+
+    .fb:hover {
+      background: var(--bg-h);
+      color: var(--t1)
+    }
+
+    .fb-sub {
+      flex: 2;
+      background: var(--mk-blue);
+      color: #fff;
+      border-color: var(--mk-blue)
+    }
+
+    .fb-sub:hover {
+      background: var(--mk-blue-dk);
+      border-color: var(--mk-blue-dk)
+    }
+
+    @keyframes fu {
+      from {
+        opacity: 0;
+        transform: translateY(6px)
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0)
+      }
+    }
+
+    .qi,
+    .fc {
+      animation: fu .2s ease both
+    }
+
+    .qi:nth-child(1) {
+      animation-delay: .04s
+    }
+
+    .qi:nth-child(2) {
+      animation-delay: .08s
+    }
+
+    .qi:nth-child(3) {
+      animation-delay: .12s
+    }
+
+    .qi:nth-child(4) {
+      animation-delay: .16s
+    }
+
+    .qi:nth-child(5) {
+      animation-delay: .2s
+    }
+
+    .qi:nth-child(6) {
+      animation-delay: .24s
+    }
+  </style>
+</head>
+
+<body data-theme="light">
+
+  <nav class="nav">
+    <div class="n-logo">
+      <!-- <div class="n-mark">
+        <svg width="30" height="30" viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg">
+          <rect width="30" height="30" fill="#174EA0" />
+          <text x="4" y="22" font-family="Georgia,serif" font-size="20" font-weight="900" fill="#fff">M</text>
+          <rect x="0" y="26" width="30" height="4" fill="#F29130" />
+        </svg>
+      </div> -->
+      <span class="n-txt">Genova </span>
+    </div>
+    <div class="n-div"></div>
+    <div class="n-tabs">
+      <button class="n-tab ">Business Insights</button>
+      <button class="n-tab active">Workflow Pipeline</button>
+      <button class="n-tab">Rule Tower</button>
+      <button class="n-tab">Trust Score Framework</button>
+      <button class="n-tab">Trust Score Configuration</button>
+      <button class="n-tab">Abbreviations</button>
+
+    </div>
+    <div class="n-right">
+      <div class="n-badge">14 pending</div>
+      <button class="t-btn" id="tBtn" title="Toggle theme">
+        <svg id="tIco" viewBox="0 0 24 24">
+          <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" />
+        </svg>
+      </button>
+      <div class="n-av">RK</div>
+    </div>
+  </nav>
+
+  <div class="ws">
+
+    <aside class="sb">
+      <div class="sb-top">
+        <div class="sb-hd"><span class="sb-lbl">Queue</span><span class="sb-ct">32 total</span></div>
+        <div class="srch">
+          <span class="srch-ic"><svg viewBox="0 0 24 24">
+              <circle cx="11" cy="11" r="8" />
+              <line x1="21" y1="21" x2="16.65" y2="16.65" />
+            </svg></span>
+          <input class="srch-inp" placeholder="Vendor name, form ID&#8230;" />
+        </div>
+        <div class="chips">
+          <button class="chip on" onclick="selChip(this)">All</button>
+          <button class="chip" onclick="selChip(this)">Pending</button>
+          <button class="chip" onclick="selChip(this)">Flagged</button>
+          <button class="chip" onclick="selChip(this)">Done</button>
+        </div>
+        <div class="sts">
+          <div class="sc"><span class="sc-n c-p">1</span><span class="sc-l">Pending</span></div>
+          <div class="sc"><span class="sc-n c-r">1</span><span class="sc-l">In review</span></div>
+          <div class="sc"><span class="sc-n c-d">0</span><span class="sc-l">Done</span></div>
+        </div>
+      </div>
+      <div class="queue">
+        <div class="qi active" onclick="selQ(this)">
+          <div class="qi-r1"><span class="qi-n">Sun Pharma</span><span class="bdg b-r">In review</span></div>
+          <div class="qi-m">NDC-001 &middot; 3 files</div>
+          <div class="qi-c">
+            <div class="ct">
+              <div class="cf cf-g" style="width:87%"></div>
+            </div><span class="cp">87%</span>
+          </div>
+        </div>
+        <div class="qi" onclick="selQ(this)">
+          <div class="qi-r1"><span class="qi-n">Sun Pharma</span><span class="bdg b-p">Pending</span></div>
+          <div class="qi-m">NDC-002 &middot; 1 file</div>
+          <div class="qi-c">
+            <div class="ct">
+              <div class="cf cf-a" style="width:52%"></div>
+            </div><span class="cp">52%</span>
+          </div>
+        </div>
+        <div class="qi flagged" onclick="selQ(this)">
+          <div class="qi-r1"><span class="qi-n">Sun Pharma</span><span class="bdg b-f">Flagged</span></div>
+          <div class="qi-m">NDC-003 &middot; 2 files</div>
+          <div class="qi-c">
+            <div class="ct">
+              <div class="cf cf-r" style="width:31%"></div>
+            </div><span class="cp">31%</span>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <div class="main">
+      <div class="doc-hd">
+        <div class="doc-tb">
+          <div class="doc-ic">
+            <svg viewBox="0 0 24 24">
+              <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" />
+              <polyline points="14 2 14 8 20 8" style="fill:none;stroke:var(--ac);stroke-width:2" />
+            </svg>
+          </div>
+          <div>
+            <div class="doc-ttl">Sun Pharma &#8212; NDC-001</div>
+            <div class="doc-sub">Received 25 Apr 2026 &nbsp;&middot;&nbsp; PDF &nbsp;&middot;&nbsp; 3 pages
+              &nbsp;&middot;&nbsp; 87% avg. accuracy</div>
+          </div>
+        </div>
+        <div class="doc-acts">
+          <!-- <button class="btn btn-flag">
+            <svg viewBox="0 0 24 24">
+              <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z" />
+              <line x1="4" y1="22" x2="4" y2="15" />
+            </svg>
+            Flag Issue
+          </button>
+          <button class="btn">Skip</button> -->
+          <button class="btn btn-done">Mark as Done</button>
+        </div>
+      </div>
+
+      <div class="rev">
+        <!-- PDF -->
+        <div class="pdf-sec">
+          <div class="pdf-bar">
+            <button class="pdf-bb">&#9664; Prev</button>
+            <span>Page 1 of 3</span>
+            <button class="pdf-bb">Next &#9654;</button>
+            <span class="pdf-sep">|</span>
+            <button class="pdf-bb">&#8722;</button>
+            <span>100%</span>
+            <button class="pdf-bb">+</button>
+            <div class="hl-tog">
+              <div class="hl-dot"></div>Highlights on
+            </div>
+          </div>
+          <div class="pdf-scr">
+            <iframe src="public/demo/sample.pdf" width="100%" height="100%" style="border: none;"></iframe>
+          </div>
+        </div>
+
+        <!-- FIELDS -->
+        <div class="fp">
+          <div class="fp-top">
+            <div class="fp-hd">Extracted Fields</div>
+            <div class="fp-tabs">
+              <button class="ftab" onclick="scrollToField(-1)">Vendor ID</button>
+              <button class="ftab on" onclick="scrollToField(0)">Vendor Name</button>
+              <button class="ftab" onclick="scrollToField(1)">DC Table Ref</button>
+            </div>
+            <div class="fp-nav">
+              <button class="fp-nav-btn" onclick="scrollFields(-1)">
+                <svg viewBox="0 0 24 24">
+                  <polyline points="15 18 9 12 15 6" />
+                </svg>
+              </button>
+              <div class="fp-nav-info">1 of 8</div>
+              <button class="fp-nav-btn" onclick="scrollFields(1)">
+                <svg viewBox="0 0 24 24">
+                  <polyline points="9 18 15 12 9 6" />
+                </svg>
+              </button>
+            </div>
+          </div>
+          <div class="fp-scr" id="flist">
+
+            <!-- Vendor Name -->
+            <div class="fc st-ac" data-s="accepted" data-ndc="NDC-001" data-common="true">
+              <div class="fc-hd">
+                <div class="fc-r1"><span class="fc-lbl">Vendor Name</span>
+                  <div class="cpil cp-h">
+                    <div class="cp-d"></div>96% acc.
+                  </div>
+                </div>
+              </div>
+              <div class="drw">
+                <div class="dr">
+                  <div class="dr-ic ic-ex"><svg viewBox="0 0 24 24">
+                      <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" />
+                    </svg></div>
+                  <div class="dr-b">
+                    <div class="dr-tp">Extracted Value</div>
+                    <div class="dr-v">Sun Pharma</div>
+                  </div>
+                </div>
+                <div class="dr">
+                  <div class="dr-ic ic-kg"><svg viewBox="0 0 24 24">
+                      <circle cx="12" cy="12" r="3" />
+                      <path d="M12 2v3M12 19v3M2 12h3M19 12h3" />
+                    </svg></div>
+                  <div class="dr-b">
+                    <div class="dr-tp">Knowledge Graph</div>
+                    <div class="dr-v">Sun Pharma Laboratories</div>
+                    <div class="dr-s">Matched &nbsp;&#183;&nbsp; GSTIN 36AAACD1234F1Z8</div>
+                  </div>
+                </div>
+                <div class="dr">
+                  <div class="dr-ic ic-rv"><svg viewBox="0 0 24 24">
+                      <polyline points="9 11 12 14 22 4" />
+                      <path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11" />
+                    </svg></div>
+                  <div class="dr-b">
+                    <div class="dr-tp">Rule Version</div>
+                    <div class="dr-v">v2.4.1 &#8212; vendor_name_standard</div>
+                  </div>
+                </div>
+              </div>
+              <div class="fc-acts">
+                <button class="fa f-ac on" onclick="doAc(this)"><svg viewBox="0 0 24 24">
+                    <polyline points="20 6 9 17 4 12" />
+                  </svg>Accepted</button>
+                <button class="fa f-ed" onclick="doEd(this)">Edit</button>
+                <button class="fa f-rj" onclick="doRj(this)">Reject</button>
+              </div>
+            </div>
+
+            <!-- Vendor ID -->
+            <div class="fc st-ac" data-s="accepted" data-ndc="NDC-001" data-common="true">
+              <div class="fc-hd">
+                <div class="fc-r1"><span class="fc-lbl">Vendor ID</span>
+                  <div class="cpil cp-h">
+                    <div class="cp-d"></div>91% acc.
+                  </div>
+                </div>
+              </div>
+              <div class="drw">
+                <div class="dr">
+                  <div class="dr-ic ic-ex"><svg viewBox="0 0 24 24">
+                      <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" />
+                    </svg></div>
+                  <div class="dr-b">
+                    <div class="dr-tp">Extracted Value</div>
+                    <div class="dr-v">VND-4821</div>
+                  </div>
+                </div>
+                <div class="dr">
+                  <div class="dr-ic ic-kg"><svg viewBox="0 0 24 24">
+                      <circle cx="12" cy="12" r="3" />
+                      <path d="M12 2v3M12 19v3M2 12h3M19 12h3" />
+                    </svg></div>
+                  <div class="dr-b">
+                    <div class="dr-tp">Knowledge Graph</div>
+                    <div class="dr-v">VND-4821</div>
+                    <div class="dr-s">Exact match in vendor registry</div>
+                  </div>
+                </div>
+                <div class="dr">
+                  <div class="dr-ic ic-rv"><svg viewBox="0 0 24 24">
+                      <polyline points="9 11 12 14 22 4" />
+                      <path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11" />
+                    </svg></div>
+                  <div class="dr-b">
+                    <div class="dr-tp">Rule Version</div>
+                    <div class="dr-v">v2.4.1 &#8212; vendor_id_format</div>
+                  </div>
+                </div>
+              </div>
+              <div class="fc-acts">
+                <button class="fa f-ac on" onclick="doAc(this)"><svg viewBox="0 0 24 24">
+                    <polyline points="20 6 9 17 4 12" />
+                  </svg>Accepted</button>
+                <button class="fa f-ed" onclick="doEd(this)">Edit</button>
+                <button class="fa f-rj" onclick="doRj(this)">Reject</button>
+              </div>
+            </div>
+
+            <!-- DC Table Ref — edit panel open for demo -->
+            <div class="fc st-ed" data-s="editing" data-ndc="NDC-001" data-common="false">
+              <div class="fc-hd">
+                <div class="fc-r1"><span class="fc-lbl">DC Table Ref</span>
+                  <div class="cpil cp-m">
+                    <div class="cp-d"></div>58% acc.
+                  </div>
+                </div>
+              </div>
+              <div class="drw">
+                <div class="dr">
+                  <div class="dr-ic ic-ex"><svg viewBox="0 0 24 24">
+                      <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" />
+                    </svg></div>
+                  <div class="dr-b">
+                    <div class="dr-tp">Extracted Value</div>
+                    <div class="dr-v">DC-RR-082A</div>
+                  </div>
+                </div>
+                <div class="dr">
+                  <div class="dr-ic ic-kg"><svg viewBox="0 0 24 24">
+                      <circle cx="12" cy="12" r="3" />
+                      <path d="M12 2v3M12 19v3M2 12h3M19 12h3" />
+                    </svg></div>
+                  <div class="dr-b">
+                    <div class="dr-tp">Knowledge Graph</div>
+                    <div class="dr-v">DC-RR-082B</div>
+                    <div class="dr-s">Closest match &#8212; low accuracy</div>
+                  </div>
+                </div>
+                <div class="dr">
+                  <div class="dr-ic ic-rv"><svg viewBox="0 0 24 24">
+                      <polyline points="9 11 12 14 22 4" />
+                      <path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11" />
+                    </svg></div>
+                  <div class="dr-b">
+                    <div class="dr-tp">Rule Version</div>
+                    <div class="dr-v">v2.2.0 &#8212; dc_table_ref_match</div>
+                  </div>
+                </div>
+              </div>
+              <div class="fc-acts">
+                <button class="fa f-ac" onclick="doAc(this)">Accept</button>
+                <button class="fa f-ed" onclick="doEd(this)">Edit</button>
+                <button class="fa f-rj" onclick="doRj(this)">Reject</button>
+              </div>
+              <div class="ep" id="demoEP">
+                <div class="ep-ttl"><svg viewBox="0 0 24 24">
+                    <path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7" />
+                    <path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z" />
+                  </svg>Choose a value to accept</div>
+                <div class="ep-opts">
+                  <div class="ep-opt" onclick="selOpt(this)">
+                    <div class="eo-rd">
+                      <div class="eo-dt"></div>
+                    </div>
+                    <div class="eo-b">
+                      <div class="eo-lbl">Accept extracted value</div>
+                      <div class="eo-val">DC-RR-082A</div>
+                    </div>
+                  </div>
+                  <div class="ep-opt sel" onclick="selOpt(this)">
+                    <div class="eo-rd">
+                      <div class="eo-dt"></div>
+                    </div>
+                    <div class="eo-b">
+                      <div class="eo-lbl">Accept Knowledge Graph value</div>
+                      <div class="eo-val">DC-RR-082B</div>
+                    </div>
+                  </div>
+                  <div class="ep-opt" onclick="selOpt(this)" data-type="manual">
+                    <div class="eo-rd">
+                      <div class="eo-dt"></div>
+                    </div>
+                    <div class="eo-b">
+                      <div class="eo-lbl">Manually enter value</div>
+                      <div class="eo-val mpv">&#8212;</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="man-sec">
+                  <input class="man-inp" placeholder="Type the correct value&#8230;" oninput="liveP(this)" />
+                  <div class="rea-lbl">Reason for manual entry</div>
+                  <select class="rea-sel" onchange="handleR(this)">
+                    <option value="">&#8212; Select a reason &#8212;</option>
+                    <option value="rules">Rules not working</option>
+                    <option value="partial">Partial information given by supplier</option>
+                    <option value="incomplete">Incomplete information given by supplier</option>
+                    <option value="custom">Custom reason&#8230;</option>
+                  </select>
+                  <div class="cust-wrap" style="display:none">
+                    <textarea class="cust-ta" placeholder="Describe the issue in detail&#8230;"></textarea>
+                  </div>
+                </div>
+                <div class="ep-ftr">
+                  <button class="ep-btn ep-cn" onclick="cancelEd(this)">Cancel</button>
+                  <button class="ep-btn ep-sv" onclick="saveEd(this)">Save &amp; Accept</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Form Date -->
+            <div class="fc" data-s="pending" data-ndc="NDC-001" data-common="false">
+              <div class="fc-hd">
+                <div class="fc-r1"><span class="fc-lbl">Form Date</span>
+                  <div class="cpil cp-h">
+                    <div class="cp-d"></div>88% acc.
+                  </div>
+                </div>
+              </div>
+              <div class="drw">
+                <div class="dr">
+                  <div class="dr-ic ic-ex"><svg viewBox="0 0 24 24">
+                      <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" />
+                    </svg></div>
+                  <div class="dr-b">
+                    <div class="dr-tp">Extracted Value</div>
+                    <div class="dr-v">22 April 2026</div>
+                  </div>
+                </div>
+                <div class="dr">
+                  <div class="dr-ic ic-kg"><svg viewBox="0 0 24 24">
+                      <circle cx="12" cy="12" r="3" />
+                      <path d="M12 2v3M12 19v3M2 12h3M19 12h3" />
+                    </svg></div>
+                  <div class="dr-b">
+                    <div class="dr-tp">Knowledge Graph</div>
+                    <div class="dr-v">2026-04-22</div>
+                    <div class="dr-s">ISO format normalised</div>
+                  </div>
+                </div>
+                <div class="dr">
+                  <div class="dr-ic ic-rv"><svg viewBox="0 0 24 24">
+                      <polyline points="9 11 12 14 22 4" />
+                      <path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11" />
+                    </svg></div>
+                  <div class="dr-b">
+                    <div class="dr-tp">Rule Version</div>
+                    <div class="dr-v">v2.4.1 &#8212; date_normalise_v2</div>
+                  </div>
+                </div>
+              </div>
+              <div class="fc-acts">
+                <button class="fa f-ac" onclick="doAc(this)">Accept</button>
+                <button class="fa f-ed" onclick="doEd(this)">Edit</button>
+                <button class="fa f-rj" onclick="doRj(this)">Reject</button>
+              </div>
+            </div>
+
+            <!-- Vendor Name (NDC-002) -->
+            <div class="fc" data-s="pending" data-ndc="NDC-002" data-common="true">
+              <div class="fc-hd">
+                <div class="fc-r1"><span class="fc-lbl">Vendor Name</span>
+                  <div class="cpil cp-h">
+                    <div class="cp-d"></div>94% acc.
+                  </div>
+                </div>
+              </div>
+              <div class="drw">
+                <div class="dr">
+                  <div class="dr-ic ic-ex"><svg viewBox="0 0 24 24">
+                      <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" />
+                    </svg></div>
+                  <div class="dr-b">
+                    <div class="dr-tp">Extracted Value</div>
+                    <div class="dr-v">Sun Pharma</div>
+                  </div>
+                </div>
+                <div class="dr">
+                  <div class="dr-ic ic-kg"><svg viewBox="0 0 24 24">
+                      <circle cx="12" cy="12" r="3" />
+                      <path d="M12 2v3M12 19v3M2 12h3M19 12h3" />
+                    </svg></div>
+                  <div class="dr-b">
+                    <div class="dr-tp">Knowledge Graph</div>
+                    <div class="dr-v">Sun Pharma Laboratories</div>
+                    <div class="dr-s">Matched &nbsp;&#183;&nbsp; GSTIN 36AAACD1234F1Z8</div>
+                  </div>
+                </div>
+                <div class="dr">
+                  <div class="dr-ic ic-rv"><svg viewBox="0 0 24 24">
+                      <polyline points="9 11 12 14 22 4" />
+                      <path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11" />
+                    </svg></div>
+                  <div class="dr-b">
+                    <div class="dr-tp">Rule Version</div>
+                    <div class="dr-v">v2.4.1 &#8212; vendor_name_standard</div>
+                  </div>
+                </div>
+              </div>
+              <div class="fc-acts">
+                <button class="fa f-ac" onclick="doAc(this)">Accept</button>
+                <button class="fa f-ed" onclick="doEd(this)">Edit</button>
+                <button class="fa f-rj" onclick="doRj(this)">Reject</button>
+              </div>
+            </div>
+
+            <!-- Vendor ID (NDC-002) -->
+            <div class="fc" data-s="pending" data-ndc="NDC-002" data-common="true">
+              <div class="fc-hd">
+                <div class="fc-r1"><span class="fc-lbl">Vendor ID</span>
+                  <div class="cpil cp-h">
+                    <div class="cp-d"></div>89% acc.
+                  </div>
+                </div>
+              </div>
+              <div class="drw">
+                <div class="dr">
+                  <div class="dr-ic ic-ex"><svg viewBox="0 0 24 24">
+                      <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" />
+                    </svg></div>
+                  <div class="dr-b">
+                    <div class="dr-tp">Extracted Value</div>
+                    <div class="dr-v">VND-4821</div>
+                  </div>
+                </div>
+                <div class="dr">
+                  <div class="dr-ic ic-kg"><svg viewBox="0 0 24 24">
+                      <circle cx="12" cy="12" r="3" />
+                      <path d="M12 2v3M12 19v3M2 12h3M19 12h3" />
+                    </svg></div>
+                  <div class="dr-b">
+                    <div class="dr-tp">Knowledge Graph</div>
+                    <div class="dr-v">VND-4821</div>
+                    <div class="dr-s">Exact match in vendor registry</div>
+                  </div>
+                </div>
+                <div class="dr">
+                  <div class="dr-ic ic-rv"><svg viewBox="0 0 24 24">
+                      <polyline points="9 11 12 14 22 4" />
+                      <path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11" />
+                    </svg></div>
+                  <div class="dr-b">
+                    <div class="dr-tp">Rule Version</div>
+                    <div class="dr-v">v2.4.1 &#8212; vendor_id_format</div>
+                  </div>
+                </div>
+              </div>
+              <div class="fc-acts">
+                <button class="fa f-ac" onclick="doAc(this)">Accept</button>
+                <button class="fa f-ed" onclick="doEd(this)">Edit</button>
+                <button class="fa f-rj" onclick="doRj(this)">Reject</button>
+              </div>
+            </div>
+
+            <!-- DC Table Ref (NDC-002) -->
+            <div class="fc" data-s="pending" data-ndc="NDC-002" data-common="false">
+              <div class="fc-hd">
+                <div class="fc-r1"><span class="fc-lbl">DC Table Ref</span>
+                  <div class="cpil cp-m">
+                    <div class="cp-d"></div>62% acc.
+                  </div>
+                </div>
+              </div>
+              <div class="drw">
+                <div class="dr">
+                  <div class="dr-ic ic-ex"><svg viewBox="0 0 24 24">
+                      <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" />
+                    </svg></div>
+                  <div class="dr-b">
+                    <div class="dr-tp">Extracted Value</div>
+                    <div class="dr-v">DC-RR-082C</div>
+                  </div>
+                </div>
+                <div class="dr">
+                  <div class="dr-ic ic-kg"><svg viewBox="0 0 24 24">
+                      <circle cx="12" cy="12" r="3" />
+                      <path d="M12 2v3M12 19v3M2 12h3M19 12h3" />
+                    </svg></div>
+                  <div class="dr-b">
+                    <div class="dr-tp">Knowledge Graph</div>
+                    <div class="dr-v">DC-RR-082B</div>
+                    <div class="dr-s">Closest match &#8212; low accuracy</div>
+                  </div>
+                </div>
+                <div class="dr">
+                  <div class="dr-ic ic-rv"><svg viewBox="0 0 24 24">
+                      <polyline points="9 11 12 14 22 4" />
+                      <path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11" />
+                    </svg></div>
+                  <div class="dr-b">
+                    <div class="dr-tp">Rule Version</div>
+                    <div class="dr-v">v2.2.0 &#8212; dc_table_ref_match</div>
+                  </div>
+                </div>
+              </div>
+              <div class="fc-acts">
+                <button class="fa f-ac" onclick="doAc(this)">Accept</button>
+                <button class="fa f-ed" onclick="doEd(this)">Edit</button>
+                <button class="fa f-rj" onclick="doRj(this)">Reject</button>
+              </div>
+            </div>
+
+            <!-- Authorized Signatory -->
+            <div class="fc st-rj" data-s="rejected" data-ndc="NDC-001" data-common="false">
+              <div class="fc-hd">
+                <div class="fc-r1"><span class="fc-lbl">Authorized Signatory</span>
+                  <div class="cpil cp-l">
+                    <div class="cp-d"></div>29% acc.
+                  </div>
+                </div>
+              </div>
+              <div class="drw">
+                <div class="dr">
+                  <div class="dr-ic ic-ex"><svg viewBox="0 0 24 24">
+                      <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" />
+                    </svg></div>
+                  <div class="dr-b">
+                    <div class="dr-tp">Extracted Value</div>
+                    <div class="dr-v sk">Amit Sha_</div>
+                  </div>
+                </div>
+                <div class="dr">
+                  <div class="dr-ic ic-kg"><svg viewBox="0 0 24 24">
+                      <circle cx="12" cy="12" r="3" />
+                      <path d="M12 2v3M12 19v3M2 12h3M19 12h3" />
+                    </svg></div>
+                  <div class="dr-b">
+                    <div class="dr-tp">Knowledge Graph</div>
+                    <div class="dr-v">No match found</div>
+                    <div class="dr-s">Below threshold &#8212; manual review required</div>
+                  </div>
+                </div>
+                <div class="dr">
+                  <div class="dr-ic ic-rv"><svg viewBox="0 0 24 24">
+                      <polyline points="9 11 12 14 22 4" />
+                      <path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11" />
+                    </svg></div>
+                  <div class="dr-b">
+                    <div class="dr-tp">Rule Version</div>
+                    <div class="dr-v">v1.8.3 &#8212; signatory_fuzzy</div>
+                  </div>
+                </div>
+              </div>
+              <div class="fc-acts">
+                <button class="fa f-ac" onclick="doAc(this)">Accept</button>
+                <button class="fa f-ed" onclick="doEd(this)">Edit</button>
+                <button class="fa f-rj on" onclick="doRj(this)"><svg viewBox="0 0 24 24">
+                    <line x1="18" y1="6" x2="6" y2="18" />
+                    <line x1="6" y1="6" x2="18" y2="18" />
+                  </svg>Rejected</button>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="fp-ftr">
+            <div class="pr-row"><span class="pr-lbl">Review progress</span><span class="pr-fr" id="pFr">4 / 5
+                fields</span></div>
+            <div class="pr-tr">
+              <div class="pr-fl" id="pFl" style="width:80%"></div>
+            </div>
+            <!-- <div class="nt-lbl">Notes for this document</div>
+            <textarea class="nt-ta" placeholder="Add a note, flag a concern, or describe any issues&#8230;"></textarea>
+            <div class="ftr-bs">
+              <button class="fb">Reassign</button>
+              <button class="fb fb-sub">Submit Review</button>
+            </div> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const SUN = 'M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42M12 7a5 5 0 100 10A5 5 0 0012 7z';
+    const MOON = 'M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z';
+    let dark = false;
+    document.getElementById('tBtn').addEventListener('click', () => {
+      dark = !dark;
+      document.body.dataset.theme = dark ? 'dark' : 'light';
+      document.getElementById('tIco').innerHTML = dark ? '<path d="' + SUN + '"/>' : '<path d="' + MOON + '"/>';
+    });
+
+    function selQ(el) { document.querySelectorAll('.qi').forEach(i => i.classList.remove('active')); el.classList.add('active') }
+    function selChip(el) { document.querySelectorAll('.chip').forEach(c => c.classList.remove('on')); el.classList.add('on') }
+
+    function getCard(b) { return b.closest('.fc') }
+    function clearBtns(c) { c.querySelectorAll('.fa').forEach(b => b.classList.remove('on')) }
+    function removeEP(c) { const ep = c.querySelector('.ep'); if (ep) ep.remove() }
+
+    const AC_ICO = '<svg viewBox="0 0 24 24" style="width:11px;height:11px;fill:none;stroke:currentColor;stroke-width:2"><polyline points="20 6 9 17 4 12"/></svg>';
+    const RJ_ICO = '<svg viewBox="0 0 24 24" style="width:11px;height:11px;fill:none;stroke:currentColor;stroke-width:2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>';
+
+    // Auto-scroll to next field after review
+    function scrollToNextField(currentCard) {
+      const allFields = Array.from(document.querySelectorAll('.fc')).filter(c => c.style.display !== 'none');
+      const currentIndex = allFields.indexOf(currentCard);
+      if (currentIndex >= 0 && currentIndex < allFields.length - 1) {
+        const nextField = allFields[currentIndex + 1];
+        const container = document.getElementById('flist');
+        const containerRect = container.getBoundingClientRect();
+        const fieldRect = nextField.getBoundingClientRect();
+        const containerTop = containerRect.top;
+        const fieldTop = fieldRect.top;
+        const containerScrollTop = container.scrollTop;
+        const targetScrollTop = containerScrollTop + (fieldTop - containerTop - (containerRect.height / 2) + (fieldRect.height / 2));
+
+        // Custom smooth scroll implementation
+        const duration = 400; // ms
+        const startScrollTop = container.scrollTop;
+        const distance = targetScrollTop - startScrollTop;
+        let startTime = null;
+
+        function animateScroll(currentTime) {
+          if (!startTime) startTime = currentTime;
+          const elapsed = currentTime - startTime;
+          const progress = Math.min(elapsed / duration, 1);
+
+          // Easing function (ease-out cubic)
+          const easeOut = 1 - Math.pow(1 - progress, 3);
+
+          container.scrollTop = startScrollTop + (distance * easeOut);
+
+          if (progress < 1) {
+            requestAnimationFrame(animateScroll);
+          }
+        }
+
+        requestAnimationFrame(animateScroll);
+      }
+    }
+
+    // Update sidebar highlighting based on scroll position
+    function updateActiveNDC() {
+      const flist = document.getElementById('flist');
+      const scrollTop = flist.scrollTop;
+      const flistRect = flist.getBoundingClientRect();
+      const centerOffset = flistRect.height / 2;
+
+      let closestNDC = null;
+      let minDistance = Infinity;
+
+      document.querySelectorAll('.fc').forEach(card => {
+        if (card.style.display === 'none') return;
+        const cardRect = card.getBoundingClientRect();
+        const cardCenter = cardRect.top + cardRect.height / 2;
+        const distance = Math.abs(cardCenter - (flistRect.top + centerOffset));
+
+        if (distance < minDistance) {
+          minDistance = distance;
+          closestNDC = card.dataset.ndc;
+        }
+      });
+
+      if (closestNDC) {
+        document.querySelectorAll('.qi').forEach(item => {
+          const ndcId = item.querySelector('.qi-m')?.textContent.split('·')[0]?.trim();
+          if (ndcId === closestNDC) {
+            item.classList.add('active');
+          } else {
+            item.classList.remove('active');
+          }
+        });
+
+        // NDC separator highlighting disabled for horizontal layout
+      }
+    }
+
+    function scrollFields(direction) {
+      const container = document.getElementById('flist');
+      const scrollAmount = 330;
+      container.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
+      updateFieldTabs();
+    }
+
+    function scrollToField(offset) {
+      const container = document.getElementById('flist');
+      const fields = container.querySelectorAll('.fc');
+      const currentField = getCurrentVisibleField(container);
+      const currentIndex = Array.from(fields).indexOf(currentField);
+      const targetIndex = currentIndex + offset;
+
+      if (targetIndex >= 0 && targetIndex < fields.length) {
+        fields[targetIndex].scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+      }
+    }
+
+    function getCurrentVisibleField(container) {
+      const containerRect = container.getBoundingClientRect();
+      const fields = container.querySelectorAll('.fc');
+      let closestField = null;
+      let closestDistance = Infinity;
+
+      fields.forEach(field => {
+        const fieldRect = field.getBoundingClientRect();
+        const fieldCenter = fieldRect.left + fieldRect.width / 2;
+        const containerCenter = containerRect.left + containerRect.width / 2;
+        const distance = Math.abs(fieldCenter - containerCenter);
+
+        if (distance < closestDistance) {
+          closestDistance = distance;
+          closestField = field;
+        }
+      });
+
+      return closestField;
+    }
+
+    function updateFieldTabs() {
+      const container = document.getElementById('flist');
+      const fields = Array.from(container.querySelectorAll('.fc'));
+      const currentField = getCurrentVisibleField(container);
+      const currentIndex = fields.indexOf(currentField);
+
+      if (currentIndex === -1) return;
+
+      const tabs = document.querySelectorAll('.ftab');
+      const fieldNames = fields.map(f => f.querySelector('.fc-lbl')?.textContent.trim() || '');
+
+      // Update tabs with previous, current, next field names
+      if (currentIndex > 0) {
+        tabs[0].textContent = fieldNames[currentIndex - 1];
+        tabs[0].style.display = '';
+      } else {
+        tabs[0].style.display = 'none';
+      }
+
+      tabs[1].textContent = fieldNames[currentIndex] || '-';
+      tabs[1].classList.add('on');
+
+      if (currentIndex < fields.length - 1) {
+        tabs[2].textContent = fieldNames[currentIndex + 1];
+        tabs[2].style.display = '';
+      } else {
+        tabs[2].style.display = 'none';
+      }
+
+      // Update counter
+      const counter = document.querySelector('.fp-nav-info');
+      if (counter) {
+        counter.textContent = `${currentIndex + 1} of ${fields.length}`;
+      }
+    }
+
+    // Initialize tabs on load and scroll
+    document.addEventListener('DOMContentLoaded', () => {
+      updateProg();
+      updateNDCStatus();
+      updateFieldTabs();
+
+      // Add scroll listener for sidebar highlighting
+      const flist = document.getElementById('flist');
+      flist.addEventListener('scroll', () => {
+        updateActiveNDC();
+        updateFieldTabs();
+      });
+    });
+
+    function updateNDCStatus() {
+      // NDC status update disabled for horizontal layout
+    }
+
+    function doAc(btn) {
+      const c = getCard(btn); removeEP(c); c.className = 'fc st-ac'; c.dataset.s = 'accepted'; clearBtns(c);
+      const b = c.querySelector('.f-ac'); b.innerHTML = AC_ICO + 'Accepted'; b.classList.add('on');
+      updateProg();
+      updateNDCStatus();
+      scrollToNextField(c);
+    }
+    function doRj(btn) {
+      const c = getCard(btn); removeEP(c); c.className = 'fc st-rj'; c.dataset.s = 'rejected'; clearBtns(c);
+      const b = c.querySelector('.f-rj'); b.innerHTML = RJ_ICO + 'Rejected'; b.classList.add('on');
+      updateProg();
+      updateNDCStatus();
+      scrollToNextField(c);
+    }
+    function doEd(btn) {
+      const c = getCard(btn);
+      if (c.querySelector('.ep')) { removeEP(c); c.className = 'fc'; c.dataset.s = 'pending'; updateNDCStatus(); return }
+      c.className = 'fc st-ed'; c.dataset.s = 'editing';
+      const vs = c.querySelectorAll('.dr-v');
+      const exV = vs[0] ? vs[0].textContent.trim() : '';
+      const kgV = vs[1] ? vs[1].textContent.trim() : '';
+      const ep = document.createElement('div'); ep.className = 'ep';
+      ep.innerHTML = `<div class="ep-ttl"><svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>Choose a value to accept</div>
+    <div class="ep-opts">
+      <div class="ep-opt" onclick="selOpt(this)"><div class="eo-rd"><div class="eo-dt"></div></div><div class="eo-b"><div class="eo-lbl">Accept extracted value</div><div class="eo-val">${exV}</div></div></div>
+      <div class="ep-opt" onclick="selOpt(this)"><div class="eo-rd"><div class="eo-dt"></div></div><div class="eo-b"><div class="eo-lbl">Accept Knowledge Graph value</div><div class="eo-val">${kgV}</div></div></div>
+      <div class="ep-opt" onclick="selOpt(this)" data-type="manual"><div class="eo-rd"><div class="eo-dt"></div></div><div class="eo-b"><div class="eo-lbl">Manually enter value</div><div class="eo-val mpv">&#8212;</div></div></div>
+    </div>
+    <div class="man-sec">
+      <input class="man-inp" placeholder="Type the correct value&#8230;" oninput="liveP(this)"/>
+      <div class="rea-lbl">Reason for manual entry</div>
+      <select class="rea-sel" onchange="handleR(this)">
+        <option value="">&#8212; Select a reason &#8212;</option>
+        <option value="rules">Rules not working</option>
+        <option value="partial">Partial information given by supplier</option>
+        <option value="incomplete">Incomplete information given by supplier</option>
+        <option value="custom">Custom reason&#8230;</option>
+      </select>
+      <div class="cust-wrap" style="display:none"><textarea class="cust-ta" placeholder="Describe the issue in detail&#8230;"></textarea></div>
+    </div>
+    <div class="ep-ftr">
+      <button class="ep-btn ep-cn" onclick="cancelEd(this)">Cancel</button>
+      <button class="ep-btn ep-sv" onclick="saveEd(this)">Save &amp; Accept</button>
+    </div>`;
+      c.appendChild(ep);
+      updateNDCStatus();
+    }
+
+    function selOpt(el) {
+      const ep = el.closest('.ep'); ep.querySelectorAll('.ep-opt').forEach(o => o.classList.remove('sel')); el.classList.add('sel');
+      ep.querySelector('.man-sec').style.display = el.dataset.type === 'manual' ? 'block' : 'none';
+    }
+    function liveP(inp) { const p = inp.closest('.ep').querySelector('.mpv'); if (p) p.textContent = inp.value || '\u2014' }
+    function handleR(sel) { sel.closest('.man-sec').querySelector('.cust-wrap').style.display = sel.value === 'custom' ? 'block' : 'none' }
+    function cancelEd(btn) {
+      const c = getCard(btn); removeEP(c); c.className = 'fc'; c.dataset.s = 'pending';
+      const ac = c.querySelector('.f-ac'), rj = c.querySelector('.f-rj');
+      if (ac) { ac.textContent = 'Accept'; ac.classList.remove('on') }
+      if (rj) { rj.textContent = 'Reject'; rj.classList.remove('on') }
+      updateNDCStatus();
+    }
+    function saveEd(btn) {
+      const c = getCard(btn); removeEP(c); c.className = 'fc st-ac'; c.dataset.s = 'accepted'; clearBtns(c);
+      const b = c.querySelector('.f-ac'); b.innerHTML = AC_ICO + 'Accepted'; b.classList.add('on');
+      updateProg();
+      updateNDCStatus();
+      scrollToNextField(c);
+    }
+
+    /* Filter functionality disabled - now using field navigation tabs
+    function filterF(t, btn) {
+      document.querySelectorAll('.ftab').forEach(x => x.classList.remove('on')); btn.classList.add('on');
+
+      if (t === 'common') {
+        // Show only common fields (same field name across all NDCs)
+        const fieldNames = {};
+        document.querySelectorAll('.fc').forEach(c => {
+          const name = c.querySelector('.fc-lbl')?.textContent.trim();
+          if (!fieldNames[name]) fieldNames[name] = new Set();
+          fieldNames[name].add(c.dataset.ndc);
+        });
+
+        document.querySelectorAll('.fc').forEach(c => {
+          const name = c.querySelector('.fc-lbl')?.textContent.trim();
+          const isCommon = fieldNames[name]?.size > 1;
+          c.style.display = isCommon ? '' : 'none';
+        });
+
+        // NDC separator handling disabled for horizontal layout
+      } else {
+        document.querySelectorAll('.fc').forEach(c => {
+          const s = c.dataset.s;
+          c.style.display = t === 'all' ? '' : (t === 'review' ? (s === 'pending' || s === 'editing' ? '' : 'none') : (s === 'accepted' || s === 'rejected' ? '' : 'none'));
+        });
+        // NDC separator handling disabled for horizontal layout
+      }
+
+      updateTabCounts();
+    }
+
+    function updateTabCounts() {
+      const allFields = document.querySelectorAll('.fc').length;
+      const reviewFields = document.querySelectorAll('.fc[data-s="pending"], .fc[data-s="editing"]').length;
+
+      // Count common fields (fields that appear in multiple NDCs)
+      const fieldNames = {};
+      document.querySelectorAll('.fc').forEach(c => {
+        const name = c.querySelector('.fc-lbl')?.textContent.trim();
+        if (!fieldNames[name]) fieldNames[name] = new Set();
+        fieldNames[name].add(c.dataset.ndc);
+      });
+      const commonFields = Object.values(fieldNames).filter(set => set.size > 1).length;
+
+      const tabs = document.querySelectorAll('.ftab');
+      tabs[0].textContent = `All (${allFields})`;
+      tabs[1].textContent = `Needs Review (${reviewFields})`;
+      tabs[2].textContent = `Common (${commonFields})`;
+    }
+*/
+
+    function updateProg() {
+      const allFields = document.querySelectorAll('.fc');
+      const doneFields = document.querySelectorAll('.fc.st-ac,.fc.st-rj');
+      const total = allFields.length;
+      const done = doneFields.length;
+      document.getElementById('pFl').style.width = Math.round(done / total * 100) + '%';
+      document.getElementById('pFr').textContent = `${done} / ${total} fields`;
+      updateFieldTabs();
+    }
+
+    // Initialize
+    document.addEventListener('DOMContentLoaded', () => {
+      updateProg();
+      updateNDCStatus();
+      updateFieldTabs();
+
+      // Add scroll listener for sidebar highlighting
+      const flist = document.getElementById('flist');
+      flist.addEventListener('scroll', updateActiveNDC);
+    });
+  </script>
+</body>
+
+</html>

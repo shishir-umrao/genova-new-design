@@ -1,0 +1,1309 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Rule Tower — McKesson Genova</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=DM+Mono:wght@400;500&display=swap"
+    rel="stylesheet" />
+  <style>
+    :root {
+      --mk-blue: #174EA0;
+      --mk-blue-dk: #0f3470;
+      --mk-blue-lt: #dbe8f8;
+      --mk-blue-pale: #eef4fc;
+      --mk-or: #F29130;
+      --mk-or-dk: #c4711a;
+      --mk-or-lt: #fde9cf;
+      --mk-or-pale: #fff5eb;
+      --bg: #f4f6fa;
+      --bg-p: #ffffff;
+      --bg-c: #ffffff;
+      --bg-h: #eef2f9;
+      --bdr: #e2e8f0;
+      --bdr-m: #c8d4e6;
+      --t1: #0d1a2e;
+      --t2: #475872;
+      --t3: #94a3b8;
+      --ac: #174EA0;
+      --ac-lt: #dbe8f8;
+      --ac-pale: #eef4fc;
+      --gr: #16a34a;
+      --gr-lt: #dcfce7;
+      --gr-pale: #f0fdf4;
+      --am: #b45309;
+      --am-lt: #fde68a;
+      --am-pale: #fffbeb;
+      --rd: #dc2626;
+      --rd-lt: #fecaca;
+      --rd-pale: #fef2f2;
+      --pu: #7c3aed;
+      --pu-lt: #ede9fe;
+      --pu-pale: #f5f3ff;
+      --cy: #0891b2;
+      --cy-lt: #cffafe;
+      --cy-pale: #ecfeff;
+      --sh-sm: 0 1px 3px rgba(14, 30, 60, .08), 0 1px 2px rgba(14, 30, 60, .05);
+      --sh-md: 0 4px 14px rgba(14, 30, 60, .1), 0 2px 5px rgba(14, 30, 60, .06);
+      --r: 10px;
+      --rs: 6px;
+      --fh: 'DM Sans', sans-serif;
+      --fb: 'DM Sans', sans-serif;
+      --fm: 'DM Mono', monospace;
+    }
+
+    [data-theme=dark] {
+      --bg: #0c0e14;
+      --bg-p: #111520;
+      --bg-c: #181c2a;
+      --bg-h: #1d2235;
+      --bdr: #232a3e;
+      --bdr-m: #2c3650;
+      --t1: #e8edf8;
+      --t2: #8090b0;
+      --t3: #44526a;
+      --ac: #4f8ef7;
+      --ac-lt: #172040;
+      --ac-pale: #0e1528;
+      --gr: #34d474;
+      --gr-lt: #0c2e1a;
+      --gr-pale: #081810;
+      --am: #fbbf24;
+      --am-lt: #322208;
+      --am-pale: #1e1404;
+      --rd: #f87171;
+      --rd-lt: #320c0c;
+      --rd-pale: #1e0808;
+      --pu: #a78bfa;
+      --pu-lt: #2e1a5e;
+      --pu-pale: #1a1030;
+      --cy: #22d3ee;
+      --cy-lt: #0c3040;
+      --cy-pale: #061820;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0
+    }
+
+    body {
+      font-family: var(--fb);
+      background: var(--bg);
+      color: var(--t1);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column
+    }
+
+    button {
+      cursor: pointer;
+      font-family: var(--fb)
+    }
+
+    svg {
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      vertical-align: middle
+    }
+
+    /* NAV */
+    .nav {
+      height: 52px;
+      background: var(--mk-blue);
+      display: flex;
+      align-items: center;
+      padding: 0 16px;
+      gap: 12px;
+      flex-shrink: 0;
+      box-shadow: 0 2px 8px rgba(23, 78, 160, .35)
+    }
+
+    .n-txt {
+      font-family: var(--fh);
+      font-size: 15px;
+      font-weight: 700;
+      color: #fff;
+      white-space: nowrap
+    }
+
+    .n-div {
+      width: 1px;
+      height: 18px;
+      background: rgba(255, 255, 255, .22)
+    }
+
+    .n-tabs {
+      display: flex;
+      gap: 2px;
+      flex: 1
+    }
+
+    .n-tab {
+      background: transparent;
+      border: none;
+      color: rgba(255, 255, 255, .65);
+      font-family: var(--fh);
+      font-size: 12px;
+      font-weight: 500;
+      padding: 5px 12px;
+      border-radius: var(--rs);
+      transition: all .15s
+    }
+
+    .n-tab:hover {
+      background: rgba(255, 255, 255, .12);
+      color: #fff
+    }
+
+    .n-tab.active {
+      background: rgba(255, 255, 255, .18);
+      color: #fff
+    }
+
+    .n-right {
+      margin-left: auto
+    }
+
+    .n-av {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: var(--mk-or);
+      color: #fff;
+      font-family: var(--fm);
+      font-size: 11px;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid rgba(255, 255, 255, .3)
+    }
+
+    /* TOOLBAR */
+    .tb {
+      display: flex;
+      align-items: center;
+      padding: 16px 24px 14px;
+      gap: 12px;
+      background: var(--bg-p);
+      border-bottom: 1px solid var(--bdr);
+      box-shadow: var(--sh-sm)
+    }
+
+    .tb-l {
+      flex: 1
+    }
+
+    .pg-ttl {
+      font-family: var(--fh);
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--t1);
+      letter-spacing: -.02em
+    }
+
+    .pg-sub {
+      font-size: 11px;
+      color: var(--t3);
+      margin-top: 2px;
+      font-family: var(--fm)
+    }
+
+    .tb-r {
+      display: flex;
+      align-items: center;
+      gap: 8px
+    }
+
+    .srch {
+      position: relative
+    }
+
+    .srch-ic {
+      position: absolute;
+      left: 9px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--t3);
+      display: flex
+    }
+
+    .srch-ic svg {
+      width: 13px;
+      height: 13px;
+      stroke-width: 2
+    }
+
+    .srch-inp {
+      font-family: var(--fb);
+      font-size: 12px;
+      padding: 7px 10px 7px 30px;
+      border: 1px solid var(--bdr);
+      border-radius: var(--rs);
+      background: var(--bg);
+      color: var(--t1);
+      width: 260px;
+      transition: all .15s;
+      outline: none
+    }
+
+    .srch-inp:focus {
+      border-color: var(--ac);
+      background: var(--bg-p)
+    }
+
+    .srch-inp::placeholder {
+      color: var(--t3)
+    }
+
+    .btn {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 14px;
+      font-size: 12px;
+      font-weight: 600;
+      border-radius: var(--rs);
+      border: 1px solid var(--bdr);
+      background: var(--bg-c);
+      color: var(--t2);
+      transition: all .15s
+    }
+
+    .btn svg {
+      width: 13px;
+      height: 13px;
+      stroke-width: 2
+    }
+
+    .btn:hover {
+      background: var(--bg-h);
+      border-color: var(--bdr-m);
+      color: var(--t1)
+    }
+
+    .btn-pri {
+      background: var(--ac);
+      border-color: var(--ac);
+      color: #fff
+    }
+
+    .btn-pri:hover {
+      background: var(--mk-blue-dk);
+      border-color: var(--mk-blue-dk);
+      color: #fff
+    }
+
+    .btn-danger {
+      background: var(--rd);
+      border-color: var(--rd);
+      color: #fff
+    }
+
+    .btn-danger:hover {
+      background: #b91c1c;
+      border-color: #b91c1c
+    }
+
+    /* FILTER ROW */
+    .fc-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 24px;
+      background: var(--bg-p);
+      border-bottom: 1px solid var(--bdr);
+      flex-wrap: wrap
+    }
+
+    .fc-lbl {
+      font-size: 10px;
+      font-weight: 600;
+      color: var(--t3);
+      text-transform: uppercase;
+      letter-spacing: .04em;
+      white-space: nowrap
+    }
+
+    .chip-group {
+      display: flex;
+      gap: 3px
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      padding: 3px 10px;
+      border-radius: 99px;
+      font-size: 11px;
+      font-weight: 500;
+      border: 1px solid var(--bdr);
+      color: var(--t2);
+      background: transparent;
+      cursor: pointer;
+      transition: all .15s;
+      font-family: var(--fb)
+    }
+
+    .chip:hover {
+      border-color: var(--bdr-m);
+      color: var(--t1)
+    }
+
+    .chip.on {
+      background: var(--ac-pale);
+      color: var(--ac);
+      border-color: var(--ac-lt)
+    }
+
+    .fc-sep {
+      width: 1px;
+      height: 14px;
+      background: var(--bdr);
+      margin: 0 2px
+    }
+
+    .sort-sel {
+      font-family: var(--fb);
+      font-size: 11px;
+      padding: 4px 8px;
+      border: 1px solid var(--bdr);
+      border-radius: var(--rs);
+      background: var(--bg);
+      color: var(--t2);
+      outline: none;
+      cursor: pointer;
+      margin-left: auto
+    }
+
+    /* STATS */
+    .stats-bar {
+      display: flex;
+      gap: 6px;
+      padding: 12px 24px 0
+    }
+
+    .sc {
+      background: var(--bg-p);
+      border: 1px solid var(--bdr);
+      border-radius: var(--rs);
+      padding: 7px 14px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-width: 90px;
+      box-shadow: var(--sh-sm)
+    }
+
+    .sc-n {
+      font-family: var(--fm);
+      font-size: 17px;
+      font-weight: 500;
+      color: var(--t1)
+    }
+
+    .sc-l {
+      font-size: 9px;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      color: var(--t3);
+      margin-top: 1px
+    }
+
+    .sc.sc-ac .sc-n {
+      color: var(--ac)
+    }
+
+    .sc.sc-gr .sc-n {
+      color: var(--gr)
+    }
+
+    .sc.sc-am .sc-n {
+      color: var(--am)
+    }
+
+    .sc.sc-pu .sc-n {
+      color: var(--pu)
+    }
+
+    /* CONTENT */
+    .content {
+      flex: 1;
+      padding: 12px 24px 24px;
+      overflow-y: auto
+    }
+
+    /* BULK BAR */
+    .bulk-bar {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 24px;
+      background: var(--ac-pale);
+      border-bottom: 1px solid var(--ac-lt);
+      flex-shrink: 0
+    }
+
+    .bulk-bar.hidden {
+      display: none
+    }
+
+    .bulk-lbl {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--ac);
+      font-family: var(--fh)
+    }
+
+    .bulk-sep {
+      flex: 1
+    }
+
+    /* TABLE */
+    .rule-table-wrap {
+      background: var(--bg-p);
+      border: 1px solid var(--bdr);
+      border-radius: var(--r);
+      overflow: hidden;
+      box-shadow: var(--sh-sm)
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse
+    }
+
+    thead tr {
+      background: var(--bg);
+      border-bottom: 1px solid var(--bdr)
+    }
+
+    thead th {
+      font-family: var(--fh);
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--t3);
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      padding: 9px 14px;
+      text-align: left;
+      white-space: nowrap;
+      user-select: none
+    }
+
+    thead th.sortable {
+      cursor: pointer
+    }
+
+    thead th.sortable:hover {
+      color: var(--t2)
+    }
+
+    .sort-ic {
+      display: inline-flex;
+      opacity: .35;
+      margin-left: 3px;
+      vertical-align: middle
+    }
+
+    .sort-ic svg {
+      width: 10px;
+      height: 10px;
+      stroke-width: 2.5
+    }
+
+    thead th.sort-asc .sort-ic,
+    thead th.sort-desc .sort-ic {
+      opacity: .9;
+      color: var(--ac)
+    }
+
+    tbody tr {
+      border-bottom: 1px solid var(--bdr);
+      transition: background .1s
+    }
+
+    tbody tr:last-child {
+      border-bottom: none
+    }
+
+    tbody tr:hover {
+      background: var(--bg-h)
+    }
+
+    tbody tr.selected {
+      background: var(--ac-pale)
+    }
+
+    tbody tr.draft-row {
+      background: var(--am-pale)
+    }
+
+    tbody tr.draft-row:hover {
+      background: #fef3c7
+    }
+
+    td {
+      padding: 11px 14px;
+      font-size: 12px;
+      color: var(--t2);
+      vertical-align: middle
+    }
+
+    /* CELLS */
+    .rn-cell {
+      display: flex;
+      flex-direction: column;
+      gap: 2px
+    }
+
+    .rn {
+      font-family: var(--fh);
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--t1)
+    }
+
+    .rn-desc {
+      font-size: 10px;
+      color: var(--t3)
+    }
+
+    .cat-bdg {
+      display: inline-flex;
+      padding: 2px 8px;
+      border-radius: 99px;
+      font-size: 10px;
+      font-weight: 600;
+      font-family: var(--fm);
+      letter-spacing: .02em
+    }
+
+    .cat-Generic {
+      background: var(--ac-pale);
+      color: var(--ac)
+    }
+
+    .cat-Dosage {
+      background: var(--pu-pale);
+      color: var(--pu)
+    }
+
+    .cat-Vendor {
+      background: var(--am-pale);
+      color: var(--am)
+    }
+
+    .cat-Regulatory {
+      background: var(--gr-pale);
+      color: var(--gr)
+    }
+
+    .rc-bdg {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 2px 7px;
+      border-radius: 4px;
+      font-size: 10px;
+      font-weight: 500;
+      font-family: var(--fm)
+    }
+
+    .rc-Static {
+      background: var(--bg);
+      border: 1px solid var(--bdr);
+      color: var(--t2)
+    }
+
+    .rc-Dynamic {
+      background: var(--cy-pale);
+      color: var(--cy);
+      border: 1px solid var(--cy-lt)
+    }
+
+    .rc-Alert {
+      background: var(--rd-pale);
+      color: var(--rd);
+      border: 1px solid var(--rd-lt)
+    }
+
+    .rc-ic svg {
+      width: 9px;
+      height: 9px;
+      stroke-width: 2.5
+    }
+
+    .ver-chip {
+      display: flex;
+      align-items: center;
+      gap: 5px
+    }
+
+    .ver-num {
+      font-family: var(--fm);
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--t1)
+    }
+
+    .ver-tag {
+      font-size: 9px;
+      font-family: var(--fm);
+      font-weight: 600;
+      padding: 1px 5px;
+      border-radius: 3px
+    }
+
+    .ver-tag.active {
+      background: var(--gr-pale);
+      color: var(--gr);
+      border: 1px solid var(--gr-lt)
+    }
+
+    .ver-tag.draft {
+      background: var(--am-pale);
+      color: var(--am);
+      border: 1px solid var(--am-lt)
+    }
+
+    .ver-total {
+      font-size: 10px;
+      color: var(--t3);
+      font-family: var(--fm)
+    }
+
+    .health {
+      display: flex;
+      align-items: center;
+      gap: 6px
+    }
+
+    .health-bar {
+      width: 50px;
+      height: 4px;
+      background: var(--bdr);
+      border-radius: 99px;
+      overflow: hidden
+    }
+
+    .health-fill {
+      height: 100%;
+      border-radius: 99px
+    }
+
+    .h-high .health-fill {
+      background: var(--gr)
+    }
+
+    .h-med .health-fill {
+      background: var(--am)
+    }
+
+    .h-low .health-fill {
+      background: var(--rd)
+    }
+
+    .health-pct {
+      font-family: var(--fm);
+      font-size: 10px;
+      color: var(--t3)
+    }
+
+    .st-dot {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px
+    }
+
+    .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      flex-shrink: 0
+    }
+
+    .dot-ok {
+      background: var(--gr)
+    }
+
+    .dot-warn {
+      background: var(--am)
+    }
+
+    .st-txt {
+      font-size: 11px;
+      font-family: var(--fm);
+      color: var(--t2)
+    }
+
+    .mod-date {
+      font-family: var(--fm);
+      font-size: 11px;
+      color: var(--t3)
+    }
+
+    /* ACTIONS */
+    .act-cell {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      justify-content: flex-end
+    }
+
+    .act-btn {
+      width: 28px;
+      height: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--bdr);
+      background: var(--bg-c);
+      border-radius: var(--rs);
+      color: var(--t3);
+      transition: all .15s;
+      position: relative
+    }
+
+    .act-btn svg {
+      width: 13px;
+      height: 13px;
+      stroke-width: 2
+    }
+
+    .act-btn:hover {
+      background: var(--bg-h);
+      border-color: var(--bdr-m);
+      color: var(--t1)
+    }
+
+    .act-btn.edit:hover {
+      color: var(--ac);
+      border-color: var(--ac-lt);
+      background: var(--ac-pale)
+    }
+
+    .act-btn.del:hover {
+      color: var(--rd);
+      border-color: var(--rd-lt);
+      background: var(--rd-pale)
+    }
+
+    .act-btn.run:hover {
+      color: var(--gr);
+      border-color: var(--gr-lt);
+      background: var(--gr-pale)
+    }
+
+    .act-btn[data-tip]:hover::after {
+      content: attr(data-tip);
+      position: absolute;
+      bottom: calc(100%+5px);
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--t1);
+      color: var(--bg-p);
+      font-size: 10px;
+      padding: 3px 7px;
+      border-radius: 4px;
+      white-space: nowrap;
+      pointer-events: none;
+      font-family: var(--fb);
+      z-index: 10
+    }
+
+    input[type=checkbox] {
+      width: 14px;
+      height: 14px;
+      accent-color: var(--ac);
+      cursor: pointer
+    }
+
+    /* EMPTY */
+    .empty {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 56px 20px;
+      color: var(--t3);
+      gap: 10px
+    }
+
+    .empty svg {
+      width: 36px;
+      height: 36px;
+      stroke-width: 1.4;
+      opacity: .35
+    }
+
+    .empty-ttl {
+      font-family: var(--fh);
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--t2)
+    }
+
+    .empty-sub {
+      font-size: 12px;
+      text-align: center;
+      max-width: 260px;
+      line-height: 1.5
+    }
+
+    /* MODAL */
+    .modal-bg {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, .35);
+      z-index: 100;
+      align-items: center;
+      justify-content: center
+    }
+
+    .modal-bg.open {
+      display: flex
+    }
+
+    .modal {
+      background: var(--bg-p);
+      border-radius: var(--r);
+      padding: 22px;
+      width: 360px;
+      box-shadow: var(--sh-md)
+    }
+
+    .modal-ttl {
+      font-family: var(--fh);
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--t1);
+      margin-bottom: 8px
+    }
+
+    .modal-body {
+      font-size: 12px;
+      color: var(--t2);
+      line-height: 1.6;
+      margin-bottom: 18px
+    }
+
+    .modal-body strong {
+      color: var(--rd)
+    }
+
+    .modal-ftr {
+      display: flex;
+      gap: 8px;
+      justify-content: flex-end
+    }
+
+    .mb {
+      padding: 7px 14px;
+      font-size: 12px;
+      font-weight: 600;
+      font-family: var(--fb);
+      border-radius: var(--rs);
+      cursor: pointer;
+      border: 1px solid;
+      transition: all .15s
+    }
+
+    .mb-cn {
+      border-color: var(--bdr-m);
+      background: var(--bg-c);
+      color: var(--t2)
+    }
+
+    .mb-cn:hover {
+      background: var(--bg-h)
+    }
+
+    .mb-del {
+      border-color: var(--rd);
+      background: var(--rd);
+      color: #fff
+    }
+
+    .mb-del:hover {
+      background: #b91c1c;
+      border-color: #b91c1c
+    }
+
+    /* TOAST */
+    .toast {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--t1);
+      color: var(--bg-p);
+      font-size: 12px;
+      padding: 9px 18px;
+      border-radius: var(--rs);
+      z-index: 200;
+      display: none;
+      font-family: var(--fb);
+      box-shadow: var(--sh-md)
+    }
+
+    .toast.show {
+      display: block
+    }
+
+    .toast.ok {
+      background: var(--gr)
+    }
+
+    /* ANIM */
+    @keyframes fu {
+      from {
+        opacity: 0;
+        transform: translateY(5px)
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0)
+      }
+    }
+
+    .anim tbody tr:nth-child(1) {
+      animation: fu .15s .03s both
+    }
+
+    .anim tbody tr:nth-child(2) {
+      animation: fu .15s .06s both
+    }
+
+    .anim tbody tr:nth-child(3) {
+      animation: fu .15s .09s both
+    }
+
+    .anim tbody tr:nth-child(4) {
+      animation: fu .15s .12s both
+    }
+
+    .anim tbody tr:nth-child(5) {
+      animation: fu .15s .15s both
+    }
+
+    .anim tbody tr:nth-child(6) {
+      animation: fu .15s .18s both
+    }
+
+    .anim tbody tr:nth-child(7) {
+      animation: fu .15s .21s both
+    }
+
+    .anim tbody tr:nth-child(8) {
+      animation: fu .15s .24s both
+    }
+
+    .anim tbody tr:nth-child(9) {
+      animation: fu .15s .27s both
+    }
+
+    .anim tbody tr:nth-child(10) {
+      animation: fu .15s .30s both
+    }
+
+    .anim tbody tr:nth-child(11) {
+      animation: fu .15s .33s both
+    }
+
+    .anim tbody tr:nth-child(12) {
+      animation: fu .15s .36s both
+    }
+  </style>
+</head>
+
+<body data-theme="light">
+
+  <nav class="nav">
+    <span class="n-txt">Genova</span>
+    <div class="n-div"></div>
+    <div class="n-tabs">
+      <button class="n-tab">Business Insights</button>
+      <button class="n-tab">Workflow Pipeline</button>
+      <button class="n-tab active">Rule Tower</button>
+      <button class="n-tab">Trust Score Framework</button>
+      <button class="n-tab">Abbreviations</button>
+    </div>
+    <div class="n-right">
+      <div class="n-av">RP</div>
+    </div>
+  </nav>
+
+  <div class="tb">
+    <div class="tb-l">
+      <div class="pg-ttl">Rule Tower</div>
+      <div class="pg-sub" id="subLine">6 rules &nbsp;·&nbsp; 1 with unpublished drafts &nbsp;·&nbsp; Last updated
+        2026-05-14</div>
+    </div>
+    <div class="tb-r">
+      <div class="srch">
+        <span class="srch-ic"><svg viewBox="0 0 24 24">
+            <circle cx="11" cy="11" r="8" />
+            <line x1="21" y1="21" x2="16.65" y2="16.65" />
+          </svg></span>
+        <input class="srch-inp" id="searchInp" placeholder="Search by name, category, rule…" oninput="renderRules()" />
+      </div>
+      <button class="btn btn-pri" onclick="window.location.href='rule_tower_edit.html'">
+        <svg viewBox="0 0 24 24">
+          <line x1="12" y1="5" x2="12" y2="19" />
+          <line x1="5" y1="12" x2="19" y2="12" />
+        </svg>
+        New Rule
+      </button>
+    </div>
+  </div>
+
+  <div class="fc-row">
+    <span class="fc-lbl">Class</span>
+    <div class="chip-group" id="clsChips">
+      <button class="chip on" onclick="setFilter('cls','all',this)">All</button>
+      <button class="chip" onclick="setFilter('cls','Static',this)">Static</button>
+      <button class="chip" onclick="setFilter('cls','Dynamic',this)">Dynamic</button>
+      <button class="chip" onclick="setFilter('cls','Alert',this)">Alert</button>
+    </div>
+    <div class="fc-sep"></div>
+    <span class="fc-lbl">Status</span>
+    <div class="chip-group" id="stChips">
+      <button class="chip on" onclick="setFilter('st','all',this)">All</button>
+      <button class="chip" onclick="setFilter('st','published',this)">Published</button>
+      <button class="chip" onclick="setFilter('st','draft',this)">Has Draft</button>
+    </div>
+    <select class="sort-sel" id="sortSel" onchange="renderRules()">
+      <option value="name">Sort: Name A–Z</option>
+      <option value="modified">Sort: Last Modified</option>
+      <option value="versions">Sort: Most Versions</option>
+      <option value="coverage">Sort: Test Coverage</option>
+    </select>
+  </div>
+
+  <div class="stats-bar">
+    <div class="sc sc-ac">
+      <div class="sc-n" id="statTotal">6</div>
+      <div class="sc-l">Total Rules</div>
+    </div>
+    <div class="sc sc-gr">
+      <div class="sc-n" id="statPub">5</div>
+      <div class="sc-l">Published</div>
+    </div>
+    <div class="sc sc-am">
+      <div class="sc-n" id="statDraft">1</div>
+      <div class="sc-l">Unpublished Drafts</div>
+    </div>
+    <div class="sc sc-pu">
+      <div class="sc-n" id="statDyn">2</div>
+      <div class="sc-l">Dynamic Rules</div>
+    </div>
+  </div>
+
+  <div class="bulk-bar hidden" id="bulkBar">
+    <span class="bulk-lbl" id="bulkLbl">0 selected</span>
+    <div class="bulk-sep"></div>
+    <button class="btn" onclick="bulkRerun()">
+      <svg viewBox="0 0 24 24">
+        <polyline points="1 4 1 10 7 10" />
+        <path d="M3.51 15a9 9 0 1 0 .49-4.91" />
+      </svg>
+      Rerun Extraction
+    </button>
+    <button class="btn btn-danger" onclick="bulkDelete()">
+      <svg viewBox="0 0 24 24">
+        <polyline points="3 6 5 6 21 6" />
+        <path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6" />
+      </svg>
+      Delete
+    </button>
+    <button class="btn" onclick="clearSel()">Clear</button>
+  </div>
+
+  <div class="content">
+    <div class="rule-table-wrap">
+      <table id="rulesTable" class="anim">
+        <thead>
+          <tr>
+            <th style="width:38px;text-align:center"><input type="checkbox" id="selAll" onchange="toggleAll()" /></th>
+            <th class="sortable" id="th-name" onclick="sort('name')">Rule Name <span class="sort-ic"><svg
+                  viewBox="0 0 24 24">
+                  <path d="M8 9l4-4 4 4M16 15l-4 4-4-4" />
+                </svg></span></th>
+            <th>Class</th>
+            <th class="sortable" id="th-versions" onclick="sort('versions')">Versions <span class="sort-ic"><svg
+                  viewBox="0 0 24 24">
+                  <path d="M8 9l4-4 4 4M16 15l-4 4-4-4" />
+                </svg></span></th>
+            <th class="sortable" id="th-modified" onclick="sort('modified')">Last Modified <span class="sort-ic"><svg
+                  viewBox="0 0 24 24">
+                  <path d="M8 9l4-4 4 4M16 15l-4 4-4-4" />
+                </svg></span></th>
+            <th style="text-align:right">Actions</th>
+          </tr>
+        </thead>
+        <tbody id="rulesBody"></tbody>
+      </table>
+      <div class="empty" id="emptyState">
+        <svg viewBox="0 0 24 24">
+          <circle cx="11" cy="11" r="8" />
+          <line x1="21" y1="21" x2="16.65" y2="16.65" />
+        </svg>
+        <div class="empty-ttl">No rules found</div>
+        <div class="empty-sub">Try adjusting your search or filters.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DELETE MODAL -->
+  <div class="modal-bg" id="delModal">
+    <div class="modal">
+      <div class="modal-ttl">Delete Rule</div>
+      <div class="modal-body">Are you sure you want to delete <strong id="delName"></strong>? All versions will be
+        permanently removed.</div>
+      <div class="modal-ftr">
+        <button class="mb mb-cn" onclick="closeModal()">Cancel</button>
+        <button class="mb mb-del" onclick="doDelete()">Delete Rule</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script>
+    const RULES = [
+      { id: 1, name: 'Catalog Item', desc: 'Identifies if product is a catalog item', cat: 'Generic', cls: 'Alert', ver: 'v0.3', totalVer: 3, status: 'published', coverage: 92, modified: '2026-04-27' },
+      { id: 2, name: 'Load TBA', desc: 'Marks items pending load assignment', cat: 'Generic', cls: 'Static', ver: 'v0.1', totalVer: 1, status: 'published', coverage: 78, modified: '2026-04-27' },
+      { id: 3, name: 'PUD (Always 1)', desc: 'Pack unit divisor — always outputs 1', cat: 'Generic', cls: 'Static', ver: 'v0.2', totalVer: 2, status: 'draft', coverage: 55, modified: '2026-05-10' },
+      { id: 4, name: 'Generic Indicator', desc: 'Flags product as generic equivalent', cat: 'Generic', cls: 'Alert', ver: 'v0.1', totalVer: 1, status: 'published', coverage: 88, modified: '2026-04-27' },
+      { id: 5, name: 'MCK-GPC', desc: 'McKesson GPC classification code extraction', cat: 'Generic', cls: 'Dynamic', ver: 'v0.2', totalVer: 2, status: 'published', coverage: 71, modified: '2026-04-27' },
+      { id: 6, name: 'Pri-Ord-Item', desc: 'Primary order item indicator', cat: 'Generic', cls: 'Static', ver: 'v0.2', totalVer: 2, status: 'published', coverage: 96, modified: '2026-04-27' },
+    ];
+
+    let F = { cat: 'all', cls: 'all', st: 'all' }, sel = new Set(), delTarget = null, sortKey = 'name', sortAsc = true;
+
+    const groupChips = { 'cat': 'catChips', 'cls': 'clsChips', 'st': 'stChips' };
+
+    function setFilter(group, val, el) {
+      document.querySelectorAll('#' + groupChips[group] + ' .chip').forEach(c => c.classList.remove('on'));
+      el.classList.add('on'); F[group] = val; renderRules();
+    }
+
+    function sort(key) {
+      if (sortKey === key) sortAsc = !sortAsc; else { sortKey = key; sortAsc = true; }
+      document.querySelectorAll('thead th').forEach(t => t.classList.remove('sort-asc', 'sort-desc'));
+      const th = document.getElementById('th-' + key);
+      if (th) th.classList.add(sortAsc ? 'sort-asc' : 'sort-desc');
+      renderRules();
+    }
+
+    function getFiltered() {
+      const q = document.getElementById('searchInp').value.toLowerCase();
+      let d = RULES.filter(r => {
+        if (F.cat !== 'all' && r.cat !== F.cat) return false;
+        if (F.cls !== 'all' && r.cls !== F.cls) return false;
+        if (F.st !== 'all' && r.status !== F.st) return false;
+        if (q && !r.name.toLowerCase().includes(q) && !r.cat.toLowerCase().includes(q) && !r.desc.toLowerCase().includes(q)) return false;
+        return true;
+      });
+      const sk = document.getElementById('sortSel').value || sortKey;
+      d.sort((a, b) => {
+        const va = sk === 'name' ? a.name : sk === 'modified' ? a.modified : sk === 'versions' ? a.totalVer : a.coverage;
+        const vb = sk === 'name' ? b.name : sk === 'modified' ? b.modified : sk === 'versions' ? b.totalVer : b.coverage;
+        const asc = (sk === 'modified' || sk === 'versions' || sk === 'coverage') ? false : true; // default desc for numeric
+        if (va < vb) return sortAsc ? (sk === 'name' ? -1 : 1) : 1;
+        if (va > vb) return sortAsc ? (sk === 'name' ? 1 : -1) : -1;
+        return 0;
+      });
+      return d;
+    }
+
+    function renderRules() {
+      const data = getFiltered();
+      const tbody = document.getElementById('rulesBody');
+      const empty = document.getElementById('emptyState');
+      tbody.innerHTML = '';
+      if (!data.length) { empty.style.display = 'flex'; return; }
+      empty.style.display = 'none';
+
+      data.forEach(r => {
+        const hc = r.coverage >= 80 ? 'h-high' : r.coverage >= 50 ? 'h-med' : 'h-low';
+        const tr = document.createElement('tr');
+        if (r.status === 'draft') tr.classList.add('draft-row');
+        if (sel.has(r.id)) tr.classList.add('selected');
+        tr.innerHTML = `
+      <td style="text-align:center"><input type="checkbox" ${sel.has(r.id) ? 'checked' : ''} onchange="toggleSel(${r.id})"></td>
+      <td>
+        <div class="rn-cell">
+          <span class="rn">${r.name}</span>
+          <span class="rn-desc">${r.desc}</span>
+        </div>
+      </td>
+      <td>
+        <span class="rc-bdg rc-${r.cls}">
+          ${r.cls === 'Dynamic' ? '<span class="rc-ic"><svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></span>' : r.cls === 'Alert' ? '<span class="rc-ic"><svg viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></span>' : ''}
+          ${r.cls}
+        </span>
+      </td>
+      <td>
+        <div class="ver-chip">
+          <span class="ver-num">${r.ver}</span>
+          <span class="ver-tag ${r.status === 'draft' ? 'draft' : 'active'}">${r.status === 'draft' ? 'draft' : 'active'}</span>
+          <span class="ver-total">${r.totalVer} ver</span>
+        </div>
+      </td>
+      <td><span class="mod-date">${r.modified}</span></td>
+      <td>
+        <div class="act-cell">
+          <button class="act-btn run" data-tip="Rerun extraction" onclick="rerun(${r.id})">
+            <svg viewBox="0 0 24 24"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-4.91"/></svg>
+          </button>
+          <button class="act-btn edit" data-tip="Edit rule" onclick="editRule(${r.id})">
+            <svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+          </button>
+          <button class="act-btn del" data-tip="Delete rule" onclick="openDel(${r.id},'${r.name.replace(/'/g, "\\'")}')">
+            <svg viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6"/><path d="M10 11v6M14 11v6M9 6V4h6v2"/></svg>
+          </button>
+        </div>
+      </td>`;
+        tbody.appendChild(tr);
+      });
+    }
+
+    function toggleSel(id) { sel.has(id) ? sel.delete(id) : sel.add(id); updateBulk(); renderRules(); }
+    function toggleAll() {
+      const checked = document.getElementById('selAll').checked;
+      if (checked) RULES.forEach(r => sel.add(r.id)); else sel.clear();
+      updateBulk(); renderRules();
+    }
+    function clearSel() { sel.clear(); document.getElementById('selAll').checked = false; updateBulk(); renderRules(); }
+    function updateBulk() {
+      const bar = document.getElementById('bulkBar');
+      if (sel.size > 0) { bar.classList.remove('hidden'); document.getElementById('bulkLbl').textContent = `${sel.size} rule${sel.size > 1 ? 's' : ''} selected`; }
+      else bar.classList.add('hidden');
+    }
+    function bulkRerun() { toast(`Rerun queued for ${sel.size} rule(s)`, true); clearSel(); }
+    function bulkDelete() { toast(`${sel.size} rule(s) deleted`); clearSel(); }
+    function rerun(id) { const r = RULES.find(x => x.id === id); toast(`Rerun queued for "${r.name}"`, true); }
+    function editRule(id) { window.location.href = 'rule_tower_edit.html'; }
+    function openDel(id, name) { delTarget = id; document.getElementById('delName').textContent = name; document.getElementById('delModal').classList.add('open'); }
+    function closeModal() { document.getElementById('delModal').classList.remove('open'); delTarget = null; }
+    function doDelete() { const r = RULES.find(x => x.id === delTarget); closeModal(); toast(`"${r.name}" deleted`); }
+    function toast(msg, ok = false) { const t = document.getElementById('toast'); t.textContent = msg; t.className = 'toast show' + (ok ? ' ok' : ''); setTimeout(() => t.className = 'toast', 2800); }
+
+    renderRules();
+  </script>
+</body>
+
+</html>

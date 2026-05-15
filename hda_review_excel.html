@@ -1,0 +1,2477 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>HDA Review — McKesson Document Intelligence</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=DM+Mono:wght@400;500&display=swap"
+    rel="stylesheet" />
+  <style>
+    :root {
+      --mk-blue: #174EA0;
+      --mk-blue-dk: #0f3470;
+      --mk-blue-lt: #dbe8f8;
+      --mk-blue-pale: #eef4fc;
+      --mk-or: #F29130;
+      --mk-or-dk: #c4711a;
+      --mk-or-lt: #fde9cf;
+      --mk-or-pale: #fff5eb;
+      --bg: #f4f6fa;
+      --bg-p: #ffffff;
+      --bg-c: #ffffff;
+      --bg-h: #eef2f9;
+      --bdr: #e2e8f0;
+      --bdr-m: #c8d4e6;
+      --t1: #0d1a2e;
+      --t2: #475872;
+      --t3: #94a3b8;
+      --ac: #174EA0;
+      --ac-lt: #dbe8f8;
+      --ac-pale: #eef4fc;
+      --gr: #16a34a;
+      --gr-lt: #dcfce7;
+      --gr-pale: #f0fdf4;
+      --am: #b45309;
+      --am-lt: #fde68a;
+      --am-pale: #fffbeb;
+      --rd: #dc2626;
+      --rd-lt: #fecaca;
+      --rd-pale: #fef2f2;
+      --sh-sm: 0 1px 3px rgba(14, 30, 60, .08), 0 1px 2px rgba(14, 30, 60, .05);
+      --sh-md: 0 4px 14px rgba(14, 30, 60, .1), 0 2px 5px rgba(14, 30, 60, .06);
+      --r: 10px;
+      --rs: 6px;
+      --fh: 'DM Sans', sans-serif;
+      --fb: 'DM Sans', sans-serif;
+      --fm: 'DM Mono', monospace;
+      --col-w: 190px;
+      --ndc-w: 140px;
+      --row-h: 38px;
+      --head-h: 70px;
+    }
+
+    [data-theme=dark] {
+      --bg: #0c0e14;
+      --bg-p: #111520;
+      --bg-c: #181c2a;
+      --bg-h: #1d2235;
+      --bdr: #232a3e;
+      --bdr-m: #2c3650;
+      --t1: #e8edf8;
+      --t2: #8090b0;
+      --t3: #44526a;
+      --ac: #4f8ef7;
+      --ac-lt: #172040;
+      --ac-pale: #0e1528;
+      --gr: #34d474;
+      --gr-lt: #0c2e1a;
+      --gr-pale: #081810;
+      --am: #fbbf24;
+      --am-lt: #322208;
+      --am-pale: #1e1404;
+      --rd: #f87171;
+      --rd-lt: #320c0c;
+      --rd-pale: #1e0808;
+      --mk-blue-lt: #172040;
+      --mk-blue-pale: #0e1528;
+      --mk-or-lt: #3a2008;
+      --mk-or-pale: #211204;
+      --sh-sm: 0 1px 3px rgba(0, 0, 0, .3);
+      --sh-md: 0 4px 14px rgba(0, 0, 0, .45);
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0
+    }
+
+    html,
+    body {
+      height: 100%
+    }
+
+    body {
+      font-family: var(--fb);
+      background: var(--bg);
+      color: var(--t1);
+      font-size: 14px;
+      line-height: 1.5;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: background .2s, color .2s
+    }
+
+    /* NAV */
+    .nav {
+      height: 52px;
+      background: var(--mk-blue);
+      display: flex;
+      align-items: center;
+      padding: 0 16px;
+      flex-shrink: 0;
+      box-shadow: 0 2px 8px rgba(23, 78, 160, .35);
+      z-index: 20;
+      position: relative
+    }
+
+    .n-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-right: 18px
+    }
+
+    .n-mark {
+      width: 30px;
+      height: 30px;
+      border-radius: 7px;
+      overflow: hidden;
+      flex-shrink: 0
+    }
+
+    .n-mark svg {
+      display: block
+    }
+
+    .n-txt {
+      font-family: var(--fh);
+      font-size: 15px;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: -.02em;
+      white-space: nowrap
+    }
+
+    .n-txt span {
+      color: var(--mk-or)
+    }
+
+    .n-div {
+      width: 1px;
+      height: 18px;
+      background: rgba(255, 255, 255, .22);
+      margin: 0 14px;
+      flex-shrink: 0
+    }
+
+    .n-prod {
+      font-size: 11px;
+      color: rgba(255, 255, 255, .65);
+      letter-spacing: .04em;
+      font-weight: 500;
+      white-space: nowrap
+    }
+
+    .n-tabs {
+      display: flex;
+      align-items: center;
+      gap: 2px;
+      flex: 1;
+      margin-left: 18px
+    }
+
+    .n-tab {
+      padding: 5px 12px;
+      font-size: 12px;
+      color: rgba(255, 255, 255, .65);
+      background: none;
+      border: none;
+      border-radius: var(--rs);
+      cursor: pointer;
+      font-family: var(--fb);
+      font-weight: 500;
+      transition: all .15s
+    }
+
+    .n-tab:hover {
+      color: #fff;
+      background: rgba(255, 255, 255, .12)
+    }
+
+    .n-tab.active {
+      color: #fff;
+      background: rgba(255, 255, 255, .18)
+    }
+
+    .n-right {
+      display: flex;
+      align-items: center;
+      gap: 8px
+    }
+
+    .n-badge {
+      background: var(--mk-or);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 99px;
+      font-family: var(--fm)
+    }
+
+    .t-btn {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, .15);
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      transition: background .15s;
+      flex-shrink: 0
+    }
+
+    .t-btn:hover {
+      background: rgba(255, 255, 255, .25)
+    }
+
+    .t-btn svg {
+      width: 15px;
+      height: 15px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2
+    }
+
+    .n-av {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: var(--mk-or);
+      font-size: 10px;
+      font-weight: 700;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--fh);
+      border: 2px solid rgba(255, 255, 255, .3);
+      flex-shrink: 0
+    }
+
+    /* DOC HEADER */
+    .doc-hd {
+      padding: 10px 17px;
+      background: var(--bg-p);
+      border-bottom: 1px solid var(--bdr);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-shrink: 0;
+      box-shadow: var(--sh-sm)
+    }
+
+    .doc-tb {
+      display: flex;
+      align-items: center;
+      gap: 11px
+    }
+
+    .doc-ic {
+      width: 34px;
+      height: 34px;
+      background: var(--ac-pale);
+      border: 1px solid var(--ac-lt);
+      border-radius: var(--rs);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0
+    }
+
+    .doc-ic svg {
+      width: 16px;
+      height: 16px;
+      fill: var(--ac)
+    }
+
+    .doc-ttl {
+      font-family: var(--fh);
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--t1);
+      letter-spacing: -.01em
+    }
+
+    .doc-sub {
+      font-size: 10px;
+      color: var(--t3);
+      margin-top: 1px;
+      font-family: var(--fm)
+    }
+
+    .asgn {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      background: var(--bg);
+      border: 1px solid var(--bdr);
+      border-radius: 99px;
+      font-size: 11px;
+      color: var(--t2)
+    }
+
+    .asgn-av {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: var(--mk-or);
+      font-size: 8px;
+      font-weight: 700;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--fh)
+    }
+
+    .doc-acts {
+      display: flex;
+      align-items: center;
+      gap: 7px
+    }
+
+    .btn {
+      padding: 6px 12px;
+      font-size: 12px;
+      font-weight: 500;
+      font-family: var(--fb);
+      border-radius: var(--rs);
+      border: 1px solid var(--bdr-m);
+      background: var(--bg-c);
+      color: var(--t2);
+      cursor: pointer;
+      transition: all .15s;
+      display: flex;
+      align-items: center;
+      gap: 5px
+    }
+
+    .btn svg {
+      width: 12px;
+      height: 12px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.8
+    }
+
+    .btn:hover {
+      color: var(--t1);
+      background: var(--bg-h)
+    }
+
+    .btn-flag {
+      border-color: var(--rd-lt);
+      color: var(--rd);
+      background: var(--rd-pale)
+    }
+
+    .btn-flag:hover {
+      background: var(--rd-lt)
+    }
+
+    .btn-done {
+      border-color: var(--mk-blue);
+      color: #fff;
+      background: var(--mk-blue)
+    }
+
+    .btn-done:hover {
+      background: var(--mk-blue-dk);
+      border-color: var(--mk-blue-dk)
+    }
+
+    /* PROGRESS BAR STRIP */
+    .prog-strip {
+      height: 3px;
+      background: var(--bdr);
+      flex-shrink: 0;
+      position: relative
+    }
+
+    .prog-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--mk-blue), var(--mk-or));
+      transition: width .4s ease;
+      width: 0%
+    }
+
+    .work-tabs {
+      display: flex;
+      align-items: flex-end;
+      padding: 10px 0 0;
+      border-bottom: 1px solid var(--bdr);
+      background: var(--bg);
+      overflow-x: auto;
+      overflow-y: hidden;
+    }
+
+    .work-tab {
+      position: relative;
+      height: 34px;
+      border: 1px solid var(--bdr-m);
+      background: var(--bdr-m);
+      color: var(--t1);
+      border-bottom: none;
+      border-radius: 8px 8px 0 0;
+      font-family: var(--fh);
+      font-size: 11px;
+      font-weight: 700;
+      padding: 0 26px 0 14px;
+      cursor: pointer;
+      white-space: nowrap;
+      margin-bottom: -1px;
+      clip-path: polygon(0 0, calc(100% - 18px) 0, 100% 100%, 0 100%);
+    }
+
+    .work-tab.active {
+      background: var(--mk-blue);
+      border-color: var(--mk-blue);
+      color: #fff;
+      z-index: 2;
+    }
+
+    .tab-pane {
+      display: none;
+      flex: 1;
+      min-height: 0;
+      border: 1px solid var(--bdr);
+      border-top: none;
+      background: var(--bg);
+    }
+
+    .tab-pane.active {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .ndc-pane-empty {
+      flex: 1;
+      background: var(--bg);
+    }
+
+    .ndc-pdf-viewer {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      background: var(--bg);
+      overflow: hidden;
+    }
+
+    .ndc-pdf-toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 16px;
+      background: var(--bg-p);
+      border-bottom: 1px solid var(--bdr);
+      gap: 12px;
+    }
+
+    .ndc-pdf-title {
+      font-family: var(--fh);
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--t1);
+    }
+
+    .ndc-pdf-select {
+      padding: 6px 28px 6px 10px;
+      background: var(--bg-c);
+      border: 1px solid var(--bdr-m);
+      border-radius: var(--rs);
+      color: var(--t1);
+      font-family: var(--fb);
+      font-size: 12px;
+      outline: none;
+      -webkit-appearance: none;
+      appearance: none;
+      cursor: pointer;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 8px center;
+      min-width: 140px;
+    }
+
+    .ndc-pdf-select:focus {
+      border-color: var(--ac);
+    }
+
+    .ndc-pdf-frame {
+      flex: 1;
+      width: 100%;
+      border: none;
+      background: var(--bg);
+    }
+
+    .ndc-pdf-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .ndc-pdf-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 6px 12px;
+      background: var(--bg-c);
+      border: 1px solid var(--bdr-m);
+      border-radius: var(--rs);
+      color: var(--t2);
+      font-family: var(--fb);
+      font-size: 11px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all .15s;
+    }
+
+    .ndc-pdf-btn:hover {
+      background: var(--bg-h);
+      color: var(--t1);
+      border-color: var(--bdr);
+    }
+
+    .ndc-pdf-btn svg {
+      width: 14px;
+      height: 14px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2;
+    }
+
+    .ndc-pdf-zoom {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .ndc-pdf-zoom .ndc-pdf-btn {
+      padding: 6px 8px;
+    }
+
+    .pm-review-wrap {
+      border-top: 1px solid var(--bdr);
+      background: var(--bg-p);
+      padding: 12px;
+    }
+
+    .pm-review-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+
+    .pm-review-title {
+      font-family: var(--fh);
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--t1);
+      letter-spacing: .03em;
+      text-transform: uppercase;
+    }
+
+    .pm-review-container {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .pm-ndc-card {
+      border: 1px solid var(--bdr);
+      border-radius: var(--r);
+      background: var(--bg);
+      overflow: hidden;
+    }
+
+    .pm-ndc-header {
+      background: var(--mk-blue-pale);
+      border-bottom: 1px solid var(--mk-blue-lt);
+      padding: 10px 14px;
+      font-family: var(--fh);
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--mk-blue);
+      letter-spacing: .02em;
+    }
+
+    .pm-fields-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      padding: 12px;
+    }
+
+    .pm-card {
+      border: 1px solid var(--bdr);
+      border-radius: var(--rs);
+      background: var(--bg-p);
+      padding: 10px;
+      transition: border-color .15s;
+    }
+
+    .pm-card:hover {
+      border-color: var(--bdr-m);
+    }
+
+    .pm-card-field {
+      font-family: var(--fh);
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--t1);
+      margin-bottom: 6px;
+      line-height: 1.2;
+    }
+
+    .pm-card-remark {
+      font-family: var(--fh);
+      font-size: 11px;
+      color: var(--t2);
+      line-height: 1.35;
+    }
+
+    @media (max-width: 1024px) {
+      .pm-fields-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 720px) {
+      .pm-fields-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* EXCEL CONTAINER */
+    .xl-wrap {
+      flex: 1;
+      flex-direction: column;
+      background: var(--bg);
+      overflow: auto;
+    }
+
+    .xl-outer {
+      flex: 1;
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      flex-direction: column
+    }
+
+    /* The grid uses a table-like approach with a fixed left column */
+    .xl-scroll {
+      flex: 1;
+      overflow: auto;
+      position: relative
+    }
+
+    .xl-scroll::-webkit-scrollbar {
+      width: 8px;
+      height: 8px
+    }
+
+    .xl-scroll::-webkit-scrollbar-track {
+      background: var(--bg)
+    }
+
+    .xl-scroll::-webkit-scrollbar-thumb {
+      background: var(--bdr-m);
+      border-radius: 99px
+    }
+
+    .xl-scroll::-webkit-scrollbar-corner {
+      background: var(--bg)
+    }
+
+    table.xl {
+      border-collapse: separate;
+      border-spacing: 0;
+      table-layout: fixed;
+      width: max-content;
+      min-width: 100%
+    }
+
+    /* HEADER ROW */
+    table.xl thead th {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: var(--bg-p);
+      border-bottom: 2px solid var(--bdr-m);
+      border-right: 1px solid var(--bdr);
+      vertical-align: bottom;
+      padding: 0;
+      height: var(--head-h);
+      min-width: var(--col-w);
+      width: var(--col-w);
+      user-select: none;
+    }
+
+    table.xl thead th.ndc-head {
+      position: sticky;
+      left: 0;
+      top: 0;
+      z-index: 15;
+      min-width: var(--ndc-w);
+      width: var(--ndc-w);
+      background: var(--bg-p);
+      border-right: 2px solid var(--bdr-m);
+    }
+
+    table.xl thead th.ndc-head .th-inner {
+      color: var(--mk-blue);
+      justify-content: center;
+      font-weight: 700;
+      letter-spacing: .08em;
+    }
+
+    .th-inner {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      padding: 8px 10px 7px;
+      height: 100%;
+      justify-content: flex-end;
+    }
+
+    .th-ctrl {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      margin-bottom: 2px
+    }
+
+    .th-chk-wrap {
+      display: flex;
+      align-items: center;
+      gap: 0
+    }
+
+    /* Custom checkbox */
+    .col-chk {
+      width: 14px;
+      height: 14px;
+      border-radius: 3px;
+      border: 1.5px solid var(--bdr-m);
+      background: var(--bg);
+      cursor: pointer;
+      appearance: none;
+      -webkit-appearance: none;
+      flex-shrink: 0;
+      transition: all .12s;
+      position: relative;
+    }
+
+    .col-chk:checked {
+      background: var(--ac);
+      border-color: var(--ac)
+    }
+
+    .col-chk:checked::after {
+      content: '';
+      position: absolute;
+      left: 2px;
+      top: 0px;
+      width: 4px;
+      height: 7px;
+      border: 2px solid #fff;
+      border-top: none;
+      border-left: none;
+      transform: rotate(42deg)
+    }
+
+    .col-chk:indeterminate {
+      background: var(--ac);
+      border-color: var(--ac)
+    }
+
+    .col-chk:indeterminate::after {
+      content: '';
+      position: absolute;
+      left: 2px;
+      top: 5px;
+      width: 8px;
+      height: 2px;
+      background: #fff;
+      border-radius: 1px
+    }
+
+    /* Approve button above header */
+    .col-approve {
+      padding: 2px 7px;
+      font-size: 10px;
+      font-weight: 600;
+      font-family: var(--fh);
+      background: var(--mk-blue);
+      color: #fff;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+      transition: all .15s;
+      white-space: nowrap;
+      letter-spacing: .02em;
+      display: none;
+    }
+
+    .col-approve:hover {
+      background: var(--mk-blue-dk)
+    }
+
+    .col-approve.visible {
+      display: block
+    }
+
+    .th-label {
+      font-family: var(--fh);
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--t2);
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      line-height: 1.2
+    }
+
+    .th-conf {
+      font-family: var(--fm);
+      font-size: 10px;
+      color: var(--t3);
+      margin-top: 1px
+    }
+
+    /* BODY ROWS */
+    table.xl tbody tr {
+      height: var(--row-h)
+    }
+
+    table.xl tbody td {
+      border-bottom: 1px solid var(--bdr);
+      border-right: 1px solid var(--bdr);
+      padding: 0 10px;
+      font-family: var(--fm);
+      font-size: 11px;
+      color: var(--t1);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      cursor: default;
+      transition: background .1s;
+      min-width: var(--col-w);
+      width: var(--col-w);
+      max-width: var(--col-w);
+      vertical-align: middle;
+      background: var(--bg-p);
+    }
+
+    table.xl tbody td:hover {
+      background: var(--bg-h) !important
+    }
+
+    /* NDC fixed column */
+    table.xl tbody td.ndc-cell {
+      position: sticky;
+      left: 0;
+      z-index: 5;
+      min-width: var(--ndc-w);
+      width: var(--ndc-w);
+      max-width: var(--ndc-w);
+      background: var(--bg-p) !important;
+      border-right: 2px solid var(--bdr-m);
+      font-family: var(--fh);
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--mk-blue);
+      cursor: default;
+    }
+
+    table.xl tbody td.ndc-cell:hover {
+      background: var(--mk-blue-pale) !important
+    }
+
+    /* Cell states */
+    td.cell-ac {
+      background: var(--gr-pale) !important
+    }
+
+    table.xl tbody td.cell-ac:hover {
+      background: #d1fae5 !important
+    }
+
+    td.cell-rj {
+      background: var(--rd-pale) !important;
+      color: var(--rd) !important;
+      text-decoration: line-through
+    }
+
+    td.cell-ed {
+      background: var(--am-pale) !important
+    }
+
+    /* Selected column highlight - darker but not too dark */
+    td.col-sel {
+      background: #c5dcf6 !important;
+      outline: none;
+    }
+
+    /* Slightly darker hover on selected cells - higher specificity to override normal hover */
+    table.xl tbody td.col-sel:hover {
+      background: #b0d0f3 !important;
+    }
+
+    td.col-sel.cell-ac {
+      background: color-mix(in srgb, var(--gr-pale) 60%, #c5dcf6) !important
+    }
+
+    table.xl tbody td.col-sel.cell-ac:hover {
+      background: color-mix(in srgb, var(--gr-pale) 50%, #b0d0f3) !important
+    }
+
+    /* confidence dot */
+    .conf-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      display: inline-block;
+      margin-right: 5px;
+      vertical-align: middle
+    }
+
+    .cd-h {
+      background: var(--gr)
+    }
+
+    .cd-m {
+      background: var(--am)
+    }
+
+    .cd-l {
+      background: var(--rd)
+    }
+
+    /* cell value display */
+    .cv {
+      display: flex;
+      align-items: center;
+      gap: 0
+    }
+
+    .cv-txt {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      flex: 1
+    }
+
+    .cv-badge {
+      font-size: 8px;
+      font-weight: 700;
+      padding: 1px 4px;
+      border-radius: 3px;
+      margin-left: 5px;
+      flex-shrink: 0;
+      font-family: var(--fh);
+      letter-spacing: .04em
+    }
+
+    .cv-ac {
+      background: var(--gr-lt);
+      color: var(--gr)
+    }
+
+    .cv-rj {
+      background: var(--rd-lt);
+      color: var(--rd)
+    }
+
+    .cv-ed {
+      background: var(--am-lt);
+      color: var(--am)
+    }
+
+    /* FOOTER BAR */
+    .xl-ftr {
+      height: 42px;
+      background: var(--bg-p);
+      border-top: 1px solid var(--bdr);
+      display: flex;
+      align-items: center;
+      padding: 0 17px;
+      gap: 16px;
+      flex-shrink: 0;
+      box-shadow: 0 -1px 4px rgba(14, 30, 60, .05)
+    }
+
+    .xl-ftr-stat {
+      font-size: 11px;
+      color: var(--t3);
+      font-family: var(--fm)
+    }
+
+    .xl-ftr-stat span {
+      color: var(--t1);
+      font-weight: 500
+    }
+
+    .ftr-sep {
+      width: 1px;
+      height: 16px;
+      background: var(--bdr)
+    }
+
+    .ftr-right {
+      margin-left: auto;
+      display: flex;
+      align-items: center;
+      gap: 8px
+    }
+
+    .fb {
+      padding: 5px 14px;
+      font-size: 12px;
+      font-weight: 500;
+      font-family: var(--fb);
+      border-radius: var(--rs);
+      cursor: pointer;
+      transition: all .15s;
+      border: 1px solid var(--bdr-m);
+      background: var(--bg-c);
+      color: var(--t2)
+    }
+
+    .fb:hover {
+      background: var(--bg-h);
+      color: var(--t1)
+    }
+
+    .fb-sub {
+      background: var(--mk-blue);
+      color: #fff;
+      border-color: var(--mk-blue)
+    }
+
+    .fb-sub:hover {
+      background: var(--mk-blue-dk);
+      border-color: var(--mk-blue-dk)
+    }
+
+    /* MODAL OVERLAY */
+    .modal-ov {
+      position: fixed;
+      inset: 0;
+      background: rgba(13, 26, 46, .45);
+      z-index: 100;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      backdrop-filter: blur(2px);
+    }
+
+    .modal-ov.open {
+      display: flex
+    }
+
+    .modal {
+      background: var(--bg-p);
+      border: 1px solid var(--bdr-m);
+      border-radius: var(--r);
+      width: 460px;
+      max-width: 92vw;
+      box-shadow: var(--sh-md);
+      animation: mIn .15s ease;
+      overflow: hidden;
+    }
+
+    @keyframes mIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px) scale(.97)
+      }
+
+      to {
+        opacity: 1;
+        transform: none
+      }
+    }
+
+    .modal-hd {
+      padding: 14px 16px 12px;
+      border-bottom: 1px solid var(--bdr);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .modal-ttl {
+      font-family: var(--fh);
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--t1)
+    }
+
+    .modal-sub {
+      font-size: 10px;
+      color: var(--t3);
+      margin-top: 2px;
+      font-family: var(--fm)
+    }
+
+    .modal-close {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: var(--bg);
+      border: 1px solid var(--bdr);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--t3);
+      transition: all .15s;
+      flex-shrink: 0
+    }
+
+    .modal-close:hover {
+      background: var(--bg-h);
+      color: var(--t1)
+    }
+
+    .modal-close svg {
+      width: 13px;
+      height: 13px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2
+    }
+
+    .modal-body {
+      padding: 14px 16px
+    }
+
+    /* Data rows inside modal (same as fc) */
+    .drw {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      margin-bottom: 12px
+    }
+
+    .dr {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      padding: 7px 9px;
+      background: var(--bg);
+      border: 1px solid var(--bdr);
+      border-radius: var(--rs)
+    }
+
+    .dr-ic {
+      width: 22px;
+      height: 22px;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px
+    }
+
+    .dr-ic svg {
+      width: 11px;
+      height: 11px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2
+    }
+
+    .ic-ex {
+      background: var(--ac-pale);
+      color: var(--ac)
+    }
+
+    .ic-kg {
+      background: var(--mk-or-pale);
+      color: var(--mk-or)
+    }
+
+    .ic-rv {
+      background: var(--gr-pale);
+      color: var(--gr)
+    }
+
+    .dr-b {
+      flex: 1;
+      min-width: 0
+    }
+
+    .dr-tp {
+      font-size: 9px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .07em;
+      color: var(--t3);
+      margin-bottom: 2px
+    }
+
+    .dr-v {
+      font-size: 12px;
+      font-family: var(--fm);
+      color: var(--t1);
+      word-break: break-all
+    }
+
+    .dr-v.sk {
+      text-decoration: line-through;
+      color: var(--t3)
+    }
+
+    .dr-s {
+      font-size: 10px;
+      color: var(--t3);
+      margin-top: 1px
+    }
+
+    /* Confidence pill */
+    .cpil {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 2px 8px;
+      border-radius: 99px;
+      font-size: 10px;
+      font-family: var(--fm);
+      font-weight: 500;
+      border: 1px solid transparent;
+      margin-bottom: 10px
+    }
+
+    .cp-h {
+      background: var(--gr-pale);
+      color: var(--gr);
+      border-color: var(--gr-lt)
+    }
+
+    .cp-m {
+      background: var(--am-pale);
+      color: var(--am);
+      border-color: var(--am-lt)
+    }
+
+    .cp-l {
+      background: var(--rd-pale);
+      color: var(--rd);
+      border-color: var(--rd-lt)
+    }
+
+    .cp-d {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%
+    }
+
+    .cp-h .cp-d {
+      background: var(--gr)
+    }
+
+    .cp-m .cp-d {
+      background: var(--am)
+    }
+
+    .cp-l .cp-d {
+      background: var(--rd)
+    }
+
+    /* Edit section inside modal */
+    .ep {
+      background: var(--ac-pale);
+      border: 1px solid var(--ac-lt);
+      border-radius: var(--rs);
+      padding: 12px;
+      margin-top: 4px
+    }
+
+    .ep-ttl {
+      font-size: 9px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: var(--ac);
+      margin-bottom: 9px;
+      display: flex;
+      align-items: center;
+      gap: 5px
+    }
+
+    .ep-ttl svg {
+      width: 12px;
+      height: 12px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2
+    }
+
+    .ep-opts {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 10px
+    }
+
+    .ep-opt {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 10px;
+      border: 1px solid var(--bdr);
+      border-radius: var(--rs);
+      background: var(--bg-c);
+      cursor: pointer;
+      transition: all .15s
+    }
+
+    .ep-opt:hover {
+      border-color: var(--ac-lt);
+      background: var(--bg-h)
+    }
+
+    .ep-opt.sel {
+      border-color: var(--ac);
+      background: var(--bg-c)
+    }
+
+    .eo-rd {
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      border: 2px solid var(--bdr-m);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: all .15s
+    }
+
+    .ep-opt.sel .eo-rd {
+      border-color: var(--ac);
+      background: var(--ac)
+    }
+
+    .eo-dt {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: #fff;
+      display: none
+    }
+
+    .ep-opt.sel .eo-dt {
+      display: block
+    }
+
+    .eo-b {
+      flex: 1
+    }
+
+    .eo-lbl {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--t1)
+    }
+
+    .eo-val {
+      font-size: 11px;
+      font-family: var(--fm);
+      color: var(--t2);
+      margin-top: 1px
+    }
+
+    .man-sec {
+      display: none;
+      padding-top: 6px
+    }
+
+    .man-inp {
+      width: 100%;
+      padding: 7px 9px;
+      background: var(--bg-c);
+      border: 1px solid var(--bdr-m);
+      border-radius: var(--rs);
+      color: var(--t1);
+      font-family: var(--fm);
+      font-size: 12px;
+      outline: none;
+      margin-bottom: 8px;
+      transition: border-color .15s
+    }
+
+    .man-inp:focus {
+      border-color: var(--ac)
+    }
+
+    .man-inp::placeholder {
+      color: var(--t3);
+      font-family: var(--fb)
+    }
+
+    .rea-lbl {
+      font-size: 9px;
+      font-weight: 600;
+      color: var(--t3);
+      text-transform: uppercase;
+      letter-spacing: .07em;
+      margin-bottom: 5px
+    }
+
+    .rea-sel {
+      width: 100%;
+      padding: 7px 28px 7px 9px;
+      background: var(--bg-c);
+      border: 1px solid var(--bdr-m);
+      border-radius: var(--rs);
+      color: var(--t1);
+      font-family: var(--fb);
+      font-size: 12px;
+      outline: none;
+      -webkit-appearance: none;
+      appearance: none;
+      cursor: pointer;
+      margin-bottom: 6px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 9px center;
+      transition: border-color .15s
+    }
+
+    .rea-sel:focus {
+      border-color: var(--ac)
+    }
+
+    .cust-ta {
+      width: 100%;
+      padding: 7px 9px;
+      background: var(--bg-c);
+      border: 1px solid var(--bdr-m);
+      border-radius: var(--rs);
+      color: var(--t1);
+      font-family: var(--fb);
+      font-size: 12px;
+      outline: none;
+      resize: none;
+      height: 56px;
+      margin-bottom: 6px;
+      transition: border-color .15s
+    }
+
+    .cust-ta:focus {
+      border-color: var(--ac)
+    }
+
+    .cust-ta::placeholder {
+      color: var(--t3)
+    }
+
+    /* Modal footer actions */
+    .modal-acts {
+      display: flex;
+      gap: 6px;
+      padding: 12px 16px;
+      border-top: 1px solid var(--bdr)
+    }
+
+    .fa {
+      flex: 1;
+      padding: 7px 8px;
+      font-size: 11px;
+      font-weight: 500;
+      font-family: var(--fb);
+      border-radius: var(--rs);
+      border: 1px solid var(--bdr);
+      background: var(--bg);
+      color: var(--t2);
+      cursor: pointer;
+      transition: all .15s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px
+    }
+
+    .fa svg {
+      width: 11px;
+      height: 11px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2
+    }
+
+    .fa:hover {
+      color: var(--t1);
+      border-color: var(--bdr-m);
+      background: var(--bg-h)
+    }
+
+    .fa.f-ac {
+      border-color: var(--gr-lt);
+      color: var(--gr);
+      background: var(--gr-pale)
+    }
+
+    .fa.f-ac:hover {
+      background: var(--gr-lt)
+    }
+
+    .fa.f-ed {
+      border-color: var(--ac-lt);
+      color: var(--ac);
+      background: var(--ac-pale)
+    }
+
+    .fa.f-ed:hover {
+      background: var(--ac-lt)
+    }
+
+    .fa.f-rj {
+      border-color: var(--rd-lt);
+      color: var(--rd);
+      background: var(--rd-pale)
+    }
+
+    .fa.f-rj:hover {
+      background: var(--rd-lt)
+    }
+
+    .ep-btn {
+      flex: 1;
+      padding: 7px 0;
+      font-size: 12px;
+      font-weight: 600;
+      font-family: var(--fb);
+      border-radius: var(--rs);
+      cursor: pointer;
+      transition: all .15s;
+      text-align: center
+    }
+
+    .ep-cn {
+      border: 1px solid var(--bdr-m);
+      background: var(--bg-c);
+      color: var(--t2)
+    }
+
+    .ep-cn:hover {
+      background: var(--bg-h)
+    }
+
+    .ep-sv {
+      border: 1px solid var(--ac);
+      background: var(--ac);
+      color: #fff
+    }
+
+    .ep-sv:hover {
+      background: var(--mk-blue-dk);
+      border-color: var(--mk-blue-dk)
+    }
+
+    /* selection info toast */
+    .sel-toast {
+      position: fixed;
+      bottom: 58px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--mk-blue);
+      color: #fff;
+      border-radius: 99px;
+      padding: 6px 16px;
+      font-size: 12px;
+      font-family: var(--fb);
+      font-weight: 500;
+      display: none;
+      gap: 10px;
+      align-items: center;
+      z-index: 50;
+      box-shadow: var(--sh-md);
+      white-space: nowrap;
+    }
+
+    .sel-toast.show {
+      display: flex
+    }
+
+    .sel-toast button {
+      background: rgba(255, 255, 255, .2);
+      border: none;
+      border-radius: 99px;
+      color: #fff;
+      font-size: 11px;
+      font-family: var(--fb);
+      font-weight: 600;
+      padding: 3px 10px;
+      cursor: pointer;
+      transition: background .15s
+    }
+
+    .sel-toast button:hover {
+      background: rgba(255, 255, 255, .35)
+    }
+  </style>
+</head>
+
+<body data-theme="light">
+
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="n-logo">
+      <!-- <div class="n-mark">
+            <svg width="30" height="30" viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg">
+              <rect width="30" height="30" fill="#174EA0" />
+              <text x="4" y="22" font-family="Georgia,serif" font-size="20" font-weight="900" fill="#fff">M</text>
+              <rect x="0" y="26" width="30" height="4" fill="#F29130" />
+            </svg>
+          </div> -->
+      <span class="n-txt">Genova </span>
+    </div>
+    <div class="n-div"></div>
+    <div class="n-tabs">
+      <button class="n-tab ">Business Insights</button>
+      <button class="n-tab active">Workflow Pipeline</button>
+      <button class="n-tab">Rule Tower</button>
+      <button class="n-tab">Trust Score Framework</button>
+      <button class="n-tab">Trust Score Configuration</button>
+      <button class="n-tab">Abbreviations</button>
+
+    </div>
+    <div class="n-right">
+
+      <button class="t-btn" id="tBtn" title="Toggle theme">
+        <svg id="tIco" viewBox="0 0 24 24">
+          <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" />
+        </svg>
+      </button>
+      <div class="n-av">RP</div>
+    </div>
+  </nav>
+
+  <!-- DOC HEADER -->
+  <div class="doc-hd">
+    <div class="doc-tb">
+      <div class="doc-ic">
+        <svg viewBox="0 0 24 24">
+          <path d="M19 12H5M12 19l-7-7 7-7" fill="none" stroke="var(--ac)" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" />
+        </svg>
+      </div>
+      <div>
+        <div class="doc-ttl">CASE-2026-00088</div>
+        <div class="doc-sub"><span id="docVendor">Loading...</span> &nbsp;·&nbsp; Received 25 Apr 2026 &nbsp;·&nbsp;
+          <span id="docNdcCount">3</span>
+          NDC &nbsp;·&nbsp; <span id="docAvgConf">--</span>% avg.
+          confidence &nbsp;·&nbsp; <span id="hdrProg">0 / 0 fields reviewed</span>
+        </div>
+      </div>
+    </div>
+    <div class="doc-acts">
+      <!-- <button class="btn btn-flag">
+        <svg viewBox="0 0 24 24">
+          <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z" />
+          <line x1="4" y1="22" x2="4" y2="15" />
+        </svg>
+        Flag Issue
+      </button> -->
+      <button class="btn">Download</button>
+      <button class="btn btn-done" id="submitBtn">Submit Review</button>
+    </div>
+  </div>
+
+  <!-- PROGRESS STRIP -->
+  <div class="prog-strip">
+    <div class="prog-fill" id="progFill"></div>
+  </div>
+
+  <div class="work-tabs" id="workTabs"></div>
+
+  <div class="tab-pane active" id="paneExtracted">
+    <!-- EXCEL TABLE WRAPPER -->
+    <div class="xl-wrap">
+      <div class="xl-outer">
+        <div class="xl-scroll" id="xlScroll">
+          <table class="xl" id="xlTable">
+            <thead id="xlHead"></thead>
+            <tbody id="xlBody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="pm-review-wrap" id="pmReviewWrap" style="display:none;">
+        <div class="pm-review-head">
+          <div class="pm-review-title">Needs PM Review</div>
+        </div>
+        <div class="pm-review-container" id="pmReviewContainer">
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="tab-pane" id="paneNdc">
+    <div class="ndc-pdf-viewer" id="ndcPdfViewer">
+      <div class="ndc-pdf-toolbar">
+        <div class="ndc-pdf-title" id="ndcPdfTitle">NDC PDF</div>
+        <div class="ndc-pdf-actions">
+          <div class="ndc-pdf-zoom">
+            <button class="ndc-pdf-btn" onclick="setNdcPdfZoom('page-width')" title="Fit Width">
+              <svg viewBox="0 0 24 24">
+                <rect x="3" y="3" width="18" height="18" rx="2" />
+                <path d="M3 12h18" />
+              </svg>
+            </button>
+            <button class="ndc-pdf-btn" onclick="setNdcPdfZoom('page-fit')" title="Fit Page">
+              <svg viewBox="0 0 24 24">
+                <rect x="3" y="3" width="18" height="18" rx="2" />
+              </svg>
+            </button>
+            <button class="ndc-pdf-btn" onclick="setNdcPdfZoom('150')" title="Zoom In">
+              <svg viewBox="0 0 24 24">
+                <circle cx="11" cy="11" r="8" />
+                <path d="M21 21l-4.35-4.35M11 8v6M8 11h6" />
+              </svg>
+            </button>
+            <button class="ndc-pdf-btn" onclick="setNdcPdfZoom('100')" title="Zoom Out">
+              <svg viewBox="0 0 24 24">
+                <circle cx="11" cy="11" r="8" />
+                <path d="M21 21l-4.35-4.35M8 11h6" />
+              </svg>
+            </button>
+          </div>
+          <select class="ndc-pdf-select" id="ndcPdfSelect" onchange="onNdcPdfChange(this)">
+            <option value="sample/sample.pdf">HDA</option>
+            <option value="sample/sample-label.pdf">Label</option>
+          </select>
+          <button class="ndc-pdf-btn" onclick="downloadNdcPdf()" title="Download">
+            <svg viewBox="0 0 24 24">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+              <polyline points="7 10 12 15 17 10" />
+              <line x1="12" y1="15" x2="12" y2="3" />
+            </svg>
+          </button>
+        </div>
+      </div>
+      <iframe class="ndc-pdf-frame" id="ndcPdfFrame" src=""></iframe>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="xl-ftr">
+    <span class="xl-ftr-stat"><span id="ftAccepted">0</span> accepted</span>
+    <div class="ftr-sep"></div>
+    <!-- <span class="xl-ftr-stat"><span id="ftRejected">0</span> rejected</span>
+    <div class="ftr-sep"></div> -->
+    <span class="xl-ftr-stat"><span id="ftPending">0</span> pending</span>
+    <div class="ftr-right">
+      <button class="fb">Download</button>
+      <button class="fb fb-sub" id="submitBtn2">Submit Review</button>
+    </div>
+  </div>
+
+  <!-- SELECTION TOAST -->
+  <div class="sel-toast" id="selToast">
+    <span id="toastTxt">3 cells selected</span>
+    <button onclick="bulkApprove()">Approve All</button>
+    <button onclick="bulkReject()">Reject All</button>
+    <button onclick="clearColSel()">Clear</button>
+  </div>
+
+  <!-- EDIT MODAL -->
+  <div class="modal-ov" id="modalOv" onclick="closeModalOv(event)">
+    <div class="modal" id="modal">
+      <div class="modal-hd">
+        <div>
+          <div class="modal-ttl" id="mTitle">Field Name</div>
+          <div class="modal-sub" id="mSub">NDC-001 · Reliance Retail</div>
+        </div>
+        <button class="modal-close" onclick="closeModal()">
+          <svg viewBox="0 0 24 24">
+            <line x1="18" y1="6" x2="6" y2="18" />
+            <line x1="6" y1="6" x2="18" y2="18" />
+          </svg>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div id="mConfPill"></div>
+        <div class="drw" id="mDataRows"></div>
+        <div class="ep">
+          <div class="ep-ttl">
+            <svg viewBox="0 0 24 24">
+              <path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7" />
+              <path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z" />
+            </svg>
+            Choose a value to accept
+          </div>
+          <div class="ep-opts" id="mEpOpts"></div>
+          <div class="man-sec" id="mManSec">
+            <input class="man-inp" id="mManInp" placeholder="Type the correct value…" oninput="liveP(this)" />
+            <div class="rea-lbl">Reason for manual entry</div>
+            <select class="rea-sel" onchange="handleR(this)">
+              <option value="">— Select a reason —</option>
+              <option value="rules">Rules not working</option>
+              <option value="partial">Partial information given by supplier</option>
+              <option value="incomplete">Incomplete information given by supplier</option>
+              <option value="custom">Custom reason…</option>
+            </select>
+            <div class="cust-wrap" style="display:none">
+              <textarea class="cust-ta" placeholder="Describe the issue in detail…"></textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-acts">
+        <button class="fa" onclick="closeModal()">Cancel</button>
+        <button class="fa f-ac" id="mAccept" onclick="modalAccept()">Save &amp; Approve</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ─── DATA ────────────────────────────────────────────────────────────────────
+    let FIELDS = [];
+    let NDCS = [];
+
+    // Load JSON data from sample folder
+    async function loadJsonData() {
+      const jsonFiles = ['sample/160.json', 'sample/161.json', 'sample/162.json'];
+      const jsonData = [];
+
+      for (const file of jsonFiles) {
+        try {
+          const response = await fetch(file);
+          if (response.ok) {
+            const data = await response.json();
+            jsonData.push(data);
+          }
+        } catch (e) {
+          console.error('Error loading', file, e);
+        }
+      }
+
+      if (jsonData.length === 0) {
+        console.error('No JSON files loaded');
+        return;
+      }
+
+      // Build FIELDS from first JSON's details array
+      // Exclude fields where pm_alert_required != null AND rule_version.version_rule_class == "Alert"
+      const firstData = jsonData[0];
+      if (firstData.details && firstData.details.length > 0) {
+        FIELDS = firstData.details
+          .filter(detail => !(detail.pm_alert_required != null && detail.rule_version?.version_rule_class === 'Alert'))
+          .map((detail, index) => {
+            // Generate a safe key from field_name
+            const key = detail.field_name.toLowerCase().replace(/[^a-z0-9]/g, '_');
+            // Determine confidence class based on confidence_score
+            const conf = Math.round((detail.confidence_score || 0) * 100);
+            let confCls = 'cp-m';
+            let confDot = 'cd-m';
+            if (conf >= 80) { confCls = 'cp-h'; confDot = 'cd-h'; }
+            else if (conf < 50) { confCls = 'cp-l'; confDot = 'cd-l'; }
+
+            return {
+              key: key,
+              label: detail.field_name,
+              conf: conf,
+              confCls: confCls,
+              confDot: confDot,
+              rule: detail.rule_version?.version || 'v1.0',
+              _index: index
+            };
+          });
+      }
+
+      // Build NDCS from all JSONs
+      NDCS = jsonData.map(data => {
+        const ndcNumber = data.ndc_number || data.doc_id;
+        const cells = {};
+
+        if (data.details && data.details.length > 0) {
+          data.details.forEach((detail, index) => {
+            // Skip Alert fields that have pm_alert_required
+            if (detail.pm_alert_required != null && detail.rule_version?.version_rule_class === 'Alert') {
+              return;
+            }
+            const key = detail.field_name.toLowerCase().replace(/[^a-z0-9]/g, '_');
+            cells[key] = {
+              ex: detail.extracted_values || '',
+              kg: detail.pharmacist_values || detail.extracted_values || '',
+              kgNote: detail.rule_version?.version_guidelines || '',
+              state: detail.status === 'Accepted' ? 'ac' : (detail.status === 'Rejected' ? 'rj' : 'pending')
+            };
+          });
+        }
+
+        return {
+          id: `NDC ${ndcNumber}`,
+          cells: cells
+        };
+      });
+
+      // Initialize state after loading data
+      initState();
+
+      // Update document header
+      if (firstData && firstData.vendor_name) {
+        document.getElementById('docVendor').textContent = firstData.vendor_name;
+      }
+      document.getElementById('docNdcCount').textContent = jsonData.length;
+
+      // Calculate average confidence
+      let totalConf = 0;
+      let count = 0;
+      jsonData.forEach(d => {
+        if (d.document_trust_score) {
+          totalConf += d.document_trust_score;
+          count++;
+        }
+      });
+      const avgConf = count > 0 ? Math.round(totalConf / count) : 0;
+      document.getElementById('docAvgConf').textContent = avgConf;
+
+      // Build PM Review items (where pm_alert_required != null)
+      const pmItems = [];
+      jsonData.forEach(data => {
+        const ndcNumber = data.ndc_number || data.doc_id;
+        if (data.details && data.details.length > 0) {
+          data.details.forEach(detail => {
+            if (detail.pm_alert_required != null) {
+              pmItems.push({
+                ndc: `NDC ${ndcNumber}`,
+                field: detail.field_name,
+                alert: detail.pm_alert_required,
+                extracted: detail.extracted_values,
+                detailId: detail.detail_id
+              });
+            }
+          });
+        }
+      });
+      renderPmReview(pmItems);
+
+      renderWorkTabs();
+      setActiveWorkTab('extracted', null);
+      buildTable();
+    }
+
+    function renderPmReview(items) {
+      const wrap = document.getElementById('pmReviewWrap');
+      const container = document.getElementById('pmReviewContainer');
+
+      if (items.length === 0) {
+        wrap.style.display = 'none';
+        return;
+      }
+
+      wrap.style.display = 'block';
+      wrap.querySelector('.pm-review-title').textContent = `Needs PM Review (${items.length})`;
+
+      // Group items by NDC
+      const groupedByNdc = {};
+      items.forEach(item => {
+        if (!groupedByNdc[item.ndc]) {
+          groupedByNdc[item.ndc] = [];
+        }
+        groupedByNdc[item.ndc].push(item);
+      });
+
+      // Render NDC cards
+      container.innerHTML = Object.keys(groupedByNdc).map(ndc => {
+        const ndcItems = groupedByNdc[ndc];
+        const fieldsHtml = ndcItems.map(item => `
+          <div class="pm-card">
+            <div class="pm-card-field">${item.field}</div>
+            <div class="pm-card-remark">${item.alert}</div>
+          </div>
+        `).join('');
+
+        return `
+          <div class="pm-ndc-card">
+            <div class="pm-ndc-header">${ndc}</div>
+            <div class="pm-fields-grid">
+              ${fieldsHtml}
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function initState() {
+      // Clear and reinitialize state
+      Object.keys(cellState).forEach(key => delete cellState[key]);
+      Object.keys(cellValue).forEach(key => delete cellValue[key]);
+      Object.keys(colSel).forEach(key => delete colSel[key]);
+
+      NDCS.forEach(n => {
+        cellState[n.id] = {};
+        cellValue[n.id] = {};
+        FIELDS.forEach(f => {
+          const cell = n.cells[f.key];
+          if (cell) {
+            cellState[n.id][f.key] = cell.state;
+            cellValue[n.id][f.key] = cell.state === 'rj' ? cell.ex : (cell.kg || cell.ex);
+          } else {
+            cellState[n.id][f.key] = 'pending';
+            cellValue[n.id][f.key] = '';
+          }
+        });
+      });
+
+      FIELDS.forEach(f => colSel[f.key] = new Set());
+    }
+
+    // ─── STATE ───────────────────────────────────────────────────────────────────
+    // cellState[ndcId][fieldKey] = 'pending'|'ac'|'rj'
+    // cellValue[ndcId][fieldKey] = accepted value string
+    const cellState = {};
+    const cellValue = {};
+    const colSel = {};
+
+    let modalCell = null; // {ndcId, fieldKey}
+    const CELL_CLICK_DELAY_MS = 220;
+    let pendingCellClick = null;
+    let activeWorkTab = { type: 'extracted', ndcId: null };
+
+    function renderWorkTabs() {
+      const host = document.getElementById('workTabs');
+      host.innerHTML = '';
+
+      const ext = document.createElement('button');
+      ext.className = 'work-tab active';
+      ext.textContent = 'Extracted Fields';
+      ext.addEventListener('click', () => setActiveWorkTab('extracted', null));
+      host.appendChild(ext);
+
+      NDCS.forEach(n => {
+        const b = document.createElement('button');
+        b.className = 'work-tab';
+        b.textContent = n.id;
+        b.dataset.ndcId = n.id;
+        b.addEventListener('click', () => setActiveWorkTab('ndc', n.id));
+        host.appendChild(b);
+      });
+    }
+
+    function setActiveWorkTab(type, ndcId) {
+      activeWorkTab = { type, ndcId };
+
+      document.querySelectorAll('.work-tab').forEach(btn => {
+        const isExtracted = type === 'extracted' && !btn.dataset.ndcId;
+        const isNdc = type === 'ndc' && btn.dataset.ndcId === ndcId;
+        btn.classList.toggle('active', isExtracted || isNdc);
+      });
+
+      const showExtracted = type === 'extracted';
+      document.getElementById('paneExtracted').classList.toggle('active', showExtracted);
+      document.getElementById('paneNdc').classList.toggle('active', !showExtracted);
+      document.querySelector('.prog-strip').style.display = showExtracted ? 'block' : 'none';
+      document.querySelector('.xl-ftr').style.display = showExtracted ? 'flex' : 'none';
+
+      // Load PDF for NDC tabs
+      if (type === 'ndc' && ndcId) {
+        document.getElementById('ndcPdfTitle').textContent = ndcId + ' PDF';
+        const pdfSelect = document.getElementById('ndcPdfSelect');
+        loadNdcPdf(pdfSelect.value);
+      }
+    }
+
+    let currentNdcPdfPath = '';
+    let currentNdcZoom = 'page-width';
+
+    function loadNdcPdf(pdfPath) {
+      currentNdcPdfPath = pdfPath;
+      const frame = document.getElementById('ndcPdfFrame');
+      frame.src = pdfPath + '#toolbar=0&navpanes=0&zoom=' + currentNdcZoom;
+    }
+
+    function onNdcPdfChange(select) {
+      loadNdcPdf(select.value);
+    }
+
+    function setNdcPdfZoom(zoom) {
+      currentNdcZoom = zoom;
+      if (currentNdcPdfPath) {
+        const frame = document.getElementById('ndcPdfFrame');
+        frame.src = currentNdcPdfPath + '#toolbar=0&navpanes=0&zoom=' + zoom;
+      }
+    }
+
+    function downloadNdcPdf() {
+      if (currentNdcPdfPath) {
+        const link = document.createElement('a');
+        link.href = currentNdcPdfPath;
+        link.download = currentNdcPdfPath.split('/').pop();
+        link.click();
+      }
+    }
+
+    // ─── BUILD TABLE ─────────────────────────────────────────────────────────────
+    function buildTable() {
+      const thead = document.getElementById('xlHead');
+      const tbody = document.getElementById('xlBody');
+      thead.innerHTML = ''; tbody.innerHTML = '';
+
+      // Header row
+      const tr = document.createElement('tr');
+
+      // NDC header cell
+      const thNdc = document.createElement('th');
+      thNdc.className = 'ndc-head';
+      thNdc.innerHTML = `<div class="th-inner"><div class="th-label">NDC</div></div>`;
+      tr.appendChild(thNdc);
+
+      FIELDS.forEach(f => {
+        const th = document.createElement('th');
+        th.dataset.field = f.key;
+        th.innerHTML = `<div class="th-inner">
+      <div class="th-ctrl">
+        <input type="checkbox" class="col-chk" id="chk_${f.key}" onchange="toggleColSel('${f.key}',this)" title="Select all ${f.label}"/>
+        <button class="col-approve" id="apv_${f.key}" onclick="approveCol('${f.key}')">✓ Approve</button>
+      </div>
+      <div class="th-label">${f.label}</div>
+      <div class="th-conf">${f.conf}% ts · <span style="font-family:var(--fm);color:var(--t3)">v${f.rule}</span></div>
+    </div>`;
+        tr.appendChild(th);
+      });
+      thead.appendChild(tr);
+
+      // Body rows
+      NDCS.forEach(n => {
+        const tr2 = document.createElement('tr');
+        tr2.dataset.ndc = n.id;
+
+        const tdNdc = document.createElement('td');
+        tdNdc.className = 'ndc-cell';
+        tdNdc.textContent = n.id;
+        tr2.appendChild(tdNdc);
+
+        FIELDS.forEach(f => {
+          const td = document.createElement('td');
+          td.dataset.ndc = n.id;
+          td.dataset.field = f.key;
+          updateTd(td, n.id, f.key);
+          td.addEventListener('click', () => handleCellClick(n.id, f.key, td));
+          td.addEventListener('dblclick', (e) => {
+            e.preventDefault();
+            handleCellDblClick(n.id, f.key);
+          });
+          tr2.appendChild(td);
+        });
+
+        tbody.appendChild(tr2);
+      });
+
+      updateProg();
+    }
+
+    function updateTd(td, ndcId, fieldKey) {
+      const state = cellState[ndcId][fieldKey];
+      const val = cellValue[ndcId][fieldKey];
+      const field = FIELDS.find(f => f.key === fieldKey);
+      const ndc = NDCS.find(n => n.id === ndcId);
+      const cell = ndc.cells[fieldKey];
+
+      // class
+      td.className = '';
+      if (colSel[fieldKey].has(ndcId)) td.classList.add('col-sel');
+      if (state === 'ac') td.classList.add('cell-ac');
+      else if (state === 'rj') td.classList.add('cell-rj');
+      else if (state === 'ed') td.classList.add('cell-ed');
+
+      // content
+      const dotCls = field.confDot;
+      let badge = '';
+      if (state === 'ac') badge = `<span class="cv-badge cv-ac">✓</span>`;
+      else if (state === 'rj') badge = `<span class="cv-badge cv-rj">✗</span>`;
+
+      const displayVal = state === 'rj' ? cell.ex : val;
+      td.innerHTML = `<div class="cv"><span class="conf-dot ${dotCls}"></span><span class="cv-txt" title="${displayVal}">${displayVal}</span>${badge}</div>`;
+    }
+
+    // ─── COLUMN SELECTION ────────────────────────────────────────────────────────
+    function toggleColSel(fieldKey, chk) {
+      const sel = colSel[fieldKey];
+      if (chk.checked) {
+        NDCS.forEach(n => sel.add(n.id));
+      } else {
+        sel.clear();
+      }
+      refreshColCells(fieldKey);
+      updateApproveBtn(fieldKey);
+      updateToast();
+    }
+
+    function handleCellClick(ndcId, fieldKey, td) {
+      if (pendingCellClick) clearTimeout(pendingCellClick);
+      pendingCellClick = setTimeout(() => {
+        toggleCellSel(ndcId, fieldKey, td);
+        pendingCellClick = null;
+      }, CELL_CLICK_DELAY_MS);
+    }
+
+    function handleCellDblClick(ndcId, fieldKey) {
+      if (pendingCellClick) {
+        clearTimeout(pendingCellClick);
+        pendingCellClick = null;
+      }
+      openModal(ndcId, fieldKey);
+    }
+
+    function toggleCellSel(ndcId, fieldKey, td) {
+      const sel = colSel[fieldKey];
+      if (sel.has(ndcId)) sel.delete(ndcId);
+      else sel.add(ndcId);
+      updateColChk(fieldKey);
+      updateApproveBtn(fieldKey);
+      updateTd(td, ndcId, fieldKey);
+      updateToast();
+    }
+
+    function refreshColCells(fieldKey) {
+      document.querySelectorAll(`td[data-field="${fieldKey}"]`).forEach(td => {
+        updateTd(td, td.dataset.ndc, fieldKey);
+      });
+    }
+
+    function updateColChk(fieldKey) {
+      const chk = document.getElementById('chk_' + fieldKey);
+      const sel = colSel[fieldKey];
+      const total = NDCS.length;
+      if (sel.size === 0) { chk.checked = false; chk.indeterminate = false; }
+      else if (sel.size === total) { chk.checked = true; chk.indeterminate = false; }
+      else { chk.checked = false; chk.indeterminate = true; }
+    }
+
+    function updateApproveBtn(fieldKey) {
+      const btn = document.getElementById('apv_' + fieldKey);
+      if (colSel[fieldKey].size > 0) btn.classList.add('visible');
+      else btn.classList.remove('visible');
+    }
+
+    function approveCol(fieldKey) {
+      colSel[fieldKey].forEach(ndcId => {
+        cellState[ndcId][fieldKey] = 'ac';
+      });
+      colSel[fieldKey].clear();
+      updateColChk(fieldKey);
+      updateApproveBtn(fieldKey);
+      refreshColCells(fieldKey);
+      updateProg();
+      updateToast();
+    }
+
+    function bulkApprove() {
+      // approve all selected across all columns
+      FIELDS.forEach(f => {
+        colSel[f.key].forEach(ndcId => { cellState[ndcId][f.key] = 'ac'; });
+        colSel[f.key].clear();
+        updateColChk(f.key);
+        updateApproveBtn(f.key);
+        refreshColCells(f.key);
+      });
+      updateProg();
+      updateToast();
+    }
+
+    function bulkReject() {
+      FIELDS.forEach(f => {
+        colSel[f.key].forEach(ndcId => { cellState[ndcId][f.key] = 'rj'; });
+        colSel[f.key].clear();
+        updateColChk(f.key);
+        updateApproveBtn(f.key);
+        refreshColCells(f.key);
+      });
+      updateProg();
+      updateToast();
+    }
+
+    function clearColSel() {
+      FIELDS.forEach(f => {
+        colSel[f.key].clear();
+        updateColChk(f.key);
+        updateApproveBtn(f.key);
+        refreshColCells(f.key);
+      });
+      updateToast();
+    }
+
+    function updateToast() {
+      let total = 0;
+      FIELDS.forEach(f => total += colSel[f.key].size);
+      const t = document.getElementById('selToast');
+      if (total > 0) {
+        t.classList.add('show');
+        document.getElementById('toastTxt').textContent = `${total} cell${total > 1 ? 's' : ''} selected`;
+      } else {
+        t.classList.remove('show');
+      }
+    }
+
+    // ─── PROGRESS ────────────────────────────────────────────────────────────────
+    function updateProg() {
+      let total = 0, done = 0, ac = 0, rj = 0;
+      NDCS.forEach(n => {
+        FIELDS.forEach(f => {
+          total++;
+          const s = cellState[n.id][f.key];
+          if (s === 'ac') { done++; ac++; }
+          else if (s === 'rj') { done++; rj++; }
+        });
+      });
+      const pct = Math.round(done / total * 100);
+      document.getElementById('progFill').style.width = pct + '%';
+      document.getElementById('hdrProg').textContent = `${done} / ${total} fields reviewed`;
+      document.getElementById('ftAccepted').textContent = ac;
+      document.getElementById('ftRejected').textContent = rj;
+      document.getElementById('ftPending').textContent = total - done;
+    }
+
+    // ─── MODAL ───────────────────────────────────────────────────────────────────
+    function openModal(ndcId, fieldKey) {
+      modalCell = { ndcId, fieldKey };
+      const field = FIELDS.find(f => f.key === fieldKey);
+      const ndc = NDCS.find(n => n.id === ndcId);
+      const cell = ndc.cells[fieldKey];
+
+      document.getElementById('mTitle').textContent = field.label;
+      document.getElementById('mSub').textContent = `${ndcId} · ${ndc.id}`;
+
+      // Confidence pill
+      const pill = document.getElementById('mConfPill');
+      pill.innerHTML = `<div class="cpil ${field.confCls}"><div class="cp-d"></div>${field.conf}% Trust Score</div>`;
+
+      // Data rows
+      const rows = document.getElementById('mDataRows');
+      rows.innerHTML = `
+    <div class="dr">
+      <div class="dr-ic ic-ex">
+        <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+      </div>
+      <div class="dr-b">
+        <div class="dr-tp">Extracted Value</div>
+        <div class="dr-v ${cell.state === 'rj' ? 'sk' : ''}">${cell.ex}</div>
+      </div>
+    </div>    
+    <div class="dr">
+      <div class="dr-ic ic-rv">
+        <svg viewBox="0 0 24 24"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+      </div>
+      <div class="dr-b">
+        <div class="dr-tp">Rule Version</div>
+        <div class="dr-v">${field.rule}</div>
+      </div>
+    </div>
+  `;
+
+      // EP options
+      const opts = document.getElementById('mEpOpts');
+      opts.innerHTML = `
+    <div class="ep-opt ${cellValue[ndcId][fieldKey] === cell.ex ? 'sel' : ''}" onclick="mSelOpt(this)" data-val="${cell.ex}">
+      <div class="eo-rd"><div class="eo-dt"></div></div>
+      <div class="eo-b"><div class="eo-lbl">Accept extracted value</div><div class="eo-val">${cell.ex}</div></div>
+    </div>    
+    <div class="ep-opt" onclick="mSelOpt(this)" data-type="manual">
+      <div class="eo-rd"><div class="eo-dt"></div></div>
+      <div class="eo-b"><div class="eo-lbl">Manually enter value</div><div class="eo-val mpv">—</div></div>
+    </div>
+  `;
+
+      // Show manual if neither matched
+      document.getElementById('mManSec').style.display = 'none';
+      document.getElementById('mManInp').value = '';
+
+      document.getElementById('modalOv').classList.add('open');
+    }
+
+    function mSelOpt(el) {
+      el.closest('.ep-opts').querySelectorAll('.ep-opt').forEach(o => o.classList.remove('sel'));
+      el.classList.add('sel');
+      document.getElementById('mManSec').style.display = el.dataset.type === 'manual' ? 'block' : 'none';
+    }
+
+    function getModalSelectedVal() {
+      const sel = document.getElementById('mEpOpts').querySelector('.ep-opt.sel');
+      if (!sel) return null;
+      if (sel.dataset.type === 'manual') return document.getElementById('mManInp').value.trim() || null;
+      return sel.dataset.val;
+    }
+
+    function modalAccept() {
+      if (!modalCell) return;
+      const v = getModalSelectedVal();
+      if (v !== null) cellValue[modalCell.ndcId][modalCell.fieldKey] = v;
+      cellState[modalCell.ndcId][modalCell.fieldKey] = 'ac';
+      refreshCell(modalCell.ndcId, modalCell.fieldKey);
+      updateProg();
+      closeModal();
+    }
+
+    function modalEdit() {
+      // toggle manual section
+      const ms = document.getElementById('mManSec');
+      ms.style.display = ms.style.display === 'block' ? 'none' : 'block';
+      // select manual option
+      document.getElementById('mEpOpts').querySelectorAll('.ep-opt').forEach((o, i) => {
+        if (i === 2) { o.classList.add('sel'); } else { o.classList.remove('sel'); }
+      });
+    }
+
+    function modalReject() {
+      if (!modalCell) return;
+      cellState[modalCell.ndcId][modalCell.fieldKey] = 'rj';
+      refreshCell(modalCell.ndcId, modalCell.fieldKey);
+      updateProg();
+      closeModal();
+    }
+
+    function refreshCell(ndcId, fieldKey) {
+      const td = document.querySelector(`td[data-ndc="${ndcId}"][data-field="${fieldKey}"]`);
+      if (td) updateTd(td, ndcId, fieldKey);
+    }
+
+    function closeModal() { document.getElementById('modalOv').classList.remove('open'); modalCell = null; }
+    function closeModalOv(e) { if (e.target === document.getElementById('modalOv')) closeModal(); }
+
+    function liveP(inp) { const p = inp.closest('.man-sec').querySelector('.mpv'); if (p) p.textContent = inp.value || '—'; }
+    function handleR(sel) { sel.closest('.man-sec').querySelector('.cust-wrap').style.display = sel.value === 'custom' ? 'block' : 'none'; }
+
+    // ─── THEME ───────────────────────────────────────────────────────────────────
+    const SUN = 'M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42M12 7a5 5 0 100 10A5 5 0 0012 7z';
+    const MOON = 'M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z';
+    let dark = false;
+    document.getElementById('tBtn').addEventListener('click', () => {
+      dark = !dark;
+      document.body.dataset.theme = dark ? 'dark' : 'light';
+      document.getElementById('tIco').innerHTML = dark ? `<path d="${SUN}"/>` : `<path d="${MOON}"/>`;
+    });
+
+    document.querySelectorAll('.n-tab').forEach(t => t.addEventListener('click', function () {
+      document.querySelectorAll('.n-tab').forEach(x => x.classList.remove('active'));
+      this.classList.add('active');
+    }));
+
+    // ─── INIT ────────────────────────────────────────────────────────────────────
+    loadJsonData();
+  </script>
+</body>
+
+</html>

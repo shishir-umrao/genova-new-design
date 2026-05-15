@@ -1,0 +1,2120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Cases — McKesson Document Intelligence</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=DM+Mono:wght@400;500&display=swap"
+    rel="stylesheet" />
+
+  <style>
+    :root {
+      --mk-blue: #174EA0;
+      --mk-blue-dk: #0f3470;
+      --mk-blue-lt: #dbe8f8;
+      --mk-blue-pale: #eef4fc;
+      --mk-or: #F29130;
+      --mk-or-dk: #c4711a;
+      --mk-or-lt: #fde9cf;
+      --mk-or-pale: #fff5eb;
+      --bg: #f4f6fa;
+      --bg-p: #ffffff;
+      --bg-c: #ffffff;
+      --bg-h: #eef2f9;
+      --bdr: #e2e8f0;
+      --bdr-m: #c8d4e6;
+      --t1: #0d1a2e;
+      --t2: #475872;
+      --t3: #94a3b8;
+      --ac: #174EA0;
+      --ac-lt: #dbe8f8;
+      --ac-pale: #eef4fc;
+      --gr: #16a34a;
+      --gr-lt: #dcfce7;
+      --gr-pale: #f0fdf4;
+      --am: #b45309;
+      --am-lt: #fde68a;
+      --am-pale: #fffbeb;
+      --rd: #dc2626;
+      --rd-lt: #fecaca;
+      --rd-pale: #fef2f2;
+      --pu: #7c3aed;
+      --pu-lt: #ede9fe;
+      --pu-pale: #f5f3ff;
+      --cy: #0891b2;
+      --cy-lt: #cffafe;
+      --cy-pale: #ecfeff;
+      --sh-md: 0 4px 14px rgba(14, 30, 60, .1), 0 2px 5px rgba(14, 30, 60, .06);
+      --r: 10px;
+      --rs: 6px;
+      --fh: 'DM Sans', sans-serif;
+      --fb: 'DM Sans', sans-serif;
+      --fm: 'DM Mono', monospace;
+    }
+
+    [data-theme=dark] {
+      --bg: #0c0e14;
+      --bg-p: #111520;
+      --bg-c: #181c2a;
+      --bg-h: #1d2235;
+      --bdr: #232a3e;
+      --bdr-m: #2c3650;
+      --t1: #e8edf8;
+      --t2: #8090b0;
+      --t3: #44526a;
+      --ac: #4f8ef7;
+      --ac-lt: #172040;
+      --ac-pale: #0e1528;
+      --gr: #34d474;
+      --gr-lt: #0c2e1a;
+      --gr-pale: #081810;
+      --am: #fbbf24;
+      --am-lt: #322208;
+      --am-pale: #1e1404;
+      --rd: #f87171;
+      --rd-lt: #320c0c;
+      --rd-pale: #1e0808;
+      --pu: #a78bfa;
+      --pu-lt: #2e1065;
+      --pu-pale: #1a0a3d;
+      --cy: #22d3ee;
+      --cy-lt: #083344;
+      --cy-pale: #042230;
+      --mk-blue-lt: #172040;
+      --mk-blue-pale: #0e1528;
+      --mk-or-lt: #3a2008;
+      --mk-or-pale: #211204;
+      --sh-md: 0 4px 14px rgba(0, 0, 0, .45);
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0
+    }
+
+    html,
+    body {
+      height: 100%
+    }
+
+    body {
+      font-family: var(--fb);
+      background: var(--bg);
+      color: var(--t1);
+      font-size: 14px;
+      line-height: 1.5;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: background .2s, color .2s
+    }
+
+    /* NAV */
+    .nav {
+      height: 52px;
+      background: var(--mk-blue);
+      display: flex;
+      align-items: center;
+      padding: 0 16px;
+      flex-shrink: 0;
+      box-shadow: 0 2px 8px rgba(23, 78, 160, .35);
+      z-index: 20
+    }
+
+    .n-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-right: 18px
+    }
+
+    .n-mark {
+      width: 30px;
+      height: 30px;
+      border-radius: 7px;
+      overflow: hidden;
+      flex-shrink: 0
+    }
+
+    .n-mark svg {
+      display: block
+    }
+
+    .n-txt {
+      font-family: var(--fh);
+      font-size: 15px;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: -.02em;
+      white-space: nowrap
+    }
+
+    .n-txt span {
+      color: var(--mk-or)
+    }
+
+    .n-div {
+      width: 1px;
+      height: 18px;
+      background: rgba(255, 255, 255, .22);
+      margin: 0 14px;
+      flex-shrink: 0
+    }
+
+    .n-prod {
+      font-size: 11px;
+      color: rgba(255, 255, 255, .65);
+      letter-spacing: .04em;
+      font-weight: 500;
+      white-space: nowrap
+    }
+
+    .n-tabs {
+      display: flex;
+      align-items: center;
+      gap: 2px;
+      flex: 1;
+      margin-left: 18px
+    }
+
+    .n-tab {
+      padding: 5px 12px;
+      font-size: 12px;
+      color: rgba(255, 255, 255, .65);
+      background: none;
+      border: none;
+      border-radius: var(--rs);
+      cursor: pointer;
+      font-family: var(--fb);
+      font-weight: 500;
+      transition: all .15s
+    }
+
+    .n-tab:hover {
+      color: #fff;
+      background: rgba(255, 255, 255, .12)
+    }
+
+    .n-tab.active {
+      color: #fff;
+      background: rgba(255, 255, 255, .18)
+    }
+
+    .n-right {
+      display: flex;
+      align-items: center;
+      gap: 8px
+    }
+
+    .n-badge {
+      background: var(--mk-or);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 99px;
+      font-family: var(--fm)
+    }
+
+    .t-btn {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, .15);
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      transition: background .15s;
+      flex-shrink: 0
+    }
+
+    .t-btn:hover {
+      background: rgba(255, 255, 255, .25)
+    }
+
+    .t-btn svg {
+      width: 15px;
+      height: 15px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2
+    }
+
+    .n-av {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: var(--mk-or);
+      font-size: 10px;
+      font-weight: 700;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--fh);
+      border: 2px solid rgba(255, 255, 255, .3);
+      flex-shrink: 0
+    }
+
+    .pg {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      overflow: hidden
+    }
+
+    /* TOOLBAR */
+    .tb {
+      padding: 13px 24px;
+      background: var(--bg-p);
+      border-bottom: 1px solid var(--bdr);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-shrink: 0
+    }
+
+    .tb-l {
+      display: flex;
+      align-items: center;
+      gap: 16px
+    }
+
+    .pg-ttl {
+      font-family: var(--fh);
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--t1);
+      letter-spacing: -.02em
+    }
+
+    .pg-sub {
+      font-size: 11px;
+      color: var(--t3);
+      font-family: var(--fm);
+      margin-top: 1px
+    }
+
+    .tb-stats {
+      display: flex;
+      gap: 8px
+    }
+
+    .ts {
+      padding: 3px 10px;
+      border-radius: 99px;
+      font-size: 11px;
+      font-family: var(--fm);
+      font-weight: 500;
+      border: 1px solid transparent
+    }
+
+    .ts-proc {
+      background: var(--pu-pale);
+      color: var(--pu);
+      border-color: var(--pu-lt)
+    }
+
+    .ts-rdy {
+      background: var(--am-pale);
+      color: var(--am);
+      border-color: var(--am-lt)
+    }
+
+    .ts-rev {
+      background: var(--ac-pale);
+      color: var(--ac);
+      border-color: var(--ac-lt)
+    }
+
+    .ts-done {
+      background: var(--gr-pale);
+      color: var(--gr);
+      border-color: var(--gr-lt)
+    }
+
+    .tb-r {
+      display: flex;
+      align-items: center;
+      gap: 8px
+    }
+
+    .srch {
+      position: relative
+    }
+
+    .srch-ic {
+      position: absolute;
+      left: 9px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--t3);
+      pointer-events: none
+    }
+
+    .srch-ic svg {
+      width: 12px;
+      height: 12px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.8
+    }
+
+    .srch-inp {
+      padding: 7px 9px 7px 28px;
+      background: var(--bg);
+      border: 1px solid var(--bdr);
+      border-radius: var(--rs);
+      color: var(--t1);
+      font-size: 12px;
+      font-family: var(--fb);
+      outline: none;
+      width: 200px;
+      transition: border-color .15s
+    }
+
+    .srch-inp::placeholder {
+      color: var(--t3)
+    }
+
+    .srch-inp:focus {
+      border-color: var(--ac)
+    }
+
+    .btn {
+      padding: 7px 12px;
+      font-size: 12px;
+      font-weight: 500;
+      font-family: var(--fb);
+      border-radius: var(--rs);
+      border: 1px solid var(--bdr-m);
+      background: var(--bg-c);
+      color: var(--t2);
+      cursor: pointer;
+      transition: all .15s;
+      display: flex;
+      align-items: center;
+      gap: 5px
+    }
+
+    .btn svg {
+      width: 12px;
+      height: 12px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.8
+    }
+
+    .btn:hover {
+      color: var(--t1);
+      background: var(--bg-h)
+    }
+
+    .btn-pri {
+      background: var(--mk-blue);
+      color: #fff;
+      border-color: var(--mk-blue)
+    }
+
+    .btn-pri:hover {
+      background: var(--mk-blue-dk);
+      border-color: var(--mk-blue-dk)
+    }
+
+    /* FILTERS */
+    .fc-row {
+      padding: 10px 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      border-bottom: 1px solid var(--bdr);
+      background: var(--bg-p);
+      flex-shrink: 0;
+      flex-wrap: wrap
+    }
+
+    .fc-lbl {
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--t3);
+      white-space: nowrap
+    }
+
+    .filter-group {
+      display: flex;
+      align-items: center;
+      gap: 6px
+    }
+
+    /* Custom Select/Dropdown */
+    .custom-select {
+      position: relative;
+      min-width: 140px
+    }
+
+    .select-trigger {
+      padding: 6px 28px 6px 10px;
+      font-size: 12px;
+      border: 1px solid var(--bdr);
+      border-radius: var(--rs);
+      background: var(--bg-c);
+      color: var(--t1);
+      cursor: pointer;
+      font-family: var(--fb);
+      white-space: nowrap;
+      position: relative
+    }
+
+    .select-trigger:hover {
+      border-color: var(--bdr-m)
+    }
+
+    .select-trigger::after {
+      content: '';
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 0;
+      height: 0;
+      border-left: 4px solid transparent;
+      border-right: 4px solid transparent;
+      border-top: 4px solid var(--t2)
+    }
+
+    .select-dropdown {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      margin-top: 4px;
+      background: var(--bg-p);
+      border: 1px solid var(--bdr);
+      border-radius: var(--rs);
+      box-shadow: var(--sh-md);
+      z-index: 100;
+      display: none;
+      max-height: 250px;
+      overflow-y: auto
+    }
+
+    .custom-select.open .select-dropdown {
+      display: block
+    }
+
+    .select-option {
+      padding: 8px 10px;
+      font-size: 12px;
+      color: var(--t2);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: background .15s
+    }
+
+    .select-option:hover {
+      background: var(--bg-h)
+    }
+
+    .select-option input[type="checkbox"] {
+      margin: 0;
+      cursor: pointer
+    }
+
+    .select-option.selected {
+      color: var(--ac);
+      background: var(--ac-pale)
+    }
+
+    /* Date Range Filter */
+    .date-range {
+      display: flex;
+      align-items: center;
+      gap: 6px
+    }
+
+    .date-input {
+      padding: 6px 10px;
+      font-size: 12px;
+      border: 1px solid var(--bdr);
+      border-radius: var(--rs);
+      background: var(--bg-c);
+      color: var(--t1);
+      font-family: var(--fb);
+      outline: none;
+      width: 115px
+    }
+
+    .date-input:focus {
+      border-color: var(--ac)
+    }
+
+    .date-sep {
+      color: var(--t3);
+      font-size: 11px
+    }
+
+    /* Clear Filters Button */
+    .clear-filters {
+      padding: 6px 12px;
+      font-size: 11px;
+      color: var(--t2);
+      background: transparent;
+      border: 1px solid var(--bdr);
+      border-radius: var(--rs);
+      cursor: pointer;
+      font-family: var(--fb);
+      transition: all .15s
+    }
+
+    .clear-filters:hover {
+      color: var(--ac);
+      border-color: var(--ac-lt);
+      background: var(--ac-pale)
+    }
+
+    .fc-sep {
+      width: 1px;
+      height: 14px;
+      background: var(--bdr);
+      margin: 0 2px
+    }
+
+    /* SCROLLABLE CONTENT */
+    .content {
+      flex: 1;
+      overflow-y: auto;
+      padding: 20px 24px;
+      flex-direction: column;
+      gap: 12px
+    }
+
+    .content::-webkit-scrollbar {
+      width: 4px
+    }
+
+    .content::-webkit-scrollbar-thumb {
+      background: var(--bdr-m);
+      border-radius: 99px
+    }
+
+    /* CASE CARD — no shadow */
+    .case-card {
+      background: var(--bg-p);
+      border: 1px solid var(--bdr);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: border-color .15s;
+      margin-bottom: 12px;
+    }
+
+    .case-card:hover {
+      border-color: var(--bdr-m)
+    }
+
+    .case-hd {
+      padding: 14px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      user-select: none;
+      transition: background .15s;
+      border-bottom: 1px solid transparent
+    }
+
+    .case-hd:hover {
+      background: var(--bg-h)
+    }
+
+    .case-card.open .case-hd {
+      border-bottom-color: var(--bdr)
+    }
+
+    .case-hd-l {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+      flex: 1
+    }
+
+    .caret {
+      width: 16px;
+      height: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--t3);
+      transition: transform .2s;
+      flex-shrink: 0
+    }
+
+    .caret svg {
+      width: 12px;
+      height: 12px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2
+    }
+
+    .case-card.open .caret {
+      transform: rotate(90deg)
+    }
+
+    .case-ic {
+      width: 34px;
+      height: 34px;
+      background: var(--ac-pale);
+      border: 1px solid var(--ac-lt);
+      border-radius: 7px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0
+    }
+
+    .case-ic svg {
+      width: 15px;
+      height: 15px;
+      fill: none;
+      stroke: var(--ac);
+      stroke-width: 1.8
+    }
+
+    .case-id {
+      font-family: var(--fh);
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--t1);
+      letter-spacing: -.01em
+    }
+
+    .case-meta {
+      font-size: 10px;
+      color: var(--t3);
+      font-family: var(--fm);
+      margin-top: 1px
+    }
+
+    .case-hd-r {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0
+    }
+
+    .case-pills {
+      display: flex;
+      gap: 5px
+    }
+
+    .cpill {
+      padding: 3px 9px;
+      font-size: 10px;
+      font-family: var(--fm);
+      font-weight: 600;
+      border-radius: 99px;
+      border: 1px solid transparent;
+      white-space: nowrap
+    }
+
+    .cp-proc {
+      background: var(--pu-pale);
+      color: var(--pu);
+      border-color: var(--pu-lt)
+    }
+
+    .cp-rdy {
+      background: var(--am-pale);
+      color: var(--am);
+      border-color: var(--am-lt)
+    }
+
+    .cp-rev {
+      background: var(--ac-pale);
+      color: var(--ac);
+      border-color: var(--ac-lt)
+    }
+
+    .cp-done {
+      background: var(--gr-pale);
+      color: var(--gr);
+      border-color: var(--gr-lt)
+    }
+
+    .cp-err {
+      background: var(--rd-pale);
+      color: var(--rd);
+      border-color: var(--rd-lt)
+    }
+
+    .case-progress {
+      display: flex;
+      align-items: center;
+      gap: 7px
+    }
+
+    .case-pbar {
+      width: 72px;
+      height: 4px;
+      background: var(--bdr);
+      border-radius: 99px;
+      overflow: hidden
+    }
+
+    .case-pfill {
+      height: 100%;
+      border-radius: 99px;
+      background: linear-gradient(90deg, var(--mk-blue), var(--mk-or));
+      transition: width .4s ease
+    }
+
+    .case-pct {
+      font-size: 10px;
+      font-family: var(--fm);
+      color: var(--t3);
+      min-width: 26px;
+      text-align: right
+    }
+
+    /* CASE ACTIONS */
+    .case-acts {
+      display: flex;
+      align-items: center;
+      gap: 4px
+    }
+
+    .ca-btn {
+      height: 28px;
+      padding: 0 10px;
+      border-radius: var(--rs);
+      font-size: 11px;
+      font-weight: 500;
+      font-family: var(--fb);
+      border: 1px solid var(--bdr);
+      background: var(--bg-c);
+      color: var(--t2);
+      cursor: pointer;
+      transition: all .15s;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      white-space: nowrap
+    }
+
+    .ca-btn svg {
+      width: 11px;
+      height: 11px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2;
+      flex-shrink: 0
+    }
+
+    .ca-btn:hover {
+      border-color: var(--bdr-m);
+      color: var(--t1);
+      background: var(--bg-h)
+    }
+
+    .ca-btn.ab-ps {
+      border-color: var(--pu-lt);
+      color: var(--pu);
+      background: var(--pu-pale)
+    }
+
+    .ca-btn.ab-ps:hover {
+      background: var(--pu-lt)
+    }
+
+    .ca-btn.ab-rs {
+      border-color: var(--gr-lt);
+      color: var(--gr);
+      background: var(--gr-pale)
+    }
+
+    .ca-btn.ab-rs:hover {
+      background: var(--gr-lt)
+    }
+
+    .ca-btn.ab-rw {
+      border-color: var(--am-lt);
+      color: var(--am);
+      background: var(--am-pale)
+    }
+
+    .ca-btn.ab-rw:hover {
+      background: var(--am-lt)
+    }
+
+    .ca-btn.ab-rv {
+      border-color: var(--ac-lt);
+      color: var(--ac);
+      background: var(--ac-pale);
+      font-weight: 600
+    }
+
+    .ca-btn.ab-rv:hover {
+      background: var(--ac-lt)
+    }
+
+    .ca-del {
+      width: 28px;
+      height: 28px;
+      border-radius: var(--rs);
+      border: 1px solid var(--rd-lt);
+      background: var(--rd-pale);
+      color: var(--rd);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: all .15s;
+      flex-shrink: 0
+    }
+
+    .ca-del svg {
+      width: 11px;
+      height: 11px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2
+    }
+
+    .ca-del:hover {
+      border-color: var(--rd-lt);
+      color: var(--rd);
+      background: var(--rd-pale)
+    }
+
+    /* NDC Delete Button */
+    .ndc-del {
+      width: 24px;
+      height: 24px;
+      border-radius: var(--rs);
+      border: 1px solid var(--rd-lt);
+      background: var(--rd-pale);
+      color: var(--rd);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: all .15s;
+      flex-shrink: 0
+    }
+
+    .ndc-del svg {
+      width: 12px;
+      height: 12px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2
+    }
+
+    .ndc-del:hover {
+      border-color: var(--rd);
+      background: var(--rd-lt)
+    }
+
+    .ndc-actions {
+      text-align: right
+    }
+
+    /* NDC TABLE */
+    .ndc-wrap {
+      display: none
+    }
+
+    .case-card.open .ndc-wrap {
+      display: block
+    }
+
+    .ndc-tbl {
+      width: 100%;
+      border-collapse: collapse
+    }
+
+    .ndc-tbl thead tr {
+      border-bottom: 1px solid var(--bdr)
+    }
+
+    .ndc-tbl thead th {
+      padding: 7px 14px;
+      font-size: 9px;
+      font-weight: 700;
+      color: var(--t3);
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      font-family: var(--fh);
+      text-align: left;
+      background: var(--bg)
+    }
+
+    .ndc-tbl thead th:first-child {
+      padding-left: 18px
+    }
+
+    .ndc-row {
+      border-bottom: 1px solid var(--bdr);
+      transition: background .12s
+    }
+
+    .ndc-row:last-child {
+      border-bottom: none
+    }
+
+    .ndc-row:hover {
+      background: var(--bg-h)
+    }
+
+    .ndc-row td {
+      padding: 10px 14px;
+      vertical-align: middle
+    }
+
+    .ndc-row td:first-child {
+      padding-left: 18px
+    }
+
+    .ndc-n {
+      font-family: var(--fh);
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--t1)
+    }
+
+    .ndc-s {
+      font-size: 10px;
+      color: var(--t3);
+      font-family: var(--fm);
+      margin-top: 2px
+    }
+
+    .ndc-prod {
+      font-size: 11px;
+      color: var(--t2);
+      font-family: var(--fm);
+      font-weight: 500
+    }
+
+    .sbdg {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 3px 9px;
+      font-size: 10px;
+      font-family: var(--fm);
+      font-weight: 600;
+      border-radius: 99px;
+      border: 1px solid transparent
+    }
+
+    .sbdg-dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        opacity: 1
+      }
+
+      50% {
+        opacity: .4
+      }
+    }
+
+    .sbdg.s-proc .sbdg-dot {
+      background: var(--pu)
+    }
+
+    .sbdg.s-proc {
+      background: var(--pu-pale);
+      color: var(--pu);
+      border-color: var(--pu-lt);
+      animation: pulse 1.4s ease infinite
+    }
+
+    .sbdg.s-extr .sbdg-dot {
+      background: var(--cy)
+    }
+
+    .sbdg.s-extr {
+      background: var(--cy-pale);
+      color: var(--cy);
+      border-color: var(--cy-lt);
+      animation: pulse 1.4s ease infinite
+    }
+
+    .sbdg.s-vali .sbdg-dot {
+      background: var(--mk-or)
+    }
+
+    .sbdg.s-vali {
+      background: var(--mk-or-pale);
+      color: var(--mk-or);
+      border-color: var(--mk-or-lt);
+      animation: pulse 1.4s ease infinite
+    }
+
+    .sbdg.s-rdy {
+      background: var(--am-pale);
+      color: var(--am);
+      border-color: var(--am-lt)
+    }
+
+    .sbdg.s-rdy .sbdg-dot {
+      background: var(--am)
+    }
+
+    .sbdg.s-ur {
+      background: var(--ac-pale);
+      color: var(--ac);
+      border-color: var(--ac-lt)
+    }
+
+    .sbdg.s-ur .sbdg-dot {
+      background: var(--ac)
+    }
+
+    .sbdg.s-done {
+      background: var(--gr-pale);
+      color: var(--gr);
+      border-color: var(--gr-lt)
+    }
+
+    .sbdg.s-done .sbdg-dot {
+      background: var(--gr)
+    }
+
+    .sbdg.s-err {
+      background: var(--rd-pale);
+      color: var(--rd);
+      border-color: var(--rd-lt)
+    }
+
+    .sbdg.s-err .sbdg-dot {
+      background: var(--rd)
+    }
+
+    .sbdg.s-paus {
+      background: var(--bg-h);
+      color: var(--t2);
+      border-color: var(--bdr-m)
+    }
+
+    .sbdg.s-paus .sbdg-dot {
+      background: var(--t3)
+    }
+
+    /* PROGRESS */
+    .prog-cell {
+      display: flex;
+      align-items: center;
+      gap: 6px
+    }
+
+    .prog-bar {
+      width: 56px;
+      height: 3px;
+      background: var(--bdr);
+      border-radius: 99px;
+      overflow: hidden;
+      flex-shrink: 0
+    }
+
+    .prog-fill {
+      height: 100%;
+      border-radius: 99px
+    }
+
+    .pf-done {
+      background: var(--gr)
+    }
+
+    .pf-act {
+      background: linear-gradient(90deg, var(--mk-blue), var(--mk-or))
+    }
+
+    .pf-err {
+      background: var(--rd)
+    }
+
+    .prog-pct {
+      font-size: 10px;
+      font-family: var(--fm);
+      color: var(--t3)
+    }
+
+    /* MODAL */
+    .overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, .35);
+      z-index: 100;
+      display: none;
+      align-items: center;
+      justify-content: center
+    }
+
+    .overlay.show {
+      display: flex
+    }
+
+    .modal {
+      background: var(--bg-p);
+      border: 1px solid var(--bdr);
+      border-radius: 12px;
+      padding: 22px 24px;
+      width: 360px;
+      box-shadow: var(--sh-md);
+      animation: ms .18s ease
+    }
+
+    @keyframes ms {
+      from {
+        opacity: 0;
+        transform: scale(.95)
+      }
+
+      to {
+        opacity: 1;
+        transform: scale(1)
+      }
+    }
+
+    .modal-ttl {
+      font-family: var(--fh);
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--t1);
+      margin-bottom: 6px
+    }
+
+    .modal-body {
+      font-size: 12px;
+      color: var(--t2);
+      line-height: 1.6;
+      margin-bottom: 18px
+    }
+
+    .modal-body strong {
+      color: var(--rd)
+    }
+
+    .modal-ftr {
+      display: flex;
+      gap: 8px;
+      justify-content: flex-end
+    }
+
+    .mb {
+      padding: 7px 14px;
+      font-size: 12px;
+      font-weight: 600;
+      font-family: var(--fb);
+      border-radius: var(--rs);
+      cursor: pointer;
+      border: 1px solid;
+      transition: all .15s
+    }
+
+    .mb-cn {
+      border-color: var(--bdr-m);
+      background: var(--bg-c);
+      color: var(--t2)
+    }
+
+    .mb-cn:hover {
+      background: var(--bg-h)
+    }
+
+    .mb-del {
+      border-color: var(--rd);
+      background: var(--rd);
+      color: #fff
+    }
+
+    .mb-del:hover {
+      background: #b91c1c;
+      border-color: #b91c1c
+    }
+
+    /* TOAST */
+    .toast {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--t1);
+      color: var(--bg-p);
+      font-size: 12px;
+      padding: 9px 16px;
+      border-radius: var(--rs);
+      z-index: 200;
+      display: none
+    }
+
+    .toast.show {
+      display: block
+    }
+
+    @keyframes fu {
+      from {
+        opacity: 0;
+        transform: translateY(8px)
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0)
+      }
+    }
+
+    .case-card {
+      animation: fu .22s ease both
+    }
+
+    .case-card:nth-child(1) {
+      animation-delay: .04s
+    }
+
+    .case-card:nth-child(2) {
+      animation-delay: .09s
+    }
+
+    .case-card:nth-child(3) {
+      animation-delay: .14s
+    }
+
+    .case-card:nth-child(4) {
+      animation-delay: .19s
+    }
+
+    .case-card:nth-child(5) {
+      animation-delay: .24s
+    }
+  </style>
+</head>
+
+<body data-theme="light">
+
+  <nav class="nav">
+    <div class="n-logo">
+      <!-- <div class="n-mark">
+        <svg width="30" height="30" viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg">
+          <rect width="30" height="30" fill="#174EA0" />
+          <text x="4" y="22" font-family="Georgia,serif" font-size="20" font-weight="900" fill="#fff">M</text>
+          <rect x="0" y="26" width="30" height="4" fill="#F29130" />
+        </svg>
+      </div> -->
+      <span class="n-txt">Genova </span>
+    </div>
+    <div class="n-div"></div>
+    <div class="n-tabs">
+      <button class="n-tab ">Business Insights</button>
+      <button class="n-tab active">Workflow Pipeline</button>
+      <button class="n-tab">Rule Tower</button>
+      <button class="n-tab">Trust Score Framework</button>
+      <button class="n-tab">Trust Score Configuration</button>
+      <button class="n-tab">Abbreviations</button>
+
+    </div>
+    <div class="n-right">
+      <div class="n-av">RP</div>
+    </div>
+  </nav>
+
+  <div class="pg">
+    <div class="tb">
+      <div class="tb-l">
+        <div>
+          <div class="pg-ttl">Case Inbox</div>
+          <div class="pg-sub">11 cases &middot; 28 NDCs total &middot; Last synced 2 min ago</div>
+        </div>
+        <!-- <div class="tb-stats">
+          <span class="ts ts-proc">4 processing</span>
+          <span class="ts ts-rdy">5 ready</span>
+          <span class="ts ts-rev">3 under review</span>
+          <span class="ts ts-done">16 reviewed</span>
+        </div> -->
+      </div>
+      <div class="tb-r">
+        <div class="srch">
+          <span class="srch-ic"><svg viewBox="0 0 24 24">
+              <circle cx="11" cy="11" r="8" />
+              <line x1="21" y1="21" x2="16.65" y2="16.65" />
+            </svg></span>
+          <input class="srch-inp" placeholder="Search case, NDC, vendor&#8230;" oninput="filterCases(this.value)" />
+        </div>
+        <!-- <button class="btn">
+          <svg viewBox="0 0 24 24">
+            <line x1="8" y1="6" x2="21" y2="6" />
+            <line x1="8" y1="12" x2="21" y2="12" />
+            <line x1="8" y1="18" x2="21" y2="18" />
+            <line x1="3" y1="6" x2="3.01" y2="6" />
+            <line x1="3" y1="12" x2="3.01" y2="12" />
+            <line x1="3" y1="18" x2="3.01" y2="18" />
+          </svg>
+          Sort
+        </button>
+        <button class="btn btn-pri">
+          <svg viewBox="0 0 24 24">
+            <line x1="12" y1="5" x2="12" y2="19" />
+            <line x1="5" y1="12" x2="19" y2="12" />
+          </svg>
+          New Case
+        </button> -->
+      </div>
+    </div>
+
+    <div class="fc-row">
+      <div class="filter-group">
+        <span class="fc-lbl">Status:</span>
+        <div class="custom-select" id="statusSelect">
+          <div class="select-trigger" onclick="toggleDropdown('statusSelect')">All Statuses</div>
+          <div class="select-dropdown">
+            <div class="select-option" onclick="selectStatus('all', this)"><input type="checkbox" checked
+                onchange="selectStatus('all', this.parentElement)"> All Statuses</div>
+            <div class="select-option" onclick="selectStatus('processing', this)"><input type="checkbox"
+                onchange="selectStatus('processing', this.parentElement)"> Processing</div>
+            <div class="select-option" onclick="selectStatus('ready', this)"><input type="checkbox"
+                onchange="selectStatus('ready', this.parentElement)"> Ready for Review</div>
+            <div class="select-option" onclick="selectStatus('review', this)"><input type="checkbox"
+                onchange="selectStatus('review', this.parentElement)"> Under Review</div>
+            <div class="select-option" onclick="selectStatus('reviewed', this)"><input type="checkbox"
+                onchange="selectStatus('reviewed', this.parentElement)"> Reviewed</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="fc-sep"></div>
+
+      <div class="filter-group">
+        <span class="fc-lbl">Vendor:</span>
+        <div class="custom-select" id="vendorSelect">
+          <div class="select-trigger" onclick="toggleDropdown('vendorSelect')">All Vendors</div>
+          <div class="select-dropdown">
+            <div class="select-option" onclick="selectVendor('all', this)"><input type="checkbox" checked
+                onchange="toggleVendorCheckbox('all', this)"> All Vendors</div>
+            <div class="select-option" onclick="selectVendor('Sagent Pharmaceuticals', this)"><input type="checkbox"
+                onchange="toggleVendorCheckbox('Sagent Pharmaceuticals', this)"> Sagent Pharmaceuticals</div>
+            <div class="select-option" onclick="selectVendor('Bryant Ranch Prepack, Inc', this)"><input type="checkbox"
+                onchange="toggleVendorCheckbox('Bryant Ranch Prepack, Inc', this)"> Bryant Ranch Prepack, Inc</div>
+            <div class="select-option" onclick="selectVendor('Method Pharmaceuticals, LLC', this)"><input
+                type="checkbox" onchange="toggleVendorCheckbox('Method Pharmaceuticals, LLC', this)"> Method
+              Pharmaceuticals, LLC</div>
+            <div class="select-option" onclick="selectVendor('Westminster Pharmaceuticals, LLC', this)"><input
+                type="checkbox" onchange="toggleVendorCheckbox('Westminster Pharmaceuticals, LLC', this)"> Westminster
+              Pharmaceuticals, LLC</div>
+            <div class="select-option"
+              onclick="selectVendor('Heritage Pharmaceuticals Inc. d/b/a Avet Pharmaceuticals Inc.', this)"><input
+                type="checkbox"
+                onchange="toggleVendorCheckbox('Heritage Pharmaceuticals Inc. d/b/a Avet Pharmaceuticals Inc.', this)">
+              Heritage Pharmaceuticals Inc.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="fc-sep"></div>
+
+      <div class="filter-group">
+        <span class="fc-lbl">Date Range:</span>
+        <div class="date-range">
+          <input type="date" class="date-input" id="dateFrom" onchange="applyFilters()">
+          <span class="date-sep">to</span>
+          <input type="date" class="date-input" id="dateTo" onchange="applyFilters()">
+        </div>
+      </div>
+
+      <div class="fc-sep"></div>
+
+      <button class="clear-filters" onclick="clearAllFilters()">Clear All</button>
+    </div>
+
+    <div class="content" id="caseList">
+
+      <!-- CASE 1 — Processing -->
+      <div class="case-card open" data-case="CASE-2026-00089" data-status="processing">
+        <div class="case-hd" onclick="toggleCase(this)">
+          <div class="case-hd-l">
+            <div class="caret"><svg viewBox="0 0 24 24">
+                <polyline points="9 18 15 12 9 6" />
+              </svg></div>
+            <div>
+              <div class="case-id">CASE-2026-00089</div>
+              <div class="case-meta">Sagent Pharmaceuticals &nbsp;·&nbsp; 08 May 2026, 09:14
+                &nbsp;·&nbsp; 3 NDCs &nbsp;·&nbsp; Trust Score: 87%</div>
+            </div>
+          </div>
+          <div class="case-hd-r">
+            <div class="case-acts" onclick="event.stopPropagation()">
+              <button class="ca-del" onclick="confirmDelete('CASE-2026-00089')" title="Delete Case"><svg
+                  viewBox="0 0 24 24">
+                  <polyline points="3 6 5 6 21 6" />
+                  <path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6" />
+                  <path d="M10 11v6M14 11v6M9 6V4h6v2" />
+                </svg></button>
+            </div>
+          </div>
+        </div>
+        <div class="ndc-wrap">
+          <table class="ndc-tbl">
+            <thead>
+              <tr>
+                <th>NDC</th>
+                <th>Product</th>
+                <th>Status</th>
+                <th style="text-align:right">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="ndc-row">
+                <td>
+                  <div class="ndc-n">NDC 57894-0001-01</div>
+                </td>
+                <td>
+                  <div class="ndc-prod">Omeprazole 20mg Capsules</div>
+                </td>
+                <td><span class="sbdg s-extr"><span class="sbdg-dot"></span>Extracting Fields</span></td>
+                <td class="ndc-actions">
+                  <button class="ndc-del" onclick="confirmDeleteNDC('NDC 57894-0001-01')" title="Delete NDC"><svg
+                      viewBox="0 0 24 24">
+                      <polyline points="3 6 5 6 21 6" />
+                      <path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6" />
+                      <path d="M10 11v6M14 11v6M9 6V4h6v2" />
+                    </svg></button>
+                </td>
+              </tr>
+              <tr class="ndc-row">
+                <td>
+                  <div class="ndc-n">NDC 57894-0001-02</div>
+                </td>
+                <td>
+                  <div class="ndc-prod">Omeprazole 40mg Capsules</div>
+                </td>
+                <td><span class="sbdg s-vali"><span class="sbdg-dot"></span>Validating Rules</span></td>
+                <td class="ndc-actions">
+                  <button class="ndc-del" onclick="confirmDeleteNDC('NDC 57894-0001-02')" title="Delete NDC"><svg
+                      viewBox="0 0 24 24">
+                      <polyline points="3 6 5 6 21 6" />
+                      <path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6" />
+                      <path d="M10 11v6M14 11v6M9 6V4h6v2" />
+                    </svg></button>
+                </td>
+              </tr>
+              <tr class="ndc-row">
+                <td>
+                  <div class="ndc-n">NDC 57894-0002-01</div>
+                </td>
+                <td>
+                  <div class="ndc-prod">Metformin 500mg Tablets</div>
+                </td>
+                <td><span class="sbdg s-rdy"><span class="sbdg-dot"></span>Ready for Review</span></td>
+                <td class="ndc-actions">
+                  <button class="ndc-del" onclick="confirmDeleteNDC('NDC 57894-0002-01')" title="Delete NDC"><svg
+                      viewBox="0 0 24 24">
+                      <polyline points="3 6 5 6 21 6" />
+                      <path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6" />
+                      <path d="M10 11v6M14 11v6M9 6V4h6v2" />
+                    </svg></button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- CASE 2 — Ready -->
+      <div class="case-card open" data-case="CASE-2026-00088" data-status="ready">
+        <div class="case-hd" onclick="toggleCase(this)">
+          <div class="case-hd-l">
+            <div class="caret"><svg viewBox="0 0 24 24">
+                <polyline points="9 18 15 12 9 6" />
+              </svg></div>
+            <div>
+              <div class="case-id">CASE-2026-00088</div>
+              <div class="case-meta">Bryant Ranch Prepack, Inc &nbsp;·&nbsp; 08 May 2026, 07:55 &nbsp;·&nbsp; 2
+                NDCs &nbsp;·&nbsp; Trust Score: 92%</div>
+            </div>
+          </div>
+          <div class="case-hd-r">
+            <div class="case-acts" onclick="event.stopPropagation()">
+              <button class="ca-btn ab-rv" onclick="caseAction('review','CASE-2026-00088')"><svg viewBox="0 0 24 24">
+                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                  <circle cx="12" cy="12" r="3" />
+                </svg>Start Case Review</button>
+              <button class="ca-del" onclick="confirmDelete('CASE-2026-00088')" title="Delete Case"><svg
+                  viewBox="0 0 24 24">
+                  <polyline points="3 6 5 6 21 6" />
+                  <path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6" />
+                  <path d="M10 11v6M14 11v6M9 6V4h6v2" />
+                </svg></button>
+            </div>
+          </div>
+        </div>
+        <div class="ndc-wrap">
+          <table class="ndc-tbl">
+            <thead>
+              <tr>
+                <th>NDC</th>
+                <th>Product</th>
+                <th>Status</th>
+                <th style="text-align:right">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="ndc-row">
+                <td>
+                  <div class="ndc-n">NDC 61414-0170-01</div>
+                </td>
+                <td>
+                  <div class="ndc-prod">Atorvastatin 10mg Tablets</div>
+                </td>
+                <td><span class="sbdg s-rdy"><span class="sbdg-dot"></span>Ready for Review</span></td>
+                <td class="ndc-actions">
+                  <button class="ndc-del" onclick="confirmDeleteNDC('NDC 61414-0170-01')" title="Delete NDC"><svg
+                      viewBox="0 0 24 24">
+                      <polyline points="3 6 5 6 21 6" />
+                      <path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6" />
+                      <path d="M10 11v6M14 11v6M9 6V4h6v2" />
+                    </svg></button>
+                </td>
+              </tr>
+              <tr class="ndc-row">
+                <td>
+                  <div class="ndc-n">NDC 61414-0170-02</div>
+                </td>
+                <td>
+                  <div class="ndc-prod">Atorvastatin 20mg Tablets</div>
+                </td>
+                <td><span class="sbdg s-rdy"><span class="sbdg-dot"></span>Ready for Review</span></td>
+                <td class="ndc-actions">
+                  <button class="ndc-del" onclick="confirmDeleteNDC('NDC 61414-0170-02')" title="Delete NDC"><svg
+                      viewBox="0 0 24 24">
+                      <polyline points="3 6 5 6 21 6" />
+                      <path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6" />
+                      <path d="M10 11v6M14 11v6M9 6V4h6v2" />
+                    </svg></button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- CASE 3 — Under Review -->
+      <div class="case-card" data-case="CASE-2026-00085" data-status="review">
+        <div class="case-hd" onclick="toggleCase(this)">
+          <div class="case-hd-l">
+            <div class="caret"><svg viewBox="0 0 24 24">
+                <polyline points="9 18 15 12 9 6" />
+              </svg></div>
+            <div>
+              <div class="case-id">CASE-2026-00085</div>
+              <div class="case-meta">Method Pharmaceuticals, LLC &nbsp;·&nbsp; 07 May 2026, 14:22 &nbsp;·&nbsp; 4
+                NDCs &nbsp;·&nbsp; Trust Score: 78%</div>
+            </div>
+          </div>
+          <div class="case-hd-r">
+            <div class="case-acts" onclick="event.stopPropagation()">
+              <button class="ca-btn ab-rv" onclick="caseAction('review','CASE-2026-00085')"><svg viewBox="0 0 24 24">
+                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                  <circle cx="12" cy="12" r="3" />
+                </svg>Continue Review</button>
+              <button class="ca-del" onclick="confirmDelete('CASE-2026-00085')" title="Delete Case"><svg
+                  viewBox="0 0 24 24">
+                  <polyline points="3 6 5 6 21 6" />
+                  <path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6" />
+                  <path d="M10 11v6M14 11v6M9 6V4h6v2" />
+                </svg></button>
+            </div>
+          </div>
+        </div>
+        <div class="ndc-wrap">
+          <table class="ndc-tbl">
+            <thead>
+              <tr>
+                <th>NDC</th>
+                <th>Product</th>
+                <th>Status</th>
+                <th style="text-align:right">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="ndc-row">
+                <td>
+                  <div class="ndc-n">NDC 00381-1921-01</div>
+                </td>
+                <td>
+                  <div class="ndc-prod">Lisinopril 5mg Tablets</div>
+                </td>
+                <td><span class="sbdg s-ur"><span class="sbdg-dot"></span>Under Review</span></td>
+                <td class="ndc-actions">
+                  <button class="ndc-del" onclick="confirmDeleteNDC('NDC 00381-1921-01')" title="Delete NDC"><svg
+                      viewBox="0 0 24 24">
+                      <polyline points="3 6 5 6 21 6" />
+                      <path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6" />
+                      <path d="M10 11v6M14 11v6M9 6V4h6v2" />
+                    </svg></button>
+                </td>
+              </tr>
+              <tr class="ndc-row">
+                <td>
+                  <div class="ndc-n">NDC 00381-1921-02</div>
+                </td>
+                <td>
+                  <div class="ndc-prod">Lisinopril 10mg Tablets</div>
+                </td>
+                <td><span class="sbdg s-ur"><span class="sbdg-dot"></span>Under Review</span></td>
+                <td class="ndc-actions">
+                  <button class="ndc-del" onclick="confirmDeleteNDC('NDC 00381-1921-02')" title="Delete NDC"><svg
+                      viewBox="0 0 24 24">
+                      <polyline points="3 6 5 6 21 6" />
+                      <path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6" />
+                      <path d="M10 11v6M14 11v6M9 6V4h6v2" />
+                    </svg></button>
+                </td>
+              </tr>
+              <tr class="ndc-row">
+                <td>
+                  <div class="ndc-n">NDC 00381-1921-03</div>
+                </td>
+                <td>
+                  <div class="ndc-prod">Lisinopril 20mg Tablets</div>
+                </td>
+                <td><span class="sbdg s-paus"><span class="sbdg-dot"></span>Paused</span></td>
+                <td class="ndc-actions">
+                  <button class="ndc-del" onclick="confirmDeleteNDC('NDC 00381-1921-03')" title="Delete NDC"><svg
+                      viewBox="0 0 24 24">
+                      <polyline points="3 6 5 6 21 6" />
+                      <path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6" />
+                      <path d="M10 11v6M14 11v6M9 6V4h6v2" />
+                    </svg></button>
+                </td>
+              </tr>
+              <tr class="ndc-row">
+                <td>
+                  <div class="ndc-n">NDC 00381-1921-04</div>
+                </td>
+                <td>
+                  <div class="ndc-prod">Lisinopril 40mg Tablets</div>
+                </td>
+                <td><span class="sbdg s-done"><span class="sbdg-dot"></span>Reviewed</span></td>
+                <td class="ndc-actions">
+                  <button class="ndc-del" onclick="confirmDeleteNDC('NDC 00381-1921-04')" title="Delete NDC"><svg
+                      viewBox="0 0 24 24">
+                      <polyline points="3 6 5 6 21 6" />
+                      <path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6" />
+                      <path d="M10 11v6M14 11v6M9 6V4h6v2" />
+                    </svg></button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- CASE 4 — Error -->
+      <div class="case-card" data-case="CASE-2026-00082" data-status="processing">
+        <div class="case-hd" onclick="toggleCase(this)">
+          <div class="case-hd-l">
+            <div class="caret"><svg viewBox="0 0 24 24">
+                <polyline points="9 18 15 12 9 6" />
+              </svg></div>
+            <div>
+              <div class="case-id">CASE-2026-00082</div>
+              <div class="case-meta">Westminster Pharmaceuticals, LLC &nbsp;·&nbsp; 06 May 2026, 11:30 &nbsp;·&nbsp; 2
+                NDCs &nbsp;·&nbsp; Trust Score: 65%
+              </div>
+            </div>
+          </div>
+          <div class="case-hd-r">
+            <div class="case-acts" onclick="event.stopPropagation()">
+              <button class="ca-del" onclick="confirmDelete('CASE-2026-00082')" title="Delete Case"><svg
+                  viewBox="0 0 24 24">
+                  <polyline points="3 6 5 6 21 6" />
+                  <path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6" />
+                  <path d="M10 11v6M14 11v6M9 6V4h6v2" />
+                </svg></button>
+            </div>
+          </div>
+        </div>
+        <div class="ndc-wrap">
+          <table class="ndc-tbl">
+            <thead>
+              <tr>
+                <th>NDC</th>
+                <th>Product</th>
+                <th>Status</th>
+                <th style="text-align:right">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="ndc-row">
+                <td>
+                  <div class="ndc-n">NDC 33130-0105-01</div>
+                </td>
+                <td>
+                  <div class="ndc-prod">Chyawanprash Capsules</div>
+                </td>
+                <td><span class="sbdg s-err"><span class="sbdg-dot"></span>Extraction Error</span></td>
+                <td class="ndc-actions">
+                  <button class="ndc-del" onclick="confirmDeleteNDC('NDC 33130-0105-01')" title="Delete NDC"><svg
+                      viewBox="0 0 24 24">
+                      <polyline points="3 6 5 6 21 6" />
+                      <path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6" />
+                      <path d="M10 11v6M14 11v6M9 6V4h6v2" />
+                    </svg></button>
+                </td>
+              </tr>
+              <tr class="ndc-row">
+                <td>
+                  <div class="ndc-n">NDC 33130-0105-02</div>
+                </td>
+                <td>
+                  <div class="ndc-prod">Glucose-D Powder</div>
+                </td>
+                <td><span class="sbdg s-proc"><span class="sbdg-dot"></span>Ingesting</span></td>
+                <td class="ndc-actions">
+                  <button class="ndc-del" onclick="confirmDeleteNDC('NDC 33130-0105-02')" title="Delete NDC"><svg
+                      viewBox="0 0 24 24">
+                      <polyline points="3 6 5 6 21 6" />
+                      <path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6" />
+                      <path d="M10 11v6M14 11v6M9 6V4h6v2" />
+                    </svg></button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- CASE 5 — Reviewed -->
+      <div class="case-card" data-case="CASE-2026-00079" data-status="reviewed">
+        <div class="case-hd" onclick="toggleCase(this)">
+          <div class="case-hd-l">
+            <div class="caret"><svg viewBox="0 0 24 24">
+                <polyline points="9 18 15 12 9 6" />
+              </svg></div>
+            <div>
+              <div class="case-id">CASE-2026-00079</div>
+              <div class="case-meta">Heritage Pharmaceuticals Inc. d/b/a Avet Pharmaceuticals Inc. &nbsp;·&nbsp; 05 May
+                2026, 09:03 &nbsp;·&nbsp; 1 NDC &nbsp;·&nbsp; Trust Score: 95%</div>
+            </div>
+          </div>
+          <div class="case-hd-r">
+            <div class="case-acts" onclick="event.stopPropagation()">
+              <button class="ca-btn" onclick="caseAction('view','CASE-2026-00079')"><svg viewBox="0 0 24 24">
+                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                  <circle cx="12" cy="12" r="3" />
+                </svg>View</button>
+              <button class="ca-del" onclick="confirmDelete('CASE-2026-00079')" title="Delete Case"><svg
+                  viewBox="0 0 24 24">
+                  <polyline points="3 6 5 6 21 6" />
+                  <path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6" />
+                  <path d="M10 11v6M14 11v6M9 6V4h6v2" />
+                </svg></button>
+            </div>
+          </div>
+        </div>
+        <div class="ndc-wrap">
+          <table class="ndc-tbl">
+            <thead>
+              <tr>
+                <th>NDC</th>
+                <th>Product</th>
+                <th>Status</th>
+                <th style="text-align:right">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="ndc-row">
+                <td>
+                  <div class="ndc-n">NDC 44678-0012-01</div>
+                </td>
+                <td>
+                  <div class="ndc-prod">Cinthol Soap 100g</div>
+                </td>
+                <td><span class="sbdg s-done"><span class="sbdg-dot"></span>Reviewed</span></td>
+                <td class="ndc-actions">
+                  <button class="ndc-del" onclick="confirmDeleteNDC('NDC 44678-0012-01')" title="Delete NDC"><svg
+                      viewBox="0 0 24 24">
+                      <polyline points="3 6 5 6 21 6" />
+                      <path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6" />
+                      <path d="M10 11v6M14 11v6M9 6V4h6v2" />
+                    </svg></button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="overlay" id="delOverlay">
+    <div class="modal">
+      <div class="modal-ttl">Delete Case?</div>
+      <div class="modal-body">This will permanently remove <strong id="delTarget"></strong> and all its NDCs. This
+        cannot be undone.</div>
+      <div class="modal-ftr">
+        <button class="mb mb-cn" onclick="closeModal()">Cancel</button>
+        <button class="mb mb-del" onclick="doDelete()">Delete</button>
+      </div>
+    </div>
+  </div>
+  <div class="toast" id="toast"></div>
+
+  <script>
+    const SUN = 'M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42M12 7a5 5 0 100 10A5 5 0 0012 7z';
+    const MOON = 'M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z';
+    let dark = false;
+    document.getElementById('tBtn').addEventListener('click', () => {
+      dark = !dark; document.body.dataset.theme = dark ? 'dark' : 'light';
+      document.getElementById('tIco').innerHTML = dark ? '<path d="' + SUN + '"/>' : '<path d="' + MOON + '"/>';
+    });
+    function toggleCase(hd) { hd.closest('.case-card').classList.toggle('open') }
+    // Filter State
+    let filterState = {
+      status: 'all',
+      vendors: [],
+      dateFrom: null,
+      dateTo: null,
+      searchQuery: ''
+    };
+
+    // Dropdown Toggle
+    function toggleDropdown(id) {
+      document.querySelectorAll('.custom-select').forEach(el => {
+        if (el.id !== id) el.classList.remove('open');
+      });
+      document.getElementById(id).classList.toggle('open');
+    }
+
+    // Close dropdowns on outside click
+    document.addEventListener('click', function (e) {
+      if (!e.target.closest('.custom-select')) {
+        document.querySelectorAll('.custom-select').forEach(el => el.classList.remove('open'));
+      }
+    });
+
+    // Status Filter
+    function selectStatus(status, optionEl) {
+      const checkbox = optionEl.querySelector('input[type="checkbox"]');
+      const trigger = document.querySelector('#statusSelect .select-trigger');
+      const options = document.querySelectorAll('#statusSelect .select-option');
+
+      if (status === 'all') {
+        filterState.status = 'all';
+        options.forEach(opt => opt.querySelector('input').checked = (opt === optionEl));
+        trigger.textContent = 'All Statuses';
+      } else {
+        const allOption = options[0];
+        allOption.querySelector('input').checked = false;
+
+        const checkedStatuses = Array.from(options).slice(1).filter(opt => opt.querySelector('input').checked);
+
+        if (checkedStatuses.length === 0) {
+          filterState.status = 'all';
+          allOption.querySelector('input').checked = true;
+          trigger.textContent = 'All Statuses';
+        } else {
+          filterState.status = checkedStatuses.map(opt => {
+            const text = opt.textContent.trim();
+            if (text.includes('Processing')) return 'processing';
+            if (text.includes('Ready')) return 'ready';
+            if (text.includes('Under Review')) return 'review';
+            if (text.includes('Reviewed')) return 'reviewed';
+            return '';
+          }).filter(s => s);
+          trigger.textContent = checkedStatuses.length === 1 ? checkedStatuses[0].textContent.trim() : `${checkedStatuses.length} selected`;
+        }
+      }
+      applyFilters();
+    }
+
+    // Vendor Filter
+    function toggleVendorCheckbox(vendor, checkbox) {
+      const optionEl = checkbox.closest('.select-option');
+      selectVendor(vendor, optionEl);
+    }
+
+    function selectVendor(vendor, optionEl) {
+      const checkbox = optionEl.querySelector('input[type="checkbox"]');
+      const trigger = document.querySelector('#vendorSelect .select-trigger');
+      const options = document.querySelectorAll('#vendorSelect .select-option');
+
+      if (vendor === 'all') {
+        filterState.vendors = [];
+        options.forEach(opt => opt.querySelector('input').checked = (opt === optionEl));
+        trigger.textContent = 'All Vendors';
+      } else {
+        const allOption = options[0];
+        allOption.querySelector('input').checked = false;
+        checkbox.checked = !checkbox.checked;
+
+        const checkedVendors = Array.from(options).slice(1).filter(opt => opt.querySelector('input').checked).map(opt => opt.textContent.trim());
+
+        if (checkedVendors.length === 0) {
+          filterState.vendors = [];
+          allOption.querySelector('input').checked = true;
+          trigger.textContent = 'All Vendors';
+        } else {
+          filterState.vendors = checkedVendors;
+          trigger.textContent = checkedVendors.length === 1 ? checkedVendors[0] : `${checkedVendors.length} vendors selected`;
+        }
+      }
+      applyFilters();
+    }
+
+    // Search Filter
+    function filterCases(q) {
+      filterState.searchQuery = q.toLowerCase();
+      applyFilters();
+    }
+
+    // Apply All Filters
+    function applyFilters() {
+      filterState.dateFrom = document.getElementById('dateFrom').value;
+      filterState.dateTo = document.getElementById('dateTo').value;
+
+      document.querySelectorAll('.case-card').forEach(card => {
+        const status = card.dataset.status;
+        const metaText = card.querySelector('.case-meta').textContent;
+        const vendor = metaText.split('·')[0].trim();
+        const dateMatch = metaText.match(/(\d{2}) (\w{3}) (\d{4})/);
+        const caseId = card.dataset.case.toLowerCase();
+
+        // Status Filter
+        let statusMatch = false;
+        if (filterState.status === 'all') {
+          statusMatch = true;
+        } else if (Array.isArray(filterState.status)) {
+          statusMatch = filterState.status.includes(status);
+        } else {
+          statusMatch = filterState.status === status;
+        }
+
+        // Vendor Filter
+        let vendorMatch = false;
+        if (filterState.vendors.length === 0) {
+          vendorMatch = true;
+        } else {
+          vendorMatch = filterState.vendors.some(v => vendor.includes(v));
+        }
+
+        // Date Filter
+        let dateMatchFilter = true;
+        if (dateMatch && (filterState.dateFrom || filterState.dateTo)) {
+          const months = { 'Jan': 0, 'Feb': 1, 'Mar': 2, 'Apr': 3, 'May': 4, 'Jun': 5, 'Jul': 6, 'Aug': 7, 'Sep': 8, 'Oct': 9, 'Nov': 10, 'Dec': 11 };
+          const cardDate = new Date(parseInt(dateMatch[3]), months[dateMatch[2]], parseInt(dateMatch[1]));
+
+          if (filterState.dateFrom) {
+            const fromDate = new Date(filterState.dateFrom);
+            if (cardDate < fromDate) dateMatchFilter = false;
+          }
+          if (filterState.dateTo) {
+            const toDate = new Date(filterState.dateTo);
+            toDate.setHours(23, 59, 59);
+            if (cardDate > toDate) dateMatchFilter = false;
+          }
+        }
+
+        // Search Filter
+        let searchMatch = true;
+        if (filterState.searchQuery) {
+          searchMatch = (caseId + metaText.toLowerCase()).includes(filterState.searchQuery);
+        }
+
+        card.style.display = statusMatch && vendorMatch && dateMatchFilter && searchMatch ? '' : 'none';
+      });
+    }
+
+    // Clear All Filters
+    function clearAllFilters() {
+      filterState = { status: 'all', vendors: [], dateFrom: null, dateTo: null, searchQuery: '' };
+
+      // Reset status dropdown
+      document.querySelectorAll('#statusSelect .select-option').forEach((opt, i) => {
+        opt.querySelector('input').checked = (i === 0);
+      });
+      document.querySelector('#statusSelect .select-trigger').textContent = 'All Statuses';
+
+      // Reset vendor dropdown
+      document.querySelectorAll('#vendorSelect .select-option').forEach((opt, i) => {
+        opt.querySelector('input').checked = (i === 0);
+      });
+      document.querySelector('#vendorSelect .select-trigger').textContent = 'All Vendors';
+
+      // Reset date inputs
+      document.getElementById('dateFrom').value = '';
+      document.getElementById('dateTo').value = '';
+
+      // Reset search
+      document.querySelector('.srch-inp').value = '';
+
+      applyFilters();
+    }
+    let pendingId = null;
+    let pendingNDC = null;
+    let pendingNDCRow = null;
+
+    function confirmDelete(id) { pendingId = id; pendingNDC = null; document.getElementById('delTarget').textContent = id; document.getElementById('delOverlay').classList.add('show') }
+
+    function confirmDeleteNDC(ndcId) {
+      pendingNDC = ndcId;
+      pendingId = null;
+      pendingNDCRow = event.target.closest('.ndc-row');
+      document.getElementById('delTarget').textContent = ndcId;
+      document.getElementById('delOverlay').classList.add('show');
+      event.stopPropagation();
+    }
+    function closeModal() { document.getElementById('delOverlay').classList.remove('show'); pendingId = null }
+    function doDelete() {
+      if (pendingId) {
+        const c = document.querySelector('[data-case="' + pendingId + '"]');
+        if (c) { c.style.opacity = '0'; c.style.transition = 'opacity .2s'; setTimeout(() => c.remove(), 200); }
+        showToast(pendingId + ' deleted');
+      } else if (pendingNDC && pendingNDCRow) {
+        pendingNDCRow.style.opacity = '0';
+        pendingNDCRow.style.transition = 'opacity .2s';
+        setTimeout(() => pendingNDCRow.remove(), 200);
+        showToast(pendingNDC + ' deleted');
+      }
+      closeModal();
+    }
+
+    function closeModal() {
+      document.getElementById('delOverlay').classList.remove('show');
+      pendingId = null;
+      pendingNDC = null;
+      pendingNDCRow = null;
+    }
+    document.getElementById('delOverlay').addEventListener('click', function (e) { if (e.target === this) closeModal() });
+    function caseAction(action, id) {
+      const m = { pause: 'All NDCs paused', resume: 'Resuming processing', reprocess: 'Reprocess queued', review: 'Opening case review…', view: 'Loading review…' };
+      showToast((m[action] || 'Done') + ' — ' + id);
+    }
+    let tt;
+    function showToast(msg) { const t = document.getElementById('toast'); t.textContent = msg; t.classList.add('show'); clearTimeout(tt); tt = setTimeout(() => t.classList.remove('show'), 2400) }
+  </script>
+</body>
+
+</html>
