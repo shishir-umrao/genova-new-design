@@ -268,47 +268,6 @@
             "competency_score": 0
         },
         {
-            "detail_id": 5302,
-            "ndc_doc_id": 160,
-            "field_name": "PUD (Always 1)",
-            "extracted_values": "1",
-            "pharmacist_values": "1",
-            "trust_score": 0,
-            "rule_version": {
-                "rule_version_id": 135,
-                "version_rule_id": 51,
-                "version": "0.2",
-                "version_description": " ",
-                "version_role": " ",
-                "version_guidelines": "1",
-                "version_example": "",
-                "version_specific_instruction": "",
-                "version_created_by_name": "Admin",
-                "version_created_by_email": "admin@mckesson.com",
-                "version_dependent_on": [],
-                "version_rule_class": "Static",
-                "is_version_active": true,
-                "version_create_date": "2026-04-28T13:53:52.385043",
-                "version_last_update_date": "2026-04-28T13:53:52.385307",
-                "rule_master": {
-                    "rule_id": 51,
-                    "rule_name": "PUD (Always 1)",
-                    "rule_category": "Generic",
-                    "is_rule_active": true,
-                    "rule_create_date": "2026-04-27T18:44:54.806921",
-                    "rule_last_update_date": "2026-04-27T18:44:54.807237",
-                    "rule_sequence_number": 3
-                }
-            },
-            "status": "Ready For Review",
-            "accepted_value": null,
-            "is_extracted_accepted": null,
-            "pm_alert_required": null,
-            "feedback_items": [],
-            "confidence_score": 0,
-            "competency_score": 0
-        },
-        {
             "detail_id": 5303,
             "ndc_doc_id": 160,
             "field_name": "MCK- GPC",

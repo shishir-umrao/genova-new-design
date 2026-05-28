@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -7,15 +7,13 @@
   <title>Rule Tower — McKesson Genova</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=DM+Mono:wght@400;500&display=swap"
-    rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --mk-blue: #174EA0;
-      --mk-blue-dk: #0f3470;
-      --mk-blue-lt: #dbe8f8;
-      --mk-blue-pale: #eef4fc;
+      --mk-blue: #005a8c;
+      --mk-blue-dk: #003d61;
+      --mk-blue-lt: #cce4f0;
+      --mk-blue-pale: #e6f2f8;
       --mk-or: #F29130;
       --mk-or-dk: #c4711a;
       --mk-or-lt: #fde9cf;
@@ -23,15 +21,16 @@
       --bg: #f4f6fa;
       --bg-p: #ffffff;
       --bg-c: #ffffff;
-      --bg-h: #eef2f9;
-      --bdr: #e2e8f0;
-      --bdr-m: #c8d4e6;
-      --t1: #0d1a2e;
-      --t2: #475872;
-      --t3: #94a3b8;
-      --ac: #174EA0;
-      --ac-lt: #dbe8f8;
-      --ac-pale: #eef4fc;
+      --bg-h: #f3f4f6;
+      --bdr: #e5e7eb;
+      --bdr-m: #d1d5db;
+      --t1: #111111;
+      --t2: #111111;
+      --t3: #111111;
+      --ph: #9ca3af;
+      --ac: #005a8c;
+      --ac-lt: #cce4f0;
+      --ac-pale: #e6f2f8;
       --gr: #16a34a;
       --gr-lt: #dcfce7;
       --gr-pale: #f0fdf4;
@@ -51,21 +50,22 @@
       --sh-md: 0 4px 14px rgba(14, 30, 60, .1), 0 2px 5px rgba(14, 30, 60, .06);
       --r: 10px;
       --rs: 6px;
-      --fh: 'DM Sans', sans-serif;
-      --fb: 'DM Sans', sans-serif;
-      --fm: 'DM Mono', monospace;
+      --fh: 'Inter', sans-serif;
+      --fb: 'Inter', sans-serif;
+      --fm: 'Inter', sans-serif;
     }
 
     [data-theme=dark] {
       --bg: #0c0e14;
-      --bg-p: #111520;
-      --bg-c: #181c2a;
-      --bg-h: #1d2235;
-      --bdr: #232a3e;
-      --bdr-m: #2c3650;
-      --t1: #e8edf8;
-      --t2: #8090b0;
-      --t3: #44526a;
+      --bg-p: #161b27;
+      --bg-c: #1e2333;
+      --bg-h: #252d40;
+      --bdr: #2e3650;
+      --bdr-m: #3a4560;
+      --t1: #f0f0f0;
+      --t2: #f0f0f0;
+      --t3: #f0f0f0;
+      --ph: #6b7280;
       --ac: #4f8ef7;
       --ac-lt: #172040;
       --ac-pale: #0e1528;
@@ -96,6 +96,8 @@
       font-family: var(--fb);
       background: var(--bg);
       color: var(--t1);
+      font-size: 14px;
+      font-weight: 400;
       min-height: 100vh;
       display: flex;
       flex-direction: column
@@ -103,7 +105,9 @@
 
     button {
       cursor: pointer;
-      font-family: var(--fb)
+      font-family: var(--fb);
+      font-size: 12px;
+      font-weight: 400
     }
 
     svg {
@@ -124,12 +128,11 @@
       padding: 0 16px;
       gap: 12px;
       flex-shrink: 0;
-      box-shadow: 0 2px 8px rgba(23, 78, 160, .35)
     }
 
     .n-txt {
       font-family: var(--fh);
-      font-size: 15px;
+      font-size: 14px;
       font-weight: 700;
       color: #fff;
       white-space: nowrap
@@ -151,9 +154,9 @@
       background: transparent;
       border: none;
       color: rgba(255, 255, 255, .65);
-      font-family: var(--fh);
+      font-family: var(--fb);
       font-size: 12px;
-      font-weight: 500;
+      font-weight: 400;
       padding: 5px 12px;
       border-radius: var(--rs);
       transition: all .15s
@@ -179,9 +182,9 @@
       border-radius: 50%;
       background: var(--mk-or);
       color: #fff;
-      font-family: var(--fm);
-      font-size: 11px;
-      font-weight: 500;
+      font-family: var(--fh);
+      font-size: 12px;
+      font-weight: 700;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -196,7 +199,6 @@
       gap: 12px;
       background: var(--bg-p);
       border-bottom: 1px solid var(--bdr);
-      box-shadow: var(--sh-sm)
     }
 
     .tb-l {
@@ -205,17 +207,18 @@
 
     .pg-ttl {
       font-family: var(--fh);
-      font-size: 18px;
+      font-size: 14px;
       font-weight: 700;
       color: var(--t1);
       letter-spacing: -.02em
     }
 
     .pg-sub {
-      font-size: 11px;
+      font-size: 12px;
       color: var(--t3);
       margin-top: 2px;
-      font-family: var(--fm)
+      font-family: var(--fm);
+      font-weight: 400
     }
 
     .tb-r {
@@ -243,75 +246,106 @@
       stroke-width: 2
     }
 
+    /* ── MUI-style Search Input ── */
     .srch-inp {
       font-family: var(--fb);
-      font-size: 12px;
-      padding: 7px 10px 7px 30px;
-      border: 1px solid var(--bdr);
-      border-radius: var(--rs);
-      background: var(--bg);
+      font-size: 13px;
+      padding: 8px 10px 8px 34px;
+      border: 1px solid rgba(0, 0, 0, .23);
+      border-radius: 4px;
+      background: var(--bg-c);
       color: var(--t1);
       width: 260px;
-      transition: all .15s;
+      transition: border-color .2s;
       outline: none
+    }
+
+    .srch-inp:hover {
+      border-color: var(--t1)
     }
 
     .srch-inp:focus {
       border-color: var(--ac);
-      background: var(--bg-p)
+      border-width: 2px;
+      padding: 7px 9px 7px 33px
+    }
+
+    ::placeholder {
+      color: var(--ph);
+      opacity: 1
     }
 
     .srch-inp::placeholder {
-      color: var(--t3)
+      color: var(--ph)
     }
 
+    /* ── MUI-style Buttons ── */
     .btn {
-      display: flex;
+      display: inline-flex;
       align-items: center;
       gap: 6px;
-      padding: 7px 14px;
-      font-size: 12px;
-      font-weight: 600;
-      border-radius: var(--rs);
-      border: 1px solid var(--bdr);
-      background: var(--bg-c);
+      padding: 5px 15px;
+      font-size: 13px;
+      font-weight: 500;
+      border-radius: 4px;
+      border: 1px solid rgba(0, 0, 0, .23);
+      background: transparent;
       color: var(--t2);
-      transition: all .15s
+      transition: background-color .25s cubic-bezier(.4, 0, .2, 1), border-color .25s;
+      letter-spacing: .02em;
+      line-height: 1.75;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      user-select: none
+    }
+
+    .btn::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: currentColor;
+      opacity: 0;
+      transition: opacity .2s
+    }
+
+    .btn:hover::after {
+      opacity: .06
+    }
+
+    .btn:active::after {
+      opacity: .12
     }
 
     .btn svg {
       width: 13px;
       height: 13px;
-      stroke-width: 2
+      stroke-width: 2;
+      flex-shrink: 0
     }
 
     .btn:hover {
-      background: var(--bg-h);
-      border-color: var(--bdr-m);
-      color: var(--t1)
+      border-color: var(--t2)
     }
 
     .btn-pri {
       background: var(--ac);
-      border-color: var(--ac);
-      color: #fff
+      border: none;
+      color: #fff;
     }
 
     .btn-pri:hover {
       background: var(--mk-blue-dk);
-      border-color: var(--mk-blue-dk);
-      color: #fff
     }
 
     .btn-danger {
       background: var(--rd);
-      border-color: var(--rd);
-      color: #fff
+      border: none;
+      color: #fff;
     }
 
     .btn-danger:hover {
       background: #b91c1c;
-      border-color: #b91c1c
     }
 
     /* FILTER ROW */
@@ -326,11 +360,9 @@
     }
 
     .fc-lbl {
-      font-size: 10px;
-      font-weight: 600;
+      font-size: 12px;
+      font-weight: 400;
       color: var(--t3);
-      text-transform: uppercase;
-      letter-spacing: .04em;
       white-space: nowrap
     }
 
@@ -339,30 +371,45 @@
       gap: 3px
     }
 
+    /* ── MUI Chip ── */
     .chip {
       display: inline-flex;
       align-items: center;
-      padding: 3px 10px;
-      border-radius: 99px;
-      font-size: 11px;
-      font-weight: 500;
-      border: 1px solid var(--bdr);
+      padding: 4px 12px;
+      border-radius: 16px;
+      font-size: 12px;
+      font-weight: 400;
+      border: 1px solid rgba(0, 0, 0, .23);
       color: var(--t2);
       background: transparent;
       cursor: pointer;
-      transition: all .15s;
-      font-family: var(--fb)
+      transition: background-color .2s, border-color .2s, color .2s;
+      font-family: var(--fb);
+      position: relative;
+      overflow: hidden
+    }
+
+    .chip::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: currentColor;
+      opacity: 0;
+      transition: opacity .15s
+    }
+
+    .chip:hover::after {
+      opacity: .06
     }
 
     .chip:hover {
-      border-color: var(--bdr-m);
-      color: var(--t1)
+      border-color: var(--t2)
     }
 
     .chip.on {
-      background: var(--ac-pale);
-      color: var(--ac);
-      border-color: var(--ac-lt)
+      background: var(--ac);
+      color: #fff;
+      border-color: var(--ac)
     }
 
     .fc-sep {
@@ -372,17 +419,34 @@
       margin: 0 2px
     }
 
+    /* ── MUI-style Sort Select ── */
     .sort-sel {
       font-family: var(--fb);
-      font-size: 11px;
-      padding: 4px 8px;
-      border: 1px solid var(--bdr);
-      border-radius: var(--rs);
-      background: var(--bg);
+      font-size: 13px;
+      padding: 6px 32px 6px 12px;
+      border: 1px solid rgba(0, 0, 0, .23);
+      border-radius: 4px;
+      background: var(--bg-c);
       color: var(--t2);
       outline: none;
       cursor: pointer;
-      margin-left: auto
+      margin-left: auto;
+      -webkit-appearance: none;
+      appearance: none;
+      transition: border-color .2s;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 10px center
+    }
+
+    .sort-sel:hover {
+      border-color: var(--t1)
+    }
+
+    .sort-sel:focus {
+      border-color: var(--ac);
+      border-width: 2px;
+      padding: 5px 31px 5px 11px
     }
 
     /* STATS */
@@ -392,29 +456,27 @@
       padding: 12px 24px 0
     }
 
+    /* ── MUI Paper — stat cards ── */
     .sc {
       background: var(--bg-p);
-      border: 1px solid var(--bdr);
-      border-radius: var(--rs);
-      padding: 7px 14px;
+      border: 1px solid rgba(0, 0, 0, .12);
+      border-radius: 4px;
+      padding: 8px 16px;
       display: flex;
       flex-direction: column;
       align-items: center;
       min-width: 90px;
-      box-shadow: var(--sh-sm)
     }
 
     .sc-n {
-      font-family: var(--fm);
-      font-size: 17px;
-      font-weight: 500;
+      font-family: var(--fh);
+      font-size: 14px;
+      font-weight: 700;
       color: var(--t1)
     }
 
     .sc-l {
-      font-size: 9px;
-      text-transform: uppercase;
-      letter-spacing: .05em;
+      font-size: 12px;
       color: var(--t3);
       margin-top: 1px
     }
@@ -459,7 +521,7 @@
 
     .bulk-lbl {
       font-size: 12px;
-      font-weight: 600;
+      font-weight: 700;
       color: var(--ac);
       font-family: var(--fh)
     }
@@ -469,12 +531,12 @@
     }
 
     /* TABLE */
+    /* ── MUI Paper — rule table ── */
     .rule-table-wrap {
       background: var(--bg-p);
-      border: 1px solid var(--bdr);
-      border-radius: var(--r);
+      border: 1px solid rgba(0, 0, 0, .12);
+      border-radius: 4px;
       overflow: hidden;
-      box-shadow: var(--sh-sm)
     }
 
     table {
@@ -489,11 +551,11 @@
 
     thead th {
       font-family: var(--fh);
-      font-size: 10px;
+      font-size: 12px;
       font-weight: 700;
       color: var(--t3);
-      text-transform: uppercase;
-      letter-spacing: .05em;
+      text-transform: none;
+      letter-spacing: 0;
       padding: 9px 14px;
       text-align: left;
       white-space: nowrap;
@@ -555,6 +617,7 @@
     td {
       padding: 11px 14px;
       font-size: 12px;
+      font-weight: 400;
       color: var(--t2);
       vertical-align: middle
     }
@@ -568,13 +631,13 @@
 
     .rn {
       font-family: var(--fh);
-      font-size: 13px;
+      font-size: 14px;
       font-weight: 700;
       color: var(--t1)
     }
 
     .rn-desc {
-      font-size: 10px;
+      font-size: 12px;
       color: var(--t3)
     }
 
@@ -582,10 +645,10 @@
       display: inline-flex;
       padding: 2px 8px;
       border-radius: 99px;
-      font-size: 10px;
-      font-weight: 600;
-      font-family: var(--fm);
-      letter-spacing: .02em
+      font-size: 12px;
+      font-weight: 700;
+      font-family: var(--fb);
+      letter-spacing: 0
     }
 
     .cat-Generic {
@@ -614,9 +677,9 @@
       gap: 4px;
       padding: 2px 7px;
       border-radius: 4px;
-      font-size: 10px;
-      font-weight: 500;
-      font-family: var(--fm)
+      font-size: 12px;
+      font-weight: 400;
+      font-family: var(--fb)
     }
 
     .rc-Static {
@@ -650,16 +713,16 @@
     }
 
     .ver-num {
-      font-family: var(--fm);
+      font-family: var(--fb);
       font-size: 12px;
-      font-weight: 500;
+      font-weight: 400;
       color: var(--t1)
     }
 
     .ver-tag {
-      font-size: 9px;
-      font-family: var(--fm);
-      font-weight: 600;
+      font-size: 12px;
+      font-family: var(--fb);
+      font-weight: 700;
       padding: 1px 5px;
       border-radius: 3px
     }
@@ -677,9 +740,9 @@
     }
 
     .ver-total {
-      font-size: 10px;
+      font-size: 12px;
       color: var(--t3);
-      font-family: var(--fm)
+      font-family: var(--fb)
     }
 
     .health {
@@ -714,8 +777,8 @@
     }
 
     .health-pct {
-      font-family: var(--fm);
-      font-size: 10px;
+      font-family: var(--fb);
+      font-size: 12px;
       color: var(--t3)
     }
 
@@ -741,14 +804,14 @@
     }
 
     .st-txt {
-      font-size: 11px;
-      font-family: var(--fm);
+      font-size: 12px;
+      font-family: var(--fb);
       color: var(--t2)
     }
 
     .mod-date {
-      font-family: var(--fm);
-      font-size: 11px;
+      font-family: var(--fb);
+      font-size: 12px;
       color: var(--t3)
     }
 
@@ -812,7 +875,7 @@
       transform: translateX(-50%);
       background: var(--t1);
       color: var(--bg-p);
-      font-size: 10px;
+      font-size: 12px;
       padding: 3px 7px;
       border-radius: 4px;
       white-space: nowrap;
@@ -821,11 +884,58 @@
       z-index: 10
     }
 
+    /* ── MUI-style Checkbox ── */
     input[type=checkbox] {
-      width: 14px;
-      height: 14px;
-      accent-color: var(--ac);
-      cursor: pointer
+      width: 16px;
+      height: 16px;
+      border-radius: 2px;
+      border: 2px solid var(--bdr-m);
+      background: transparent;
+      cursor: pointer;
+      appearance: none;
+      -webkit-appearance: none;
+      flex-shrink: 0;
+      transition: background-color .15s, border-color .15s;
+      position: relative;
+      vertical-align: middle
+    }
+
+    input[type=checkbox]:hover {
+      border-color: var(--ac);
+    }
+
+    input[type=checkbox]:checked {
+      background: var(--ac);
+      border-color: var(--ac)
+    }
+
+    input[type=checkbox]:checked::after {
+      content: '';
+      position: absolute;
+      left: 2px;
+      top: -1px;
+      width: 5px;
+      height: 9px;
+      border: 2px solid #fff;
+      border-top: none;
+      border-left: none;
+      transform: rotate(43deg)
+    }
+
+    input[type=checkbox]:indeterminate {
+      background: var(--ac);
+      border-color: var(--ac)
+    }
+
+    input[type=checkbox]:indeterminate::after {
+      content: '';
+      position: absolute;
+      left: 2px;
+      top: 5px;
+      width: 8px;
+      height: 2px;
+      background: #fff;
+      border-radius: 1px
     }
 
     /* EMPTY */
@@ -849,12 +959,13 @@
     .empty-ttl {
       font-family: var(--fh);
       font-size: 14px;
-      font-weight: 600;
+      font-weight: 700;
       color: var(--t2)
     }
 
     .empty-sub {
       font-size: 12px;
+      font-weight: 400;
       text-align: center;
       max-width: 260px;
       line-height: 1.5
@@ -875,12 +986,12 @@
       display: flex
     }
 
+    /* ── MUI Dialog ── */
     .modal {
       background: var(--bg-p);
-      border-radius: var(--r);
-      padding: 22px;
+      border-radius: 4px;
+      padding: 24px;
       width: 360px;
-      box-shadow: var(--sh-md)
     }
 
     .modal-ttl {
@@ -893,6 +1004,7 @@
 
     .modal-body {
       font-size: 12px;
+      font-weight: 400;
       color: var(--t2);
       line-height: 1.6;
       margin-bottom: 18px
@@ -908,36 +1020,53 @@
       justify-content: flex-end
     }
 
+    /* ── MUI Modal Buttons ── */
     .mb {
-      padding: 7px 14px;
-      font-size: 12px;
-      font-weight: 600;
+      padding: 6px 16px;
+      font-size: 13px;
+      font-weight: 500;
       font-family: var(--fb);
-      border-radius: var(--rs);
+      border-radius: 4px;
       cursor: pointer;
-      border: 1px solid;
-      transition: all .15s
+      border: 1px solid transparent;
+      transition: background-color .25s, border-color .2s;
+      letter-spacing: .02em;
+      line-height: 1.75;
+      position: relative;
+      overflow: hidden
+    }
+
+    .mb::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: currentColor;
+      opacity: 0;
+      transition: opacity .2s
+    }
+
+    .mb:hover::after {
+      opacity: .06
     }
 
     .mb-cn {
-      border-color: var(--bdr-m);
-      background: var(--bg-c);
+      border-color: rgba(0, 0, 0, .23);
+      background: transparent;
       color: var(--t2)
     }
 
     .mb-cn:hover {
-      background: var(--bg-h)
+      border-color: var(--t2)
     }
 
     .mb-del {
-      border-color: var(--rd);
+      border: none;
       background: var(--rd);
-      color: #fff
+      color: #fff;
     }
 
     .mb-del:hover {
       background: #b91c1c;
-      border-color: #b91c1c
     }
 
     /* TOAST */
@@ -949,12 +1078,12 @@
       background: var(--t1);
       color: var(--bg-p);
       font-size: 12px;
+      font-weight: 400;
       padding: 9px 18px;
       border-radius: var(--rs);
       z-index: 200;
       display: none;
       font-family: var(--fb);
-      box-shadow: var(--sh-md)
     }
 
     .toast.show {
@@ -1048,8 +1177,7 @@
   <div class="tb">
     <div class="tb-l">
       <div class="pg-ttl">Rule Tower</div>
-      <div class="pg-sub" id="subLine">6 rules &nbsp;·&nbsp; 1 with unpublished drafts &nbsp;·&nbsp; Last updated
-        2026-05-14</div>
+      <div class="pg-sub" id="subLine">34 rules &nbsp;·&nbsp; Last updated 2026-05-01</div>
     </div>
     <div class="tb-r">
       <div class="srch">
@@ -1085,6 +1213,7 @@
       <button class="chip" onclick="setFilter('st','draft',this)">Has Draft</button>
     </div>
     <select class="sort-sel" id="sortSel" onchange="renderRules()">
+      <option value="seq">Sort: Sequence</option>
       <option value="name">Sort: Name A–Z</option>
       <option value="modified">Sort: Last Modified</option>
       <option value="versions">Sort: Most Versions</option>
@@ -1094,19 +1223,19 @@
 
   <div class="stats-bar">
     <div class="sc sc-ac">
-      <div class="sc-n" id="statTotal">6</div>
+      <div class="sc-n" id="statTotal">34</div>
       <div class="sc-l">Total Rules</div>
     </div>
     <div class="sc sc-gr">
-      <div class="sc-n" id="statPub">5</div>
+      <div class="sc-n" id="statPub">34</div>
       <div class="sc-l">Published</div>
     </div>
     <div class="sc sc-am">
-      <div class="sc-n" id="statDraft">1</div>
+      <div class="sc-n" id="statDraft">0</div>
       <div class="sc-l">Unpublished Drafts</div>
     </div>
     <div class="sc sc-pu">
-      <div class="sc-n" id="statDyn">2</div>
+      <div class="sc-n" id="statDyn">19</div>
       <div class="sc-l">Dynamic Rules</div>
     </div>
   </div>
@@ -1137,6 +1266,9 @@
         <thead>
           <tr>
             <th style="width:38px;text-align:center"><input type="checkbox" id="selAll" onchange="toggleAll()" /></th>
+            <th class="sortable" id="th-seq" onclick="sort('seq')">Seq <span class="sort-ic"><svg viewBox="0 0 24 24">
+                  <path d="M8 9l4-4 4 4M16 15l-4 4-4-4" />
+                </svg></span></th>
             <th class="sortable" id="th-name" onclick="sort('name')">Rule Name <span class="sort-ic"><svg
                   viewBox="0 0 24 24">
                   <path d="M8 9l4-4 4 4M16 15l-4 4-4-4" />
@@ -1183,13 +1315,40 @@
 
   <script>
     const RULES = [
-      { id: 1, name: 'Catalog Item', desc: 'Identifies if product is a catalog item', cat: 'Generic', cls: 'Alert', ver: 'v0.3', totalVer: 3, status: 'published', coverage: 92, modified: '2026-04-27' },
-      { id: 2, name: 'Load TBA', desc: 'Marks items pending load assignment', cat: 'Generic', cls: 'Static', ver: 'v0.1', totalVer: 1, status: 'published', coverage: 78, modified: '2026-04-27' },
-      { id: 3, name: 'PUD (Always 1)', desc: 'Pack unit divisor — always outputs 1', cat: 'Generic', cls: 'Static', ver: 'v0.2', totalVer: 2, status: 'draft', coverage: 55, modified: '2026-05-10' },
-      { id: 4, name: 'Generic Indicator', desc: 'Flags product as generic equivalent', cat: 'Generic', cls: 'Alert', ver: 'v0.1', totalVer: 1, status: 'published', coverage: 88, modified: '2026-04-27' },
-      { id: 5, name: 'MCK-GPC', desc: 'McKesson GPC classification code extraction', cat: 'Generic', cls: 'Dynamic', ver: 'v0.2', totalVer: 2, status: 'published', coverage: 71, modified: '2026-04-27' },
-      { id: 6, name: 'Pri-Ord-Item', desc: 'Primary order item indicator', cat: 'Generic', cls: 'Static', ver: 'v0.2', totalVer: 2, status: 'published', coverage: 96, modified: '2026-04-27' },
-    ];
+      { id: 45, name: 'Catalog Item', cat: 'Generic', cls: 'Static', ver: 'v0.3', totalVer: 3, status: 'published', coverage: 92, modified: '2026-05-01', seq: 1 },
+      { id: 46, name: 'Load TBA', cat: 'Generic', cls: 'Static', ver: 'v0.1', totalVer: 1, status: 'published', coverage: 78, modified: '2026-04-27', seq: 2 },
+      { id: 49, name: 'DC Table', cat: 'Generic', cls: 'Static', ver: 'v0.2', totalVer: 2, status: 'published', coverage: 88, modified: '2026-04-28', seq: 11 },
+      { id: 50, name: 'Individual DC', cat: 'Generic', cls: 'Dynamic', ver: 'v0.2', totalVer: 2, status: 'published', coverage: 71, modified: '2026-04-30', seq: 12 },
+      { id: 76, name: 'MNC', cat: 'Generic', cls: 'Static', ver: 'v0.1', totalVer: 1, status: 'published', coverage: 65, modified: '2026-04-27', seq: 13 },
+      { id: 55, name: 'SVC LVL Catgy', cat: 'Generic', cls: 'Dynamic', ver: 'v0.1', totalVer: 1, status: 'published', coverage: 85, modified: '2026-04-27', seq: 14 },
+      { id: 56, name: 'Hospital Item', cat: 'Generic', cls: 'Dynamic', ver: 'v0.1', totalVer: 1, status: 'published', coverage: 80, modified: '2026-04-27', seq: 15 },
+      { id: 77, name: 'Private Label Code', cat: 'Generic', cls: 'Static', ver: 'v0.2', totalVer: 2, status: 'published', coverage: 60, modified: '2026-04-28', seq: 16 },
+      { id: 58, name: 'DC Do Not Delete', cat: 'Generic', cls: 'Static', ver: 'v0.2', totalVer: 2, status: 'published', coverage: 75, modified: '2026-04-28', seq: 17 },
+      { id: 59, name: 'MICA', cat: 'Generic', cls: 'Dynamic', ver: 'v0.1', totalVer: 1, status: 'published', coverage: 82, modified: '2026-04-27', seq: 18 },
+      { id: 60, name: 'INFOREM', cat: 'Generic', cls: 'Dynamic', ver: 'v0.1', totalVer: 1, status: 'published', coverage: 79, modified: '2026-04-27', seq: 19 },
+      { id: 61, name: 'NDC', cat: 'Generic', cls: 'Dynamic', ver: 'v0.1', totalVer: 1, status: 'published', coverage: 95, modified: '2026-04-27', seq: 20 },
+      { id: 62, name: 'WAC', cat: 'Generic', cls: 'Dynamic', ver: 'v0.1', totalVer: 1, status: 'published', coverage: 90, modified: '2026-04-27', seq: 21 },
+      { id: 63, name: 'CT QTY', cat: 'Generic', cls: 'Dynamic', ver: 'v0.1', totalVer: 1, status: 'published', coverage: 70, modified: '2026-04-27', seq: 22 },
+      { id: 64, name: 'CS QTY', cat: 'Generic', cls: 'Dynamic', ver: 'v0.1', totalVer: 1, status: 'published', coverage: 72, modified: '2026-04-27', seq: 23 },
+      { id: 65, name: 'PALLET QTY', cat: 'Generic', cls: 'Dynamic', ver: 'v0.1', totalVer: 1, status: 'published', coverage: 68, modified: '2026-04-27', seq: 24 },
+      { id: 66, name: 'MOQ', cat: 'Generic', cls: 'Dynamic', ver: 'v0.2', totalVer: 2, status: 'published', coverage: 74, modified: '2026-04-30', seq: 25 },
+      { id: 67, name: 'MFG SIZE', cat: 'Generic', cls: 'Dynamic', ver: 'v0.1', totalVer: 1, status: 'published', coverage: 87, modified: '2026-04-27', seq: 26 },
+      { id: 75, name: 'MFG UNITS', cat: 'Generic', cls: 'Dynamic', ver: 'v0.1', totalVer: 1, status: 'published', coverage: 83, modified: '2026-04-27', seq: 27 },
+      { id: 68, name: 'OU', cat: 'Generic', cls: 'Dynamic', ver: 'v0.1', totalVer: 1, status: 'published', coverage: 81, modified: '2026-04-27', seq: 28 },
+      { id: 69, name: 'SU', cat: 'Generic', cls: 'Dynamic', ver: 'v0.1', totalVer: 1, status: 'published', coverage: 84, modified: '2026-04-27', seq: 29 },
+      { id: 70, name: 'EN (selling) Description', cat: 'Generic', cls: 'Dynamic', ver: 'v0.1', totalVer: 1, status: 'published', coverage: 89, modified: '2026-04-27', seq: 30 },
+      { id: 71, name: 'Z2 (buying) Description', cat: 'Generic', cls: 'Dynamic', ver: 'v0.1', totalVer: 1, status: 'published', coverage: 86, modified: '2026-04-27', seq: 31 },
+      { id: 72, name: 'SYNONYM', cat: 'Generic', cls: 'Dynamic', ver: 'v0.2', totalVer: 2, status: 'published', coverage: 77, modified: '2026-04-30', seq: 32 },
+      { id: 73, name: 'GTIN 14 Values Missing Alert', cat: 'Generic', cls: 'Alert', ver: 'v0.1', totalVer: 1, status: 'published', coverage: 50, modified: '2026-04-27', seq: 33 },
+      { id: 74, name: 'DSCSA Exempt Alert', cat: 'Generic', cls: 'Alert', ver: 'v0.1', totalVer: 1, status: 'published', coverage: 45, modified: '2026-04-27', seq: 34 },
+      { id: 52, name: 'Generic Indicator', cat: 'Generic', cls: 'Dynamic', ver: 'v0.1', totalVer: 1, status: 'published', coverage: 91, modified: '2026-04-27', seq: 4 },
+      { id: 53, name: 'MCK- GPC', cat: 'Generic', cls: 'Static', ver: 'v0.2', totalVer: 2, status: 'published', coverage: 73, modified: '2026-04-28', seq: 5 },
+      { id: 54, name: 'Pri-Ord-Item', cat: 'Generic', cls: 'Static', ver: 'v0.2', totalVer: 2, status: 'published', coverage: 96, modified: '2026-04-28', seq: 6 },
+      { id: 57, name: 'Returnable', cat: 'Generic', cls: 'Static', ver: 'v0.2', totalVer: 2, status: 'published', coverage: 76, modified: '2026-04-28', seq: 7 },
+      { id: 78, name: 'Restrict Code', cat: 'Generic', cls: 'Static', ver: 'v0.2', totalVer: 2, status: 'published', coverage: 69, modified: '2026-04-28', seq: 8 },
+      { id: 47, name: 'Vendor Name', cat: 'Generic', cls: 'Dynamic', ver: 'v0.2', totalVer: 2, status: 'published', coverage: 93, modified: '2026-04-28', seq: 9 },
+      { id: 48, name: 'Vendor ID', cat: 'Generic', cls: 'Dynamic', ver: 'v0.1', totalVer: 1, status: 'published', coverage: 88, modified: '2026-04-27', seq: 10 },
+    ].sort((a, b) => a.seq - b.seq);
 
     let F = { cat: 'all', cls: 'all', st: 'all' }, sel = new Set(), delTarget = null, sortKey = 'name', sortAsc = true;
 
@@ -1214,13 +1373,13 @@
         if (F.cat !== 'all' && r.cat !== F.cat) return false;
         if (F.cls !== 'all' && r.cls !== F.cls) return false;
         if (F.st !== 'all' && r.status !== F.st) return false;
-        if (q && !r.name.toLowerCase().includes(q) && !r.cat.toLowerCase().includes(q) && !r.desc.toLowerCase().includes(q)) return false;
+        if (q && !r.name.toLowerCase().includes(q) && !r.cat.toLowerCase().includes(q)) return false;
         return true;
       });
       const sk = document.getElementById('sortSel').value || sortKey;
       d.sort((a, b) => {
-        const va = sk === 'name' ? a.name : sk === 'modified' ? a.modified : sk === 'versions' ? a.totalVer : a.coverage;
-        const vb = sk === 'name' ? b.name : sk === 'modified' ? b.modified : sk === 'versions' ? b.totalVer : b.coverage;
+        const va = sk === 'seq' ? a.seq : sk === 'name' ? a.name : sk === 'modified' ? a.modified : sk === 'versions' ? a.totalVer : a.coverage;
+        const vb = sk === 'seq' ? b.seq : sk === 'name' ? b.name : sk === 'modified' ? b.modified : sk === 'versions' ? b.totalVer : b.coverage;
         const asc = (sk === 'modified' || sk === 'versions' || sk === 'coverage') ? false : true; // default desc for numeric
         if (va < vb) return sortAsc ? (sk === 'name' ? -1 : 1) : 1;
         if (va > vb) return sortAsc ? (sk === 'name' ? 1 : -1) : -1;
@@ -1244,10 +1403,10 @@
         if (sel.has(r.id)) tr.classList.add('selected');
         tr.innerHTML = `
       <td style="text-align:center"><input type="checkbox" ${sel.has(r.id) ? 'checked' : ''} onchange="toggleSel(${r.id})"></td>
+      <td><span class="mod-date">${r.seq}</span></td>
       <td>
         <div class="rn-cell">
           <span class="rn">${r.name}</span>
-          <span class="rn-desc">${r.desc}</span>
         </div>
       </td>
       <td>
