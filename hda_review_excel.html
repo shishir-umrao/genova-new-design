@@ -1205,7 +1205,7 @@
 
     .ftr-prog-fill {
       height: 100%;
-      background: var(--mk-blue);
+      background: var(--gr);
       transition: width .4s ease;
       width: 0%;
       border-radius: 3px
@@ -2078,7 +2078,7 @@
             </svg>
           </div> -->
       <img src="mck-logo.png" alt="McKesson" style="height:20px;width:auto;display:block" />
-      <span class="n-txt">Product Set-up</span>
+      <span class="n-txt">Gx Product Set-up</span>
     </div>
     <div class="n-div"></div>
     <div class="n-tabs">
@@ -2104,7 +2104,8 @@
   <!-- DOC HEADER -->
   <div class="doc-hd">
     <table width="100%">
-      <tr class="case-row" data-case="CASE-2026-00089" data-status="processing" onclick="if(!event.target.closest('.editable-note') &amp;&amp; !event.target.closest('.cell-actions')) toggleCaseRow(this)">
+      <tr class="case-row" data-case="CASE-2026-00089" data-status="processing"
+        onclick="if(!event.target.closest('.editable-note') &amp;&amp; !event.target.closest('.cell-actions')) toggleCaseRow(this)">
         <td>
           <div class="doc-ic">
             <svg viewBox="0 0 24 24">
@@ -2140,7 +2141,7 @@
         <td>
           <div class="doc-cell">
             <div class="doc-lbl">TimeStamp</div>
-            <div class="doc-val">08 May 2026, 09:14</div>
+            <div class="doc-val">05/06/26 09:14 AM</div>
           </div>
         </td>
         <td>
@@ -2150,46 +2151,21 @@
           </div>
         </td>
         <td>
-          <div class="doc-acts">      
+          <div class="doc-acts">
             <button class="btn" style="margin-left:auto">Download</button>
             <button class="btn btn-done" id="submitBtn">Submit Review</button>
           </div>
         </td>
       </tr>
     </table>
-    <!-- <div class="doc-tb">
-      <div class="doc-ic">
-        <svg viewBox="0 0 24 24">
-          <path d="M19 12H5M12 19l-7-7 7-7" fill="none" stroke="var(--ac)" stroke-width="2" stroke-linecap="round"
-            stroke-linejoin="round" />
-        </svg>
-      </div>
-      <div>
-        <div id="docVendor" class="doc-ttl">Loading...</div>
-        <div class="doc-sub">CASE-2026-00088 &nbsp;·&nbsp; Received 25 Apr 2026 &nbsp;·&nbsp;
-          <span id="docNdcCount">3</span>
-          NDC &nbsp;·&nbsp; <span id="docAvgConf">--</span>% avg.
-          trust score &nbsp;·&nbsp; <span id="hdrProg">0 / 0 fields reviewed</span>
-        </div>
-      </div>
-    </div>
-    <div class="doc-acts">      
-      <button class="btn">Download</button>
-      <button class="btn btn-done" id="submitBtn">Submit Review</button>
-    </div> -->
   </div>
 
-  <!-- PROGRESS STRIP -->
-  <!-- <div class="prog-strip">
-    <div class="prog-fill" id="progFill"></div>
-  </div> -->
-
-  <div style="display:flex;align-items:center;">
+  <div style="display:flex;align-items:center; padding: 16px 0;">
     <div class="work-tabs" id="workTabs"></div>
     <!-- SELECT ALL -->
     <div class="sel-all-bar" style="margin-right:16px;display:flex;align-items:center;gap:8px; margin-left:auto">
       <input type="checkbox" id="selAllChk" onchange="toggleSelectAll(this)" class="col-chk" />
-      <label for="selAllChk" style="font-size:12px;color:var(--t2);cursor:pointer">Select all</label>
+      <label for="selAllChk" style="font-size:14px;color:var(--t2);cursor:pointer">Select all</label>
     </div>
   </div>
 
@@ -2265,11 +2241,15 @@
 
   <!-- FOOTER -->
   <div class="xl-ftr">
-    <span class="xl-ftr-stat"><span id="ftAccepted">0</span> accepted</span>
+    <span class="xl-ftr-stat" style="color: var(--mk-or-dk);">
+      <span id="ftPending" style="color: var(--mk-or-dk);">0</span> pending
+    </span>
     <div class="ftr-sep"></div>
     <!-- <span class="xl-ftr-stat"><span id="ftRejected">0</span> rejected</span>
     <div class="ftr-sep"></div> -->
-    <span class="xl-ftr-stat"><span id="ftPending">0</span> pending</span>
+    <span class="xl-ftr-stat" style="color: var(--gr);">
+      <span id="ftAccepted" style="color: var(--gr);">0</span> accepted
+    </span>
     <div class="ftr-sep"></div>
     <div class="ftr-prog-wrap" title="Approved fields">
       <div class="ftr-prog-track">
@@ -2421,7 +2401,7 @@
             const key = detail.field_name.toLowerCase().replace(/[^a-z0-9]/g, '_');
             cells[key] = {
               ex: detail.extracted_values || '',
-              kg: detail.pharmacist_values || detail.extracted_values || '',
+              kg: detail.extracted_values || '',
               kgNote: detail.rule_version?.version_guidelines || '',
               state: detail.status === 'Accepted' ? 'ac' : (detail.status === 'Rejected' ? 'rj' : 'pending')
             };
@@ -2625,11 +2605,11 @@
       const host = document.getElementById('workTabs');
       host.innerHTML = '';
 
-      const ext = document.createElement('button');
-      ext.className = 'work-tab active';
-      ext.textContent = 'Extracted Fields';
-      ext.addEventListener('click', () => setActiveWorkTab('extracted', null));
-      host.appendChild(ext);
+      // const ext = document.createElement('button');
+      // ext.className = 'work-tab active';
+      // ext.textContent = 'Extracted Fields';
+      // ext.addEventListener('click', () => setActiveWorkTab('extracted', null));
+      // host.appendChild(ext);
 
       // NDCS.forEach(n => {
       //   const b = document.createElement('button');
@@ -2939,6 +2919,7 @@
         updateApproveBtn(f.key);
         refreshColCells(f.key);
       });
+      document.getElementById('selAllChk').checked = false;
       updateToast();
     }
 

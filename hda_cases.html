@@ -323,25 +323,25 @@
     .ts-proc {
       background: var(--pu-pale);
       color: var(--pu);
-      border-color: var(--pu-lt)
+      border-color: var(--pu)
     }
 
     .ts-rdy {
       background: var(--am-pale);
       color: var(--am);
-      border-color: var(--am-lt)
+      border-color: var(--am)
     }
 
     .ts-rev {
       background: var(--ac-pale);
       color: var(--ac);
-      border-color: var(--ac-lt)
+      border-color: var(--ac)
     }
 
     .ts-done {
       background: var(--gr-pale);
       color: var(--gr);
-      border-color: var(--gr-lt)
+      border-color: var(--gr)
     }
 
     .tb-r {
@@ -733,7 +733,7 @@
     }
 
     .case-table thead th:nth-child(4) {
-      width: 8%;
+      width: 11%;
     }
 
     .case-table thead th:nth-child(5) {
@@ -749,7 +749,7 @@
     }
 
     .case-table thead th:nth-child(8) {
-      width: 10%;
+      width: 7%;
     }
 
     .case-table thead th:nth-child(9) {
@@ -854,7 +854,7 @@
     }
 
     .ndc-nested-table td:nth-child(4) {
-      width: 8%;
+      width: 11%;
     }
 
     .ndc-nested-table td:nth-child(5) {
@@ -874,7 +874,7 @@
     }
 
     .ndc-nested-table td:nth-child(9) {
-      width: 12%;
+      width: 9%;
       padding-right: 18px;
       text-align: right;
     }
@@ -986,7 +986,7 @@
     .cs-chip.cs-proc {
       background: #fef9c3;
       color: #854d0e;
-      border-color: #fde047
+      border-color: #854d0e
     }
 
     [data-theme=dark] .cs-chip.cs-proc {
@@ -998,25 +998,26 @@
     .cs-chip.cs-rdy {
       background: var(--mk-or-pale);
       color: var(--mk-or-dk);
-      border-color: var(--mk-or-lt)
+      border-color: var(--mk-or-dk)
     }
 
     .cs-chip.cs-ur {
       background: var(--mk-blue-lt);
       color: var(--mk-blue-dk);
-      border-color: #a8c4e8
+      border-color: var(--mk-blue-dk);
     }
 
     .cs-chip.cs-fail {
       background: var(--rd-pale);
       color: var(--rd);
-      border-color: var(--rd-lt)
+      border-color: var(--rd);
+      cursor: help;
     }
 
     .cs-chip.cs-done {
       background: var(--gr-pale);
       color: var(--gr);
-      border-color: var(--gr-lt)
+      border-color: var(--gr)
     }
 
     .cs-spin {
@@ -1256,6 +1257,56 @@
       stroke-width: 2
     }
 
+    /* ── NDC View icon button (filled) ── */
+    .ndc-view {
+      width: 28px;
+      height: 28px;
+      border-radius: 4px;
+      border: none;
+      background: var(--ac);
+      color: #fff;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: background-color .15s;
+      flex-shrink: 0;
+      position: relative;
+      overflow: hidden
+    }
+
+    .ndc-view::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 4px;
+      background: currentColor;
+      opacity: 0;
+      transition: opacity .15s
+    }
+
+    .ndc-view:hover::after {
+      opacity: .12
+    }
+
+    .ndc-view svg {
+      width: 13px;
+      height: 13px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2
+    }
+
+    .ndc-view:disabled {
+      background: var(--bdr-m);
+      color: var(--t3);
+      cursor: not-allowed
+    }
+
+    .ndc-view:disabled::after {
+      display: none
+    }
+
     /* ── Review icon button (filled) ── */
     .ca-rv {
       width: 30px;
@@ -1379,7 +1430,7 @@
     .sbdg.s-proc {
       background: #fef9c3;
       color: #854d0e;
-      border-color: #fde047
+      border-color: #854d0e
     }
 
     .sbdg.s-extr .sbdg-dot {
@@ -1400,14 +1451,14 @@
     .sbdg.s-vali {
       background: var(--mk-or-pale);
       color: var(--mk-or);
-      border-color: var(--mk-or-lt);
+      border-color: var(--mk-or);
       animation: pulse 1.4s ease infinite
     }
 
     .sbdg.s-rdy {
-      background: var(--am-pale);
-      color: var(--am);
-      border-color: var(--am-lt)
+      background: var(--mk-or-pale);
+      color: var(--mk-or-dk);
+      border-color: var(--mk-or-dk);
     }
 
     .sbdg.s-rdy .sbdg-dot {
@@ -1417,7 +1468,7 @@
     .sbdg.s-ur {
       background: var(--mk-blue-lt);
       color: var(--mk-blue-dk);
-      border-color: #a8c4e8
+      border-color: var(--mk-blue-dk);
     }
 
     .sbdg.s-ur .sbdg-dot {
@@ -1427,7 +1478,7 @@
     .sbdg.s-que {
       background: var(--ac-pale);
       color: var(--ac);
-      border-color: var(--ac-lt)
+      border-color: var(--ac)
     }
 
     .sbdg.s-que .sbdg-dot {
@@ -1437,7 +1488,7 @@
     .sbdg.s-done {
       background: var(--gr-pale);
       color: var(--gr);
-      border-color: var(--gr-lt)
+      border-color: var(--gr)
     }
 
     .sbdg.s-done .sbdg-dot {
@@ -1447,7 +1498,8 @@
     .sbdg.s-err {
       background: var(--rd-pale);
       color: var(--rd);
-      border-color: var(--rd-lt)
+      border-color: var(--rd);
+      cursor: help;
     }
 
     .sbdg.s-err .sbdg-dot {
@@ -1667,7 +1719,7 @@
         </svg>
       </div> -->
       <img src="mck-logo.png" alt="McKesson" style="height:20px;width:auto;display:block" />
-      <span class="n-txt">Product Set-up</span>
+      <span class="n-txt">Gx Product Set-up</span>
     </div>
     <div class="n-div"></div>
     <div class="n-tabs">
@@ -1689,7 +1741,7 @@
       <div class="tb-l">
         <div>
           <div class="pg-ttl">Case Inbox</div>
-          <div class="pg-sub">11 cases &middot; 28 NDCs total &middot; Last synced 2 min ago</div>
+          <div class="pg-sub">5 cases &middot; 12 NDCs &middot; Last updated 2 min ago</div>
         </div>
         <!-- <div class="tb-stats">
           <span class="ts ts-proc">4 processing</span>
@@ -1731,18 +1783,22 @@
       <div class="filter-group">
         <span class="fc-lbl">Status:</span>
         <div class="custom-select" id="statusSelect">
-          <div class="select-trigger" onclick="toggleDropdown('statusSelect')">All Statuses</div>
-          <div class="select-dropdown">
-            <div class="select-option" onclick="selectStatus('all', this)"><input type="checkbox" checked
+          <div class="select-trigger" onclick="toggleDropdown('statusSelect')">In Progress, +2</div>
+          <div class="select-dropdown" style="min-width:180px">
+            <div class="select-option" onclick="selectStatus('all', this)"><input type="checkbox"
                 onchange="selectStatus('all', this.parentElement)"> All Statuses</div>
-            <div class="select-option" onclick="selectStatus('processing', this)"><input type="checkbox"
-                onchange="selectStatus('processing', this.parentElement)"> Processing</div>
-            <div class="select-option" onclick="selectStatus('ready', this)"><input type="checkbox"
+            <div class="select-option" onclick="selectStatus('queued', this)"><input type="checkbox"
+                onchange="selectStatus('queued', this.parentElement)"> Queued</div>
+            <div class="select-option" onclick="selectStatus('processing', this)"><input type="checkbox" checked
+                onchange="selectStatus('processing', this.parentElement)"> In progress</div>
+            <div class="select-option" onclick="selectStatus('ready', this)"><input type="checkbox" checked
                 onchange="selectStatus('ready', this.parentElement)"> Ready for Review</div>
-            <div class="select-option" onclick="selectStatus('review', this)"><input type="checkbox"
+            <div class="select-option" onclick="selectStatus('review', this)"><input type="checkbox" checked
                 onchange="selectStatus('review', this.parentElement)"> Under Review</div>
             <div class="select-option" onclick="selectStatus('reviewed', this)"><input type="checkbox"
-                onchange="selectStatus('reviewed', this.parentElement)"> Reviewed</div>
+                onchange="selectStatus('reviewed', this.parentElement)"> PM Reviewed</div>
+            <div class="select-option" onclick="selectStatus('failed', this)"><input type="checkbox"
+                onchange="selectStatus('failed', this.parentElement)"> Failed</div>
           </div>
         </div>
       </div>
@@ -1753,24 +1809,25 @@
         <span class="fc-lbl">Vendor:</span>
         <div class="custom-select" id="vendorSelect">
           <div class="select-trigger" onclick="toggleDropdown('vendorSelect')">All Vendors</div>
-          <div class="select-dropdown">
+          <div class="select-dropdown" style="min-width:280px">
             <div class="select-option" onclick="selectVendor('all', this)"><input type="checkbox" checked
                 onchange="toggleVendorCheckbox('all', this)"> All Vendors</div>
-            <div class="select-option" onclick="selectVendor('Sagent Pharmaceuticals', this)"><input type="checkbox"
-                onchange="toggleVendorCheckbox('Sagent Pharmaceuticals', this)"> Sagent Pharmaceuticals</div>
             <div class="select-option" onclick="selectVendor('Bryant Ranch Prepack, Inc', this)"><input type="checkbox"
                 onchange="toggleVendorCheckbox('Bryant Ranch Prepack, Inc', this)"> Bryant Ranch Prepack, Inc</div>
-            <div class="select-option" onclick="selectVendor('Method Pharmaceuticals, LLC', this)"><input
-                type="checkbox" onchange="toggleVendorCheckbox('Method Pharmaceuticals, LLC', this)"> Method
-              Pharmaceuticals, LLC</div>
-            <div class="select-option" onclick="selectVendor('Westminster Pharmaceuticals, LLC', this)"><input
-                type="checkbox" onchange="toggleVendorCheckbox('Westminster Pharmaceuticals, LLC', this)"> Westminster
-              Pharmaceuticals, LLC</div>
             <div class="select-option"
               onclick="selectVendor('Heritage Pharmaceuticals Inc. d/b/a Avet Pharmaceuticals Inc.', this)"><input
                 type="checkbox"
                 onchange="toggleVendorCheckbox('Heritage Pharmaceuticals Inc. d/b/a Avet Pharmaceuticals Inc.', this)">
               Heritage Pharmaceuticals Inc.</div>
+            <div class="select-option" onclick="selectVendor('Method Pharmaceuticals, LLC', this)"><input
+                type="checkbox" onchange="toggleVendorCheckbox('Method Pharmaceuticals, LLC', this)"> Method
+              Pharmaceuticals, LLC</div>
+            <div class="select-option" onclick="selectVendor('Sagent Pharmaceuticals', this)"><input type="checkbox"
+                onchange="toggleVendorCheckbox('Sagent Pharmaceuticals', this)"> Sagent Pharmaceuticals</div>
+            <div class="select-option" onclick="selectVendor('Westminster Pharmaceuticals, LLC', this)"><input
+                type="checkbox" onchange="toggleVendorCheckbox('Westminster Pharmaceuticals, LLC', this)"> Westminster
+              Pharmaceuticals, LLC</div>
+
           </div>
         </div>
       </div>
@@ -1780,9 +1837,9 @@
       <div class="filter-group">
         <span class="fc-lbl">Date Range:</span>
         <div class="date-range">
-          <input type="date" class="date-input" id="dateFrom" onchange="applyFilters()">
+          <input type="date" value="2026-05-01" class="date-input" id="dateFrom" onchange="applyFilters()">
           <span class="date-sep">to</span>
-          <input type="date" class="date-input" id="dateTo" onchange="applyFilters()">
+          <input type="date" value="2026-05-10" class="date-input" id="dateTo" onchange="applyFilters()">
         </div>
       </div>
 
@@ -1821,14 +1878,20 @@
             <td>-</td>
             <td>3</td>
             <td><span class="cs-chip cs-proc"><span class="cs-spin"></span>In Progress</span></td>
-            <td>08 May 2026, 09:14</td>
-            <td class="editable-note placeholder" data-case="CASE-2026-00089" title="double click to edit">Add Notes</td>
-            <td>CASE-2026-00089</td>
+            <td>05/05/26 09:14 AM</td>
+            <td class="editable-note placeholder" data-case="CASE-2026-00089" title="double click to edit">Add Notes
+            </td>
+            <td>26-0089</td>
             <td>
               <div class="cell-actions" onclick="event.stopPropagation()">
-                <span class="act-link" style="color:var(--bdr-m); cursor:not-allowed">Review</span>
-                <span class="act-sep">|</span>
-                <span class="act-link" onclick="confirmDelete('CASE-2026-00089')" style="color:var(--rd)">Delete</span>
+                <button class="ca-rv" disabled><svg viewBox="0 0 24 24">
+                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                    <circle cx="12" cy="12" r="3" />
+                  </svg></button>
+                <button class="ca-del" disabled onclick="confirmDelete('CASE-2026-00089')"><svg viewBox="0 0 24 24">
+                    <path
+                      d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M10 11v6M14 11v6" />
+                  </svg></button>
               </div>
             </td>
           </tr>
@@ -1842,39 +1905,60 @@
                     <td></td>
                     <td></td>
                     <td>
-                      <div class="ndc-n">NDC-001</div>
+                      <div class="ndc-n">72789-0475-30</div>
                     </td>
                     <td><span class="sbdg s-rdy"><span class="sbdg-dot"></span>Ready for Review</span></td>
                     <td></td>
                     <td></td>
                     <td></td>
-                    <td><span class="ndc-del-link" onclick="confirmDeleteNDC('NDC 57894-0001-01')">Delete</span></td>
+                    <td>
+                      <button class="ca-del" onclick="confirmDeleteNDC('NDC 57894-0001-01')">
+                        <svg viewBox="0 0 24 24">
+                          <path
+                            d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M10 11v6M14 11v6" />
+                        </svg>
+                      </button>
+                    </td>
                   </tr>
                   <tr>
                     <td></td>
                     <td></td>
                     <td></td>
                     <td>
-                      <div class="ndc-n">NDC-002</div>
+                      <div class="ndc-n">72789-0475-31</div>
                     </td>
                     <td><span class="sbdg s-proc"><span class="sbdg-spin"></span>In Progress</span></td>
                     <td></td>
                     <td></td>
                     <td></td>
-                    <td><span class="ndc-del-link" onclick="confirmDeleteNDC('NDC 57894-0001-02')">Delete</span></td>
+                    <td>
+                      <button disabled class="ca-del" onclick="confirmDeleteNDC('NDC 57894-0001-01')">
+                        <svg viewBox="0 0 24 24">
+                          <path
+                            d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M10 11v6M14 11v6" />
+                        </svg>
+                      </button>
+                    </td>
                   </tr>
                   <tr>
                     <td></td>
                     <td></td>
                     <td></td>
                     <td>
-                      <div class="ndc-n">NDC-003</div>
+                      <div class="ndc-n">72789-0475-33</div>
                     </td>
                     <td><span class="sbdg s-que"><span class="sbdg-dot"></span>Queued</span></td>
                     <td></td>
                     <td></td>
                     <td></td>
-                    <td><span class="ndc-del-link" onclick="confirmDeleteNDC('NDC 57894-0002-01')">Delete</span></td>
+                    <td>
+                      <button disabled class="ca-del" onclick="confirmDeleteNDC('NDC 57894-0001-01')">
+                        <svg viewBox="0 0 24 24">
+                          <path
+                            d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M10 11v6M14 11v6" />
+                        </svg>
+                      </button>
+                    </td>
                   </tr>
                 </tbody>
               </table>
@@ -1893,14 +1977,20 @@
             <td>-</td>
             <td>2</td>
             <td><span class="cs-chip cs-rdy">Ready for Review</span></td>
-            <td>08 May 2026, 07:55</td>
-            <td class="editable-note placeholder" data-case="CASE-2026-00088" title="double click to edit">Add Notes</td>
-            <td>CASE-2026-00088</td>
+            <td>05/06/26 07:55 AM</td>
+            <td class="editable-note placeholder" data-case="CASE-2026-00088" title="double click to edit">Add Notes
+            </td>
+            <td>26-0088</td>
             <td>
               <div class="cell-actions" onclick="event.stopPropagation()">
-                <span class="act-link" onclick="caseAction('review','CASE-2026-00088')">Review</span>
-                <span class="act-sep">|</span>
-                <span class="act-link" onclick="confirmDelete('CASE-2026-00088')" style="color:var(--rd)">Delete</span>
+                <button class="ca-rv" onclick="caseAction('review','CASE-2026-00088')"><svg viewBox="0 0 24 24">
+                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                    <circle cx="12" cy="12" r="3" />
+                  </svg></button>
+                <button class="ca-del" onclick="confirmDelete('CASE-2026-00088')"><svg viewBox="0 0 24 24">
+                    <path
+                      d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M10 11v6M14 11v6" />
+                  </svg></button>
               </div>
             </td>
           </tr>
@@ -1913,26 +2003,40 @@
                     <td></td>
                     <td></td>
                     <td>
-                      <div class="ndc-n">NDC-001</div>
+                      <div class="ndc-n">72789-0475-30</div>
                     </td>
                     <td><span class="sbdg s-rdy"><span class="sbdg-dot"></span>Ready for Review</span></td>
                     <td></td>
                     <td></td>
                     <td></td>
-                    <td><span class="ndc-del-link" onclick="confirmDeleteNDC('NDC 61414-0170-01')">Delete</span></td>
+                    <td>
+                      <button class="ca-del" onclick="confirmDeleteNDC('NDC 57894-0001-01')">
+                        <svg viewBox="0 0 24 24">
+                          <path
+                            d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M10 11v6M14 11v6" />
+                        </svg>
+                      </button>
+                    </td>
                   </tr>
                   <tr>
                     <td></td>
                     <td></td>
                     <td></td>
                     <td>
-                      <div class="ndc-n">NDC-002</div>
+                      <div class="ndc-n">72789-0475-31</div>
                     </td>
                     <td><span class="sbdg s-rdy"><span class="sbdg-dot"></span>Ready for Review</span></td>
                     <td></td>
                     <td></td>
                     <td></td>
-                    <td><span class="ndc-del-link" onclick="confirmDeleteNDC('NDC 61414-0170-02')">Delete</span></td>
+                    <td>
+                      <button class="ca-del" onclick="confirmDeleteNDC('NDC 57894-0001-01')">
+                        <svg viewBox="0 0 24 24">
+                          <path
+                            d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M10 11v6M14 11v6" />
+                        </svg>
+                      </button>
+                    </td>
                   </tr>
                 </tbody>
               </table>
@@ -1951,14 +2055,20 @@
             <td>-</td>
             <td>4</td>
             <td><span class="cs-chip cs-ur">Under Review</span></td>
-            <td>07 May 2026, 14:22</td>
-            <td class="editable-note placeholder" data-case="CASE-2026-00085" title="double click to edit">Add Notes</td>
-            <td>CASE-2026-00085</td>
+            <td>05/07/26 02:22 PM</td>
+            <td class="editable-note placeholder" data-case="CASE-2026-00085" title="double click to edit">Add Notes
+            </td>
+            <td>26-0085</td>
             <td>
               <div class="cell-actions" onclick="event.stopPropagation()">
-                <span class="act-link" onclick="caseAction('review','CASE-2026-00085')">Review</span>
-                <span class="act-sep">|</span>
-                <span class="act-link" onclick="confirmDelete('CASE-2026-00085')" style="color:var(--rd)">Delete</span>
+                <button class="ca-rv" onclick="caseAction('review','CASE-2026-00085')"><svg viewBox="0 0 24 24">
+                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                    <circle cx="12" cy="12" r="3" />
+                  </svg></button>
+                <button class="ca-del" onclick="confirmDelete('CASE-2026-00085')"><svg viewBox="0 0 24 24">
+                    <path
+                      d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M10 11v6M14 11v6" />
+                  </svg></button>
               </div>
             </td>
           </tr>
@@ -1971,52 +2081,80 @@
                     <td></td>
                     <td></td>
                     <td>
-                      <div class="ndc-n">NDC-001</div>
+                      <div class="ndc-n">72789-0475-30</div>
                     </td>
                     <td><span class="sbdg s-ur"><span class="sbdg-dot"></span>Under Review</span></td>
                     <td></td>
                     <td></td>
                     <td></td>
-                    <td><span class="ndc-del-link" onclick="confirmDeleteNDC('NDC 00381-1921-01')">Delete</span></td>
+                    <td>
+                      <button class="ca-del" onclick="confirmDeleteNDC('NDC 57894-0001-01')">
+                        <svg viewBox="0 0 24 24">
+                          <path
+                            d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M10 11v6M14 11v6" />
+                        </svg>
+                      </button>
+                    </td>
                   </tr>
                   <tr>
                     <td></td>
                     <td></td>
                     <td></td>
                     <td>
-                      <div class="ndc-n">NDC-002</div>
+                      <div class="ndc-n">72789-0475-31</div>
                     </td>
                     <td><span class="sbdg s-ur"><span class="sbdg-dot"></span>Under Review</span></td>
                     <td></td>
                     <td></td>
                     <td></td>
-                    <td><span class="ndc-del-link" onclick="confirmDeleteNDC('NDC 00381-1921-02')">Delete</span></td>
+                    <td>
+                      <button class="ca-del" onclick="confirmDeleteNDC('NDC 57894-0001-01')">
+                        <svg viewBox="0 0 24 24">
+                          <path
+                            d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M10 11v6M14 11v6" />
+                        </svg>
+                      </button>
+                    </td>
                   </tr>
                   <tr>
                     <td></td>
                     <td></td>
                     <td></td>
                     <td>
-                      <div class="ndc-n">NDC-003</div>
+                      <div class="ndc-n">72789-0475-33</div>
                     </td>
-                    <td><span class="sbdg s-paus"><span class="sbdg-dot"></span>Paused</span></td>
+                    <td><span class="sbdg s-ur"><span class="sbdg-dot"></span>Under Review</span></td>
                     <td></td>
                     <td></td>
                     <td></td>
-                    <td><span class="ndc-del-link" onclick="confirmDeleteNDC('NDC 00381-1921-03')">Delete</span></td>
+                    <td>
+                      <button class="ca-del" onclick="confirmDeleteNDC('NDC 57894-0001-01')">
+                        <svg viewBox="0 0 24 24">
+                          <path
+                            d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M10 11v6M14 11v6" />
+                        </svg>
+                      </button>
+                    </td>
                   </tr>
                   <tr>
                     <td></td>
                     <td></td>
                     <td></td>
                     <td>
-                      <div class="ndc-n">NDC-004</div>
+                      <div class="ndc-n">72789-0475-34</div>
                     </td>
-                    <td><span class="sbdg s-done"><span class="sbdg-dot"></span>Reviewed</span></td>
+                    <td><span class="sbdg s-done"><span class="sbdg-dot"></span>PM Reviewed</span></td>
                     <td></td>
                     <td></td>
                     <td></td>
-                    <td><span class="ndc-del-link" style="color:var(--bdr-m); cursor:not-allowed">Delete</span></td>
+                    <td>
+                      <button class="ca-del" onclick="confirmDeleteNDC('NDC 57894-0001-01')">
+                        <svg viewBox="0 0 24 24">
+                          <path
+                            d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M10 11v6M14 11v6" />
+                        </svg>
+                      </button>
+                    </td>
                   </tr>
                 </tbody>
               </table>
@@ -2034,15 +2172,25 @@
             <td>Westminster Pharmaceuticals, LLC</td>
             <td>-</td>
             <td>2</td>
-            <td><span class="cs-chip cs-fail">Failed</span></td>
-            <td>06 May 2026, 11:30</td>
-            <td class="editable-note placeholder" data-case="CASE-2026-00082" title="double click to edit">Add Notes</td>
-            <td>CASE-2026-00082</td>
+            <td><span class="cs-chip cs-fail" title="Reason Code: 501">Failed</span></td>
+            <td>05/08/26 11:30 AM</td>
+            <td class="editable-note placeholder" data-case="CASE-2026-00082" title="double click to edit">Add Notes
+            </td>
+            <td>26-0082</td>
             <td>
               <div class="cell-actions" onclick="event.stopPropagation()">
-                <span class="act-link" style="color:var(--bdr-m); cursor:not-allowed">Review</span>
-                <span class="act-sep">|</span>
-                <span class="act-link" onclick="confirmDelete('CASE-2026-00082')" style="color:var(--rd)">Delete</span>
+                <button class="ca-rv" disabled onclick="caseAction('review','CASE-2026-00085')">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                    <circle cx="12" cy="12" r="3" />
+                  </svg>
+                </button>
+                <button class="ca-del" onclick="confirmDelete('CASE-2026-00085')">
+                  <svg viewBox="0 0 24 24">
+                    <path
+                      d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M10 11v6M14 11v6" />
+                  </svg>
+                </button>
               </div>
             </td>
           </tr>
@@ -2055,26 +2203,42 @@
                     <td></td>
                     <td></td>
                     <td>
-                      <div class="ndc-n">NDC-001</div>
+                      <div class="ndc-n">72789-0475-30</div>
                     </td>
-                    <td><span class="sbdg s-err"><span class="sbdg-dot"></span>Failed</span></td>
+                    <td><span class="sbdg s-err" title="Reason Code: 501"><span class="sbdg-dot"></span>Failed</span>
+                    </td>
                     <td></td>
                     <td></td>
                     <td></td>
-                    <td><span class="ndc-del-link" onclick="confirmDeleteNDC('NDC 33130-0105-01')">Delete</span></td>
+                    <td>
+                      <button class="ca-del" onclick="confirmDeleteNDC('NDC 57894-0001-01')">
+                        <svg viewBox="0 0 24 24">
+                          <path
+                            d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M10 11v6M14 11v6" />
+                        </svg>
+                      </button>
+                    </td>
                   </tr>
                   <tr>
                     <td></td>
                     <td></td>
                     <td></td>
                     <td>
-                      <div class="ndc-n">NDC-002</div>
+                      <div class="ndc-n">72789-0475-31</div>
                     </td>
-                    <td><span class="sbdg s-err"><span class="sbdg-dot"></span>Failed</span></td>
+                    <td><span class="sbdg s-err" title="Reason Code: 502"><span class="sbdg-dot"></span>Failed</span>
+                    </td>
                     <td></td>
                     <td></td>
                     <td></td>
-                    <td><span class="ndc-del-link" onclick="confirmDeleteNDC('NDC 33130-0105-02')">Delete</span></td>
+                    <td>
+                      <button class="ca-del" onclick="confirmDeleteNDC('NDC 57894-0001-01')">
+                        <svg viewBox="0 0 24 24">
+                          <path
+                            d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M10 11v6M14 11v6" />
+                        </svg>
+                      </button>
+                    </td>
                   </tr>
                 </tbody>
               </table>
@@ -2092,19 +2256,29 @@
             <td>Heritage Pharmaceuticals Inc. d/b/a Avet Pharmaceuticals Inc.</td>
             <td>-</td>
             <td>1</td>
-            <td><span class="cs-chip cs-done">Reviewed</span></td>
-            <td>05 May 2026, 09:03</td>
-            <td class="editable-note placeholder" data-case="CASE-2026-00079" title="double click to edit">Add Notes</td>
-            <td>CASE-2026-00079</td>
+            <td><span class="cs-chip cs-done">PM Reviewed</span></td>
+            <td> 05/09/26 09:03 AM</td>
+            <td class="editable-note placeholder" data-case="CASE-2026-00079" title="double click to edit">Add Notes
+            </td>
+            <td>26-0079</td>
             <td>
               <div class="cell-actions" onclick="event.stopPropagation()">
-                <span class="act-link" onclick="caseAction('view','CASE-2026-00079')">Review</span>
-                <span class="act-sep">|</span>
-                <span class="act-link" style="color:var(--bdr-m); cursor:not-allowed">Delete</span>
+                <button class="ca-rv" onclick="caseAction('review','CASE-2026-00085')">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                    <circle cx="12" cy="12" r="3" />
+                  </svg>
+                </button>
+                <button class="ca-del" disabled onclick="confirmDelete('CASE-2026-00085')">
+                  <svg viewBox="0 0 24 24">
+                    <path
+                      d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M10 11v6M14 11v6" />
+                  </svg>
+                </button>
               </div>
             </td>
           </tr>
-          <tr class="ndc-expand-row" data-case="CASE-2026-00079">
+          <tr class=" ndc-expand-row" data-case="CASE-2026-00079">
             <td colspan="9">
               <table class="ndc-nested-table">
                 <tbody>
@@ -2113,13 +2287,20 @@
                     <td></td>
                     <td></td>
                     <td>
-                      <div class="ndc-n">NDC-001</div>
+                      <div class="ndc-n">72789-0475-30</div>
                     </td>
-                    <td><span class="sbdg s-done"><span class="sbdg-dot"></span>Reviewed</span></td>
+                    <td><span class="sbdg s-done"><span class="sbdg-dot"></span>PM Reviewed</span></td>
                     <td></td>
                     <td></td>
                     <td></td>
-                    <td><span class="ndc-del-link" style="color:var(--bdr-m); cursor:not-allowed">Delete</span></td>
+                    <td>
+                      <button class="ca-del" disabled onclick="confirmDeleteNDC('NDC 57894-0001-01')">
+                        <svg viewBox="0 0 24 24">
+                          <path
+                            d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M10 11v6M14 11v6" />
+                        </svg>
+                      </button>
+                    </td>
                   </tr>
                 </tbody>
               </table>
