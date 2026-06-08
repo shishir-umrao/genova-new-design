@@ -270,7 +270,25 @@
       display: flex;
       flex-direction: column;
       flex: 1;
-      overflow: hidden
+      overflow-y: auto;
+      min-height: 0
+    }
+
+    .pg::-webkit-scrollbar {
+      width: 4px
+    }
+
+    .pg::-webkit-scrollbar-thumb {
+      background: var(--bdr-m);
+      border-radius: 99px
+    }
+
+    .page-head {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      flex-shrink: 0;
+      background: var(--bg-p)
     }
 
     /* TOOLBAR */
@@ -610,8 +628,14 @@
       gap: 6px
     }
 
+    .date-field {
+      position: relative;
+      display: inline-flex;
+      align-items: center
+    }
+
     .date-input {
-      padding: 7px 10px;
+      padding: 7px 26px 7px 10px;
       font-size: 13px;
       font-weight: 400;
       border: 1px solid rgba(0, 0, 0, .23);
@@ -620,7 +644,7 @@
       color: var(--t1);
       font-family: var(--fb);
       outline: none;
-      width: 115px;
+      width: 108px;
       transition: border-color .2s
     }
 
@@ -631,7 +655,47 @@
     .date-input:focus {
       border-color: var(--ac);
       border-width: 2px;
-      padding: 6px 9px
+      padding: 6px 25px 6px 9px
+    }
+
+    .date-cal-btn {
+      position: absolute;
+      right: 4px;
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 22px;
+      height: 22px;
+      padding: 0;
+      border: none;
+      background: transparent;
+      color: var(--t3);
+      cursor: pointer;
+      border-radius: 2px
+    }
+
+    .date-cal-btn:hover {
+      color: var(--ac)
+    }
+
+    .date-cal-btn svg {
+      width: 16px;
+      height: 16px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2
+    }
+
+    .date-picker-native {
+      position: absolute;
+      opacity: 0;
+      width: 0;
+      height: 0;
+      pointer-events: none;
+      border: none;
+      padding: 0
     }
 
     .date-sep {
@@ -676,22 +740,10 @@
       margin: 0 2px
     }
 
-    /* SCROLLABLE CONTENT */
+    /* CONTENT */
     .content {
-      flex: 1;
-      overflow-y: auto;
       padding: 20px 24px;
-      flex-direction: column;
-      gap: 12px
-    }
-
-    .content::-webkit-scrollbar {
-      width: 4px
-    }
-
-    .content::-webkit-scrollbar-thumb {
-      background: var(--bdr-m);
-      border-radius: 99px
+      flex-shrink: 0
     }
 
     /* CASE TABLE */
@@ -701,15 +753,13 @@
       background: var(--bg-p);
       border: 1px solid var(--bdr);
       border-radius: 4px;
-      overflow: hidden;
       table-layout: fixed;
     }
 
-    .case-table thead {
-      background: var(--bg);
-    }
-
     .case-table thead th {
+      position: sticky;
+      top: var(--page-head-h, 0px);
+      z-index: 5;
       padding: 12px 16px;
       font-size: 12px;
       font-weight: 700;
@@ -717,6 +767,8 @@
       text-align: left;
       border-bottom: 1px solid var(--bdr);
       white-space: nowrap;
+      background: var(--bg);
+      box-shadow: 0 1px 0 var(--bdr);
     }
 
     .case-table thead th:nth-child(1) {
@@ -1347,9 +1399,11 @@
       stroke-width: 2
     }
 
-    .ca-rv:disabled {
-      background: var(--bdr-m);
-      color: var(--t3);
+    .ca-rv:disabled,
+    .ca-rv:disabled:hover {
+      border: 1px solid var(--bdr-m);
+      background: transparent;
+      color: var(--bdr-m);
       cursor: not-allowed
     }
 
@@ -1737,6 +1791,7 @@
   </nav>
 
   <div class="pg">
+    <div class="page-head">
     <div class="tb">
       <div class="tb-l">
         <div>
@@ -1837,15 +1892,42 @@
       <div class="filter-group">
         <span class="fc-lbl">Date Range:</span>
         <div class="date-range">
-          <input type="date" value="2026-05-01" class="date-input" id="dateFrom" onchange="applyFilters()">
+          <div class="date-field">
+            <input type="text" value="05/01/26" class="date-input" id="dateFrom" placeholder="MM/DD/YY"
+              data-iso="2026-05-01" maxlength="8" onblur="normalizeDateInput(this); applyFilters()">
+            <button type="button" class="date-cal-btn" onclick="openDatePicker('dateFrom')" aria-label="Open calendar">
+              <svg viewBox="0 0 24 24">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                <line x1="16" y1="2" x2="16" y2="6" />
+                <line x1="8" y1="2" x2="8" y2="6" />
+                <line x1="3" y1="10" x2="21" y2="10" />
+              </svg>
+            </button>
+            <input type="date" id="dateFromPicker" class="date-picker-native" value="2026-05-01" tabindex="-1"
+              onchange="syncDatePicker('dateFrom', this)">
+          </div>
           <span class="date-sep">to</span>
-          <input type="date" value="2026-05-10" class="date-input" id="dateTo" onchange="applyFilters()">
+          <div class="date-field">
+            <input type="text" value="05/10/26" class="date-input" id="dateTo" placeholder="MM/DD/YY"
+              data-iso="2026-05-10" maxlength="8" onblur="normalizeDateInput(this); applyFilters()">
+            <button type="button" class="date-cal-btn" onclick="openDatePicker('dateTo')" aria-label="Open calendar">
+              <svg viewBox="0 0 24 24">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                <line x1="16" y1="2" x2="16" y2="6" />
+                <line x1="8" y1="2" x2="8" y2="6" />
+                <line x1="3" y1="10" x2="21" y2="10" />
+              </svg>
+            </button>
+            <input type="date" id="dateToPicker" class="date-picker-native" value="2026-05-10" tabindex="-1"
+              onchange="syncDatePicker('dateTo', this)">
+          </div>
         </div>
       </div>
 
       <div class="fc-sep"></div>
 
       <button class="clear-filters" onclick="clearAllFilters()">Clear All</button>
+    </div>
     </div>
 
     <div class="content" id="caseList">
@@ -2399,6 +2481,13 @@
       });
     }
 
+    function updatePageHeadHeight() {
+      const head = document.querySelector('.page-head');
+      if (head) {
+        document.documentElement.style.setProperty('--page-head-h', head.offsetHeight + 'px');
+      }
+    }
+
     // Initialize on page load
     document.addEventListener('DOMContentLoaded', function () {
       const tBtn = document.getElementById('tBtn');
@@ -2409,8 +2498,88 @@
           document.getElementById('tIco').innerHTML = dark ? '<path d="' + SUN + '"/>' : '<path d="' + MOON + '"/>';
         });
       }
+      updatePageHeadHeight();
+      window.addEventListener('resize', updatePageHeadHeight);
+      const pageHead = document.querySelector('.page-head');
+      if (pageHead && window.ResizeObserver) {
+        new ResizeObserver(updatePageHeadHeight).observe(pageHead);
+      }
       setupEditableNotes();
     });
+    function isoToDisplay(iso) {
+      if (!iso) return '';
+      const [y, m, d] = iso.split('-');
+      return `${m}/${d}/${y.slice(-2)}`;
+    }
+
+    function displayToIso(display) {
+      const match = display.trim().match(/^(\d{1,2})\/(\d{1,2})\/(\d{2})$/);
+      if (!match) return null;
+      const year = 2000 + parseInt(match[3], 10);
+      const month = parseInt(match[1], 10) - 1;
+      const day = parseInt(match[2], 10);
+      const date = new Date(year, month, day);
+      if (date.getFullYear() !== year || date.getMonth() !== month || date.getDate() !== day) return null;
+      return `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+    }
+
+    function syncDatePickerInput(el) {
+      const picker = document.getElementById(el.id + 'Picker');
+      if (picker) picker.value = el.dataset.iso || '';
+    }
+
+    function openDatePicker(id) {
+      const picker = document.getElementById(id + 'Picker');
+      const textEl = document.getElementById(id);
+      picker.value = textEl.dataset.iso || '';
+      try {
+        if (typeof picker.showPicker === 'function') {
+          picker.showPicker();
+        } else {
+          picker.click();
+        }
+      } catch (e) {
+        picker.click();
+      }
+    }
+
+    function syncDatePicker(id, picker) {
+      const textEl = document.getElementById(id);
+      if (picker.value) {
+        textEl.dataset.iso = picker.value;
+        textEl.value = isoToDisplay(picker.value);
+      } else {
+        textEl.dataset.iso = '';
+        textEl.value = '';
+      }
+      applyFilters();
+    }
+
+    function normalizeDateInput(el) {
+      const trimmed = el.value.trim();
+      if (!trimmed) {
+        el.value = '';
+        el.dataset.iso = '';
+        syncDatePickerInput(el);
+        return;
+      }
+      const iso = displayToIso(trimmed);
+      if (iso) {
+        el.value = isoToDisplay(iso);
+        el.dataset.iso = iso;
+        syncDatePickerInput(el);
+      } else {
+        el.value = el.dataset.iso ? isoToDisplay(el.dataset.iso) : '';
+      }
+    }
+
+    function getDateInputIso(id) {
+      const el = document.getElementById(id);
+      if (el.dataset.iso) return el.dataset.iso;
+      const iso = displayToIso(el.value.trim());
+      return iso || null;
+    }
+
     // Filter State
     let filterState = {
       status: 'all',
@@ -2512,8 +2681,8 @@
 
     // Apply All Filters
     function applyFilters() {
-      filterState.dateFrom = document.getElementById('dateFrom').value;
-      filterState.dateTo = document.getElementById('dateTo').value;
+      filterState.dateFrom = getDateInputIso('dateFrom');
+      filterState.dateTo = getDateInputIso('dateTo');
 
       document.querySelectorAll('.case-row').forEach(row => {
         const status = row.dataset.status;
@@ -2591,8 +2760,12 @@
       document.querySelector('#vendorSelect .select-trigger').textContent = 'All Vendors';
 
       // Reset date inputs
-      document.getElementById('dateFrom').value = '';
-      document.getElementById('dateTo').value = '';
+      ['dateFrom', 'dateTo'].forEach(id => {
+        const el = document.getElementById(id);
+        el.value = '';
+        el.dataset.iso = '';
+        syncDatePickerInput(el);
+      });
 
       // Reset search
       document.querySelector('.srch-inp').value = '';
