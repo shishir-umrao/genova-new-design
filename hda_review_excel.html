@@ -2,2506 +2,2640 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-  <title>Case Review — Mckesson</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
-  <style>
-    :root {
-      --mk-blue: #005a8c;
-      --mk-blue-dk: #003d61;
-      --mk-blue-lt: #cce4f0;
-      --mk-blue-pale: #e6f2f8;
-      --mk-or: #F29130;
-      --mk-or-dk: #c4711a;
-      --mk-or-lt: #fde9cf;
-      --mk-or-pale: #fff5eb;
-      --bg: #f4f6fa;
-      --bg-p: #ffffff;
-      --bg-c: #ffffff;
-      --bg-h: #f3f4f6;
-      --bdr: #e5e7eb;
-      --bdr-m: #d1d5db;
-      --t1: #111111;
-      --t2: #111111;
-      --t3: #111111;
-      --ph: #9ca3af;
-      --ac: #005a8c;
-      --ac-lt: #cce4f0;
-      --ac-pale: #e6f2f8;
-      --gr: #16a34a;
-      --gr-lt: #dcfce7;
-      --gr-pale: #f0fdf4;
-      --am: #b45309;
-      --am-lt: #fde68a;
-      --am-pale: #fffbeb;
-      --rd: #dc2626;
-      --rd-lt: #fecaca;
-      --rd-pale: #fef2f2;
-      --sh-sm: 0 1px 3px rgba(14, 30, 60, .08), 0 1px 2px rgba(14, 30, 60, .05);
-      --sh-md: 0 4px 14px rgba(14, 30, 60, .1), 0 2px 5px rgba(14, 30, 60, .06);
-      --r: 10px;
-      --rs: 6px;
-      --fh: 'Inter', sans-serif;
-      --fb: 'Inter', sans-serif;
-      --fm: 'Inter', sans-serif;
-      --col-w: 190px;
-      --ndc-w: 140px;
-      --row-h: 38px;
-      --head-h: 70px;
-    }
-
-    [data-theme=dark] {
-      --bg: #0c0e14;
-      --bg-p: #161b27;
-      --bg-c: #1e2333;
-      --bg-h: #252d40;
-      --bdr: #2e3650;
-      --bdr-m: #3a4560;
-      --t1: #f0f0f0;
-      --t2: #f0f0f0;
-      --t3: #f0f0f0;
-      --ph: #6b7280;
-      --ac: #4f8ef7;
-      --ac-lt: #172040;
-      --ac-pale: #0e1528;
-      --gr: #34d474;
-      --gr-lt: #0c2e1a;
-      --gr-pale: #081810;
-      --am: #fbbf24;
-      --am-lt: #322208;
-      --am-pale: #1e1404;
-      --rd: #f87171;
-      --rd-lt: #320c0c;
-      --rd-pale: #1e0808;
-      --mk-blue-lt: #172040;
-      --mk-blue-pale: #0e1528;
-      --mk-or-lt: #3a2008;
-      --mk-or-pale: #211204;
-      --sh-sm: 0 1px 3px rgba(0, 0, 0, .3);
-      --sh-md: 0 4px 14px rgba(0, 0, 0, .45);
-    }
-
-    *,
-    *::before,
-    *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0
-    }
-
-    html,
-    body {
-      height: 100%
-    }
-
-    body {
-      font-family: var(--fb);
-      background: var(--bg);
-      color: var(--t1);
-      font-size: 14px;
-      line-height: 1.5;
-      font-weight: 400;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      transition: background .2s, color .2s
-    }
-
-    /* NAV */
-    .nav {
-      height: 52px;
-      background: var(--mk-blue);
-      display: flex;
-      align-items: center;
-      padding: 0 16px;
-      flex-shrink: 0;
-      z-index: 20;
-      position: relative
-    }
-
-    .n-logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-right: 18px
-    }
-
-    .n-mark {
-      width: 30px;
-      height: 30px;
-      border-radius: 7px;
-      overflow: hidden;
-      flex-shrink: 0
-    }
-
-    .n-mark svg {
-      display: block
-    }
-
-    .n-txt {
-      font-family: var(--fh);
-      font-size: 14px;
-      font-weight: 700;
-      color: #fff;
-      letter-spacing: -.02em;
-      white-space: nowrap
-    }
-
-    .n-txt span {
-      color: var(--mk-or)
-    }
-
-    .n-div {
-      width: 1px;
-      height: 18px;
-      background: rgba(255, 255, 255, .22);
-      margin: 0 14px;
-      flex-shrink: 0
-    }
-
-    .n-prod {
-      font-size: 12px;
-      color: rgba(255, 255, 255, .65);
-      letter-spacing: .04em;
-      font-weight: 400;
-      white-space: nowrap
-    }
-
-    .n-tabs {
-      display: flex;
-      align-items: center;
-      gap: 2px;
-      flex: 1;
-      margin-left: 18px
-    }
-
-    .n-tab {
-      padding: 5px 12px;
-      font-size: 12px;
-      color: rgba(255, 255, 255, .65);
-      background: none;
-      border: none;
-      border-radius: var(--rs);
-      cursor: pointer;
-      font-family: var(--fb);
-      font-weight: 400;
-      transition: all .15s
-    }
-
-    .n-tab:hover {
-      color: #fff;
-      background: rgba(255, 255, 255, .12)
-    }
-
-    .n-tab.active {
-      color: #fff;
-      background: rgba(255, 255, 255, .18)
-    }
-
-    .n-right {
-      display: flex;
-      align-items: center;
-      gap: 8px
-    }
-
-    .n-badge {
-      background: var(--mk-or);
-      color: #fff;
-      font-size: 12px;
-      font-weight: 700;
-      padding: 3px 10px;
-      border-radius: 99px;
-      font-family: var(--fm)
-    }
-
-    .t-btn {
-      width: 30px;
-      height: 30px;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, .15);
-      border: none;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #fff;
-      transition: background .15s;
-      flex-shrink: 0
-    }
-
-    .t-btn:hover {
-      background: rgba(255, 255, 255, .25)
-    }
-
-    .t-btn svg {
-      width: 15px;
-      height: 15px;
-      fill: none;
-      stroke: currentColor;
-      stroke-width: 2
-    }
-
-    .n-av {
-      width: 30px;
-      height: 30px;
-      border-radius: 50%;
-      background: var(--mk-or);
-      font-size: 12px;
-      font-weight: 700;
-      color: #fff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: var(--fh);
-      border: 2px solid rgba(255, 255, 255, .3);
-      flex-shrink: 0
-    }
-
-    /* DOC HEADER */
-    .doc-hd {
-      padding: 10px 17px;
-      background: var(--bg-p);
-      border-bottom: 1px solid var(--bdr);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-shrink: 0;
-    }
-
-    .doc-tb {
-      display: flex;
-      align-items: center;
-      gap: 11px
-    }
-
-    .doc-ic {
-      width: 34px;
-      height: 34px;
-      background: var(--ac-pale);
-      border: 1px solid var(--ac-lt);
-      border-radius: var(--rs);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0
-    }
-
-    .doc-ic svg {
-      width: 16px;
-      height: 16px;
-      fill: var(--ac)
-    }
-
-    .doc-ttl {
-      font-family: var(--fh);
-      font-size: 14px;
-      color: var(--t1);
-      letter-spacing: -.01em
-    }
-
-    .doc-sub {
-      font-size: 12px;
-      color: var(--t3);
-      margin-top: 1px;
-      font-family: var(--fm);
-      font-weight: 400
-    }
-
-    .doc-hd table {
-      border-collapse: collapse
-    }
-
-    .doc-hd .case-row td {
-      padding: 4px 12px 4px 0;
-      vertical-align: middle
-    }
-
-    .doc-cell {
-      display: flex;
-      flex-direction: column;
-      gap: 2px
-    }
-
-    .doc-lbl {
-      font-size: 12px;
-      font-weight: 700;
-      color: var(--t3);
-      font-family: var(--fh);
-      line-height: 1.2;
-      letter-spacing: .01em
-    }
-
-    .doc-val {
-      font-size: 14px;
-      color: var(--t1);
-      font-family: var(--fm);
-      line-height: 1.3
-    }
-
-    .asgn {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      padding: 4px 10px;
-      background: var(--bg);
-      border: 1px solid var(--bdr);
-      border-radius: 99px;
-      font-size: 12px;
-      color: var(--t2)
-    }
-
-    .asgn-av {
-      width: 18px;
-      height: 18px;
-      border-radius: 50%;
-      background: var(--mk-or);
-      font-size: 12px;
-      font-weight: 700;
-      color: #fff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: var(--fh)
-    }
-
-    .doc-acts {
-      display: flex;
-      align-items: center;
-      gap: 7px
-    }
-
-    /* ── MUI-style Buttons ── */
-    .btn {
-      padding: 5px 15px;
-      font-size: 13px;
-      font-weight: 500;
-      font-family: var(--fb);
-      border-radius: 4px;
-      border: 1px solid var(--bdr-m);
-      background: var(--bg-c);
-      color: var(--t2);
-      cursor: pointer;
-      transition: background-color .25s cubic-bezier(.4, 0, .2, 1), 0, .2, 1), border-color .25s;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      letter-spacing: .02em;
-      line-height: 1.75;
-      position: relative;
-      overflow: hidden;
-      text-transform: none;
-      user-select: none
-    }
-
-    .btn::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: currentColor;
-      opacity: 0;
-      transition: opacity .2s
-    }
-
-    .btn:hover::after {
-      opacity: .06
-    }
-
-    .btn:active::after {
-      opacity: .12
-    }
-
-    .btn svg {
-      width: 13px;
-      height: 13px;
-      fill: none;
-      stroke: currentColor;
-      stroke-width: 2;
-      flex-shrink: 0
-    }
-
-    .btn:hover {
-      border-color: var(--t2);
-      background: var(--bg-c)
-    }
-
-    .btn-flag {
-      border-color: var(--rd);
-      color: var(--rd);
-      background: transparent
-    }
-
-    .btn-flag:hover {
-      border-color: var(--rd);
-      background: transparent
-    }
-
-    .btn-done {
-      border: none;
-      color: #fff;
-      background: var(--mk-blue);
-    }
-
-    .btn-done:hover {
-      background: var(--mk-blue-dk);
-    }
-
-    /* PROGRESS BAR STRIP */
-    .prog-strip {
-      height: 3px;
-      background: var(--bdr);
-      flex-shrink: 0;
-      position: relative
-    }
-
-    .prog-fill {
-      height: 100%;
-      background: linear-gradient(90deg, var(--mk-blue), var(--mk-or));
-      transition: width .4s ease;
-      width: 0%
-    }
-
-    .work-tabs {
-      display: flex;
-      align-items: flex-end;
-      padding: 10px 0 0;
-      border-bottom: 1px solid var(--bdr);
-      background: var(--bg);
-      overflow-x: auto;
-      overflow-y: hidden;
-    }
-
-    .work-tab {
-      position: relative;
-      height: 34px;
-      border: 1px solid var(--bdr-m);
-      background: var(--bdr-m);
-      color: var(--t1);
-      border-bottom: none;
-      border-radius: 8px 8px 0 0;
-      font-family: var(--fh);
-      font-size: 12px;
-      font-weight: 700;
-      padding: 0 26px 0 14px;
-      cursor: pointer;
-      white-space: nowrap;
-      margin-bottom: -1px;
-      clip-path: polygon(0 0, calc(100% - 18px) 0, 100% 100%, 0 100%);
-    }
-
-    .work-tab.active {
-      background: var(--mk-blue);
-      border-color: var(--mk-blue);
-      color: #fff;
-      z-index: 2;
-    }
-
-    .tab-pane {
-      display: none;
-      flex: 1;
-      min-height: 0;
-      border: 1px solid var(--bdr);
-      border-top: none;
-      background: var(--bg);
-    }
-
-    .tab-pane.active {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .ndc-pane-empty {
-      flex: 1;
-      background: var(--bg);
-    }
-
-    .ndc-pdf-viewer {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      background: var(--bg);
-      overflow: hidden;
-    }
-
-    .ndc-pdf-toolbar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 10px 16px;
-      background: var(--bg-p);
-      border-bottom: 1px solid var(--bdr);
-      gap: 12px;
-    }
-
-    .ndc-pdf-title {
-      font-family: var(--fh);
-      font-size: 14px;
-      font-weight: 700;
-      color: var(--t1);
-    }
-
-    /* ── MUI-style Select ── */
-    .ndc-pdf-select {
-      padding: 6px 32px 6px 12px;
-      background: var(--bg-c);
-      border: 1px solid rgba(0, 0, 0, .23);
-      border-radius: 4px;
-      color: var(--t1);
-      font-family: var(--fb);
-      font-size: 13px;
-      font-weight: 400;
-      outline: none;
-      -webkit-appearance: none;
-      appearance: none;
-      cursor: pointer;
-      transition: border-color .2s;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
-      background-repeat: no-repeat;
-      background-position: right 10px center;
-      min-width: 140px;
-    }
-
-    .ndc-pdf-select:hover {
-      border-color: var(--t1)
-    }
-
-    .ndc-pdf-select:focus {
-      border-color: var(--ac);
-      border-width: 2px;
-      padding: 5px 31px 5px 11px
-    }
-
-    .ndc-pdf-frame {
-      flex: 1;
-      width: 100%;
-      border: none;
-      background: var(--bg);
-    }
-
-    .ndc-pdf-actions {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    /* ── MUI-style pdf toolbar buttons ── */
-    .ndc-pdf-btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-      padding: 5px 12px;
-      background: var(--bg-c);
-      border: 1px solid rgba(0, 0, 0, .23);
-      border-radius: 4px;
-      color: var(--t2);
-      font-family: var(--fb);
-      font-size: 13px;
-      font-weight: 500;
-      cursor: pointer;
-      transition: background-color .25s, border-color .15s;
-      letter-spacing: .02em;
-      position: relative;
-      overflow: hidden
-    }
-
-    .ndc-pdf-btn::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: currentColor;
-      opacity: 0;
-      transition: opacity .2s
-    }
-
-    .ndc-pdf-btn:hover::after {
-      opacity: .06
-    }
-
-    .ndc-pdf-btn:hover {
-      border-color: var(--t2)
-    }
-
-    .ndc-pdf-btn svg {
-      width: 14px;
-      height: 14px;
-      fill: none;
-      stroke: currentColor;
-      stroke-width: 2;
-    }
-
-    .ndc-pdf-zoom {
-      display: flex;
-      align-items: center;
-      gap: 4px;
-    }
-
-    .ndc-pdf-zoom .ndc-pdf-btn {
-      padding: 6px 8px;
-    }
-
-    .pm-review-wrap {
-      border-top: 1px solid var(--bdr);
-      background: var(--bg-p);
-      padding: 12px;
-    }
-
-    .pm-review-head {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 10px;
-    }
-
-    .pm-review-title {
-      font-family: var(--fh);
-      font-size: 12px;
-      font-weight: 700;
-      text-transform: none;
-      letter-spacing: 0;
-      color: var(--t1);
-    }
-
-    .pm-review-container {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
-    /* ── MUI Accordion — pm-ndc-card ── */
-    .pm-ndc-card {
-      border: 1px solid rgba(0, 0, 0, .12);
-      border-radius: 4px;
-      background: var(--bg-p);
-      overflow: hidden;
-    }
-
-    .pm-ndc-header {
-      background: transparent;
-      border-bottom: none;
-      padding: 12px 16px;
-      font-family: var(--fh);
-      font-size: 13px;
-      font-weight: 500;
-      color: var(--t1);
-      letter-spacing: .01em;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      cursor: pointer;
-      user-select: none;
-      transition: background-color .15s;
-      min-height: 48px;
-    }
-
-    .pm-ndc-header:hover {
-      background: rgba(0, 0, 0, .04);
-    }
-
-    [data-theme=dark] .pm-ndc-header:hover {
-      background: rgba(255, 255, 255, .05);
-    }
-
-    .pm-ndc-header .pm-caret {
-      width: 18px;
-      height: 18px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--t3);
-      transition: transform .25s cubic-bezier(.4, 0, .2, 1);
-    }
-
-    .pm-ndc-header .pm-caret svg {
-      width: 13px;
-      height: 13px;
-      fill: none;
-      stroke: currentColor;
-      stroke-width: 2;
-    }
-
-    .pm-ndc-card:not(.collapsed) .pm-ndc-header {
-      border-bottom: 1px solid rgba(0, 0, 0, .12);
-    }
-
-    .pm-ndc-card.collapsed .pm-caret {
-      transform: rotate(-90deg);
-    }
-
-    .pm-ndc-card .pm-fields-list {
-      margin: 0;
-      padding: 12px 16px 12px 36px;
-      background: var(--bg-p);
-      transition: max-height .25s cubic-bezier(.4, 0, .2, 1), opacity .2s ease, padding .25s;
-      max-height: 2000px;
-      opacity: 1;
-      overflow: hidden;
-    }
-
-    .pm-ndc-card.collapsed .pm-fields-list {
-      max-height: 0;
-      opacity: 0;
-      padding: 0 16px 0 36px;
-    }
-
-    .pm-list-item {
-      font-size: 14px;
-      color: var(--t2);
-      line-height: 1.5;
-      padding: 4px 0;
-    }
-
-    .pm-list-item strong {
-      color: var(--t1);
-      font-weight: 700;
-    }
-
-    .pm-list-item.highlight {
-      background: #fff3cd;
-      border-radius: 4px;
-      margin: 0 -8px;
-      padding: 4px 8px;
-      transition: background .3s ease;
-    }
-
-    /* EXCEL CONTAINER */
-    .xl-wrap {
-      flex: 1;
-      flex-direction: column;
-      background: var(--bg);
-      overflow: auto;
-    }
-
-    .xl-outer {
-      flex: 1;
-      overflow: hidden;
-      position: relative;
-      display: flex;
-      flex-direction: column
-    }
-
-    /* The grid uses a table-like approach with a fixed left column */
-    .xl-scroll {
-      flex: 1;
-      overflow: auto;
-      position: relative
-    }
-
-    .xl-scroll::-webkit-scrollbar {
-      width: 8px;
-      height: 8px
-    }
-
-    .xl-scroll::-webkit-scrollbar-track {
-      background: var(--bg)
-    }
-
-    .xl-scroll::-webkit-scrollbar-thumb {
-      background: var(--bdr-m);
-      border-radius: 99px
-    }
-
-    .xl-scroll::-webkit-scrollbar-corner {
-      background: var(--bg)
-    }
-
-    table.xl {
-      border-collapse: separate;
-      border-spacing: 0;
-      table-layout: fixed;
-      width: max-content;
-      min-width: 100%
-    }
-
-    /* HEADER ROW */
-    table.xl thead th {
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      background: var(--bg-p);
-      border-bottom: 2px solid var(--bdr-m);
-      border-right: 1px solid var(--bdr);
-      vertical-align: middle;
-      padding: 0;
-      /* height: var(--head-h); */
-      /* min-width: var(--col-w);
+    <meta charset="UTF-8" />
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1.0" />
+    <title>Case Review — Mckesson</title>
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com" />
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap"
+          rel="stylesheet" />
+    <style>
+        :root {
+            --mk-blue: #005a8c;
+            --mk-blue-dk: #003d61;
+            --mk-blue-lt: #cce4f0;
+            --mk-blue-pale: #e6f2f8;
+            --mk-or: #F29130;
+            --mk-or-dk: #c4711a;
+            --mk-or-lt: #fde9cf;
+            --mk-or-pale: #fff5eb;
+            --bg: #f4f6fa;
+            --bg-p: #ffffff;
+            --bg-c: #ffffff;
+            --bg-h: #f3f4f6;
+            --bdr: #e5e7eb;
+            --bdr-m: #d1d5db;
+            --t1: #111111;
+            --t2: #111111;
+            --t3: #111111;
+            --ph: #9ca3af;
+            --ac: #005a8c;
+            --ac-lt: #cce4f0;
+            --ac-pale: #e6f2f8;
+            --gr: #16a34a;
+            --gr-lt: #dcfce7;
+            --gr-pale: #f0fdf4;
+            --am: #b45309;
+            --am-lt: #fde68a;
+            --am-pale: #fffbeb;
+            --rd: #dc2626;
+            --rd-lt: #fecaca;
+            --rd-pale: #fef2f2;
+            --sh-sm: 0 1px 3px rgba(14, 30, 60, .08), 0 1px 2px rgba(14, 30, 60, .05);
+            --sh-md: 0 4px 14px rgba(14, 30, 60, .1), 0 2px 5px rgba(14, 30, 60, .06);
+            --r: 10px;
+            --rs: 6px;
+            --fh: 'Inter', sans-serif;
+            --fb: 'Inter', sans-serif;
+            --fm: 'Inter', sans-serif;
+            --col-w: 190px;
+            --ndc-w: 140px;
+            --row-h: 38px;
+            --head-h: 70px;
+        }
+
+        [data-theme=dark] {
+            --bg: #0c0e14;
+            --bg-p: #161b27;
+            --bg-c: #1e2333;
+            --bg-h: #252d40;
+            --bdr: #2e3650;
+            --bdr-m: #3a4560;
+            --t1: #f0f0f0;
+            --t2: #f0f0f0;
+            --t3: #f0f0f0;
+            --ph: #6b7280;
+            --ac: #4f8ef7;
+            --ac-lt: #172040;
+            --ac-pale: #0e1528;
+            --gr: #34d474;
+            --gr-lt: #0c2e1a;
+            --gr-pale: #081810;
+            --am: #fbbf24;
+            --am-lt: #322208;
+            --am-pale: #1e1404;
+            --rd: #f87171;
+            --rd-lt: #320c0c;
+            --rd-pale: #1e0808;
+            --mk-blue-lt: #172040;
+            --mk-blue-pale: #0e1528;
+            --mk-or-lt: #3a2008;
+            --mk-or-pale: #211204;
+            --sh-sm: 0 1px 3px rgba(0, 0, 0, .3);
+            --sh-md: 0 4px 14px rgba(0, 0, 0, .45);
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0
+        }
+
+        html,
+        body {
+            height: 100%
+        }
+
+        body {
+            font-family: var(--fb);
+            background: var(--bg);
+            color: var(--t1);
+            font-size: 14px;
+            line-height: 1.5;
+            font-weight: 400;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: background .2s, color .2s
+        }
+
+        /* NAV */
+        .nav {
+            height: 52px;
+            background: var(--mk-blue);
+            display: flex;
+            align-items: center;
+            padding: 0 16px;
+            flex-shrink: 0;
+            z-index: 20;
+            position: relative
+        }
+
+        .n-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-right: 18px
+        }
+
+        .n-mark {
+            width: 30px;
+            height: 30px;
+            border-radius: 7px;
+            overflow: hidden;
+            flex-shrink: 0
+        }
+
+        .n-mark svg {
+            display: block
+        }
+
+        .n-txt {
+            font-family: var(--fh);
+            font-size: 14px;
+            font-weight: 700;
+            color: #fff;
+            letter-spacing: -.02em;
+            white-space: nowrap
+        }
+
+        .n-txt span {
+            color: var(--mk-or)
+        }
+
+        .n-div {
+            width: 1px;
+            height: 18px;
+            background: rgba(255, 255, 255, .22);
+            margin: 0 14px;
+            flex-shrink: 0
+        }
+
+        .n-prod {
+            font-size: 12px;
+            color: rgba(255, 255, 255, .65);
+            letter-spacing: .04em;
+            font-weight: 400;
+            white-space: nowrap
+        }
+
+        .n-tabs {
+            display: flex;
+            align-items: center;
+            gap: 2px;
+            flex: 1;
+            margin-left: 18px
+        }
+
+        .n-tab {
+            padding: 5px 12px;
+            font-size: 12px;
+            color: rgba(255, 255, 255, .65);
+            background: none;
+            border: none;
+            border-radius: var(--rs);
+            cursor: pointer;
+            font-family: var(--fb);
+            font-weight: 400;
+            transition: all .15s
+        }
+
+        .n-tab:hover {
+            color: #fff;
+            background: rgba(255, 255, 255, .12)
+        }
+
+        .n-tab.active {
+            color: #fff;
+            background: rgba(255, 255, 255, .18)
+        }
+
+        .n-right {
+            display: flex;
+            align-items: center;
+            gap: 8px
+        }
+
+        .n-badge {
+            background: var(--mk-or);
+            color: #fff;
+            font-size: 12px;
+            font-weight: 700;
+            padding: 3px 10px;
+            border-radius: 99px;
+            font-family: var(--fm)
+        }
+
+        .t-btn {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, .15);
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            transition: background .15s;
+            flex-shrink: 0
+        }
+
+        .t-btn:hover {
+            background: rgba(255, 255, 255, .25)
+        }
+
+        .t-btn svg {
+            width: 15px;
+            height: 15px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2
+        }
+
+        .n-av {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: var(--mk-or);
+            font-size: 12px;
+            font-weight: 700;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--fh);
+            border: 2px solid rgba(255, 255, 255, .3);
+            flex-shrink: 0
+        }
+
+        /* DOC HEADER */
+        .doc-hd {
+            padding: 10px 17px;
+            background: var(--bg-p);
+            border-bottom: 1px solid var(--bdr);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-shrink: 0;
+        }
+
+        .doc-tb {
+            display: flex;
+            align-items: center;
+            gap: 11px
+        }
+
+        .doc-ic {
+            width: 34px;
+            height: 34px;
+            background: var(--ac-pale);
+            border: 1px solid var(--ac-lt);
+            border-radius: var(--rs);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0
+        }
+
+        .doc-ic svg {
+            width: 16px;
+            height: 16px;
+            fill: var(--ac)
+        }
+
+        .doc-ttl {
+            font-family: var(--fh);
+            font-size: 14px;
+            color: var(--t1);
+            letter-spacing: -.01em
+        }
+
+        .doc-sub {
+            font-size: 12px;
+            color: var(--t3);
+            margin-top: 1px;
+            font-family: var(--fm);
+            font-weight: 400
+        }
+
+        .doc-hd table {
+            border-collapse: collapse
+        }
+
+        .doc-hd .case-row td {
+            padding: 4px 12px 4px 0;
+            vertical-align: middle
+        }
+
+        .doc-cell {
+            display: flex;
+            flex-direction: column;
+            gap: 2px
+        }
+
+        .doc-lbl {
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--t3);
+            font-family: var(--fh);
+            line-height: 1.2;
+            letter-spacing: .01em
+        }
+
+        .doc-val {
+            font-size: 14px;
+            color: var(--t1);
+            font-family: var(--fm);
+            line-height: 1.3
+        }
+
+        .asgn {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px 10px;
+            background: var(--bg);
+            border: 1px solid var(--bdr);
+            border-radius: 99px;
+            font-size: 12px;
+            color: var(--t2)
+        }
+
+        .asgn-av {
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: var(--mk-or);
+            font-size: 12px;
+            font-weight: 700;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--fh)
+        }
+
+        .doc-acts {
+            display: flex;
+            align-items: center;
+            gap: 7px
+        }
+
+        /* ── MUI-style Buttons ── */
+        .btn {
+            padding: 5px 15px;
+            font-size: 13px;
+            font-weight: 500;
+            font-family: var(--fb);
+            border-radius: 4px;
+            border: 1px solid var(--bdr-m);
+            background: var(--bg-c);
+            color: var(--t2);
+            cursor: pointer;
+            transition: background-color .25s cubic-bezier(.4, 0, .2, 1), 0, .2, 1), border-color .25s;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            letter-spacing: .02em;
+            line-height: 1.75;
+            position: relative;
+            overflow: hidden;
+            text-transform: none;
+            user-select: none
+        }
+
+        .btn::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: currentColor;
+            opacity: 0;
+            transition: opacity .2s
+        }
+
+        .btn:hover::after {
+            opacity: .06
+        }
+
+        .btn:active::after {
+            opacity: .12
+        }
+
+        .btn svg {
+            width: 13px;
+            height: 13px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2;
+            flex-shrink: 0
+        }
+
+        .btn:hover {
+            border-color: var(--t2);
+            background: var(--bg-c)
+        }
+
+        .btn-flag {
+            border-color: var(--rd);
+            color: var(--rd);
+            background: transparent
+        }
+
+        .btn-flag:hover {
+            border-color: var(--rd);
+            background: transparent
+        }
+
+        .btn-done {
+            border: none;
+            color: #fff;
+            background: var(--mk-blue);
+        }
+
+        .btn-done:hover {
+            background: var(--mk-blue-dk);
+        }
+
+        /* PROGRESS BAR STRIP */
+        .prog-strip {
+            height: 3px;
+            background: var(--bdr);
+            flex-shrink: 0;
+            position: relative
+        }
+
+        .prog-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--mk-blue), var(--mk-or));
+            transition: width .4s ease;
+            width: 0%
+        }
+
+        .work-tabs {
+            display: flex;
+            align-items: flex-end;
+            padding: 10px 0 0;
+            border-bottom: 1px solid var(--bdr);
+            background: var(--bg);
+            overflow-x: auto;
+            overflow-y: hidden;
+        }
+
+        .work-tab {
+            position: relative;
+            height: 34px;
+            border: 1px solid var(--bdr-m);
+            background: var(--bdr-m);
+            color: var(--t1);
+            border-bottom: none;
+            border-radius: 8px 8px 0 0;
+            font-family: var(--fh);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 0 26px 0 14px;
+            cursor: pointer;
+            white-space: nowrap;
+            margin-bottom: -1px;
+            clip-path: polygon(0 0, calc(100% - 18px) 0, 100% 100%, 0 100%);
+        }
+
+        .work-tab.active {
+            background: var(--mk-blue);
+            border-color: var(--mk-blue);
+            color: #fff;
+            z-index: 2;
+        }
+
+        .tab-pane {
+            display: none;
+            flex: 1;
+            min-height: 0;
+            border: 1px solid var(--bdr);
+            border-top: none;
+            background: var(--bg);
+        }
+
+        .tab-pane.active {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .ndc-pane-empty {
+            flex: 1;
+            background: var(--bg);
+        }
+
+        .ndc-pdf-viewer {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            background: var(--bg);
+            overflow: hidden;
+        }
+
+        .ndc-pdf-toolbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 16px;
+            background: var(--bg-p);
+            border-bottom: 1px solid var(--bdr);
+            gap: 12px;
+        }
+
+        .ndc-pdf-title {
+            font-family: var(--fh);
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--t1);
+        }
+
+        /* ── MUI-style Select ── */
+        .ndc-pdf-select {
+            padding: 6px 32px 6px 12px;
+            background: var(--bg-c);
+            border: 1px solid rgba(0, 0, 0, .23);
+            border-radius: 4px;
+            color: var(--t1);
+            font-family: var(--fb);
+            font-size: 13px;
+            font-weight: 400;
+            outline: none;
+            -webkit-appearance: none;
+            appearance: none;
+            cursor: pointer;
+            transition: border-color .2s;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 10px center;
+            min-width: 140px;
+        }
+
+        .ndc-pdf-select:hover {
+            border-color: var(--t1)
+        }
+
+        .ndc-pdf-select:focus {
+            border-color: var(--ac);
+            border-width: 2px;
+            padding: 5px 31px 5px 11px
+        }
+
+        .ndc-pdf-frame {
+            flex: 1;
+            width: 100%;
+            border: none;
+            background: var(--bg);
+        }
+
+        .ndc-pdf-actions {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* ── MUI-style pdf toolbar buttons ── */
+        .ndc-pdf-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            padding: 5px 12px;
+            background: var(--bg-c);
+            border: 1px solid rgba(0, 0, 0, .23);
+            border-radius: 4px;
+            color: var(--t2);
+            font-family: var(--fb);
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color .25s, border-color .15s;
+            letter-spacing: .02em;
+            position: relative;
+            overflow: hidden
+        }
+
+        .ndc-pdf-btn::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: currentColor;
+            opacity: 0;
+            transition: opacity .2s
+        }
+
+        .ndc-pdf-btn:hover::after {
+            opacity: .06
+        }
+
+        .ndc-pdf-btn:hover {
+            border-color: var(--t2)
+        }
+
+        .ndc-pdf-btn svg {
+            width: 14px;
+            height: 14px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2;
+        }
+
+        .ndc-pdf-zoom {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .ndc-pdf-zoom .ndc-pdf-btn {
+            padding: 6px 8px;
+        }
+
+        .pm-review-wrap {
+            border-top: 1px solid var(--bdr);
+            background: var(--bg-p);
+            padding: 12px;
+        }
+
+        .pm-review-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .pm-review-title {
+            font-family: var(--fh);
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: none;
+            letter-spacing: 0;
+            color: var(--t1);
+        }
+
+        .pm-review-container {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        /* ── MUI Accordion — pm-ndc-card ── */
+        .pm-ndc-card {
+            border: 1px solid rgba(0, 0, 0, .12);
+            border-radius: 4px;
+            background: var(--bg-p);
+            overflow: hidden;
+        }
+
+        .pm-ndc-header {
+            background: transparent;
+            border-bottom: none;
+            padding: 12px 16px;
+            font-family: var(--fh);
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--t1);
+            letter-spacing: .01em;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+            user-select: none;
+            transition: background-color .15s;
+            min-height: 48px;
+        }
+
+        .pm-ndc-header:hover {
+            background: rgba(0, 0, 0, .04);
+        }
+
+        [data-theme=dark] .pm-ndc-header:hover {
+            background: rgba(255, 255, 255, .05);
+        }
+
+        .pm-ndc-header .pm-caret {
+            width: 18px;
+            height: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--t3);
+            transition: transform .25s cubic-bezier(.4, 0, .2, 1);
+        }
+
+        .pm-ndc-header .pm-caret svg {
+            width: 13px;
+            height: 13px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2;
+        }
+
+        .pm-ndc-card:not(.collapsed) .pm-ndc-header {
+            border-bottom: 1px solid rgba(0, 0, 0, .12);
+        }
+
+        .pm-ndc-card.collapsed .pm-caret {
+            transform: rotate(-90deg);
+        }
+
+        .pm-ndc-card .pm-fields-list {
+            margin: 0;
+            padding: 12px 16px 12px 36px;
+            background: var(--bg-p);
+            transition: max-height .25s cubic-bezier(.4, 0, .2, 1), opacity .2s ease, padding .25s;
+            max-height: 2000px;
+            opacity: 1;
+            overflow: hidden;
+        }
+
+        .pm-ndc-card.collapsed .pm-fields-list {
+            max-height: 0;
+            opacity: 0;
+            padding: 0 16px 0 36px;
+        }
+
+        .pm-list-item {
+            font-size: 14px;
+            color: var(--t2);
+            line-height: 1.5;
+            padding: 4px 0;
+        }
+
+        .pm-list-item strong {
+            color: var(--t1);
+            font-weight: 700;
+        }
+
+        .pm-list-item.highlight {
+            background: #fff3cd;
+            border-radius: 4px;
+            margin: 0 -8px;
+            padding: 4px 8px;
+            transition: background .3s ease;
+        }
+
+        /* EXCEL CONTAINER */
+        .xl-wrap {
+            flex: 1;
+            flex-direction: column;
+            background: var(--bg);
+            overflow: auto;
+        }
+
+        .xl-outer {
+            flex: 1;
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            flex-direction: column
+        }
+
+        /* The grid uses a table-like approach with a fixed left column */
+        .xl-scroll {
+            flex: 1;
+            overflow: auto;
+            position: relative
+        }
+
+        .xl-scroll::-webkit-scrollbar {
+            width: 8px;
+            height: 8px
+        }
+
+        .xl-scroll::-webkit-scrollbar-track {
+            background: var(--bg)
+        }
+
+        .xl-scroll::-webkit-scrollbar-thumb {
+            background: var(--bdr-m);
+            border-radius: 99px
+        }
+
+        .xl-scroll::-webkit-scrollbar-corner {
+            background: var(--bg)
+        }
+
+        table.xl {
+            border-collapse: separate;
+            border-spacing: 0;
+            table-layout: fixed;
+            width: max-content;
+            min-width: 100%
+        }
+
+        /* HEADER ROW */
+        table.xl thead th {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            background: var(--bg-p);
+            border-bottom: 2px solid var(--bdr-m);
+            border-right: 1px solid var(--bdr);
+            vertical-align: middle;
+            padding: 0;
+            /* height: var(--head-h); */
+            /* min-width: var(--col-w);
       width: var(--col-w); */
-      user-select: none;
-    }
+            user-select: none;
+        }
 
-    table.xl thead th.ndc-head {
-      position: sticky;
-      left: 0;
-      top: 0;
-      z-index: 15;
-      background: var(--bg-p);
-      border-right: 2px solid var(--bdr-m);
-    }
+        table.xl thead th.ndc-head {
+            position: sticky;
+            left: 0;
+            top: 0;
+            z-index: 15;
+            background: var(--bg-p);
+            border-right: 2px solid var(--bdr-m);
+        }
 
-    table.xl thead th.ndc-head .th-inner {
-      color: var(--mk-blue);
-      justify-content: center;
-      font-weight: 700;
-      letter-spacing: .08em;
-    }
+        table.xl thead th.ndc-head .th-inner {
+            color: var(--mk-blue);
+            justify-content: center;
+            font-weight: 700;
+            letter-spacing: .08em;
+        }
 
-    .th-inner {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-      padding: 8px 10px 7px;
-      height: 100%;
-      justify-content: flex-end;
-    }
+        .th-inner {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            padding: 8px 10px 7px;
+            height: 100%;
+            justify-content: flex-end;
+        }
 
-    .th-ctrl {
-      display: flex;
-      align-items: center;
-      gap: 5px;
-      margin-bottom: 2px
-    }
+        .th-ctrl {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            margin-bottom: 2px
+        }
 
-    .th-chk-wrap {
-      display: flex;
-      align-items: center;
-      gap: 0
-    }
+        .th-chk-wrap {
+            display: flex;
+            align-items: center;
+            gap: 0
+        }
 
-    /* ── MUI-style Checkbox ── */
-    .col-chk {
-      width: 16px;
-      height: 16px;
-      border-radius: 2px;
-      border: 2px solid var(--bdr-m);
-      background: transparent;
-      cursor: pointer;
-      appearance: none;
-      -webkit-appearance: none;
-      flex-shrink: 0;
-      transition: background-color .15s, border-color .15s;
-      position: relative;
-      vertical-align: middle
-    }
+        /* ── MUI-style Checkbox ── */
+        .col-chk {
+            width: 16px;
+            height: 16px;
+            border-radius: 2px;
+            border: 2px solid var(--bdr-m);
+            background: transparent;
+            cursor: pointer;
+            appearance: none;
+            -webkit-appearance: none;
+            flex-shrink: 0;
+            transition: background-color .15s, border-color .15s;
+            position: relative;
+            vertical-align: middle
+        }
 
-    .col-chk:hover {
-      border-color: var(--ac);
-    }
+        .col-chk:hover {
+            border-color: var(--ac);
+        }
 
-    .col-chk:checked {
-      background: var(--ac);
-      border-color: var(--ac)
-    }
+        .col-chk:checked {
+            background: var(--ac);
+            border-color: var(--ac)
+        }
 
-    .col-chk:checked::after {
-      content: '';
-      position: absolute;
-      left: 2px;
-      top: -1px;
-      width: 5px;
-      height: 9px;
-      border: 2px solid #fff;
-      border-top: none;
-      border-left: none;
-      transform: rotate(43deg)
-    }
+        .col-chk:checked::after {
+            content: '';
+            position: absolute;
+            left: 2px;
+            top: -1px;
+            width: 5px;
+            height: 9px;
+            border: 2px solid #fff;
+            border-top: none;
+            border-left: none;
+            transform: rotate(43deg)
+        }
 
-    .col-chk:indeterminate {
-      background: var(--ac);
-      border-color: var(--ac)
-    }
+        .col-chk:indeterminate {
+            background: var(--ac);
+            border-color: var(--ac)
+        }
 
-    .col-chk:indeterminate::after {
-      content: '';
-      position: absolute;
-      left: 2px;
-      top: 5px;
-      width: 8px;
-      height: 2px;
-      background: #fff;
-      border-radius: 1px
-    }
+        .col-chk:indeterminate::after {
+            content: '';
+            position: absolute;
+            left: 2px;
+            top: 5px;
+            width: 8px;
+            height: 2px;
+            background: #fff;
+            border-radius: 1px
+        }
 
-    /* ── MUI-style col-approve ── */
-    .col-approve {
-      padding: 2px 10px;
-      font-size: 11px;
-      font-weight: 500;
-      font-family: var(--fh);
-      background: var(--mk-blue);
-      color: #fff;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      transition: background-color .25s;
-      white-space: nowrap;
-      letter-spacing: .04em;
-      display: none;
-    }
+        /* ── MUI-style col-approve ── */
+        .col-approve {
+            padding: 2px 10px;
+            font-size: 11px;
+            font-weight: 500;
+            font-family: var(--fh);
+            background: var(--mk-blue);
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color .25s;
+            white-space: nowrap;
+            letter-spacing: .04em;
+            display: none;
+        }
 
-    .col-approve:hover {
-      background: var(--mk-blue-dk);
-    }
+        .col-approve:hover {
+            background: var(--mk-blue-dk);
+        }
 
-    .col-approve.visible {
-      display: block
-    }
+        .col-approve.visible {
+            display: block
+        }
 
-    .th-label {
-      font-family: var(--fh);
-      font-size: 12px;
-      font-weight: 700;
-      color: var(--t2);
-      letter-spacing: 0;
-      text-transform: none;
-      line-height: 1.2;
-      display: flex;
-      align-items: center;
-      gap: 8px
-    }
+        .th-label {
+            font-family: var(--fh);
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--t2);
+            letter-spacing: 0;
+            text-transform: none;
+            line-height: 1.2;
+            display: flex;
+            align-items: center;
+            gap: 8px
+        }
 
-    .th-conf {
-      font-family: var(--fm);
-      font-size: 12px;
-      color: var(--t3);
-      margin-top: 1px
-    }
+        .th-conf {
+            font-family: var(--fm);
+            font-size: 12px;
+            color: var(--t3);
+            margin-top: 1px
+        }
 
-    /* BODY ROWS */
-    table.xl tbody tr {
-      height: var(--row-h)
-    }
+        /* BODY ROWS */
+        table.xl tbody tr {
+            height: var(--row-h)
+        }
 
-    table.xl tbody td {
-      border-bottom: 1px solid var(--bdr);
-      border-right: 1px solid var(--bdr);
-      padding: 0 10px;
-      font-family: var(--fm);
-      font-size: 12px;
-      color: var(--t1);
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      cursor: default;
-      transition: background .1s;
-      /* min-width: var(--col-w);
+        table.xl tbody td {
+            border-bottom: 1px solid var(--bdr);
+            border-right: 1px solid var(--bdr);
+            padding: 0 10px;
+            font-family: var(--fm);
+            font-size: 12px;
+            color: var(--t1);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            cursor: default;
+            transition: background .1s;
+            /* min-width: var(--col-w);
       width: var(--col-w);
       max-width: var(--col-w); */
-      vertical-align: middle;
-      background: var(--bg-p);
-    }
-
-    table.xl tbody td:hover {
-      background: var(--bg-h) !important
-    }
-
-    /* NDC fixed column */
-    table.xl tbody td.ndc-cell {
-      position: sticky;
-      left: 0;
-      z-index: 5;
-      white-space: nowrap;
-      background: var(--bg-p) !important;
-      border-right: 2px solid var(--bdr-m);
-      font-family: var(--fh);
-      font-size: 12px;
-      font-weight: 700;
-      color: var(--mk-blue);
-      cursor: default;
-    }
-
-    table.xl tbody td.ndc-cell:hover {
-      background: var(--mk-blue-pale) !important
-    }
-
-    table.xl tbody td.ndc-cell {
-      display: table-cell
-    }
-
-    .ndc-id-link {
-      cursor: pointer;
-      color: var(--ac)
-    }
-
-    .ndc-id-link:hover {
-      text-decoration: underline
-    }
-
-    .ndc-pm-sep {
-      display: inline;
-      color: var(--bdr-m);
-      margin: 0 2px
-    }
-
-    .ndc-pm-count {
-      display: inline;
-      font-size: 12px;
-      font-weight: 700;
-      font-family: var(--fh);
-      color: var(--mk-or-dk);
-      cursor: pointer;
-      white-space: nowrap
-    }
-
-    .ndc-pm-count:hover {
-      text-decoration: underline
-    }
-
-    /* Cell states */
-    td.cell-ac {
-      background: var(--gr-pale) !important
-    }
-
-    table.xl tbody td.cell-ac:hover {
-      background: #d1fae5 !important
-    }
-
-    td.cell-rj {
-      background: var(--rd-pale) !important;
-      color: var(--rd) !important;
-      text-decoration: line-through
-    }
-
-    td.cell-ed {
-      background: var(--am-pale) !important
-    }
-
-    /* Selected column highlight - darker but not too dark */
-    td.col-sel {
-      background: #c5dcf6 !important;
-      outline: none;
-    }
-
-    /* Slightly darker hover on selected cells - higher specificity to override normal hover */
-    table.xl tbody td.col-sel:hover {
-      background: #b0d0f3 !important;
-    }
-
-    td.col-sel.cell-ac {
-      background: color-mix(in srgb, var(--gr-pale) 60%, #c5dcf6) !important
-    }
-
-    table.xl tbody td.col-sel.cell-ac:hover {
-      background: color-mix(in srgb, var(--gr-pale) 50%, #b0d0f3) !important
-    }
-
-    /* confidence dot */
-    .conf-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      flex-shrink: 0;
-      display: inline-block;
-      margin-right: 5px;
-      vertical-align: middle
-    }
-
-    .cd-h {
-      background: var(--gr)
-    }
-
-    .cd-m {
-      background: var(--am)
-    }
-
-    .cd-l {
-      background: var(--rd)
-    }
-
-    /* cell value display */
-    .cv {
-      display: flex;
-      align-items: center;
-      gap: 0
-    }
-
-    .cv-txt {
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-      flex: 1
-    }
-
-    .cv-badge {
-      font-size: 12px;
-      font-weight: 700;
-      padding: 1px 4px;
-      border-radius: 3px;
-      margin-left: 5px;
-      flex-shrink: 0;
-      font-family: var(--fh);
-      letter-spacing: 0
-    }
-
-    .cv-warning {
-      font-size: 12px;
-      margin-right: 4px;
-      flex-shrink: 0;
-      cursor: help;
-      filter: drop-shadow(0 1px 1px rgba(0, 0, 0, .1));
-    }
-
-    .cv-ac {
-      background: var(--gr-lt);
-      color: var(--gr)
-    }
-
-    .cv-rj {
-      background: var(--rd-lt);
-      color: var(--rd)
-    }
-
-    .cv-ed {
-      background: var(--am-lt);
-      color: var(--am)
-    }
-
-    /* FOOTER BAR */
-    .xl-ftr {
-      height: 42px;
-      background: var(--bg-p);
-      border-top: 1px solid var(--bdr);
-      display: flex;
-      align-items: center;
-      padding: 0 17px;
-      gap: 16px;
-      flex-shrink: 0;
-    }
-
-    .xl-ftr-stat {
-      font-size: 12px;
-      color: var(--t3);
-      font-family: var(--fm)
-    }
-
-    .xl-ftr-stat span {
-      color: var(--t1);
-      font-weight: 700
-    }
-
-    .ftr-sep {
-      width: 1px;
-      height: 16px;
-      background: var(--bdr)
-    }
-
-    .ftr-prog-wrap {
-      flex: 1;
-      max-width: 360px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      min-width: 120px
-    }
-
-    .ftr-prog-track {
-      flex: 1;
-      height: 12px;
-      background: var(--bdr);
-      border-radius: 3px;
-      overflow: hidden
-    }
-
-    .ftr-prog-fill {
-      height: 100%;
-      background: var(--gr);
-      transition: width .4s ease;
-      width: 0%;
-      border-radius: 3px
-    }
-
-    .ftr-prog-lbl {
-      font-size: 11px;
-      color: var(--t3);
-      font-family: var(--fm);
-      min-width: 32px;
-      text-align: right;
-      font-weight: 600
-    }
-
-    .ftr-right {
-      margin-left: auto;
-      display: flex;
-      align-items: center;
-      gap: 8px
-    }
-
-    /* ── MUI Footer Buttons ── */
-    .fb {
-      padding: 5px 15px;
-      font-size: 13px;
-      font-weight: 500;
-      font-family: var(--fb);
-      border-radius: 4px;
-      cursor: pointer;
-      transition: background-color .25s cubic-bezier(.4, 0, .2, 1), 0, .2, 1);
-      border: 1px solid var(--bdr-m);
-      background: var(--bg-c);
-      color: var(--t2);
-      letter-spacing: .02em;
-      line-height: 1.75;
-      position: relative;
-      overflow: hidden
-    }
-
-    .fb::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: currentColor;
-      opacity: 0;
-      transition: opacity .2s
-    }
-
-    .fb:hover::after {
-      opacity: .06
-    }
-
-    .fb:hover {
-      border-color: var(--t2)
-    }
-
-    .fb-sub {
-      background: var(--mk-blue);
-      color: #fff;
-      border: none;
-    }
-
-    .fb-sub:hover {
-      background: var(--mk-blue-dk);
-    }
-
-    /* MODAL OVERLAY */
-    .modal-ov {
-      position: fixed;
-      inset: 0;
-      background: rgba(13, 26, 46, .45);
-      z-index: 100;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      backdrop-filter: blur(2px);
-    }
-
-    .modal-ov.open {
-      display: flex
-    }
-
-    /* ── MUI Dialog ── */
-    .modal {
-      background: var(--bg-p);
-      border: none;
-      border-radius: 4px;
-      width: 460px;
-      max-width: 92vw;
-      animation: mIn .2s cubic-bezier(.4, 0, .2, 1);
-      overflow: hidden;
-    }
-
-    @keyframes mIn {
-      from {
-        opacity: 0;
-        transform: translateY(10px) scale(.97)
-      }
-
-      to {
-        opacity: 1;
-        transform: none
-      }
-    }
-
-    .modal-hd {
-      padding: 14px 16px 12px;
-      border-bottom: 1px solid var(--bdr);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .modal-ttl {
-      font-family: var(--fh);
-      font-size: 14px;
-      font-weight: 700;
-      color: var(--t1)
-    }
-
-    .modal-sub {
-      font-size: 12px;
-      color: var(--t3);
-      margin-top: 2px;
-      font-family: var(--fm)
-    }
-
-    /* ── MUI Icon Button — close ── */
-    .modal-close {
-      width: 30px;
-      height: 30px;
-      border-radius: 50%;
-      background: transparent;
-      border: none;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--t3);
-      transition: background-color .15s;
-      flex-shrink: 0;
-      position: relative;
-      overflow: hidden
-    }
-
-    .modal-close::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      border-radius: 50%;
-      background: currentColor;
-      opacity: 0;
-      transition: opacity .15s
-    }
-
-    .modal-close:hover::after {
-      opacity: .08
-    }
-
-    .modal-close:hover {
-      color: var(--t1)
-    }
-
-    .modal-close svg {
-      width: 13px;
-      height: 13px;
-      fill: none;
-      stroke: currentColor;
-      stroke-width: 2
-    }
-
-    .modal-body {
-      padding: 14px 16px
-    }
-
-    /* ── MUI Paper — data rows ── */
-    .drw {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-      margin-bottom: 12px
-    }
-
-    .dr {
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-      padding: 10px 12px;
-      background: var(--bg-p);
-      border: 1px solid rgba(0, 0, 0, .12);
-      border-radius: 4px;
-    }
-
-    .dr-ic {
-      width: 22px;
-      height: 22px;
-      border-radius: 4px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      margin-top: 1px
-    }
-
-    .dr-ic svg {
-      width: 11px;
-      height: 11px;
-      fill: none;
-      stroke: currentColor;
-      stroke-width: 2
-    }
-
-    .ic-ex {
-      background: var(--ac-pale);
-      color: var(--ac)
-    }
-
-    .ic-kg {
-      background: var(--mk-or-pale);
-      color: var(--mk-or)
-    }
-
-    .ic-rv {
-      background: var(--gr-pale);
-      color: var(--gr)
-    }
-
-    .dr-b {
-      flex: 1;
-      min-width: 0
-    }
-
-    .dr-tp {
-      font-size: 12px;
-      font-weight: 700;
-      text-transform: none;
-      letter-spacing: 0;
-      color: var(--t3);
-      margin-bottom: 2px
-    }
-
-    .dr-v {
-      font-size: 12px;
-      font-family: var(--fm);
-      font-weight: 400;
-      color: var(--t1);
-      word-break: break-all
-    }
-
-    .dr-v.sk {
-      text-decoration: line-through;
-      color: var(--t3)
-    }
-
-    /* ── MUI Accordion — rv-acc ── */
-    .rv-acc {
-      border: 1px solid rgba(0, 0, 0, .12);
-      border-radius: 4px;
-      overflow: hidden;
-    }
-
-    .rv-acc-hd {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 10px 14px;
-      background: transparent;
-      border-bottom: none;
-      cursor: pointer;
-      user-select: none;
-      gap: 8px;
-      min-height: 44px;
-      transition: background-color .15s;
-    }
-
-    .rv-acc-hd:hover {
-      background: rgba(0, 0, 0, .04);
-    }
-
-    [data-theme=dark] .rv-acc-hd:hover {
-      background: rgba(255, 255, 255, .05);
-    }
-
-    .rv-acc.open .rv-acc-hd {
-      border-bottom: 1px solid rgba(0, 0, 0, .12);
-    }
-
-    .rv-acc-hd-l {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      flex: 1;
-      min-width: 0;
-    }
-
-    .rv-acc-hd-r {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      flex-shrink: 0;
-    }
-
-    .rv-acc-hd .dr-ic {
-      margin-top: 0;
-    }
-
-    .rv-acc-hd .dr-tp {
-      margin-bottom: 0;
-    }
-
-    .rv-acc-caret {
-      width: 16px;
-      height: 16px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--t3);
-      transition: transform .25s cubic-bezier(.4, 0, .2, 1);
-      flex-shrink: 0;
-    }
-
-    .rv-acc-caret svg {
-      width: 13px;
-      height: 13px;
-      fill: none;
-      stroke: currentColor;
-      stroke-width: 2;
-    }
-
-    .rv-acc.open .rv-acc-caret {
-      transform: rotate(180deg);
-    }
-
-    .rv-acc-body {
-      background: var(--bg-p);
-      padding: 0 14px;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height .25s cubic-bezier(.4, 0, .2, 1), padding .25s cubic-bezier(.4, 0, .2, 1);
-    }
-
-    .rv-acc.open .rv-acc-body {
-      max-height: 400px;
-      padding: 12px 14px;
-    }
-
-    .rv-row {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-    }
-
-    .rv-row-lbl {
-      font-size: 12px;
-      font-weight: 700;
-      color: var(--t1);
-    }
-
-    .rv-row-val {
-      font-size: 12px;
-      font-weight: 400;
-      color: var(--t1);
-      line-height: 1.5;
-    }
-
-    .rv-row-val.empty {
-      color: var(--ph);
-    }
-
-    .rv-chip {
-      display: inline-flex;
-      align-items: center;
-      padding: 2px 8px;
-      border-radius: 99px;
-      font-size: 12px;
-      font-weight: 700;
-      border: 1px solid transparent;
-    }
-
-    .rv-chip-dynamic {
-      background: var(--ac-pale);
-      color: var(--ac);
-      border-color: var(--ac-lt);
-    }
-
-    .rv-chip-static {
-      background: var(--gr-pale);
-      color: var(--gr);
-      border-color: var(--gr-lt);
-    }
-
-    .rv-chip-alert {
-      background: var(--am-pale);
-      color: var(--am);
-      border-color: var(--am-lt);
-    }
-
-    .dr-s {
-      font-size: 12px;
-      color: var(--t3);
-      margin-top: 1px
-    }
-
-    /* Confidence pill */
-    .cpil {
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      padding: 2px 8px;
-      border-radius: 99px;
-      font-size: 12px;
-      font-family: var(--fm);
-      font-weight: 400;
-      border: 1px solid transparent;
-    }
-
-    .cp-h {
-      background: var(--gr-pale);
-      color: var(--gr);
-      border-color: var(--gr-lt)
-    }
-
-    .cp-m {
-      background: var(--am-pale);
-      color: var(--am);
-      border-color: var(--am-lt)
-    }
-
-    .cp-l {
-      background: var(--rd-pale);
-      color: var(--rd);
-      border-color: var(--rd-lt)
-    }
-
-    .cp-d {
-      width: 5px;
-      height: 5px;
-      border-radius: 50%
-    }
-
-    .cp-h .cp-d {
-      background: var(--gr)
-    }
-
-    .cp-m .cp-d {
-      background: var(--am)
-    }
-
-    .cp-l .cp-d {
-      background: var(--rd)
-    }
-
-    /* ── MUI-style Edit Panel ── */
-    .ep {
-      background: var(--ac-pale);
-      border: 1px solid var(--ac-lt);
-      border-radius: 4px;
-      padding: 14px;
-      margin-top: 4px
-    }
-
-    .ep-ttl {
-      font-size: 12px;
-      font-weight: 700;
-      text-transform: none;
-      letter-spacing: 0;
-      color: var(--ac);
-      margin-bottom: 9px;
-      display: flex;
-      align-items: center;
-      gap: 5px
-    }
-
-    .ep-ttl svg {
-      width: 12px;
-      height: 12px;
-      fill: none;
-      stroke: currentColor;
-      stroke-width: 2
-    }
-
-    .ep-opts {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-      margin-bottom: 10px
-    }
-
-    /* ── MUI-style Radio Options ── */
-    .ep-opt {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 8px 12px;
-      border: 1px solid var(--bdr);
-      border-radius: 4px;
-      background: var(--bg-c);
-      cursor: pointer;
-      transition: border-color .2s, background-color .2s
-    }
-
-    .ep-opt:hover {
-      border-color: var(--ac);
-      background: var(--bg-c)
-    }
-
-    .ep-opt.sel {
-      border-color: var(--ac);
-      background: var(--bg-c)
-    }
-
-    .eo-rd {
-      width: 18px;
-      height: 18px;
-      border-radius: 50%;
-      border: 2px solid var(--bdr-m);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      transition: border-color .15s;
-      position: relative
-    }
-
-    .ep-opt:hover .eo-rd {}
-
-    .ep-opt.sel .eo-rd {
-      border-color: var(--ac)
-    }
-
-    .eo-dt {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--ac);
-      transform: scale(0);
-      transition: transform .15s cubic-bezier(.4, 0, .2, 1)
-    }
-
-    .ep-opt.sel .eo-dt {
-      transform: scale(1)
-    }
-
-    .eo-b {
-      flex: 1
-    }
-
-    .eo-lbl {
-      font-size: 12px;
-      font-weight: 700;
-      color: var(--t1)
-    }
-
-    .eo-val {
-      font-size: 12px;
-      font-family: var(--fm);
-      color: var(--t2);
-      margin-top: 1px
-    }
-
-    .man-sec {
-      display: none;
-      padding-top: 6px
-    }
-
-    /* ── MUI-style Text Input ── */
-    .man-inp {
-      width: 100%;
-      padding: 8px 12px;
-      background: var(--bg-c);
-      border: 1px solid rgba(0, 0, 0, .23);
-      border-radius: 4px;
-      color: var(--t1);
-      font-family: var(--fm);
-      font-size: 13px;
-      outline: none;
-      margin-bottom: 8px;
-      transition: border-color .2s
-    }
-
-    .man-inp:hover {
-      border-color: var(--t1)
-    }
-
-    .man-inp:focus {
-      border-color: var(--ac);
-      border-width: 2px;
-      padding: 7px 11px
-    }
-
-    ::placeholder {
-      color: var(--ph);
-      opacity: 1
-    }
-
-    .man-inp::placeholder {
-      color: var(--ph);
-      font-family: var(--fb)
-    }
-
-    /* ── MUI-style Labels & Select ── */
-    .rea-lbl {
-      font-size: 11px;
-      font-weight: 400;
-      color: rgba(0, 0, 0, .6);
-      text-transform: none;
-      letter-spacing: .03em;
-      margin-bottom: 4px
-    }
-
-    [data-theme=dark] .rea-lbl {
-      color: rgba(255, 255, 255, .6)
-    }
-
-    .rea-sel {
-      width: 100%;
-      padding: 8px 32px 8px 12px;
-      background: var(--bg-c);
-      border: 1px solid rgba(0, 0, 0, .23);
-      border-radius: 4px;
-      color: var(--t1);
-      font-family: var(--fb);
-      font-size: 13px;
-      outline: none;
-      -webkit-appearance: none;
-      appearance: none;
-      cursor: pointer;
-      margin-bottom: 6px;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
-      background-repeat: no-repeat;
-      background-position: right 10px center;
-      transition: border-color .2s
-    }
-
-    .rea-sel:hover {
-      border-color: var(--t1)
-    }
-
-    .rea-sel:focus {
-      border-color: var(--ac);
-      border-width: 2px;
-      padding: 7px 31px 7px 11px
-    }
-
-    /* ── MUI-style Textarea ── */
-    .cust-ta {
-      width: 100%;
-      padding: 8px 12px;
-      background: var(--bg-c);
-      border: 1px solid rgba(0, 0, 0, .23);
-      border-radius: 4px;
-      color: var(--t1);
-      font-family: var(--fb);
-      font-size: 13px;
-      outline: none;
-      resize: none;
-      height: 60px;
-      margin-bottom: 6px;
-      transition: border-color .2s
-    }
-
-    .cust-ta:hover {
-      border-color: var(--t1)
-    }
-
-    .cust-ta:focus {
-      border-color: var(--ac);
-      border-width: 2px;
-      padding: 7px 11px
-    }
-
-    .cust-ta::placeholder {
-      color: var(--ph)
-    }
-
-    /* ── MUI Modal Footer Actions ── */
-    .modal-acts {
-      display: flex;
-      gap: 8px;
-      padding: 12px 16px;
-      border-top: 1px solid var(--bdr)
-    }
-
-    .fa {
-      flex: 1;
-      padding: 6px 12px;
-      font-size: 13px;
-      font-weight: 500;
-      font-family: var(--fb);
-      border-radius: 4px;
-      border: 1px solid transparent;
-      background: transparent;
-      color: var(--t2);
-      cursor: pointer;
-      transition: background-color .25s, border-color .2s;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 5px;
-      letter-spacing: .02em;
-      line-height: 1.75;
-      position: relative;
-      overflow: hidden
-    }
-
-    .fa::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: currentColor;
-      opacity: 0;
-      transition: opacity .2s
-    }
-
-    .fa:hover::after {
-      opacity: .06
-    }
-
-    .fa svg {
-      width: 12px;
-      height: 12px;
-      fill: none;
-      stroke: currentColor;
-      stroke-width: 2
-    }
-
-    .fa:hover {
-      border-color: var(--bdr-m);
-      background: transparent
-    }
-
-    .fa.f-ac {
-      border: none;
-      color: #fff;
-      background: var(--gr);
-    }
-
-    .fa.f-ac:hover {
-      background: #15803d;
-    }
-
-    .fa.f-ed {
-      border-color: var(--ac);
-      color: var(--ac);
-      background: transparent
-    }
-
-    .fa.f-ed:hover {
-      background: transparent
-    }
-
-    .fa.f-rj {
-      border-color: var(--rd);
-      color: var(--rd);
-      background: transparent
-    }
-
-    .fa.f-rj:hover {
-      background: transparent
-    }
-
-    /* ── MUI Edit Panel Buttons ── */
-    .ep-btn {
-      flex: 1;
-      padding: 6px 16px;
-      font-size: 13px;
-      font-weight: 500;
-      font-family: var(--fb);
-      border-radius: 4px;
-      cursor: pointer;
-      transition: background-color .25s;
-      text-align: center;
-      letter-spacing: .02em;
-      position: relative;
-      overflow: hidden
-    }
-
-    .ep-btn::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: currentColor;
-      opacity: 0;
-      transition: opacity .2s
-    }
-
-    .ep-btn:hover::after {
-      opacity: .06
-    }
-
-    .ep-cn {
-      border: 1px solid rgba(0, 0, 0, .23);
-      background: transparent;
-      color: var(--t2)
-    }
-
-    .ep-cn:hover {
-      border-color: var(--t2)
-    }
-
-    .ep-sv {
-      border: none;
-      background: var(--ac);
-      color: #fff;
-    }
-
-    .ep-sv:hover {
-      background: var(--mk-blue-dk);
-    }
-
-    /* selection info toast */
-    .sel-toast {
-      position: fixed;
-      bottom: 58px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: var(--mk-blue);
-      color: #fff;
-      border-radius: 99px;
-      padding: 6px 16px;
-      font-size: 12px;
-      font-family: var(--fb);
-      font-weight: 400;
-      display: none;
-      gap: 10px;
-      align-items: center;
-      z-index: 50;
-      white-space: nowrap;
-    }
-
-    .sel-toast.show {
-      display: flex
-    }
-
-    /* ── MUI Toast Buttons ── */
-    .sel-toast button {
-      background: rgba(255, 255, 255, .15);
-      border: 1px solid rgba(255, 255, 255, .4);
-      border-radius: 4px;
-      color: #fff;
-      font-size: 13px;
-      font-family: var(--fb);
-      font-weight: 500;
-      padding: 3px 12px;
-      cursor: pointer;
-      transition: background .2s, border-color .2s;
-      letter-spacing: .02em
-    }
-
-    .sel-toast button:hover {
-      background: rgba(255, 255, 255, .25);
-      border-color: rgba(255, 255, 255, .7)
-    }
-  </style>
+            vertical-align: middle;
+            background: var(--bg-p);
+        }
+
+        table.xl tbody td:hover {
+            background: var(--bg-h) !important
+        }
+
+        /* NDC fixed column */
+        table.xl tbody td.ndc-cell {
+            position: sticky;
+            left: 0;
+            z-index: 5;
+            white-space: nowrap;
+            background: var(--bg-p) !important;
+            border-right: 2px solid var(--bdr-m);
+            font-family: var(--fh);
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--mk-blue);
+            cursor: default;
+        }
+
+        table.xl tbody td.ndc-cell:hover {
+            background: var(--mk-blue-pale) !important
+        }
+
+        table.xl tbody td.ndc-cell {
+            display: table-cell
+        }
+
+        .ndc-id-link {
+            cursor: pointer;
+            color: var(--ac)
+        }
+
+        .ndc-id-link:hover {
+            text-decoration: underline
+        }
+
+        .ndc-pm-sep {
+            display: inline;
+            color: var(--bdr-m);
+            margin: 0 2px
+        }
+
+        .ndc-pm-count {
+            display: inline;
+            font-size: 12px;
+            font-weight: 700;
+            font-family: var(--fh);
+            color: var(--mk-or-dk);
+            cursor: pointer;
+            white-space: nowrap
+        }
+
+        .ndc-pm-count:hover {
+            text-decoration: underline
+        }
+
+        /* Cell states */
+        td.cell-ac {
+            background: var(--gr-pale) !important
+        }
+
+        table.xl tbody td.cell-ac:hover {
+            background: #d1fae5 !important
+        }
+
+        td.cell-rj {
+            background: var(--rd-pale) !important;
+            color: var(--rd) !important;
+            text-decoration: line-through
+        }
+
+        td.cell-ed {
+            background: var(--am-pale) !important
+        }
+
+        /* Selected column highlight - darker but not too dark */
+        td.col-sel {
+            background: #c5dcf6 !important;
+            outline: none;
+        }
+
+        /* Slightly darker hover on selected cells - higher specificity to override normal hover */
+        table.xl tbody td.col-sel:hover {
+            background: #b0d0f3 !important;
+        }
+
+        td.col-sel.cell-ac {
+            background: color-mix(in srgb, var(--gr-pale) 60%, #c5dcf6) !important
+        }
+
+        table.xl tbody td.col-sel.cell-ac:hover {
+            background: color-mix(in srgb, var(--gr-pale) 50%, #b0d0f3) !important
+        }
+
+        /* confidence dot */
+        .conf-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            flex-shrink: 0;
+            display: inline-block;
+            margin-right: 5px;
+            vertical-align: middle
+        }
+
+        .cd-h {
+            background: var(--gr)
+        }
+
+        .cd-m {
+            background: var(--am)
+        }
+
+        .cd-l {
+            background: var(--rd)
+        }
+
+        /* cell value display */
+        .cv {
+            display: flex;
+            align-items: center;
+            gap: 0
+        }
+
+        .cv-txt {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            flex: 1
+        }
+
+        .cv-badge {
+            font-size: 12px;
+            font-weight: 700;
+            padding: 1px 4px;
+            border-radius: 3px;
+            margin-left: 5px;
+            flex-shrink: 0;
+            font-family: var(--fh);
+            letter-spacing: 0
+        }
+
+        .cv-warning {
+            font-size: 12px;
+            margin-right: 4px;
+            flex-shrink: 0;
+            cursor: help;
+            filter: drop-shadow(0 1px 1px rgba(0, 0, 0, .1));
+        }
+
+        .cv-ac {
+            background: var(--gr-lt);
+            color: var(--gr)
+        }
+
+        .cv-rj {
+            background: var(--rd-lt);
+            color: var(--rd)
+        }
+
+        .cv-ed {
+            background: var(--am-lt);
+            color: var(--am)
+        }
+
+        /* FOOTER BAR */
+        .xl-ftr {
+            height: 42px;
+            background: var(--bg-p);
+            border-top: 1px solid var(--bdr);
+            display: flex;
+            align-items: center;
+            padding: 0 17px;
+            gap: 16px;
+            flex-shrink: 0;
+        }
+
+        .xl-ftr-stat {
+            font-size: 12px;
+            color: var(--t3);
+            font-family: var(--fm)
+        }
+
+        .xl-ftr-stat span {
+            color: var(--t1);
+            font-weight: 700
+        }
+
+        .ftr-sep {
+            width: 1px;
+            height: 16px;
+            background: var(--bdr)
+        }
+
+        .ftr-prog-wrap {
+            flex: 1;
+            max-width: 360px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            min-width: 120px
+        }
+
+        .ftr-prog-track {
+            flex: 1;
+            height: 12px;
+            background: var(--bdr);
+            border-radius: 3px;
+            overflow: hidden
+        }
+
+        .ftr-prog-fill {
+            height: 100%;
+            background: var(--gr);
+            transition: width .4s ease;
+            width: 0%;
+            border-radius: 3px
+        }
+
+        .ftr-prog-lbl {
+            font-size: 11px;
+            color: var(--t3);
+            font-family: var(--fm);
+            min-width: 32px;
+            text-align: right;
+            font-weight: 600
+        }
+
+        .ftr-right {
+            margin-left: auto;
+            display: flex;
+            align-items: center;
+            gap: 8px
+        }
+
+        /* ── MUI Footer Buttons ── */
+        .fb {
+            padding: 5px 15px;
+            font-size: 13px;
+            font-weight: 500;
+            font-family: var(--fb);
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color .25s cubic-bezier(.4, 0, .2, 1), 0, .2, 1);
+            border: 1px solid var(--bdr-m);
+            background: var(--bg-c);
+            color: var(--t2);
+            letter-spacing: .02em;
+            line-height: 1.75;
+            position: relative;
+            overflow: hidden
+        }
+
+        .fb::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: currentColor;
+            opacity: 0;
+            transition: opacity .2s
+        }
+
+        .fb:hover::after {
+            opacity: .06
+        }
+
+        .fb:hover {
+            border-color: var(--t2)
+        }
+
+        .fb-sub {
+            background: var(--mk-blue);
+            color: #fff;
+            border: none;
+        }
+
+        .fb-sub:hover {
+            background: var(--mk-blue-dk);
+        }
+
+        /* MODAL OVERLAY */
+        .modal-ov {
+            position: fixed;
+            inset: 0;
+            background: rgba(13, 26, 46, .45);
+            z-index: 100;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(2px);
+        }
+
+        .modal-ov.open {
+            display: flex
+        }
+
+        /* ── MUI Dialog ── */
+        .modal {
+            background: var(--bg-p);
+            border: none;
+            border-radius: 4px;
+            width: 460px;
+            max-width: 92vw;
+            animation: mIn .2s cubic-bezier(.4, 0, .2, 1);
+            overflow: hidden;
+        }
+
+        @keyframes mIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px) scale(.97)
+            }
+
+            to {
+                opacity: 1;
+                transform: none
+            }
+        }
+
+        .modal-hd {
+            padding: 14px 16px 12px;
+            border-bottom: 1px solid var(--bdr);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .modal-ttl {
+            font-family: var(--fh);
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--t1)
+        }
+
+        .modal-sub {
+            font-size: 12px;
+            color: var(--t3);
+            margin-top: 2px;
+            font-family: var(--fm)
+        }
+
+        /* ── MUI Icon Button — close ── */
+        .modal-close {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--t3);
+            transition: background-color .15s;
+            flex-shrink: 0;
+            position: relative;
+            overflow: hidden
+        }
+
+        .modal-close::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            background: currentColor;
+            opacity: 0;
+            transition: opacity .15s
+        }
+
+        .modal-close:hover::after {
+            opacity: .08
+        }
+
+        .modal-close:hover {
+            color: var(--t1)
+        }
+
+        .modal-close svg {
+            width: 13px;
+            height: 13px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2
+        }
+
+        .modal-body {
+            padding: 14px 16px
+        }
+
+        /* ── MUI Paper — data rows ── */
+        .drw {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            margin-bottom: 12px
+        }
+
+        .dr {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            padding: 10px 12px;
+            background: var(--bg-p);
+            border: 1px solid rgba(0, 0, 0, .12);
+            border-radius: 4px;
+        }
+
+        .dr-ic {
+            width: 22px;
+            height: 22px;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            margin-top: 1px
+        }
+
+        .dr-ic svg {
+            width: 11px;
+            height: 11px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2
+        }
+
+        .ic-ex {
+            background: var(--ac-pale);
+            color: var(--ac)
+        }
+
+        .ic-kg {
+            background: var(--mk-or-pale);
+            color: var(--mk-or)
+        }
+
+        .ic-rv {
+            background: var(--gr-pale);
+            color: var(--gr)
+        }
+
+        .dr-b {
+            flex: 1;
+            min-width: 0
+        }
+
+        .dr-tp {
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: none;
+            letter-spacing: 0;
+            color: var(--t3);
+            margin-bottom: 2px
+        }
+
+        .dr-v {
+            font-size: 12px;
+            font-family: var(--fm);
+            font-weight: 400;
+            color: var(--t1);
+            word-break: break-all
+        }
+
+        .dr-v.sk {
+            text-decoration: line-through;
+            color: var(--t3)
+        }
+
+        .vid-fmt>div+div {
+            margin-top: 2px;
+            padding-left: 0px
+        }
+
+        /* ── MUI Accordion — rv-acc ── */
+        .rv-acc {
+            border: 1px solid rgba(0, 0, 0, .12);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .rv-acc-hd {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 14px;
+            background: transparent;
+            border-bottom: none;
+            cursor: pointer;
+            user-select: none;
+            gap: 8px;
+            min-height: 44px;
+            transition: background-color .15s;
+        }
+
+        .rv-acc-hd:hover {
+            background: rgba(0, 0, 0, .04);
+        }
+
+        [data-theme=dark] .rv-acc-hd:hover {
+            background: rgba(255, 255, 255, .05);
+        }
+
+        .rv-acc.open .rv-acc-hd {
+            border-bottom: 1px solid rgba(0, 0, 0, .12);
+        }
+
+        .rv-acc-hd-l {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex: 1;
+            min-width: 0;
+        }
+
+        .rv-acc-hd-r {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            flex-shrink: 0;
+        }
+
+        .rv-acc-hd .dr-ic {
+            margin-top: 0;
+        }
+
+        .rv-acc-hd .dr-tp {
+            margin-bottom: 0;
+        }
+
+        .rv-acc-caret {
+            width: 16px;
+            height: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--t3);
+            transition: transform .25s cubic-bezier(.4, 0, .2, 1);
+            flex-shrink: 0;
+        }
+
+        .rv-acc-caret svg {
+            width: 13px;
+            height: 13px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2;
+        }
+
+        .rv-acc.open .rv-acc-caret {
+            transform: rotate(180deg);
+        }
+
+        .rv-acc-body {
+            background: var(--bg-p);
+            padding: 0 14px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height .25s cubic-bezier(.4, 0, .2, 1), padding .25s cubic-bezier(.4, 0, .2, 1);
+        }
+
+        .rv-acc.open .rv-acc-body {
+            max-height: 400px;
+            padding: 12px 14px;
+        }
+
+        .rv-row {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .rv-row-lbl {
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--t1);
+        }
+
+        .rv-row-val {
+            font-size: 12px;
+            font-weight: 400;
+            color: var(--t1);
+            line-height: 1.5;
+        }
+
+        .rv-row-val.empty {
+            color: var(--ph);
+        }
+
+        .rv-chip {
+            display: inline-flex;
+            align-items: center;
+            padding: 2px 8px;
+            border-radius: 99px;
+            font-size: 12px;
+            font-weight: 700;
+            border: 1px solid transparent;
+        }
+
+        .rv-chip-dynamic {
+            background: var(--ac-pale);
+            color: var(--ac);
+            border-color: var(--ac-lt);
+        }
+
+        .rv-chip-static {
+            background: var(--gr-pale);
+            color: var(--gr);
+            border-color: var(--gr-lt);
+        }
+
+        .rv-chip-alert {
+            background: var(--am-pale);
+            color: var(--am);
+            border-color: var(--am-lt);
+        }
+
+        .dr-s {
+            font-size: 12px;
+            color: var(--t3);
+            margin-top: 1px
+        }
+
+        /* Confidence pill */
+        .cpil {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 2px 8px;
+            border-radius: 99px;
+            font-size: 12px;
+            font-family: var(--fm);
+            font-weight: 400;
+            border: 1px solid transparent;
+        }
+
+        .cp-h {
+            background: var(--gr-pale);
+            color: var(--gr);
+            border-color: var(--gr-lt)
+        }
+
+        .cp-m {
+            background: var(--am-pale);
+            color: var(--am);
+            border-color: var(--am-lt)
+        }
+
+        .cp-l {
+            background: var(--rd-pale);
+            color: var(--rd);
+            border-color: var(--rd-lt)
+        }
+
+        .cp-d {
+            width: 5px;
+            height: 5px;
+            border-radius: 50%
+        }
+
+        .cp-h .cp-d {
+            background: var(--gr)
+        }
+
+        .cp-m .cp-d {
+            background: var(--am)
+        }
+
+        .cp-l .cp-d {
+            background: var(--rd)
+        }
+
+        /* ── MUI-style Edit Panel ── */
+        .ep {
+            background: var(--ac-pale);
+            border: 1px solid var(--ac-lt);
+            border-radius: 4px;
+            padding: 14px;
+            margin-top: 4px
+        }
+
+        .ep-ttl {
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: none;
+            letter-spacing: 0;
+            color: var(--ac);
+            margin-bottom: 9px;
+            display: flex;
+            align-items: center;
+            gap: 5px
+        }
+
+        .ep-ttl svg {
+            width: 12px;
+            height: 12px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2
+        }
+
+        .ep-opts {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            margin-bottom: 10px
+        }
+
+        /* ── MUI-style Radio Options ── */
+        .ep-opt {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 12px;
+            border: 1px solid var(--bdr);
+            border-radius: 4px;
+            background: var(--bg-c);
+            cursor: pointer;
+            transition: border-color .2s, background-color .2s
+        }
+
+        .ep-opt:hover {
+            border-color: var(--ac);
+            background: var(--bg-c)
+        }
+
+        .ep-opt.sel {
+            border-color: var(--ac);
+            background: var(--bg-c)
+        }
+
+        .eo-rd {
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            border: 2px solid var(--bdr-m);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            transition: border-color .15s;
+            position: relative
+        }
+
+        .ep-opt:hover .eo-rd {}
+
+        .ep-opt.sel .eo-rd {
+            border-color: var(--ac)
+        }
+
+        .eo-dt {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--ac);
+            transform: scale(0);
+            transition: transform .15s cubic-bezier(.4, 0, .2, 1)
+        }
+
+        .ep-opt.sel .eo-dt {
+            transform: scale(1)
+        }
+
+        .eo-b {
+            flex: 1
+        }
+
+        .eo-lbl {
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--t1)
+        }
+
+        .eo-val {
+            font-size: 12px;
+            font-family: var(--fm);
+            color: var(--t2);
+            margin-top: 1px
+        }
+
+        .man-sec {
+            display: none;
+            padding-top: 6px
+        }
+
+        /* ── MUI-style Text Input ── */
+        .man-inp {
+            width: 100%;
+            padding: 8px 12px;
+            background: var(--bg-c);
+            border: 1px solid rgba(0, 0, 0, .23);
+            border-radius: 4px;
+            color: var(--t1);
+            font-family: var(--fm);
+            font-size: 13px;
+            outline: none;
+            margin-bottom: 8px;
+            transition: border-color .2s
+        }
+
+        .man-inp:hover {
+            border-color: var(--t1)
+        }
+
+        .man-inp:focus {
+            border-color: var(--ac);
+            border-width: 2px;
+            padding: 7px 11px
+        }
+
+        ::placeholder {
+            color: var(--ph);
+            opacity: 1
+        }
+
+        .man-inp::placeholder {
+            color: var(--ph);
+            font-family: var(--fb)
+        }
+
+        .man-char-count {
+            display: none;
+            font-size: 11px;
+            font-family: var(--fm);
+            margin: -4px 0 8px;
+            text-align: right
+        }
+
+        .man-char-count.ok {
+            color: var(--gr)
+        }
+
+        .man-char-count.over {
+            color: var(--rd)
+        }
+
+        /* ── MUI-style Labels & Select ── */
+        .rea-lbl {
+            font-size: 11px;
+            font-weight: 400;
+            color: rgba(0, 0, 0, .6);
+            text-transform: none;
+            letter-spacing: .03em;
+            margin-bottom: 4px
+        }
+
+        [data-theme=dark] .rea-lbl {
+            color: rgba(255, 255, 255, .6)
+        }
+
+        .rea-sel {
+            width: 100%;
+            padding: 8px 32px 8px 12px;
+            background: var(--bg-c);
+            border: 1px solid rgba(0, 0, 0, .23);
+            border-radius: 4px;
+            color: var(--t1);
+            font-family: var(--fb);
+            font-size: 13px;
+            outline: none;
+            -webkit-appearance: none;
+            appearance: none;
+            cursor: pointer;
+            margin-bottom: 6px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 10px center;
+            transition: border-color .2s
+        }
+
+        .rea-sel:hover {
+            border-color: var(--t1)
+        }
+
+        .rea-sel:focus {
+            border-color: var(--ac);
+            border-width: 2px;
+            padding: 7px 31px 7px 11px
+        }
+
+        /* ── MUI-style Textarea ── */
+        .cust-ta {
+            width: 100%;
+            padding: 8px 12px;
+            background: var(--bg-c);
+            border: 1px solid rgba(0, 0, 0, .23);
+            border-radius: 4px;
+            color: var(--t1);
+            font-family: var(--fb);
+            font-size: 13px;
+            outline: none;
+            resize: none;
+            height: 60px;
+            margin-bottom: 6px;
+            transition: border-color .2s
+        }
+
+        .cust-ta:hover {
+            border-color: var(--t1)
+        }
+
+        .cust-ta:focus {
+            border-color: var(--ac);
+            border-width: 2px;
+            padding: 7px 11px
+        }
+
+        .cust-ta::placeholder {
+            color: var(--ph)
+        }
+
+        /* ── MUI Modal Footer Actions ── */
+        .modal-acts {
+            display: flex;
+            gap: 8px;
+            padding: 12px 16px;
+            border-top: 1px solid var(--bdr)
+        }
+
+        .fa {
+            flex: 1;
+            padding: 6px 12px;
+            font-size: 13px;
+            font-weight: 500;
+            font-family: var(--fb);
+            border-radius: 4px;
+            border: 1px solid transparent;
+            background: transparent;
+            color: var(--t2);
+            cursor: pointer;
+            transition: background-color .25s, border-color .2s;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            letter-spacing: .02em;
+            line-height: 1.75;
+            position: relative;
+            overflow: hidden
+        }
+
+        .fa::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: currentColor;
+            opacity: 0;
+            transition: opacity .2s
+        }
+
+        .fa:hover::after {
+            opacity: .06
+        }
+
+        .fa svg {
+            width: 12px;
+            height: 12px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2
+        }
+
+        .fa:hover {
+            border-color: var(--bdr-m);
+            background: transparent
+        }
+
+        .fa.f-ac {
+            border: none;
+            color: #fff;
+            background: var(--gr);
+        }
+
+        .fa.f-ac:hover {
+            background: #15803d;
+        }
+
+        .fa.f-ed {
+            border-color: var(--ac);
+            color: var(--ac);
+            background: transparent
+        }
+
+        .fa.f-ed:hover {
+            background: transparent
+        }
+
+        .fa.f-rj {
+            border-color: var(--rd);
+            color: var(--rd);
+            background: transparent
+        }
+
+        .fa.f-rj:hover {
+            background: transparent
+        }
+
+        /* ── MUI Edit Panel Buttons ── */
+        .ep-btn {
+            flex: 1;
+            padding: 6px 16px;
+            font-size: 13px;
+            font-weight: 500;
+            font-family: var(--fb);
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color .25s;
+            text-align: center;
+            letter-spacing: .02em;
+            position: relative;
+            overflow: hidden
+        }
+
+        .ep-btn::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: currentColor;
+            opacity: 0;
+            transition: opacity .2s
+        }
+
+        .ep-btn:hover::after {
+            opacity: .06
+        }
+
+        .ep-cn {
+            border: 1px solid rgba(0, 0, 0, .23);
+            background: transparent;
+            color: var(--t2)
+        }
+
+        .ep-cn:hover {
+            border-color: var(--t2)
+        }
+
+        .ep-sv {
+            border: none;
+            background: var(--ac);
+            color: #fff;
+        }
+
+        .ep-sv:hover {
+            background: var(--mk-blue-dk);
+        }
+
+        /* selection info toast */
+        .sel-toast {
+            position: fixed;
+            bottom: 58px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--mk-blue);
+            color: #fff;
+            border-radius: 99px;
+            padding: 6px 16px;
+            font-size: 12px;
+            font-family: var(--fb);
+            font-weight: 400;
+            display: none;
+            gap: 10px;
+            align-items: center;
+            z-index: 50;
+            white-space: nowrap;
+        }
+
+        .sel-toast.show {
+            display: flex
+        }
+
+        /* ── MUI Toast Buttons ── */
+        .sel-toast button {
+            background: rgba(255, 255, 255, .15);
+            border: 1px solid rgba(255, 255, 255, .4);
+            border-radius: 4px;
+            color: #fff;
+            font-size: 13px;
+            font-family: var(--fb);
+            font-weight: 500;
+            padding: 3px 12px;
+            cursor: pointer;
+            transition: background .2s, border-color .2s;
+            letter-spacing: .02em
+        }
+
+        .sel-toast button:hover {
+            background: rgba(255, 255, 255, .25);
+            border-color: rgba(255, 255, 255, .7)
+        }
+    </style>
 </head>
 
 <body data-theme="light">
 
-  <!-- NAV -->
-  <nav class="nav">
-    <div class="n-logo">
-      <!-- <div class="n-mark">
+    <!-- NAV -->
+    <nav class="nav">
+        <div class="n-logo">
+            <!-- <div class="n-mark">
             <svg width="30" height="30" viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg">
               <rect width="30" height="30" fill="#174EA0" />
               <text x="4" y="22" font-family="Georgia,serif" font-size="20" font-weight="900" fill="#fff">M</text>
               <rect x="0" y="26" width="30" height="4" fill="#F29130" />
             </svg>
           </div> -->
-      <img src="mck-logo.png" alt="McKesson" style="height:20px;width:auto;display:block" />
-      <span class="n-txt">Gx Product Set-up</span>
-    </div>
-    <div class="n-div"></div>
-    <div class="n-tabs">
-      <button class="n-tab ">Business Insights</button>
-      <button class="n-tab active">Workflow Pipeline</button>
-      <button class="n-tab">Rule Tower</button>
-      <button class="n-tab">Trust Score Framework</button>
-      <button class="n-tab">Trust Score Configuration</button>
-      <button class="n-tab">Abbreviations</button>
-
-    </div>
-    <div class="n-right">
-
-      <button class="t-btn" id="tBtn" title="Toggle theme" style="display:none">
-        <svg id="tIco" viewBox="0 0 24 24">
-          <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" />
-        </svg>
-      </button>
-      <div class="n-av">RP</div>
-    </div>
-  </nav>
-
-  <!-- DOC HEADER -->
-  <div class="doc-hd">
-    <table width="100%">
-      <tr class="case-row" data-case="CASE-2026-00089" data-status="processing"
-        onclick="if(!event.target.closest('.editable-note') &amp;&amp; !event.target.closest('.cell-actions')) toggleCaseRow(this)">
-        <td>
-          <div class="doc-ic">
-            <svg viewBox="0 0 24 24">
-              <path d="M19 12H5M12 19l-7-7 7-7" fill="none" stroke="var(--ac)" stroke-width="2" stroke-linecap="round"
-                stroke-linejoin="round" />
-            </svg>
-          </div>
-        </td>
-        <td>
-          <div class="doc-cell">
-            <div class="doc-lbl">Vendor Name</div>
-            <div id="docVendor" class="doc-ttl">Loading...</div>
-          </div>
-        </td>
-        <td>
-          <div class="doc-cell">
-            <div class="doc-lbl">Generic Name</div>
-            <div class="doc-val">-</div>
-          </div>
-        </td>
-        <td>
-          <div class="doc-cell">
-            <div class="doc-lbl"># of NDCs</div>
-            <div class="doc-val"><span id="docNdcCount">3</span></div>
-          </div>
-        </td>
-        <td>
-          <div class="doc-cell">
-            <div class="doc-lbl">Avg. Trust Score</div>
-            <div class="doc-val"><span id="docAvgConf">--</span>%</div>
-          </div>
-        </td>
-        <td>
-          <div class="doc-cell">
-            <div class="doc-lbl">TimeStamp</div>
-            <div class="doc-val">05/06/26 09:14 AM</div>
-          </div>
-        </td>
-        <td>
-          <div class="doc-cell">
-            <div class="doc-lbl">Case #</div>
-            <div class="doc-val">CASE-2026-00089</div>
-          </div>
-        </td>
-        <td>
-          <div class="doc-acts">
-            <button class="btn" style="margin-left:auto">Download</button>
-            <button class="btn btn-done" id="submitBtn">Submit Review</button>
-          </div>
-        </td>
-      </tr>
-    </table>
-  </div>
-
-  <div style="display:flex;align-items:center; padding: 16px 0;">
-    <div class="work-tabs" id="workTabs"></div>
-    <!-- SELECT ALL -->
-    <div class="sel-all-bar" style="margin-right:16px;display:flex;align-items:center;gap:8px; margin-left:auto">
-      <input type="checkbox" id="selAllChk" onchange="toggleSelectAll(this)" class="col-chk" />
-      <label for="selAllChk" style="font-size:14px;color:var(--t2);cursor:pointer">Select all</label>
-    </div>
-  </div>
-
-  <div class="tab-pane active" id="paneExtracted">
-    <!-- EXCEL TABLE WRAPPER -->
-    <div class="xl-wrap">
-      <div class="xl-outer">
-        <div class="xl-scroll" id="xlScroll">
-          <table class="xl" id="xlTable">
-            <thead id="xlHead"></thead>
-            <tbody id="xlBody"></tbody>
-          </table>
+            <img src="mck-logo.png"
+                 alt="McKesson"
+                 style="height:20px;width:auto;display:block" />
+            <span class="n-txt">Gx Product Set-up</span>
         </div>
-      </div>
+        <div class="n-div"></div>
+        <div class="n-tabs">
+            <button class="n-tab ">Business Insights</button>
+            <button class="n-tab active">Workflow Pipeline</button>
+            <button class="n-tab">Rule Tower</button>
+            <button class="n-tab">Trust Score Framework</button>
+            <button class="n-tab">Trust Score Configuration</button>
+            <button class="n-tab">Abbreviations</button>
 
-      <div class="pm-review-wrap" id="pmReviewWrap" style="display:none;">
-        <div class="pm-review-head">
-          <div class="pm-review-title">Needs PM Review</div>
         </div>
-        <div class="pm-review-container" id="pmReviewContainer">
-        </div>
-      </div>
-    </div>
+        <div class="n-right">
 
-  </div>
-
-  <div class="tab-pane" id="paneNdc">
-    <div class="ndc-pdf-viewer" id="ndcPdfViewer">
-      <div class="ndc-pdf-toolbar">
-        <div class="ndc-pdf-title" id="ndcPdfTitle">NDC PDF</div>
-        <div class="ndc-pdf-actions">
-          <div class="ndc-pdf-zoom">
-            <button class="ndc-pdf-btn" onclick="setNdcPdfZoom('page-width')" title="Fit Width">
-              <svg viewBox="0 0 24 24">
-                <rect x="3" y="3" width="18" height="18" rx="2" />
-                <path d="M3 12h18" />
-              </svg>
+            <button class="t-btn"
+                    id="tBtn"
+                    title="Toggle theme"
+                    style="display:none">
+                <svg id="tIco"
+                     viewBox="0 0 24 24">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" />
+                </svg>
             </button>
-            <button class="ndc-pdf-btn" onclick="setNdcPdfZoom('page-fit')" title="Fit Page">
-              <svg viewBox="0 0 24 24">
-                <rect x="3" y="3" width="18" height="18" rx="2" />
-              </svg>
-            </button>
-            <button class="ndc-pdf-btn" onclick="setNdcPdfZoom('150')" title="Zoom In">
-              <svg viewBox="0 0 24 24">
-                <circle cx="11" cy="11" r="8" />
-                <path d="M21 21l-4.35-4.35M11 8v6M8 11h6" />
-              </svg>
-            </button>
-            <button class="ndc-pdf-btn" onclick="setNdcPdfZoom('100')" title="Zoom Out">
-              <svg viewBox="0 0 24 24">
-                <circle cx="11" cy="11" r="8" />
-                <path d="M21 21l-4.35-4.35M8 11h6" />
-              </svg>
-            </button>
-          </div>
-          <select class="ndc-pdf-select" id="ndcPdfSelect" onchange="onNdcPdfChange(this)">
-            <option value="sample/sample.pdf">HDA</option>
-            <option value="sample/sample-label.pdf">Label</option>
-          </select>
-          <button class="ndc-pdf-btn" onclick="downloadNdcPdf()" title="Download">
-            <svg viewBox="0 0 24 24">
-              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-              <polyline points="7 10 12 15 17 10" />
-              <line x1="12" y1="15" x2="12" y2="3" />
-            </svg>
-          </button>
+            <div class="n-av">RP</div>
         </div>
-      </div>
-      <iframe class="ndc-pdf-frame" id="ndcPdfFrame" src=""></iframe>
-    </div>
-  </div>
+    </nav>
 
-  <!-- FOOTER -->
-  <div class="xl-ftr">
-    <span class="xl-ftr-stat" style="color: var(--mk-or-dk);">
-      <span id="ftPending" style="color: var(--mk-or-dk);">0</span> pending
-    </span>
-    <div class="ftr-sep"></div>
-    <!-- <span class="xl-ftr-stat"><span id="ftRejected">0</span> rejected</span>
-    <div class="ftr-sep"></div> -->
-    <span class="xl-ftr-stat" style="color: var(--gr);">
-      <span id="ftAccepted" style="color: var(--gr);">0</span> accepted
-    </span>
-    <div class="ftr-sep"></div>
-    <div class="ftr-prog-wrap" title="Approved fields">
-      <div class="ftr-prog-track">
-        <div class="ftr-prog-fill" id="ftrProgFill"></div>
-      </div>
-      <span class="ftr-prog-lbl" id="ftrProgLbl">0%</span>
+    <!-- DOC HEADER -->
+    <div class="doc-hd">
+        <table width="100%">
+            <tr class="case-row"
+                data-case="CASE-2026-00089"
+                data-status="processing"
+                onclick="if(!event.target.closest('.editable-note') &amp;&amp; !event.target.closest('.cell-actions')) toggleCaseRow(this)">
+                <td>
+                    <div class="doc-ic">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M19 12H5M12 19l-7-7 7-7"
+                                  fill="none"
+                                  stroke="var(--ac)"
+                                  stroke-width="2"
+                                  stroke-linecap="round"
+                                  stroke-linejoin="round" />
+                        </svg>
+                    </div>
+                </td>
+                <td>
+                    <div class="doc-cell">
+                        <div class="doc-lbl">Vendor Name</div>
+                        <div id="docVendor"
+                             class="doc-ttl">Loading...</div>
+                    </div>
+                </td>
+                <td>
+                    <div class="doc-cell">
+                        <div class="doc-lbl">Generic Name</div>
+                        <div class="doc-val">-</div>
+                    </div>
+                </td>
+                <td>
+                    <div class="doc-cell">
+                        <div class="doc-lbl"># of NDCs</div>
+                        <div class="doc-val"><span id="docNdcCount">3</span></div>
+                    </div>
+                </td>
+                <td>
+                    <div class="doc-cell">
+                        <div class="doc-lbl">Avg. Trust Score</div>
+                        <div class="doc-val"><span id="docAvgConf">--</span>%</div>
+                    </div>
+                </td>
+                <td>
+                    <div class="doc-cell">
+                        <div class="doc-lbl">TimeStamp</div>
+                        <div class="doc-val">05/06/26 09:14 AM</div>
+                    </div>
+                </td>
+                <td>
+                    <div class="doc-cell">
+                        <div class="doc-lbl">Case #</div>
+                        <div class="doc-val">26-0089</div>
+                    </div>
+                </td>
+                <td>
+                    <div class="doc-acts">
+                        <button class="btn"
+                                style="margin-left:auto">Download</button>
+                        <button class="btn btn-done"
+                                id="submitBtn">Submit Review</button>
+                    </div>
+                </td>
+            </tr>
+        </table>
     </div>
-    <div class="ftr-right">
-      <!-- <button class="fb">Download</button>
-      <button class="fb fb-sub" id="submitBtn2">Submit Review</button> -->
-    </div>
-  </div>
 
-  <!-- SELECTION TOAST -->
-  <div class="sel-toast" id="selToast">
-    <span id="toastTxt">3 cells selected</span>
-    <button onclick="bulkApprove()">Approve All</button>
-    <button onclick="clearColSel()">Clear</button>
-  </div>
-
-  <!-- EDIT MODAL -->
-  <div class="modal-ov" id="modalOv" onclick="closeModalOv(event)">
-    <div class="modal" id="modal">
-      <div class="modal-hd">
-        <div>
-          <div class="modal-ttl" id="mTitle">Field Name</div>
-          <div class="modal-sub" id="mSub">NDC-001 · Reliance Retail</div>
+    <div style="display:flex;align-items:center; padding: 16px 0;">
+        <div class="work-tabs"
+             id="workTabs"></div>
+        <!-- SELECT ALL -->
+        <div class="sel-all-bar"
+             style="margin-right:16px;display:flex;align-items:center;gap:8px; margin-left:auto">
+            <input type="checkbox"
+                   id="selAllChk"
+                   onchange="toggleSelectAll(this)"
+                   class="col-chk" />
+            <label for="selAllChk"
+                   style="font-size:14px;color:var(--t2);cursor:pointer">Select all</label>
         </div>
-        <button class="modal-close" onclick="closeModal()">
-          <svg viewBox="0 0 24 24">
-            <line x1="18" y1="6" x2="6" y2="18" />
-            <line x1="6" y1="6" x2="18" y2="18" />
-          </svg>
-        </button>
-      </div>
-      <div class="modal-body">
-        <div id="mConfPill" style="display:none"></div>
-        <div class="drw" id="mDataRows"></div>
-        <div class="ep">
-          <div class="ep-ttl">
-            <svg viewBox="0 0 24 24">
-              <path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7" />
-              <path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z" />
-            </svg>
-            Choose a value to accept
-          </div>
-          <div class="ep-opts" id="mEpOpts"></div>
-          <div class="man-sec" id="mManSec">
-            <input class="man-inp" id="mManInp" placeholder="Type the correct value…" oninput="liveP(this)" />
-            <div class="rea-lbl">Reason for manual entry</div>
-            <select class="rea-sel" onchange="handleR(this)">
-              <option value="">— Select a reason —</option>
-              <option value="rules">Rules not working</option>
-              <option value="partial">Partial information given by supplier</option>
-              <option value="inaccurate">Inaccurate information given by supplier</option>
-              <option value="custom">Custom reason…</option>
-            </select>
-            <div class="cust-wrap" style="display:none">
-              <textarea class="cust-ta" placeholder="Describe the issue in detail…"></textarea>
+    </div>
+
+    <div class="tab-pane active"
+         id="paneExtracted">
+        <!-- EXCEL TABLE WRAPPER -->
+        <div class="xl-wrap">
+            <div class="xl-outer">
+                <div class="xl-scroll"
+                     id="xlScroll">
+                    <table class="xl"
+                           id="xlTable">
+                        <thead id="xlHead"></thead>
+                        <tbody id="xlBody"></tbody>
+                    </table>
+                </div>
             </div>
-          </div>
-          <div class="fb-loop"
-            style="margin-top:12px;display:flex;align-items:center;gap:8px;font-size:13px;color:var(--t2)">
-            <input type="checkbox" id="fbLoopChk" class="col-chk" checked />
-            <label for="fbLoopChk" style="cursor:pointer">Use this for Feedback Loop</label>
-          </div>
+
+            <div class="pm-review-wrap"
+                 id="pmReviewWrap"
+                 style="display:none;">
+                <div class="pm-review-head">
+                    <div class="pm-review-title">Needs PM Review</div>
+                </div>
+                <div class="pm-review-container"
+                     id="pmReviewContainer">
+                </div>
+            </div>
         </div>
 
-      </div>
-      <div class="modal-acts">
-        <button class="fa" onclick="closeModal()">Cancel</button>
-        <button class="fa f-ac" id="mAccept" onclick="modalAccept()">Save &amp; Approve</button>
-      </div>
     </div>
-  </div>
 
-  <script>
-    // ─── DATA ────────────────────────────────────────────────────────────────────
-    let FIELDS = [];
-    let NDCS = [];
+    <div class="tab-pane"
+         id="paneNdc">
+        <div class="ndc-pdf-viewer"
+             id="ndcPdfViewer">
+            <div class="ndc-pdf-toolbar">
+                <div class="ndc-pdf-title"
+                     id="ndcPdfTitle">NDC PDF</div>
+                <div class="ndc-pdf-actions">
+                    <div class="ndc-pdf-zoom">
+                        <button class="ndc-pdf-btn"
+                                onclick="setNdcPdfZoom('page-width')"
+                                title="Fit Width">
+                            <svg viewBox="0 0 24 24">
+                                <rect x="3"
+                                      y="3"
+                                      width="18"
+                                      height="18"
+                                      rx="2" />
+                                <path d="M3 12h18" />
+                            </svg>
+                        </button>
+                        <button class="ndc-pdf-btn"
+                                onclick="setNdcPdfZoom('page-fit')"
+                                title="Fit Page">
+                            <svg viewBox="0 0 24 24">
+                                <rect x="3"
+                                      y="3"
+                                      width="18"
+                                      height="18"
+                                      rx="2" />
+                            </svg>
+                        </button>
+                        <button class="ndc-pdf-btn"
+                                onclick="setNdcPdfZoom('150')"
+                                title="Zoom In">
+                            <svg viewBox="0 0 24 24">
+                                <circle cx="11"
+                                        cy="11"
+                                        r="8" />
+                                <path d="M21 21l-4.35-4.35M11 8v6M8 11h6" />
+                            </svg>
+                        </button>
+                        <button class="ndc-pdf-btn"
+                                onclick="setNdcPdfZoom('100')"
+                                title="Zoom Out">
+                            <svg viewBox="0 0 24 24">
+                                <circle cx="11"
+                                        cy="11"
+                                        r="8" />
+                                <path d="M21 21l-4.35-4.35M8 11h6" />
+                            </svg>
+                        </button>
+                    </div>
+                    <select class="ndc-pdf-select"
+                            id="ndcPdfSelect"
+                            onchange="onNdcPdfChange(this)">
+                        <option value="sample/sample.pdf">HDA</option>
+                        <option value="sample/sample-label.pdf">Label</option>
+                    </select>
+                    <button class="ndc-pdf-btn"
+                            onclick="downloadNdcPdf()"
+                            title="Download">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                            <polyline points="7 10 12 15 17 10" />
+                            <line x1="12"
+                                  y1="15"
+                                  x2="12"
+                                  y2="3" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <iframe class="ndc-pdf-frame"
+                    id="ndcPdfFrame"
+                    src=""></iframe>
+        </div>
+    </div>
 
-    // Load JSON data from sample folder
-    async function loadJsonData() {
-      const jsonFiles = ['sample/160.json', 'sample/161.json', 'sample/162.json'];
-      const jsonData = [];
+    <!-- FOOTER -->
+    <div class="xl-ftr">
+        <span class="xl-ftr-stat"
+              style="color: var(--mk-or-dk);">
+            <span id="ftPending"
+                  style="color: var(--mk-or-dk);">0</span> pending
+        </span>
+        <div class="ftr-sep"></div>
+        <!-- <span class="xl-ftr-stat"><span id="ftRejected">0</span> rejected</span>
+    <div class="ftr-sep"></div> -->
+        <span class="xl-ftr-stat"
+              style="color: var(--gr);">
+            <span id="ftAccepted"
+                  style="color: var(--gr);">0</span> accepted
+        </span>
+        <div class="ftr-sep"></div>
+        <div class="ftr-prog-wrap"
+             title="Approved fields">
+            <div class="ftr-prog-track">
+                <div class="ftr-prog-fill"
+                     id="ftrProgFill"></div>
+            </div>
+            <span class="ftr-prog-lbl"
+                  id="ftrProgLbl">0%</span>
+        </div>
+        <div class="ftr-right">
+            <!-- <button class="fb">Download</button>
+      <button class="fb fb-sub" id="submitBtn2">Submit Review</button> -->
+        </div>
+    </div>
 
-      for (const file of jsonFiles) {
-        try {
-          const response = await fetch(file);
-          if (response.ok) {
-            const data = await response.json();
-            jsonData.push(data);
-          }
-        } catch (e) {
-          console.error('Error loading', file, e);
-        }
-      }
+    <!-- SELECTION TOAST -->
+    <div class="sel-toast"
+         id="selToast">
+        <span id="toastTxt">3 cells selected</span>
+        <button onclick="bulkApprove()">Approve All</button>
+        <button onclick="clearColSel()">Clear</button>
+    </div>
 
-      if (jsonData.length === 0) {
-        console.error('No JSON files loaded');
-        return;
-      }
+    <!-- EDIT MODAL -->
+    <div class="modal-ov"
+         id="modalOv"
+         onclick="closeModalOv(event)">
+        <div class="modal"
+             id="modal">
+            <div class="modal-hd">
+                <div>
+                    <div class="modal-ttl"
+                         id="mTitle">Field Name</div>
+                    <div class="modal-sub"
+                         id="mSub">NDC-001 · Reliance Retail</div>
+                </div>
+                <button class="modal-close"
+                        onclick="closeModal()">
+                    <svg viewBox="0 0 24 24">
+                        <line x1="18"
+                              y1="6"
+                              x2="6"
+                              y2="18" />
+                        <line x1="6"
+                              y1="6"
+                              x2="18"
+                              y2="18" />
+                    </svg>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div id="mConfPill"
+                     style="display:none"></div>
+                <div class="drw"
+                     id="mDataRows"></div>
+                <div class="ep">
+                    <div class="ep-ttl">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7" />
+                            <path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z" />
+                        </svg>
+                        Choose a value to accept
+                    </div>
+                    <div class="ep-opts"
+                         id="mEpOpts"></div>
+                    <div class="man-sec"
+                         id="mManSec">
+                        <input class="man-inp"
+                               id="mManInp"
+                               placeholder="Type the correct value…"
+                               oninput="liveP(this)" />
+                        <div class="man-char-count"
+                             id="mManCharCount"></div>
+                        <div class="rea-lbl">Reason for manual entry</div>
+                        <select class="rea-sel"
+                                onchange="handleR(this)">
+                            <option value="">— Select a reason —</option>
+                            <option value="rules">Rules not working</option>
+                            <option value="partial">Partial information given by supplier</option>
+                            <option value="inaccurate">Inaccurate information given by supplier</option>
+                            <option value="custom">Custom reason…</option>
+                        </select>
+                        <div class="cust-wrap"
+                             style="display:none">
+                            <textarea class="cust-ta"
+                                      placeholder="Describe the issue in detail…"></textarea>
+                        </div>
+                    </div>
+                    <div class="fb-loop"
+                         style="margin-top:12px;display:flex;align-items:center;gap:8px;font-size:13px;color:var(--t2)">
+                        <input type="checkbox"
+                               id="fbLoopChk"
+                               class="col-chk"
+                               checked />
+                        <label for="fbLoopChk"
+                               style="cursor:pointer">Use this for Feedback Loop</label>
+                    </div>
+                    <div class="apply-all-ndc"
+                         style="margin-top:8px;display:flex;align-items:center;gap:8px;font-size:13px;color:var(--t2)">
+                        <input type="checkbox"
+                               id="applyAllNdcChk"
+                               class="col-chk" />
+                        <label for="applyAllNdcChk"
+                               id="applyAllNdcLbl"
+                               style="cursor:pointer">Apply this to all NDCs</label>
+                    </div>
+                </div>
 
-      // Build FIELDS from first JSON's details array
-      // Exclude fields where pm_alert_required != null AND rule_version.version_rule_class == "Alert"
-      const firstData = jsonData[0];
-      if (firstData.details && firstData.details.length > 0) {
-        FIELDS = firstData.details
-          .filter(detail => !(detail.pm_alert_required != null && detail.rule_version?.version_rule_class === 'Alert'))
-          .sort((a, b) => {
-            const seqA = a.rule_version?.rule_master?.rule_sequence_number || 0;
-            const seqB = b.rule_version?.rule_master?.rule_sequence_number || 0;
-            return seqA - seqB;
-          })
-          .map((detail, index) => {
-            // Generate a safe key from field_name
-            const key = detail.field_name.toLowerCase().replace(/[^a-z0-9]/g, '_');
-            // Determine confidence class based on confidence_score
-            const conf = Math.round((detail.confidence_score || 0) * 100);
-            let confCls = 'cp-m';
-            let confDot = 'cd-m';
-            if (conf >= 80) { confCls = 'cp-h'; confDot = 'cd-h'; }
-            else if (conf < 50) { confCls = 'cp-l'; confDot = 'cd-l'; }
+            </div>
+            <div class="modal-acts">
+                <button class="fa"
+                        onclick="closeModal()">Cancel</button>
+                <button class="fa f-ac"
+                        id="mAccept"
+                        onclick="modalAccept()">Save &amp; Approve</button>
+            </div>
+        </div>
+    </div>
 
-            return {
-              key: key,
-              label: detail.field_name,
-              conf: conf,
-              confCls: confCls,
-              confDot: confDot,
-              rule: detail.rule_version?.version || 'v1.0',
-              ruleVersion: detail.rule_version || null,
-              _index: index
-            };
-          });
-      }
+    <script>
+        // ─── DATA ────────────────────────────────────────────────────────────────────
+        let FIELDS = [];
+        let NDCS = [];
 
-      // Build NDCS from all JSONs
-      NDCS = jsonData.map(data => {
-        const ndcNumber = data.ndc_number || data.doc_id;
-        const cells = {};
+        // Load JSON data from sample folder
+        async function loadJsonData() {
+            const jsonFiles = ['sample/160.json', 'sample/161.json', 'sample/162.json'];
+            const jsonData = [];
 
-        if (data.details && data.details.length > 0) {
-          data.details.forEach((detail, index) => {
-            // Skip Alert fields that have pm_alert_required
-            if (detail.pm_alert_required != null && detail.rule_version?.version_rule_class === 'Alert') {
-              return;
+            for (const file of jsonFiles) {
+                try {
+                    const response = await fetch(file);
+                    if (response.ok) {
+                        const data = await response.json();
+                        jsonData.push(data);
+                    }
+                } catch (e) {
+                    console.error('Error loading', file, e);
+                }
             }
-            const key = detail.field_name.toLowerCase().replace(/[^a-z0-9]/g, '_');
-            cells[key] = {
-              ex: detail.extracted_values || '',
-              kg: detail.extracted_values || '',
-              kgNote: detail.rule_version?.version_guidelines || '',
-              state: detail.status === 'Accepted' ? 'ac' : (detail.status === 'Rejected' ? 'rj' : 'pending')
-            };
-          });
-        }
 
-        return {
-          id: `NDC ${ndcNumber}`,
-          cells: cells
-        };
-      });
-
-      // Initialize state after loading data
-      initState();
-
-      // Update document header
-      if (firstData && firstData.vendor_name) {
-        document.getElementById('docVendor').textContent = firstData.vendor_name;
-      }
-      document.getElementById('docNdcCount').textContent = jsonData.length;
-
-      // Calculate average confidence
-      let totalConf = 0;
-      let count = 0;
-      jsonData.forEach(d => {
-        if (d.document_trust_score) {
-          totalConf += d.document_trust_score;
-          count++;
-        }
-      });
-      const avgConf = count > 0 ? Math.round(totalConf / count) : 0;
-      document.getElementById('docAvgConf').textContent = avgConf;
-
-      // Build PM Review items (where pm_alert_required != null)
-      const pmItems = [];
-      // Clear previous PM alert fields
-      Object.keys(pmAlertFields).forEach(key => delete pmAlertFields[key]);
-
-      jsonData.forEach(data => {
-        const ndcNumber = data.ndc_number || data.doc_id;
-        const ndcId = `NDC ${ndcNumber}`;
-        if (data.details && data.details.length > 0) {
-          data.details.forEach(detail => {
-            if (detail.pm_alert_required != null) {
-              pmItems.push({
-                ndc: ndcId,
-                field: detail.field_name,
-                alert: detail.pm_alert_required,
-                extracted: detail.extracted_values,
-                detailId: detail.detail_id
-              });
-              // Track this field for the warning icon
-              const fieldKey = detail.field_name.toLowerCase().replace(/[^a-z0-9]/g, '_');
-              if (!pmAlertFields[ndcId]) pmAlertFields[ndcId] = new Set();
-              pmAlertFields[ndcId].add(fieldKey);
+            if (jsonData.length === 0) {
+                console.error('No JSON files loaded');
+                return;
             }
-          });
+
+            // Build FIELDS from first JSON's details array
+            // Exclude fields where pm_alert_required != null AND rule_version.version_rule_class == "Alert"
+            const firstData = jsonData[0];
+            if (firstData.details && firstData.details.length > 0) {
+                FIELDS = firstData.details
+                    .filter(detail => !(detail.pm_alert_required != null && detail.rule_version?.version_rule_class === 'Alert'))
+                    .sort((a, b) => {
+                        const seqA = a.rule_version?.rule_master?.rule_sequence_number || 0;
+                        const seqB = b.rule_version?.rule_master?.rule_sequence_number || 0;
+                        return seqA - seqB;
+                    })
+                    .map((detail, index) => {
+                        // Generate a safe key from field_name
+                        const key = detail.field_name.toLowerCase().replace(/[^a-z0-9]/g, '_');
+                        // Determine confidence class based on confidence_score
+                        const conf = Math.round((detail.confidence_score || 0) * 100);
+                        let confCls = 'cp-m';
+                        let confDot = 'cd-m';
+                        if (conf >= 80) { confCls = 'cp-h'; confDot = 'cd-h'; }
+                        else if (conf < 50) { confCls = 'cp-l'; confDot = 'cd-l'; }
+
+                        return {
+                            key: key,
+                            label: detail.field_name,
+                            conf: conf,
+                            confCls: confCls,
+                            confDot: confDot,
+                            rule: detail.rule_version?.version || 'v1.0',
+                            ruleVersion: detail.rule_version || null,
+                            _index: index
+                        };
+                    });
+            }
+
+            // Build NDCS from all JSONs
+            NDCS = jsonData.map(data => {
+                const ndcNumber = data.ndc_number || data.doc_id;
+                const cells = {};
+
+                if (data.details && data.details.length > 0) {
+                    data.details.forEach((detail, index) => {
+                        // Skip Alert fields that have pm_alert_required
+                        if (detail.pm_alert_required != null && detail.rule_version?.version_rule_class === 'Alert') {
+                            return;
+                        }
+                        const key = detail.field_name.toLowerCase().replace(/[^a-z0-9]/g, '_');
+                        cells[key] = {
+                            ex: detail.extracted_values || '',
+                            kg: detail.extracted_values || '',
+                            derivedFrom: detail.derived_from ?? null,
+                            kgNote: detail.rule_version?.version_guidelines || '',
+                            state: detail.status === 'Accepted' ? 'ac' : (detail.status === 'Rejected' ? 'rj' : 'pending')
+                        };
+                    });
+                }
+
+                return {
+                    id: `NDC ${ndcNumber}`,
+                    label: formatNdc542(ndcNumber),
+                    cells: cells
+                };
+            });
+
+            // Initialize state after loading data
+            initState();
+
+            // Update document header
+            if (firstData && firstData.vendor_name) {
+                document.getElementById('docVendor').textContent = firstData.vendor_name;
+            }
+            document.getElementById('docNdcCount').textContent = jsonData.length;
+
+            // Calculate average confidence
+            let totalConf = 0;
+            let count = 0;
+            jsonData.forEach(d => {
+                if (d.document_trust_score) {
+                    totalConf += d.document_trust_score;
+                    count++;
+                }
+            });
+            const avgConf = count > 0 ? Math.round(totalConf / count) : 0;
+            document.getElementById('docAvgConf').textContent = avgConf;
+
+            // Build PM Review items (where pm_alert_required != null)
+            const pmItems = [];
+            // Clear previous PM alert fields
+            Object.keys(pmAlertFields).forEach(key => delete pmAlertFields[key]);
+
+            jsonData.forEach(data => {
+                const ndcNumber = data.ndc_number || data.doc_id;
+                const ndcId = `NDC ${ndcNumber}`;
+                if (data.details && data.details.length > 0) {
+                    data.details.forEach(detail => {
+                        if (detail.pm_alert_required != null) {
+                            pmItems.push({
+                                ndc: ndcId,
+                                field: detail.field_name,
+                                alert: detail.pm_alert_required,
+                                extracted: detail.extracted_values,
+                                detailId: detail.detail_id
+                            });
+                            // Track this field for the warning icon
+                            const fieldKey = detail.field_name.toLowerCase().replace(/[^a-z0-9]/g, '_');
+                            if (!pmAlertFields[ndcId]) pmAlertFields[ndcId] = new Set();
+                            pmAlertFields[ndcId].add(fieldKey);
+                        }
+                    });
+                }
+            });
+            renderPmReview(pmItems);
+
+            renderWorkTabs();
+            setActiveWorkTab('extracted', null);
+            buildTable();
         }
-      });
-      renderPmReview(pmItems);
 
-      renderWorkTabs();
-      setActiveWorkTab('extracted', null);
-      buildTable();
-    }
+        function renderPmReview(items) {
+            const wrap = document.getElementById('pmReviewWrap');
+            const container = document.getElementById('pmReviewContainer');
 
-    function renderPmReview(items) {
-      const wrap = document.getElementById('pmReviewWrap');
-      const container = document.getElementById('pmReviewContainer');
+            if (items.length === 0) {
+                wrap.style.display = 'none';
+                return;
+            }
 
-      if (items.length === 0) {
-        wrap.style.display = 'none';
-        return;
-      }
+            wrap.style.display = 'block';
 
-      wrap.style.display = 'block';
-      wrap.querySelector('.pm-review-title').textContent = `Needs PM Review (${items.length})`;
+            const allNdcIds = NDCS.map(n => n.id);
+            const { caseAlerts, caseFieldNames } = identifyCaseAlerts(items, allNdcIds);
 
-      // Group items by NDC
-      const groupedByNdc = {};
-      items.forEach(item => {
-        if (!groupedByNdc[item.ndc]) {
-          groupedByNdc[item.ndc] = [];
-        }
-        groupedByNdc[item.ndc].push(item);
-      });
+            caseAlertFieldKeys.clear();
+            caseFieldNames.forEach(field => caseAlertFieldKeys.add(fieldNameToKey(field)));
 
-      // Render NDC cards
-      container.innerHTML = Object.keys(groupedByNdc).map(ndc => {
-        const ndcItems = groupedByNdc[ndc];
-        const fieldsHtml = ndcItems.map((item, idx) => `
+            const ndcOnlyItems = items.filter(item => !caseFieldNames.has(item.field));
+            const displayCount = caseAlerts.length + ndcOnlyItems.length;
+            wrap.querySelector('.pm-review-title').textContent = `Needs PM Review (${displayCount})`;
+
+            let caseAlertHtml = '';
+            if (caseAlerts.length > 0) {
+                const fieldsHtml = caseAlerts.map(item => `
           <li class="pm-list-item">
             <strong>${item.field}</strong>: ${item.alert}
           </li>
         `).join('');
 
-        return `
-          <div class="pm-ndc-card collapsed" id="pm-ndc-${ndc.replace(/[^a-zA-Z0-9]/g, '-')}">
-            <div class="pm-ndc-header" onclick="togglePmNdc('${ndc.replace(/[^a-zA-Z0-9]/g, '-')}')">
-              <span>${ndc} <span style="font-weight:400;color:var(--t3)">(${ndcItems.length})</span></span>
+                caseAlertHtml = `
+          <div class="pm-ndc-card pm-case-card collapsed" id="pm-ndc-case-alert">
+            <div class="pm-ndc-header" onclick="togglePmNdc('case-alert', event)">
+              <span>Case Alert <span style="font-weight:400;color:var(--t3)">(${caseAlerts.length})</span></span>
               <span class="pm-caret"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></span>
             </div>
             <ol class="pm-fields-list">
@@ -2509,178 +2643,296 @@
             </ol>
           </div>
         `;
-      }).join('');
-    }
+            }
 
-    function togglePmNdc(ndcId) {
-      const card = document.getElementById('pm-ndc-' + ndcId);
-      if (card) {
-        card.classList.toggle('collapsed');
-      }
-    }
+            // Group NDC-specific items by NDC
+            const groupedByNdc = {};
+            ndcOnlyItems.forEach(item => {
+                if (!groupedByNdc[item.ndc]) {
+                    groupedByNdc[item.ndc] = [];
+                }
+                groupedByNdc[item.ndc].push(item);
+            });
 
-    function scrollToPmNdc(ndcId) {
-      const card = document.getElementById('pm-ndc-' + ndcId);
-      if (!card) return;
-      card.classList.remove('collapsed');
-      card.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
+            const ndcCardsHtml = Object.keys(groupedByNdc).map(ndc => {
+                const ndcItems = groupedByNdc[ndc];
+                const fieldsHtml = ndcItems.map(item => `
+          <li class="pm-list-item">
+            <strong>${item.field}</strong>: ${item.alert}
+          </li>
+        `).join('');
 
-    function toggleSelectAll(chk) {
-      const isChecked = chk.checked;
-      FIELDS.forEach(f => {
-        if (isChecked) {
-          NDCS.forEach(n => colSel[f.key].add(n.id));
-        } else {
-          colSel[f.key].clear();
+                return `
+          <div class="pm-ndc-card collapsed" id="pm-ndc-${ndcToSafeId(ndc)}">
+            <div class="pm-ndc-header" onclick="togglePmNdc('${ndcToSafeId(ndc)}', event)">
+              <span>${ndcDisplayLabel(ndc)} <span style="font-weight:400;color:var(--t3)">(${ndcItems.length})</span></span>
+              <span class="pm-caret"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></span>
+            </div>
+            <ol class="pm-fields-list">
+              ${fieldsHtml}
+            </ol>
+          </div>
+        `;
+            }).join('');
+
+            container.innerHTML = caseAlertHtml + ndcCardsHtml;
         }
-        updateColChk(f.key);
-        updateApproveBtn(f.key);
-        refreshColCells(f.key);
-      });
-      updateToast();
-    }
 
-    function scrollToPmReview(event, ndcId, fieldLabel) {
-      event.stopPropagation(); // prevent cell selection
-      const card = document.getElementById('pm-ndc-' + ndcId);
-      if (!card) return;
-
-      // Expand the card if collapsed
-      card.classList.remove('collapsed');
-
-      // Scroll to the card
-      card.scrollIntoView({ behavior: 'smooth', block: 'center' });
-
-      // Highlight the specific field
-      const items = card.querySelectorAll('.pm-list-item');
-      items.forEach(item => {
-        item.classList.remove('highlight');
-        if (item.textContent.includes(fieldLabel)) {
-          item.classList.add('highlight');
-          // Remove highlight after 3 seconds
-          setTimeout(() => item.classList.remove('highlight'), 3000);
+        function togglePmNdc(ndcId, event) {
+            if (event) event.stopPropagation();
+            if (pmNdcScrollLock) return;
+            const card = document.getElementById('pm-ndc-' + ndcId);
+            if (card) {
+                card.classList.toggle('collapsed');
+            }
         }
-      });
-    }
 
-    function initState() {
-      // Clear and reinitialize state
-      Object.keys(cellState).forEach(key => delete cellState[key]);
-      Object.keys(cellValue).forEach(key => delete cellValue[key]);
-      Object.keys(colSel).forEach(key => delete colSel[key]);
+        function scrollToPmNdc(ndcId, event) {
+            if (event) {
+                event.preventDefault();
+                event.stopPropagation();
+            }
+            expandAndScrollToPmCard(document.getElementById('pm-ndc-' + ndcId));
+        }
 
-      NDCS.forEach(n => {
-        cellState[n.id] = {};
-        cellValue[n.id] = {};
-        FIELDS.forEach(f => {
-          const cell = n.cells[f.key];
-          if (cell) {
-            cellState[n.id][f.key] = cell.state;
-            cellValue[n.id][f.key] = cell.state === 'rj' ? cell.ex : (cell.kg || cell.ex);
-          } else {
-            cellState[n.id][f.key] = 'pending';
-            cellValue[n.id][f.key] = '';
-          }
-        });
-      });
+        function toggleSelectAll(chk) {
+            const isChecked = chk.checked;
+            FIELDS.forEach(f => {
+                if (isChecked) {
+                    NDCS.forEach(n => colSel[f.key].add(n.id));
+                } else {
+                    colSel[f.key].clear();
+                }
+                updateColChk(f.key);
+                updateApproveBtn(f.key);
+                refreshColCells(f.key);
+            });
+            updateToast();
+        }
 
-      FIELDS.forEach(f => colSel[f.key] = new Set());
-    }
+        function scrollToPmReview(event, ndcId, fieldLabel) {
+            event.preventDefault();
+            event.stopPropagation(); // prevent cell selection
+            const isCaseAlert = caseAlertFieldKeys.has(fieldNameToKey(fieldLabel));
+            const card = document.getElementById(isCaseAlert ? 'pm-ndc-case-alert' : 'pm-ndc-' + ndcId);
+            if (!card) return;
 
-    // ─── STATE ───────────────────────────────────────────────────────────────────
-    // cellState[ndcId][fieldKey] = 'pending'|'ac'|'rj'
-    // cellValue[ndcId][fieldKey] = accepted value string
-    const cellState = {};
-    const cellValue = {};
-    const colSel = {};
-    const pmAlertFields = {}; // ndcId -> Set of fieldKeys needing PM review
+            expandAndScrollToPmCard(card);
 
-    let modalCell = null; // {ndcId, fieldKey}
-    const CELL_CLICK_DELAY_MS = 220;
-    let pendingCellClick = null;
-    let activeWorkTab = { type: 'extracted', ndcId: null };
+            // Highlight the specific field
+            const items = card.querySelectorAll('.pm-list-item');
+            items.forEach(item => {
+                item.classList.remove('highlight');
+                if (item.textContent.includes(fieldLabel)) {
+                    item.classList.add('highlight');
+                    // Remove highlight after 3 seconds
+                    setTimeout(() => item.classList.remove('highlight'), 3000);
+                }
+            });
+        }
 
-    function renderWorkTabs() {
-      const host = document.getElementById('workTabs');
-      host.innerHTML = '';
+        function initState() {
+            // Clear and reinitialize state
+            Object.keys(cellState).forEach(key => delete cellState[key]);
+            Object.keys(cellValue).forEach(key => delete cellValue[key]);
+            Object.keys(colSel).forEach(key => delete colSel[key]);
 
-      // const ext = document.createElement('button');
-      // ext.className = 'work-tab active';
-      // ext.textContent = 'Extracted Fields';
-      // ext.addEventListener('click', () => setActiveWorkTab('extracted', null));
-      // host.appendChild(ext);
+            NDCS.forEach(n => {
+                cellState[n.id] = {};
+                cellValue[n.id] = {};
+                FIELDS.forEach(f => {
+                    const cell = n.cells[f.key];
+                    if (cell) {
+                        cellState[n.id][f.key] = cell.state;
+                        cellValue[n.id][f.key] = cell.state === 'rj' ? cell.ex : (cell.kg || cell.ex);
+                    } else {
+                        cellState[n.id][f.key] = 'pending';
+                        cellValue[n.id][f.key] = '';
+                    }
+                });
+            });
 
-      // NDCS.forEach(n => {
-      //   const b = document.createElement('button');
-      //   b.className = 'work-tab';
-      //   b.textContent = n.id;
-      //   b.dataset.ndcId = n.id;
-      //   b.addEventListener('click', () => setActiveWorkTab('ndc', n.id));
-      //   host.appendChild(b);
-      // });
-    }
+            FIELDS.forEach(f => colSel[f.key] = new Set());
+        }
 
-    function setActiveWorkTab(type, ndcId) {
-      activeWorkTab = { type, ndcId };
+        // ─── STATE ───────────────────────────────────────────────────────────────────
+        // cellState[ndcId][fieldKey] = 'pending'|'ac'|'rj'
+        // cellValue[ndcId][fieldKey] = accepted value string
+        const cellState = {};
+        const cellValue = {};
+        const colSel = {};
+        const pmAlertFields = {}; // ndcId -> Set of fieldKeys needing PM review
+        const caseAlertFieldKeys = new Set(); // fieldKeys with same alert across all NDCs
 
-      document.querySelectorAll('.work-tab').forEach(btn => {
-        const isExtracted = type === 'extracted' && !btn.dataset.ndcId;
-        const isNdc = type === 'ndc' && btn.dataset.ndcId === ndcId;
-        btn.classList.toggle('active', isExtracted || isNdc);
-      });
+        function fieldNameToKey(name) {
+            return name.toLowerCase().replace(/[^a-z0-9]/g, '_');
+        }
 
-      const showExtracted = type === 'extracted';
-      document.getElementById('paneExtracted').classList.toggle('active', showExtracted);
-      document.getElementById('paneNdc').classList.toggle('active', !showExtracted);
-      // document.querySelector('.prog-strip').style.display = showExtracted ? 'block' : 'none';
-      document.querySelector('.xl-ftr').style.display = showExtracted ? 'flex' : 'none';
+        function formatNdc542(value) {
+            if (value == null || value === '') return '';
+            const raw = String(value).trim().replace(/^NDC\s+/i, '');
 
-      // Load PDF for NDC tabs
-      if (type === 'ndc' && ndcId) {
-        document.getElementById('ndcPdfTitle').textContent = ndcId + ' PDF';
-        const pdfSelect = document.getElementById('ndcPdfSelect');
-        loadNdcPdf(pdfSelect.value);
-      }
-    }
+            if (raw.includes('-')) {
+                const parts = raw.split('-').map(p => p.replace(/\D/g, ''));
+                if (parts.length >= 3) {
+                    const seg1 = parts[0].padStart(5, '0').slice(-5);
+                    const seg2 = parts[1].padStart(4, '0').slice(-4);
+                    const seg3 = parts[2].padStart(2, '0').slice(-2);
+                    return `${seg1}-${seg2}-${seg3}`;
+                }
+            }
 
-    let currentNdcPdfPath = '';
-    let currentNdcZoom = 'page-width';
+            const digits = raw.replace(/\D/g, '');
+            if (!digits) return raw;
+            const d = digits.padStart(11, '0').slice(-11);
+            return `${d.slice(0, 5)}-${d.slice(5, 9)}-${d.slice(9, 11)}`;
+        }
 
-    function loadNdcPdf(pdfPath) {
-      currentNdcPdfPath = pdfPath;
-      const frame = document.getElementById('ndcPdfFrame');
-      frame.src = pdfPath + '#toolbar=0&navpanes=0&zoom=' + currentNdcZoom;
-    }
+        function ndcDisplayLabel(ndcIdOrNumber) {
+            return formatNdc542(String(ndcIdOrNumber).replace(/^NDC\s+/i, '').trim());
+        }
 
-    function onNdcPdfChange(select) {
-      loadNdcPdf(select.value);
-    }
+        function ndcToSafeId(ndcId) {
+            return String(ndcId).replace(/[^a-zA-Z0-9]/g, '-');
+        }
 
-    function setNdcPdfZoom(zoom) {
-      currentNdcZoom = zoom;
-      if (currentNdcPdfPath) {
-        const frame = document.getElementById('ndcPdfFrame');
-        frame.src = currentNdcPdfPath + '#toolbar=0&navpanes=0&zoom=' + zoom;
-      }
-    }
+        let pmNdcScrollLock = false;
 
-    function downloadNdcPdf() {
-      if (currentNdcPdfPath) {
-        const link = document.createElement('a');
-        link.href = currentNdcPdfPath;
-        link.download = currentNdcPdfPath.split('/').pop();
-        link.click();
-      }
-    }
+        function expandAndScrollToPmCard(card) {
+            if (!card) return;
+            pmNdcScrollLock = true;
+            card.classList.remove('collapsed');
 
-    function openDocViewer(ndcId) {
-      const base = window.location.href.replace(/[^/]*$/, '');
-      const defaultPdf = base + 'sample/sample.pdf';
-      const labelPdf = base + 'sample/sample-label.pdf';
-      const win = window.open('', '_blank',
-        'width=900,height=700,resizable=yes,scrollbars=yes,toolbar=no,menubar=no,location=no,status=no');
-      win.document.write(`<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"/>
+            const scrollToCard = () => {
+                const scrollHost = document.querySelector('.xl-wrap');
+                if (scrollHost) {
+                    const hostRect = scrollHost.getBoundingClientRect();
+                    const cardRect = card.getBoundingClientRect();
+                    const nextTop = scrollHost.scrollTop + (cardRect.top - hostRect.top) - 12;
+                    scrollHost.scrollTo({ top: Math.max(0, nextTop), behavior: 'auto' });
+                } else {
+                    card.scrollIntoView({ behavior: 'auto', block: 'nearest' });
+                }
+            };
+
+            requestAnimationFrame(() => requestAnimationFrame(scrollToCard));
+            setTimeout(() => { pmNdcScrollLock = false; }, 300);
+        }
+
+        function identifyCaseAlerts(items, allNdcIds) {
+            const byField = {};
+            items.forEach(item => {
+                if (!byField[item.field]) byField[item.field] = {};
+                byField[item.field][item.ndc] = item.alert;
+            });
+
+            const caseAlerts = [];
+            const caseFieldNames = new Set();
+
+            Object.entries(byField).forEach(([field, ndcAlerts]) => {
+                // Must have an alert on every NDC in the case (not just a subset)
+                const presentOnEveryNdc = allNdcIds.every(ndc => Object.hasOwn(ndcAlerts, ndc));
+                if (!presentOnEveryNdc) return;
+
+                // Every NDC must share the exact same alert text (not mixed values)
+                const referenceAlert = ndcAlerts[allNdcIds[0]];
+                const sameValueOnEveryNdc = allNdcIds.every(ndc => ndcAlerts[ndc] === referenceAlert);
+                if (!sameValueOnEveryNdc) return;
+
+                caseAlerts.push({ field, alert: referenceAlert });
+                caseFieldNames.add(field);
+            });
+
+            return { caseAlerts, caseFieldNames };
+        }
+
+        let modalCell = null; // {ndcId, fieldKey}
+        const DESC_CHAR_LIMIT_FIELDS = new Set(['EN (selling) Description', 'Z2 (buying) Description']);
+        const DESC_CHAR_LIMIT = 30;
+        const CELL_CLICK_DELAY_MS = 220;
+        let pendingCellClick = null;
+        let activeWorkTab = { type: 'extracted', ndcId: null };
+
+        function renderWorkTabs() {
+            const host = document.getElementById('workTabs');
+            host.innerHTML = '';
+
+            // const ext = document.createElement('button');
+            // ext.className = 'work-tab active';
+            // ext.textContent = 'Extracted Fields';
+            // ext.addEventListener('click', () => setActiveWorkTab('extracted', null));
+            // host.appendChild(ext);
+
+            // NDCS.forEach(n => {
+            //   const b = document.createElement('button');
+            //   b.className = 'work-tab';
+            //   b.textContent = n.id;
+            //   b.dataset.ndcId = n.id;
+            //   b.addEventListener('click', () => setActiveWorkTab('ndc', n.id));
+            //   host.appendChild(b);
+            // });
+        }
+
+        function setActiveWorkTab(type, ndcId) {
+            activeWorkTab = { type, ndcId };
+
+            document.querySelectorAll('.work-tab').forEach(btn => {
+                const isExtracted = type === 'extracted' && !btn.dataset.ndcId;
+                const isNdc = type === 'ndc' && btn.dataset.ndcId === ndcId;
+                btn.classList.toggle('active', isExtracted || isNdc);
+            });
+
+            const showExtracted = type === 'extracted';
+            document.getElementById('paneExtracted').classList.toggle('active', showExtracted);
+            document.getElementById('paneNdc').classList.toggle('active', !showExtracted);
+            // document.querySelector('.prog-strip').style.display = showExtracted ? 'block' : 'none';
+            document.querySelector('.xl-ftr').style.display = showExtracted ? 'flex' : 'none';
+
+            // Load PDF for NDC tabs
+            if (type === 'ndc' && ndcId) {
+                document.getElementById('ndcPdfTitle').textContent = ndcId + ' PDF';
+                const pdfSelect = document.getElementById('ndcPdfSelect');
+                loadNdcPdf(pdfSelect.value);
+            }
+        }
+
+        let currentNdcPdfPath = '';
+        let currentNdcZoom = 'page-width';
+
+        function loadNdcPdf(pdfPath) {
+            currentNdcPdfPath = pdfPath;
+            const frame = document.getElementById('ndcPdfFrame');
+            frame.src = pdfPath + '#toolbar=0&navpanes=0&zoom=' + currentNdcZoom;
+        }
+
+        function onNdcPdfChange(select) {
+            loadNdcPdf(select.value);
+        }
+
+        function setNdcPdfZoom(zoom) {
+            currentNdcZoom = zoom;
+            if (currentNdcPdfPath) {
+                const frame = document.getElementById('ndcPdfFrame');
+                frame.src = currentNdcPdfPath + '#toolbar=0&navpanes=0&zoom=' + zoom;
+            }
+        }
+
+        function downloadNdcPdf() {
+            if (currentNdcPdfPath) {
+                const link = document.createElement('a');
+                link.href = currentNdcPdfPath;
+                link.download = currentNdcPdfPath.split('/').pop();
+                link.click();
+            }
+        }
+
+        function openDocViewer(ndcId) {
+            const base = window.location.href.replace(/[^/]*$/, '');
+            const defaultPdf = base + 'sample/sample.pdf';
+            const labelPdf = base + 'sample/sample-label.pdf';
+            const win = window.open('', '_blank',
+                'width=900,height=700,resizable=yes,scrollbars=yes,toolbar=no,menubar=no,location=no,status=no');
+            win.document.write(`<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"/>
 <title>${ndcId} — Document Viewer</title>
 <style>
   *{box-sizing:border-box;margin:0;padding:0}
@@ -2716,272 +2968,300 @@
   function dlPdf(){const a=document.createElement('a');a.href=path;a.download=path.split('/').pop();a.click();}
 <\/script>
 </body></html>`);
-      win.document.close();
-    }
+            win.document.close();
+        }
 
-    // ─── BUILD TABLE ─────────────────────────────────────────────────────────────
-    function buildTable() {
-      const thead = document.getElementById('xlHead');
-      const tbody = document.getElementById('xlBody');
-      thead.innerHTML = ''; tbody.innerHTML = '';
+        // ─── BUILD TABLE ─────────────────────────────────────────────────────────────
+        function buildTable() {
+            const thead = document.getElementById('xlHead');
+            const tbody = document.getElementById('xlBody');
+            thead.innerHTML = ''; tbody.innerHTML = '';
 
-      // Header row
-      const tr = document.createElement('tr');
+            // Header row
+            const tr = document.createElement('tr');
 
-      // NDC header cell
-      const thNdc = document.createElement('th');
-      thNdc.className = 'ndc-head';
-      thNdc.innerHTML = `<div class="th-inner"><div class="th-label">NDC</div></div>`;
-      tr.appendChild(thNdc);
+            // NDC header cell
+            const thNdc = document.createElement('th');
+            thNdc.className = 'ndc-head';
+            thNdc.innerHTML = `<div class="th-inner"><div class="th-label">NDC</div></div>`;
+            tr.appendChild(thNdc);
 
-      FIELDS.forEach(f => {
-        const th = document.createElement('th');
-        th.dataset.field = f.key;
-        th.innerHTML = `<div class="th-inner">  
+            FIELDS.forEach(f => {
+                const th = document.createElement('th');
+                th.dataset.field = f.key;
+                th.innerHTML = `<div class="th-inner">  
                             <input type="checkbox" class="col-chk" id="chk_${f.key}" onchange="toggleColSel('${f.key}',this)" title="Select all ${f.label}"/>                   
                           <div class="th-label">
                             
                             ${f.label}
                           </div>      
                         </div>`;
-        tr.appendChild(th);
-      });
-      thead.appendChild(tr);
+                tr.appendChild(th);
+            });
+            thead.appendChild(tr);
 
-      // Body rows
-      NDCS.forEach(n => {
-        const tr2 = document.createElement('tr');
-        tr2.dataset.ndc = n.id;
+            // Body rows
+            NDCS.forEach(n => {
+                const tr2 = document.createElement('tr');
+                tr2.dataset.ndc = n.id;
 
-        const tdNdc = document.createElement('td');
-        tdNdc.className = 'ndc-cell';
-        const pmCount = pmAlertFields[n.id]?.size || 0;
-        const safeId = n.id.replace(/[^a-zA-Z0-9]/g, '-');
-        const pmBadge = pmCount > 0
-          ? ` <span class="ndc-pm-sep">|</span> <span class="ndc-pm-count" title="${pmCount} field(s) need PM review" onclick="event.stopPropagation();scrollToPmNdc('${safeId}')">⚠️ ${pmCount}</span>`
-          : '';
-        tdNdc.innerHTML = `<span class="ndc-id-link" onclick="event.stopPropagation();openDocViewer('${n.id.replace(/'/g, "\\'")}')"
-          title="Open document viewer">${n.id}</span>${pmBadge}`;
-        tr2.appendChild(tdNdc);
+                const tdNdc = document.createElement('td');
+                tdNdc.className = 'ndc-cell';
+                const pmCount = pmAlertFields[n.id]
+                    ? [...pmAlertFields[n.id]].filter(k => !caseAlertFieldKeys.has(k)).length
+                    : 0;
+                const safeId = ndcToSafeId(n.id);
+                const pmBadge = pmCount > 0
+                    ? ` <span class="ndc-pm-sep">|</span> <span class="ndc-pm-count" data-ndc-safe-id="${safeId}" title="${pmCount} field(s) need PM review">⚠️ ${pmCount}</span>`
+                    : '';
+                tdNdc.innerHTML = `<span class="ndc-id-link" onclick="event.stopPropagation();openDocViewer('${n.id.replace(/'/g, "\\'")}')"
+          title="Open document viewer">${n.label}</span>${pmBadge}`;
+                tr2.appendChild(tdNdc);
 
-        FIELDS.forEach(f => {
-          const td = document.createElement('td');
-          td.dataset.ndc = n.id;
-          td.dataset.field = f.key;
-          updateTd(td, n.id, f.key);
-          td.addEventListener('click', () => handleCellClick(n.id, f.key, td));
-          td.addEventListener('dblclick', (e) => {
-            e.preventDefault();
-            handleCellDblClick(n.id, f.key);
-          });
-          tr2.appendChild(td);
-        });
+                FIELDS.forEach(f => {
+                    const td = document.createElement('td');
+                    td.dataset.ndc = n.id;
+                    td.dataset.field = f.key;
+                    updateTd(td, n.id, f.key);
+                    td.addEventListener('click', () => handleCellClick(n.id, f.key, td));
+                    td.addEventListener('dblclick', (e) => {
+                        e.preventDefault();
+                        handleCellDblClick(n.id, f.key);
+                    });
+                    tr2.appendChild(td);
+                });
 
-        tbody.appendChild(tr2);
-      });
+                tbody.appendChild(tr2);
+            });
 
-      updateProg();
-    }
+            updateProg();
+        }
 
-    function updateTd(td, ndcId, fieldKey) {
-      const state = cellState[ndcId][fieldKey];
-      const val = cellValue[ndcId][fieldKey];
-      const field = FIELDS.find(f => f.key === fieldKey);
-      const ndc = NDCS.find(n => n.id === ndcId);
-      const cell = ndc.cells[fieldKey];
+        function updateTd(td, ndcId, fieldKey) {
+            const state = cellState[ndcId][fieldKey];
+            const val = cellValue[ndcId][fieldKey];
+            const field = FIELDS.find(f => f.key === fieldKey);
+            const ndc = NDCS.find(n => n.id === ndcId);
+            const cell = ndc.cells[fieldKey];
 
-      // class
-      td.className = '';
-      if (colSel[fieldKey].has(ndcId)) td.classList.add('col-sel');
-      if (state === 'ac') td.classList.add('cell-ac');
-      else if (state === 'rj') td.classList.add('cell-rj');
-      else if (state === 'ed') td.classList.add('cell-ed');
+            // class
+            td.className = '';
+            if (colSel[fieldKey].has(ndcId)) td.classList.add('col-sel');
+            if (state === 'ac') td.classList.add('cell-ac');
+            else if (state === 'rj') td.classList.add('cell-rj');
+            else if (state === 'ed') td.classList.add('cell-ed');
 
-      // content
-      const dotCls = field.confDot;
-      let badge = '';
-      if (state === 'ac') badge = `<span class="cv-badge cv-ac">✓</span>`;
-      else if (state === 'rj') badge = `<span class="cv-badge cv-rj">✗</span>`;
+            // content
+            const dotCls = field.confDot;
+            let badge = '';
+            if (state === 'ac') badge = `<span class="cv-badge cv-ac">✓</span>`;
+            else if (state === 'rj') badge = `<span class="cv-badge cv-rj">✗</span>`;
 
-      const displayVal = state === 'rj' ? cell.ex : val;
-      // Add warning icon if field needs PM review
-      let warningIcon = '';
-      if (pmAlertFields[ndcId]?.has(fieldKey)) {
-        const safeNdcId = ndcId.replace(/[^a-zA-Z0-9]/g, '-');
-        warningIcon = `<span class="cv-warning" title="Click to view in PM Review" onclick="scrollToPmReview(event, '${safeNdcId}', '${field.label}')">⚠️</span>`;
-      }
-      td.innerHTML = `<div class="cv">
-                        ${warningIcon}<span class="cv-txt" title="${displayVal}">${displayVal}</span>${badge}
+            const displayVal = state === 'rj' ? cell.ex : val;
+            const tooltip = cell.derivedFrom != null ? cell.derivedFrom : 'Static';
+            // Add warning icon if field needs PM review
+            let warningIcon = '';
+            if (pmAlertFields[ndcId]?.has(fieldKey)) {
+                const safeNdcId = ndcToSafeId(ndcId);
+                warningIcon = `<span class="cv-warning" title="Click to view in PM Review" onclick="scrollToPmReview(event, '${safeNdcId}', '${field.label.replace(/'/g, "\\'")}')">⚠️</span>`;
+            }
+            td.innerHTML = `<div class="cv">
+                        ${warningIcon}<span class="cv-txt" title="${escAttr(tooltip)}">${displayVal}</span>${badge}
                       </div>`;
-    }
+        }
 
-    // ─── COLUMN SELECTION ────────────────────────────────────────────────────────
-    function toggleColSel(fieldKey, chk) {
-      const sel = colSel[fieldKey];
-      if (chk.checked) {
-        NDCS.forEach(n => sel.add(n.id));
-      } else {
-        sel.clear();
-      }
-      refreshColCells(fieldKey);
-      updateApproveBtn(fieldKey);
-      updateToast();
-    }
+        // ─── COLUMN SELECTION ────────────────────────────────────────────────────────
+        function toggleColSel(fieldKey, chk) {
+            const sel = colSel[fieldKey];
+            if (chk.checked) {
+                NDCS.forEach(n => sel.add(n.id));
+            } else {
+                sel.clear();
+            }
+            refreshColCells(fieldKey);
+            updateApproveBtn(fieldKey);
+            updateToast();
+        }
 
-    function handleCellClick(ndcId, fieldKey, td) {
-      if (pendingCellClick) clearTimeout(pendingCellClick);
-      pendingCellClick = setTimeout(() => {
-        toggleCellSel(ndcId, fieldKey, td);
-        pendingCellClick = null;
-      }, CELL_CLICK_DELAY_MS);
-    }
+        function handleCellClick(ndcId, fieldKey, td) {
+            if (pendingCellClick) clearTimeout(pendingCellClick);
+            pendingCellClick = setTimeout(() => {
+                toggleCellSel(ndcId, fieldKey, td);
+                pendingCellClick = null;
+            }, CELL_CLICK_DELAY_MS);
+        }
 
-    function handleCellDblClick(ndcId, fieldKey) {
-      if (pendingCellClick) {
-        clearTimeout(pendingCellClick);
-        pendingCellClick = null;
-      }
-      openModal(ndcId, fieldKey);
-    }
+        function handleCellDblClick(ndcId, fieldKey) {
+            if (pendingCellClick) {
+                clearTimeout(pendingCellClick);
+                pendingCellClick = null;
+            }
+            openModal(ndcId, fieldKey);
+        }
 
-    function toggleCellSel(ndcId, fieldKey, td) {
-      const sel = colSel[fieldKey];
-      if (sel.has(ndcId)) sel.delete(ndcId);
-      else sel.add(ndcId);
-      updateColChk(fieldKey);
-      updateApproveBtn(fieldKey);
-      updateTd(td, ndcId, fieldKey);
-      updateToast();
-    }
+        function toggleCellSel(ndcId, fieldKey, td) {
+            const sel = colSel[fieldKey];
+            if (sel.has(ndcId)) sel.delete(ndcId);
+            else sel.add(ndcId);
+            updateColChk(fieldKey);
+            updateApproveBtn(fieldKey);
+            updateTd(td, ndcId, fieldKey);
+            updateToast();
+        }
 
-    function refreshColCells(fieldKey) {
-      document.querySelectorAll(`td[data-field="${fieldKey}"]`).forEach(td => {
-        updateTd(td, td.dataset.ndc, fieldKey);
-      });
-    }
+        function refreshColCells(fieldKey) {
+            document.querySelectorAll(`td[data-field="${fieldKey}"]`).forEach(td => {
+                updateTd(td, td.dataset.ndc, fieldKey);
+            });
+        }
 
-    function updateColChk(fieldKey) {
-      const chk = document.getElementById('chk_' + fieldKey);
-      const sel = colSel[fieldKey];
-      const total = NDCS.length;
-      if (sel.size === 0) { chk.checked = false; chk.indeterminate = false; }
-      else if (sel.size === total) { chk.checked = true; chk.indeterminate = false; }
-      else { chk.checked = false; chk.indeterminate = true; }
-    }
+        function updateColChk(fieldKey) {
+            const chk = document.getElementById('chk_' + fieldKey);
+            const sel = colSel[fieldKey];
+            const total = NDCS.length;
+            if (sel.size === 0) { chk.checked = false; chk.indeterminate = false; }
+            else if (sel.size === total) { chk.checked = true; chk.indeterminate = false; }
+            else { chk.checked = false; chk.indeterminate = true; }
+        }
 
-    function updateApproveBtn(fieldKey) {
-      // const btn = document.getElementById('apv_' + fieldKey);
-      // if (colSel[fieldKey].size > 0) btn.classList.add('visible');
-      // else btn.classList.remove('visible');
-    }
+        function updateApproveBtn(fieldKey) {
+            // const btn = document.getElementById('apv_' + fieldKey);
+            // if (colSel[fieldKey].size > 0) btn.classList.add('visible');
+            // else btn.classList.remove('visible');
+        }
 
-    function approveCol(fieldKey) {
-      colSel[fieldKey].forEach(ndcId => {
-        cellState[ndcId][fieldKey] = 'ac';
-      });
-      colSel[fieldKey].clear();
-      updateColChk(fieldKey);
-      updateApproveBtn(fieldKey);
-      refreshColCells(fieldKey);
-      updateProg();
-      updateToast();
-    }
+        function approveCol(fieldKey) {
+            colSel[fieldKey].forEach(ndcId => {
+                cellState[ndcId][fieldKey] = 'ac';
+            });
+            colSel[fieldKey].clear();
+            updateColChk(fieldKey);
+            updateApproveBtn(fieldKey);
+            refreshColCells(fieldKey);
+            updateProg();
+            updateToast();
+        }
 
-    function bulkApprove() {
-      // approve all selected across all columns
-      FIELDS.forEach(f => {
-        colSel[f.key].forEach(ndcId => { cellState[ndcId][f.key] = 'ac'; });
-        colSel[f.key].clear();
-        updateColChk(f.key);
-        updateApproveBtn(f.key);
-        refreshColCells(f.key);
-      });
-      updateProg();
-      updateToast();
-    }
+        function bulkApprove() {
+            // approve all selected across all columns
+            FIELDS.forEach(f => {
+                colSel[f.key].forEach(ndcId => { cellState[ndcId][f.key] = 'ac'; });
+                colSel[f.key].clear();
+                updateColChk(f.key);
+                updateApproveBtn(f.key);
+                refreshColCells(f.key);
+            });
+            updateProg();
+            updateToast();
+        }
 
-    function bulkReject() {
-      FIELDS.forEach(f => {
-        colSel[f.key].forEach(ndcId => { cellState[ndcId][f.key] = 'rj'; });
-        colSel[f.key].clear();
-        updateColChk(f.key);
-        updateApproveBtn(f.key);
-        refreshColCells(f.key);
-      });
-      updateProg();
-      updateToast();
-    }
+        function bulkReject() {
+            FIELDS.forEach(f => {
+                colSel[f.key].forEach(ndcId => { cellState[ndcId][f.key] = 'rj'; });
+                colSel[f.key].clear();
+                updateColChk(f.key);
+                updateApproveBtn(f.key);
+                refreshColCells(f.key);
+            });
+            updateProg();
+            updateToast();
+        }
 
-    function clearColSel() {
-      FIELDS.forEach(f => {
-        colSel[f.key].clear();
-        updateColChk(f.key);
-        updateApproveBtn(f.key);
-        refreshColCells(f.key);
-      });
-      document.getElementById('selAllChk').checked = false;
-      updateToast();
-    }
+        function clearColSel() {
+            FIELDS.forEach(f => {
+                colSel[f.key].clear();
+                updateColChk(f.key);
+                updateApproveBtn(f.key);
+                refreshColCells(f.key);
+            });
+            document.getElementById('selAllChk').checked = false;
+            updateToast();
+        }
 
-    function updateToast() {
-      let total = 0;
-      FIELDS.forEach(f => total += colSel[f.key].size);
-      const t = document.getElementById('selToast');
-      if (total > 0) {
-        t.classList.add('show');
-        document.getElementById('toastTxt').textContent = `${total} cell${total > 1 ? 's' : ''} selected`;
-      } else {
-        t.classList.remove('show');
-      }
-    }
+        function updateToast() {
+            let total = 0;
+            FIELDS.forEach(f => total += colSel[f.key].size);
+            const t = document.getElementById('selToast');
+            if (total > 0) {
+                t.classList.add('show');
+                document.getElementById('toastTxt').textContent = `${total} cell${total > 1 ? 's' : ''} selected`;
+            } else {
+                t.classList.remove('show');
+            }
+        }
 
-    // ─── PROGRESS ────────────────────────────────────────────────────────────────
-    function updateProg() {
-      let total = 0, done = 0, ac = 0, rj = 0;
-      NDCS.forEach(n => {
-        FIELDS.forEach(f => {
-          total++;
-          const s = cellState[n.id][f.key];
-          if (s === 'ac') { done++; ac++; }
-          else if (s === 'rj') { done++; rj++; }
-        });
-      });
-      const pct = total ? Math.round(done / total * 100) : 0;
-      const acPct = total ? Math.round(ac / total * 100) : 0;
-      const el = id => document.getElementById(id);
-      if (el('progFill')) el('progFill').style.width = pct + '%';
-      if (el('ftrProgFill')) el('ftrProgFill').style.width = acPct + '%';
-      if (el('ftrProgLbl')) el('ftrProgLbl').textContent = acPct + '%';
-      if (el('hdrProg')) el('hdrProg').textContent = `${done} / ${total} fields reviewed`;
-      if (el('ftAccepted')) el('ftAccepted').textContent = ac;
-      if (el('ftRejected')) el('ftRejected').textContent = rj;
-      if (el('ftPending')) el('ftPending').textContent = total - done;
-    }
+        // ─── PROGRESS ────────────────────────────────────────────────────────────────
+        function updateProg() {
+            let total = 0, done = 0, ac = 0, rj = 0;
+            NDCS.forEach(n => {
+                FIELDS.forEach(f => {
+                    total++;
+                    const s = cellState[n.id][f.key];
+                    if (s === 'ac') { done++; ac++; }
+                    else if (s === 'rj') { done++; rj++; }
+                });
+            });
+            const pct = total ? Math.round(done / total * 100) : 0;
+            const acPct = total ? Math.round(ac / total * 100) : 0;
+            const el = id => document.getElementById(id);
+            if (el('progFill')) el('progFill').style.width = pct + '%';
+            if (el('ftrProgFill')) el('ftrProgFill').style.width = acPct + '%';
+            if (el('ftrProgLbl')) el('ftrProgLbl').textContent = acPct + '%';
+            if (el('hdrProg')) el('hdrProg').textContent = `${done} / ${total} fields reviewed`;
+            if (el('ftAccepted')) el('ftAccepted').textContent = ac;
+            if (el('ftRejected')) el('ftRejected').textContent = rj;
+            if (el('ftPending')) el('ftPending').textContent = total - done;
+        }
 
-    // ─── MODAL ───────────────────────────────────────────────────────────────────
-    function openModal(ndcId, fieldKey) {
-      modalCell = { ndcId, fieldKey };
-      const field = FIELDS.find(f => f.key === fieldKey);
-      const ndc = NDCS.find(n => n.id === ndcId);
-      const cell = ndc.cells[fieldKey];
+        // ─── MODAL ───────────────────────────────────────────────────────────────────
+        function escAttr(s) {
+            return String(s)
+                .replace(/&/g, '&amp;')
+                .replace(/"/g, '&quot;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;');
+        }
 
-      document.getElementById('mTitle').textContent = field.label;
-      document.getElementById('mSub').textContent = ndcId;
+        function escHtml(s) {
+            return String(s)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;');
+        }
 
-      // Confidence pill
-      const pill = document.getElementById('mConfPill');
-      pill.innerHTML = '';
+        function formatVendorIdDisplay(value) {
+            if (value == null || value === '') return '—';
+            const parts = String(value).split('/');
+            const head = parts[0] ?? '';
+            const rest = parts.slice(1);
+            if (!rest.length) return escHtml(head);
+            return `<div class="vid-fmt"><div >${escHtml(head)}</div><br/>${rest.map((part, i) => `<div>${i + 1}. ${escHtml(part)}</div>`).join('')}</div>`;
+        }
 
-      // Data rows
-      const rows = document.getElementById('mDataRows');
-      rows.innerHTML = `
+        function openModal(ndcId, fieldKey) {
+            modalCell = { ndcId, fieldKey };
+            const field = FIELDS.find(f => f.key === fieldKey);
+            const ndc = NDCS.find(n => n.id === ndcId);
+            const cell = ndc.cells[fieldKey];
+
+            document.getElementById('mTitle').textContent = field.label;
+            document.getElementById('mSub').textContent = ndc.label;
+
+            // Confidence pill
+            const pill = document.getElementById('mConfPill');
+            pill.innerHTML = '';
+
+            // Data rows
+            const rows = document.getElementById('mDataRows');
+            const exDisplay = field.label === 'Vendor ID' ? formatVendorIdDisplay(cell.ex) : cell.ex;
+            rows.innerHTML = `
     <div class="dr">
       <div class="dr-ic ic-ex">
         <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
       </div>
       <div class="dr-b">
-        <div class="dr-tp">Extracted Value</div>
-        <div class="dr-v ${cell.state === 'rj' ? 'sk' : ''}">${cell.ex}</div>
+        <div class="dr-tp">Transformed Value</div>
+        <div class="dr-v ${cell.state === 'rj' ? 'sk' : ''}">${exDisplay}</div>
       </div>
     </div>    
     <div class="rv-acc" id="rvAcc">
@@ -3002,12 +3282,12 @@
       </div>
       <div class="rv-acc-body">
         ${(rv => {
-          const guidelines = rv?.version_guidelines || '';
-          const example = rv?.version_example || '';
-          const category = rv?.rule_master?.rule_category || '';
-          const ruleClass = rv?.version_rule_class || '';
-          const chipCls = ruleClass === 'Dynamic' ? 'rv-chip-dynamic' : ruleClass === 'Alert' ? 'rv-chip-alert' : 'rv-chip-static';
-          return `
+                    const guidelines = rv?.version_guidelines || '';
+                    const example = rv?.version_example || '';
+                    const category = rv?.rule_master?.rule_category || '';
+                    const ruleClass = rv?.version_rule_class || '';
+                    const chipCls = ruleClass === 'Dynamic' ? 'rv-chip-dynamic' : ruleClass === 'Alert' ? 'rv-chip-alert' : 'rv-chip-static';
+                    return `
             <div class="rv-row">
               <div class="rv-row-lbl">Guidelines</div>
               <div class="rv-row-val ${guidelines ? '' : 'empty'}">${guidelines || '—'}</div>
@@ -3025,105 +3305,173 @@
               <div class="rv-row-val ${ruleClass ? '' : 'empty'}">${ruleClass || '—'}</div>
             </div>
           `;
-        })(field.ruleVersion)}
+                })(field.ruleVersion)}
       </div>
     </div>
   `;
 
-      // EP options
-      const opts = document.getElementById('mEpOpts');
-      const isManual = cell.state !== 'pending' && cellValue[ndcId][fieldKey] !== cell.ex;
-      opts.innerHTML = `
-    <div class="ep-opt ${!isManual ? 'sel' : ''}" onclick="mSelOpt(this)" data-val="${cell.ex}">
+            // EP options — use available_values radios when populated, otherwise manual entry
+            const opts = document.getElementById('mEpOpts');
+            const availableValues = field.ruleVersion?.available_values;
+            const hasAvailableValues = Array.isArray(availableValues) && availableValues.length > 0;
+            const currentVal = cellValue[ndcId][fieldKey];
+            const isPending = cell.state === 'pending';
+
+            const extractedSel = isPending || currentVal === cell.ex;
+            let optsHtml = `
+    <div class="ep-opt ${extractedSel ? 'sel' : ''}" onclick="mSelOpt(this)" data-val="${escAttr(cell.ex)}">
       <div class="eo-rd"><div class="eo-dt"></div></div>
       <div class="eo-b"><div class="eo-lbl">Accept extracted value</div><div class="eo-val">${cell.ex}</div></div>
-    </div>    
+    </div>`;
+
+            if (hasAvailableValues) {
+                availableValues.forEach(val => {
+                    const isSel = !isPending && !extractedSel && currentVal === val;
+                    optsHtml += `
+    <div class="ep-opt ${isSel ? 'sel' : ''}" onclick="mSelOpt(this)" data-val="${escAttr(val)}">
+      <div class="eo-rd"><div class="eo-dt"></div></div>
+      <div class="eo-b"><div class="eo-lbl">${val}</div></div>
+    </div>`;
+                });
+            } else {
+                const isManual = !isPending && currentVal !== cell.ex;
+                const manualDisplay = isManual ? currentVal : '—';
+                optsHtml += `
     <div class="ep-opt ${isManual ? 'sel' : ''}" onclick="mSelOpt(this)" data-type="manual">
       <div class="eo-rd"><div class="eo-dt"></div></div>
-      <div class="eo-b"><div class="eo-lbl">Manually enter value</div><div class="eo-val mpv">—</div></div>
-    </div>
-  `;
+      <div class="eo-b"><div class="eo-lbl">Manually enter value</div><div class="eo-val mpv">${manualDisplay}</div></div>
+    </div>`;
+                document.getElementById('mManInp').value = isManual ? currentVal : '';
+            }
 
-      // Show manual if neither matched
-      document.getElementById('mManSec').style.display = 'none';
-      document.getElementById('mManInp').value = '';
+            opts.innerHTML = optsHtml;
+            if (hasAvailableValues) {
+                document.getElementById('mManSec').style.display = 'none';
+                document.getElementById('mManInp').value = '';
+            } else {
+                const isManual = !isPending && currentVal !== cell.ex;
+                document.getElementById('mManSec').style.display = isManual ? 'block' : 'none';
+            }
 
-      document.getElementById('modalOv').classList.add('open');
-    }
+            syncManCharCount(fieldKey);
 
-    function mSelOpt(el) {
-      el.closest('.ep-opts').querySelectorAll('.ep-opt').forEach(o => o.classList.remove('sel'));
-      el.classList.add('sel');
-      document.getElementById('mManSec').style.display = el.dataset.type === 'manual' ? 'block' : 'none';
-    }
+            document.getElementById('applyAllNdcChk').checked = false;
+            document.getElementById('applyAllNdcLbl').textContent =
+                `Apply this to all ${NDCS.length} NDC${NDCS.length === 1 ? '' : 's'}`;
 
-    function getModalSelectedVal() {
-      const sel = document.getElementById('mEpOpts').querySelector('.ep-opt.sel');
-      if (!sel) return null;
-      if (sel.dataset.type === 'manual') return document.getElementById('mManInp').value.trim() || null;
-      return sel.dataset.val;
-    }
+            document.getElementById('modalOv').classList.add('open');
+        }
 
-    function modalAccept() {
-      if (!modalCell) return;
-      const sel = document.getElementById('mEpOpts').querySelector('.ep-opt.sel');
-      if (!sel) return;
-      const v = getModalSelectedVal();
-      if (v !== null) cellValue[modalCell.ndcId][modalCell.fieldKey] = v;
-      cellState[modalCell.ndcId][modalCell.fieldKey] = 'ac';
-      refreshCell(modalCell.ndcId, modalCell.fieldKey);
-      updateProg();
-      closeModal();
-    }
+        function mSelOpt(el) {
+            el.closest('.ep-opts').querySelectorAll('.ep-opt').forEach(o => o.classList.remove('sel'));
+            el.classList.add('sel');
+            document.getElementById('mManSec').style.display = el.dataset.type === 'manual' ? 'block' : 'none';
+            if (modalCell) syncManCharCount(modalCell.fieldKey);
+        }
 
-    function modalEdit() {
-      // toggle manual section
-      const ms = document.getElementById('mManSec');
-      ms.style.display = ms.style.display === 'block' ? 'none' : 'block';
-      // select manual option
-      document.getElementById('mEpOpts').querySelectorAll('.ep-opt').forEach((o, i) => {
-        if (i === 2) { o.classList.add('sel'); } else { o.classList.remove('sel'); }
-      });
-    }
+        function getModalSelectedVal() {
+            const sel = document.getElementById('mEpOpts').querySelector('.ep-opt.sel');
+            if (!sel) return null;
+            if (sel.dataset.type === 'manual') return document.getElementById('mManInp').value.trim() || null;
+            return sel.dataset.val;
+        }
 
-    function modalReject() {
-      if (!modalCell) return;
-      cellState[modalCell.ndcId][modalCell.fieldKey] = 'rj';
-      refreshCell(modalCell.ndcId, modalCell.fieldKey);
-      updateProg();
-      closeModal();
-    }
+        function modalAccept() {
+            if (!modalCell) return;
+            const sel = document.getElementById('mEpOpts').querySelector('.ep-opt.sel');
+            if (!sel) return;
+            const v = getModalSelectedVal();
+            const { fieldKey } = modalCell;
+            const applyAll = document.getElementById('applyAllNdcChk').checked;
+            const targetNdcIds = applyAll ? NDCS.map(n => n.id) : [modalCell.ndcId];
 
-    function refreshCell(ndcId, fieldKey) {
-      const td = document.querySelector(`td[data-ndc="${ndcId}"][data-field="${fieldKey}"]`);
-      if (td) updateTd(td, ndcId, fieldKey);
-    }
+            targetNdcIds.forEach(ndcId => {
+                if (v !== null) cellValue[ndcId][fieldKey] = v;
+                cellState[ndcId][fieldKey] = 'ac';
+            });
 
-    function closeModal() { document.getElementById('modalOv').classList.remove('open'); modalCell = null; }
-    function closeModalOv(e) { if (e.target === document.getElementById('modalOv')) closeModal(); }
+            if (applyAll) refreshColCells(fieldKey);
+            else refreshCell(modalCell.ndcId, fieldKey);
+            updateProg();
+            closeModal();
+        }
 
-    function liveP(inp) { const p = document.getElementById('mEpOpts').querySelector('.mpv'); if (p) p.textContent = inp.value || '—'; }
-    function toggleRvAcc() { document.getElementById('rvAcc').classList.toggle('open'); }
-    function handleR(sel) { sel.closest('.man-sec').querySelector('.cust-wrap').style.display = sel.value === 'custom' ? 'block' : 'none'; }
+        function modalEdit() {
+            const manualOpt = document.getElementById('mEpOpts').querySelector('[data-type="manual"]');
+            if (!manualOpt) return;
+            mSelOpt(manualOpt);
+        }
 
-    // ─── THEME ───────────────────────────────────────────────────────────────────
-    const SUN = 'M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42M12 7a5 5 0 100 10A5 5 0 0012 7z';
-    const MOON = 'M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z';
-    let dark = false;
-    document.getElementById('tBtn').addEventListener('click', () => {
-      dark = !dark;
-      document.body.dataset.theme = dark ? 'dark' : 'light';
-      document.getElementById('tIco').innerHTML = dark ? `<path d="${SUN}"/>` : `<path d="${MOON}"/>`;
-    });
+        function modalReject() {
+            if (!modalCell) return;
+            cellState[modalCell.ndcId][modalCell.fieldKey] = 'rj';
+            refreshCell(modalCell.ndcId, modalCell.fieldKey);
+            updateProg();
+            closeModal();
+        }
 
-    document.querySelectorAll('.n-tab').forEach(t => t.addEventListener('click', function () {
-      document.querySelectorAll('.n-tab').forEach(x => x.classList.remove('active'));
-      this.classList.add('active');
-    }));
+        function refreshCell(ndcId, fieldKey) {
+            const td = document.querySelector(`td[data-ndc="${ndcId}"][data-field="${fieldKey}"]`);
+            if (td) updateTd(td, ndcId, fieldKey);
+        }
 
-    // ─── INIT ────────────────────────────────────────────────────────────────────
-    loadJsonData();
-  </script>
+        function closeModal() { document.getElementById('modalOv').classList.remove('open'); modalCell = null; }
+        function closeModalOv(e) { if (e.target === document.getElementById('modalOv')) closeModal(); }
+
+        function syncManCharCount(fieldKey) {
+            const el = document.getElementById('mManCharCount');
+            const fieldName = FIELDS.find(f => f.key === fieldKey)?.label;
+            const show = DESC_CHAR_LIMIT_FIELDS.has(fieldName);
+            el.style.display = show ? 'block' : 'none';
+            if (!show) return;
+            const count = document.getElementById('mManInp').value.length;
+            el.textContent = `${count}/${DESC_CHAR_LIMIT}`;
+            el.classList.toggle('ok', count <= DESC_CHAR_LIMIT);
+            el.classList.toggle('over', count > DESC_CHAR_LIMIT);
+        }
+
+        function liveP(inp) {
+            const p = document.getElementById('mEpOpts').querySelector('.mpv');
+            if (p) p.textContent = inp.value || '—';
+            if (modalCell) syncManCharCount(modalCell.fieldKey);
+        }
+        function toggleRvAcc() { document.getElementById('rvAcc').classList.toggle('open'); }
+        function handleR(sel) { sel.closest('.man-sec').querySelector('.cust-wrap').style.display = sel.value === 'custom' ? 'block' : 'none'; }
+
+        // ─── THEME ───────────────────────────────────────────────────────────────────
+        const SUN = 'M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42M12 7a5 5 0 100 10A5 5 0 0012 7z';
+        const MOON = 'M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z';
+        let dark = false;
+        document.getElementById('xlBody').addEventListener('mousedown', (e) => {
+            if (e.target.closest('.ndc-pm-count')) {
+                e.preventDefault();
+                e.stopPropagation();
+            }
+        }, true);
+
+        document.getElementById('xlBody').addEventListener('click', (e) => {
+            const badge = e.target.closest('.ndc-pm-count');
+            if (!badge) return;
+            e.preventDefault();
+            e.stopPropagation();
+            const safeId = badge.dataset.ndcSafeId;
+            if (safeId) scrollToPmNdc(safeId, e);
+        }, true);
+
+        document.getElementById('tBtn').addEventListener('click', () => {
+            dark = !dark;
+            document.body.dataset.theme = dark ? 'dark' : 'light';
+            document.getElementById('tIco').innerHTML = dark ? `<path d="${SUN}"/>` : `<path d="${MOON}"/>`;
+        });
+
+        document.querySelectorAll('.n-tab').forEach(t => t.addEventListener('click', function () {
+            document.querySelectorAll('.n-tab').forEach(x => x.classList.remove('active'));
+            this.classList.add('active');
+        }));
+
+        // ─── INIT ────────────────────────────────────────────────────────────────────
+        loadJsonData();
+    </script>
 </body>
 
 </html>
