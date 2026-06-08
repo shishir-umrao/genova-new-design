@@ -94,7 +94,7 @@
                     "is_rule_active": true,
                     "rule_create_date": "2026-05-16T09:05:30.632633",
                     "rule_last_update_date": "2026-05-16T09:05:30.632858",
-                    "rule_sequence_number": 36
+                    "rule_sequence_number": 10
                 }
             },
             "status": "Approved",
@@ -137,7 +137,7 @@
                     "is_rule_active": true,
                     "rule_create_date": "2026-05-16T09:06:31.465313",
                     "rule_last_update_date": "2026-05-16T09:06:31.465473",
-                    "rule_sequence_number": 37
+                    "rule_sequence_number": 16
                 }
             },
             "status": "Approved",
@@ -269,7 +269,7 @@
                     "is_rule_active": true,
                     "rule_create_date": "2026-04-27T18:49:53.754649",
                     "rule_last_update_date": "2026-04-27T18:49:53.754993",
-                    "rule_sequence_number": 8
+                    "rule_sequence_number": 9
                 }
             },
             "status": "Approved",
@@ -361,7 +361,7 @@
                     "is_rule_active": true,
                     "rule_create_date": "2026-04-27T18:44:55.254930",
                     "rule_last_update_date": "2026-04-27T18:44:55.255265",
-                    "rule_sequence_number": 17
+                    "rule_sequence_number": 20
                 }
             },
             "status": "Ready For Review",
@@ -409,7 +409,7 @@
                     "is_rule_active": true,
                     "rule_create_date": "2026-04-27T18:49:29.946485",
                     "rule_last_update_date": "2026-04-27T18:49:29.946744",
-                    "rule_sequence_number": 16
+                    "rule_sequence_number": 19
                 }
             },
             "status": "Ready For Review",
@@ -434,7 +434,7 @@
                 "version": "0.3",
                 "version_description": " ",
                 "version_role": " ",
-                "version_guidelines": "Extract the value from the HDA under the Order Information section for “What is the NDC selling unit?”.If the field contains the words tabs or tablets, set the value to TB.\\nIf the field contains the words caps or capsules, set the value to CP.\\nIf the field contains oz or ounces, set the value to OZ.\\nIf the field contains anything else, set the value to EA.If there is a discrepancy between the HDA and the product label, the label overrides the HDA.\\nFor example, if the HDA lists “1 bottle of 285g” but the label states “10 oz (285g)”, the value must be set to OZ.\\n",
+                "version_guidelines": "Extract the value from the HDA under the Order Information section for \u201cWhat is the NDC selling unit?\u201d.If the field contains the words tabs or tablets, set the value to TB.\\nIf the field contains the words caps or capsules, set the value to CP.\\nIf the field contains oz or ounces, set the value to OZ.\\nIf the field contains anything else, set the value to EA.If there is a discrepancy between the HDA and the product label, the label overrides the HDA.\\nFor example, if the HDA lists \u201c1 bottle of 285g\u201d but the label states \u201c10 oz (285g)\u201d, the value must be set to OZ.\\n",
                 "version_example": "",
                 "version_specific_instruction": "",
                 "version_created_by_name": "Admin",
@@ -457,7 +457,7 @@
                     "is_rule_active": true,
                     "rule_create_date": "2026-04-27T18:44:55.987879",
                     "rule_last_update_date": "2026-04-27T18:44:55.988137",
-                    "rule_sequence_number": 27
+                    "rule_sequence_number": 30
                 }
             },
             "status": "Ready For Review",
@@ -482,7 +482,7 @@
                 "version": "0.3",
                 "version_description": " ",
                 "version_role": " ",
-                "version_guidelines": "In the “Cost Information” section, extract the exact value from the field “Invoice Cost (WAC) ($)” exactly as written. If the field is blank or missing, return “BLANK” and raise the alert: “WAC is missing from the HDA(s)”.",
+                "version_guidelines": "In the \u201cCost Information\u201d section, extract the exact value from the field \u201cInvoice Cost (WAC) ($)\u201d exactly as written. If the field is blank or missing, return \u201cBLANK\u201d and raise the alert: \u201cWAC is missing from the HDA(s)\u201d.",
                 "version_example": "",
                 "version_specific_instruction": "",
                 "version_created_by_name": "Admin",
@@ -500,7 +500,7 @@
                     "is_rule_active": true,
                     "rule_create_date": "2026-04-27T18:44:55.405387",
                     "rule_last_update_date": "2026-04-27T18:44:55.405586",
-                    "rule_sequence_number": 21
+                    "rule_sequence_number": 24
                 }
             },
             "status": "Ready For Review",
@@ -525,7 +525,7 @@
                 "version": "0.3",
                 "version_description": " ",
                 "version_role": "You are a master at Item Setup in a Pharmaceutical company",
-                "version_guidelines": "Extract from HDA, Under 'Product Information' Section, under 'Selling Unit NDC'.\n \nAfter extracting the NDC, the agent must always validate and convert it into strict 5-4-2 format.\n \nFor the NDC:\n- First segment must have exactly 5 digits\n- Second segment must have exactly 4 digits\n- Third segment must have exactly 2 digits\n \nThe agent must explicitly check the length of each segment and correct it if needed before returning the value.\n \nIf any segment has fewer digits, the agent needs to add leading “0”(s) to whichever segment is missing digit(s), even if the NDC already contains hyphens.\n \nBefore finalizing the output, the agent must re-check the formatted NDC to ensure it strictly matches 5-4-2 format. If not, it must correct it again.\n \nFor example:\n- “73289-0067-2” → add a “0” before the 2 in the 3rd segment → “73289-0067-02”\n- “12345-678-90” → add a “0” before 678 in the 2nd segment → “12345-0678-90”\n- “65219-027-50” → add a “0” before 027 in the 2nd segment → “65219-0027-50”\n \nIf the NDC contains no hyphen to put in the 5-4-2 format, the agent will need to compare the NDC to the label to obtain the correct NDC format.\nThe agent needs to check the normalized (properly formatted 5-4-2) NDC on the HDA to the normalized NDC on the label and if both normalized values are present and different, the value must be set strictly to “MISMATCH” (not the numeric value extracted) and alert the PM with “There’s a mismatch with the NDC on the HDA vs the label.” The comparison must be performed only after both NDC values are fully normalized.\nIf NDC is blank on the HDA (i.e., no numeric NDC value is present anywhere in the HDA section), set value to “BLANK” and alert PM with “NDC is missing on the HDA.” The value must NOT be set to “BLANK” if any numeric NDC value is present in the HDA, even if the format is unclear or requires normalization.",
+                "version_guidelines": "Extract from HDA, Under 'Product Information' Section, under 'Selling Unit NDC'.\n \nAfter extracting the NDC, the agent must always validate and convert it into strict 5-4-2 format.\n \nFor the NDC:\n- First segment must have exactly 5 digits\n- Second segment must have exactly 4 digits\n- Third segment must have exactly 2 digits\n \nThe agent must explicitly check the length of each segment and correct it if needed before returning the value.\n \nIf any segment has fewer digits, the agent needs to add leading \u201c0\u201d(s) to whichever segment is missing digit(s), even if the NDC already contains hyphens.\n \nBefore finalizing the output, the agent must re-check the formatted NDC to ensure it strictly matches 5-4-2 format. If not, it must correct it again.\n \nFor example:\n- \u201c73289-0067-2\u201d \u2192 add a \u201c0\u201d before the 2 in the 3rd segment \u2192 \u201c73289-0067-02\u201d\n- \u201c12345-678-90\u201d \u2192 add a \u201c0\u201d before 678 in the 2nd segment \u2192 \u201c12345-0678-90\u201d\n- \u201c65219-027-50\u201d \u2192 add a \u201c0\u201d before 027 in the 2nd segment \u2192 \u201c65219-0027-50\u201d\n \nIf the NDC contains no hyphen to put in the 5-4-2 format, the agent will need to compare the NDC to the label to obtain the correct NDC format.\nThe agent needs to check the normalized (properly formatted 5-4-2) NDC on the HDA to the normalized NDC on the label and if both normalized values are present and different, the value must be set strictly to \u201cMISMATCH\u201d (not the numeric value extracted) and alert the PM with \u201cThere\u2019s a mismatch with the NDC on the HDA vs the label.\u201d The comparison must be performed only after both NDC values are fully normalized.\nIf NDC is blank on the HDA (i.e., no numeric NDC value is present anywhere in the HDA section), set value to \u201cBLANK\u201d and alert PM with \u201cNDC is missing on the HDA.\u201d The value must NOT be set to \u201cBLANK\u201d if any numeric NDC value is present in the HDA, even if the format is unclear or requires normalization.",
                 "version_example": "",
                 "version_specific_instruction": "",
                 "version_created_by_name": "Admin",
@@ -543,7 +543,7 @@
                     "is_rule_active": true,
                     "rule_create_date": "2026-04-27T18:44:55.369054",
                     "rule_last_update_date": "2026-04-27T18:44:55.369301",
-                    "rule_sequence_number": 20
+                    "rule_sequence_number": 23
                 }
             },
             "status": "Ready For Review",
@@ -568,7 +568,7 @@
                 "version": "0.2",
                 "version_description": " ",
                 "version_role": " ",
-                "version_guidelines": "From the HDA, under the \"Order Information\" section, extract the NDC selling unit value using the rules below. These rules apply ONLY to the dosage-form categories listed below. If the selling unit does not match any of these categories, return 1.\n\nBottles of Tablets / Capsules / Caplets / Tabs / Ounces\n- If the selling unit contains the word \"Bottle\" AND also contains Tablets, Capsules, Caplets, Tabs, or Ounce (oz), extract the manufacturing size (the number of units inside the bottle).\n- Example:\n  - \"1 Bottle of 100 Tablets\" → 100\n  - \"1 Bottle of 60 Capsules\" → 60\n  - \"1 Bottle of 4 oz\" → 4\n- Do NOT apply this rule to tubes, creams, ointments, gels, lotions, liquids, or gram/mL-based products unless they are explicitly expressed in tablets, capsules, caplets, tabs, or ounces.\n- Example:\n  - \"1 tube of 30 grams\" → 1\n  - \"1 bottle of solution 120 mL\" → 1\n\nBlister Packs\n- If the selling unit contains the word \"blister\", look for multiplication patterns such as:\n  - 3x10\n  - 2 x 12\n  - 10X1\n- Multiply the values to calculate the total unit count.\n- Example:\n  - \"Blister pack 3x10\" → 30\n  - \"2 x 12 blister tablets\" → 24\n\nVials / Bags / Syringes / UD Cups / Cartons / Cases\n- Count the number of individual units in the selling unit.\n- Use the first numeric value that represents the count of units, NOT the volume.\n- Examples:\n  - \"1 box of 10 vials\" → 10\n  - \"2 single-dose prefilled syringes\" → 2\n  - \"24 x 4 mL single-dose syringes in a carton\" → 24\n  - \"4 x 24 mL MDV\" → 4\n  - \"1 case of 48 bags\" → 48\n  - \"1 carton of 5 vials\" → 5\n- If the supplier does not explicitly mention the unit type, use the numeric packaging pattern to determine the count.\n\nmL/g With Oz Conversion on Label\n- If the selling unit is expressed in mL or grams, AND the product label also provides an equivalent value in ounces (oz), use the ounce value.\n- Example:\n  - Selling unit: \"1 bottle of 118 mL\"\n  - Label shows: \"4 oz (118 mL)\"\n  - Return: 4\n\nDefault Rule\n- If the selling unit does not match any of the categories above, return 1.",
+                "version_guidelines": "From the HDA, under the \"Order Information\" section, extract the NDC selling unit value using the rules below. These rules apply ONLY to the dosage-form categories listed below. If the selling unit does not match any of these categories, return 1.\n\nBottles of Tablets / Capsules / Caplets / Tabs / Ounces\n- If the selling unit contains the word \"Bottle\" AND also contains Tablets, Capsules, Caplets, Tabs, or Ounce (oz), extract the manufacturing size (the number of units inside the bottle).\n- Example:\n  - \"1 Bottle of 100 Tablets\" \u2192 100\n  - \"1 Bottle of 60 Capsules\" \u2192 60\n  - \"1 Bottle of 4 oz\" \u2192 4\n- Do NOT apply this rule to tubes, creams, ointments, gels, lotions, liquids, or gram/mL-based products unless they are explicitly expressed in tablets, capsules, caplets, tabs, or ounces.\n- Example:\n  - \"1 tube of 30 grams\" \u2192 1\n  - \"1 bottle of solution 120 mL\" \u2192 1\n\nBlister Packs\n- If the selling unit contains the word \"blister\", look for multiplication patterns such as:\n  - 3x10\n  - 2 x 12\n  - 10X1\n- Multiply the values to calculate the total unit count.\n- Example:\n  - \"Blister pack 3x10\" \u2192 30\n  - \"2 x 12 blister tablets\" \u2192 24\n\nVials / Bags / Syringes / UD Cups / Cartons / Cases\n- Count the number of individual units in the selling unit.\n- Use the first numeric value that represents the count of units, NOT the volume.\n- Examples:\n  - \"1 box of 10 vials\" \u2192 10\n  - \"2 single-dose prefilled syringes\" \u2192 2\n  - \"24 x 4 mL single-dose syringes in a carton\" \u2192 24\n  - \"4 x 24 mL MDV\" \u2192 4\n  - \"1 case of 48 bags\" \u2192 48\n  - \"1 carton of 5 vials\" \u2192 5\n- If the supplier does not explicitly mention the unit type, use the numeric packaging pattern to determine the count.\n\nmL/g With Oz Conversion on Label\n- If the selling unit is expressed in mL or grams, AND the product label also provides an equivalent value in ounces (oz), use the ounce value.\n- Example:\n  - Selling unit: \"1 bottle of 118 mL\"\n  - Label shows: \"4 oz (118 mL)\"\n  - Return: 4\n\nDefault Rule\n- If the selling unit does not match any of the categories above, return 1.",
                 "version_example": "",
                 "version_specific_instruction": "",
                 "version_created_by_name": "Admin",
@@ -586,7 +586,7 @@
                     "is_rule_active": true,
                     "rule_create_date": "2026-04-27T18:44:55.637404",
                     "rule_last_update_date": "2026-04-27T18:44:55.637583",
-                    "rule_sequence_number": 26
+                    "rule_sequence_number": 29
                 }
             },
             "status": "Ready For Review",
@@ -611,7 +611,7 @@
                 "version": "0.2",
                 "version_description": " ",
                 "version_role": " ",
-                "version_guidelines": "Strictly extract Order Unit (OU) from HDA → Order Information → “What is the NDC selling unit?”. Do NOT infer or assume.\n1. Bags / UD Cups:\n   - If \"bags\" or \"UD cups\" are the OUTER selling unit and represent a case-level package → OU = CS  \n   - If \"bags\" or \"UD cups\" AND Company = FRESENIUS → OU = CT (override)\n2. Injectable items (vial, syringe, ampule, etc.):\n   - Qty = 1 → OU = EA\n   - Qty > 1 → OU = CT\n   - If Qty > 1 AND Item & Packing Info has EACH + BOX + CASE → OU = EA (override)\n3. Box / Carton Logic (applies to all products):\n   - Box/Carton with multiple units → OU = CT\n   - Box/Carton with single unit → OU = EA\n4. Non-injectable items (tablet, capsule, tube, etc.):\n   → OU = EA\n5. Default:\n   → OU = EA\nKey Logic:\n- Always determine OU based on the OUTER selling package (Box/Carton/Case)\n- If \"bags\" or \"UD cups\" are OUTER → OU = CS\n- If \"bags\" or \"UD cups\" are INSIDE outer package (e.g., carton of bags) → OU = CT\n- Decide using TOTAL quantity inside\n- Inner items must NOT override outer packaging\n- Do NOT assign CS unless explicitly case-level\nExamples:\n- 1 Box of 30 Tablets → Non-injectable → OU = EA  \n- 1 Box of 10 Syringes → Injectable (multiple) → OU = CT  \n- 1 Box/Carton of 1 Vial → Injectable (single) → OU = EA  \n- 1 Box of 10 Vials → Injectable (multiple) → OU = CT  \n- 1 Box of 12 Bags → Bags inside box → OU = CT  \n- 1 Carton of 10 Bags → Bags inside carton → OU = CT",
+                "version_guidelines": "Strictly extract Order Unit (OU) from HDA \u2192 Order Information \u2192 \u201cWhat is the NDC selling unit?\u201d. Do NOT infer or assume.\n1. Bags / UD Cups:\n   - If \"bags\" or \"UD cups\" are the OUTER selling unit and represent a case-level package \u2192 OU = CS  \n   - If \"bags\" or \"UD cups\" AND Company = FRESENIUS \u2192 OU = CT (override)\n2. Injectable items (vial, syringe, ampule, etc.):\n   - Qty = 1 \u2192 OU = EA\n   - Qty > 1 \u2192 OU = CT\n   - If Qty > 1 AND Item & Packing Info has EACH + BOX + CASE \u2192 OU = EA (override)\n3. Box / Carton Logic (applies to all products):\n   - Box/Carton with multiple units \u2192 OU = CT\n   - Box/Carton with single unit \u2192 OU = EA\n4. Non-injectable items (tablet, capsule, tube, etc.):\n   \u2192 OU = EA\n5. Default:\n   \u2192 OU = EA\nKey Logic:\n- Always determine OU based on the OUTER selling package (Box/Carton/Case)\n- If \"bags\" or \"UD cups\" are OUTER \u2192 OU = CS\n- If \"bags\" or \"UD cups\" are INSIDE outer package (e.g., carton of bags) \u2192 OU = CT\n- Decide using TOTAL quantity inside\n- Inner items must NOT override outer packaging\n- Do NOT assign CS unless explicitly case-level\nExamples:\n- 1 Box of 30 Tablets \u2192 Non-injectable \u2192 OU = EA  \n- 1 Box of 10 Syringes \u2192 Injectable (multiple) \u2192 OU = CT  \n- 1 Box/Carton of 1 Vial \u2192 Injectable (single) \u2192 OU = EA  \n- 1 Box of 10 Vials \u2192 Injectable (multiple) \u2192 OU = CT  \n- 1 Box of 12 Bags \u2192 Bags inside box \u2192 OU = CT  \n- 1 Carton of 10 Bags \u2192 Bags inside carton \u2192 OU = CT",
                 "version_example": "",
                 "version_specific_instruction": "",
                 "version_created_by_name": "Admin",
@@ -633,7 +633,7 @@
                     "is_rule_active": true,
                     "rule_create_date": "2026-04-27T18:44:55.684151",
                     "rule_last_update_date": "2026-04-27T18:44:55.684330",
-                    "rule_sequence_number": 28
+                    "rule_sequence_number": 31
                 }
             },
             "status": "Ready For Review",
@@ -658,7 +658,7 @@
                 "version": "0.8",
                 "version_description": " ",
                 "version_role": "You are a master at Item Setup in a Pharmaceutical company",
-                "version_guidelines": "\n- Use only these sections:\n  - ITEM AND PACKING INFORMATION\n  - GTIN AND HIBCC PRODUCT INFORMATION\n- If hda_pages image input exists, use the HDA image as the primary extraction source.\n- Extract only explicit visible GTIN and packaging hierarchy values.\n- Do not infer missing values from table alignment, nearby text, partial numbers, or isolated labels.\n- Treat unreadable, incomplete, ambiguous, mixed, or uncertain extraction as unknown.\n- Every GTIN must contain exactly 14 digits.\n- If any GTIN is not exactly 14 digits → \"GTIN is not 14 digits.\"\n- Packaging hierarchy validation:\n  - If EA exists under ITEM AND PACKING INFORMATION and EA GTIN is missing under GTIN AND HIBCC PRODUCT INFORMATION → \"EA GTIN is missing\"\n  - If CT exists under ITEM AND PACKING INFORMATION and CT GTIN is missing under GTIN AND HIBCC PRODUCT INFORMATION → \"CT GTIN is missing\"\n  - If CS exists under ITEM AND PACKING INFORMATION and CS GTIN is missing under GTIN AND HIBCC PRODUCT INFORMATION → \"CS GTIN is missing\"\n- Pallet GTIN is not required.\n- Return only one value.\n- If multiple issues exist, return the first detected issue in the order above.\n- Return only these exact outputs in pm_review field:\n  - \"GTIN is not 14 digits.\"\n  - \"EA GTIN is missing\"\n  - \"CT GTIN is missing\"\n  - \"CS GTIN is missing\"\n- give the response in pm_review field.",
+                "version_guidelines": "\n- Use only these sections:\n  - ITEM AND PACKING INFORMATION\n  - GTIN AND HIBCC PRODUCT INFORMATION\n- If hda_pages image input exists, use the HDA image as the primary extraction source.\n- Extract only explicit visible GTIN and packaging hierarchy values.\n- Do not infer missing values from table alignment, nearby text, partial numbers, or isolated labels.\n- Treat unreadable, incomplete, ambiguous, mixed, or uncertain extraction as unknown.\n- Every GTIN must contain exactly 14 digits.\n- If any GTIN is not exactly 14 digits \u2192 \"GTIN is not 14 digits.\"\n- Packaging hierarchy validation:\n  - If EA exists under ITEM AND PACKING INFORMATION and EA GTIN is missing under GTIN AND HIBCC PRODUCT INFORMATION \u2192 \"EA GTIN is missing\"\n  - If CT exists under ITEM AND PACKING INFORMATION and CT GTIN is missing under GTIN AND HIBCC PRODUCT INFORMATION \u2192 \"CT GTIN is missing\"\n  - If CS exists under ITEM AND PACKING INFORMATION and CS GTIN is missing under GTIN AND HIBCC PRODUCT INFORMATION \u2192 \"CS GTIN is missing\"\n- Pallet GTIN is not required.\n- Return only one value.\n- If multiple issues exist, return the first detected issue in the order above.\n- Return only these exact outputs in pm_review field:\n  - \"GTIN is not 14 digits.\"\n  - \"EA GTIN is missing\"\n  - \"CT GTIN is missing\"\n  - \"CS GTIN is missing\"\n- give the response in pm_review field.",
                 "version_example": "",
                 "version_specific_instruction": "",
                 "version_created_by_name": "Admin",
@@ -676,7 +676,7 @@
                     "is_rule_active": true,
                     "rule_create_date": "2026-04-27T18:44:55.912745",
                     "rule_last_update_date": "2026-04-27T18:44:55.913021",
-                    "rule_sequence_number": 33
+                    "rule_sequence_number": 36
                 }
             },
             "status": "Ready For Review",
@@ -701,7 +701,7 @@
                 "version": "0.8",
                 "version_description": " ",
                 "version_role": "You are a master at Item Setup in a Pharmaceutical company",
-                "version_guidelines": "- Use only the first page of the HDA.\n- Extract explicit Yes/No answers only for these exact questions:\n  1. Does supplier meet DSCSA definition of manufacturer?\n  2. Is product repackaged?\n  3. Is the product sold by manufacturer's exclusive distributor?\n  4. Has FDA granted waiver/exception/exemption for product?\n  5. Is product exempt from DSCSA?\n- Treat a question as unknown if blank, unreadable, missing, mixed, or if Yes/No is not clearly paired.\n- Do not infer answers from labels, isolated Yes/No tokens, table noise, or repeated text.\n- Apply alerts based only on explicit extracted answers.\n- Alert rules:\n  1. If manufacturer = NO → \"Supplier does not meet DSCSA manufacturer definition – reach out to DSCSA Team.\"\n  2. If manufacturer = YES and any of (repackaged, exclusive distributor, FDA waiver) = YES → \"Conflicting DSCSA manufacturer responses\"\n  3. If product exempt = YES → \"Check that Vendor ID is DSCSA EXEMPT and get approval from DSCSA Team prior to setup.\"\n- For rule 2, trigger only when manufacturer is explicit YES and at least one conflict question is explicit YES.\n- If manufacturer is unknown, do not trigger rules 1 or 2.\n- If exemption is unknown, do not trigger rule 3.\n- If manufacturer is mixed/unknown but any conflict question = YES, prefer rule 2.\n- Return only one value; if multiple rules match, return the first in the above order.\n- Return exactly one of these four strings only in pm_review field:\n  1) \"Supplier does not meet DSCSA manufacturer definition – reach out to DSCSA Team.\"\n  2) \"Conflicting DSCSA manufacturer responses\"\n  3) \"Check that Vendor ID is DSCSA EXEMPT and get approval from DSCSA Team prior to setup.\"\n- give the response in pm_review field",
+                "version_guidelines": "-\u00a0Use\u00a0only\u00a0the\u00a0first\u00a0page\u00a0of\u00a0the\u00a0HDA.\n-\u00a0Extract\u00a0explicit\u00a0Yes/No\u00a0answers\u00a0only\u00a0for\u00a0these\u00a0exact\u00a0questions:\n \u00a01.\u00a0Does\u00a0supplier\u00a0meet\u00a0DSCSA\u00a0definition\u00a0of\u00a0manufacturer?\n \u00a02.\u00a0Is\u00a0product\u00a0repackaged?\n \u00a03.\u00a0Is\u00a0the\u00a0product\u00a0sold\u00a0by\u00a0manufacturer's\u00a0exclusive\u00a0distributor?\n \u00a04.\u00a0Has\u00a0FDA\u00a0granted\u00a0waiver/exception/exemption\u00a0for\u00a0product?\n \u00a05.\u00a0Is\u00a0product\u00a0exempt\u00a0from\u00a0DSCSA?\n-\u00a0Treat\u00a0a\u00a0question\u00a0as\u00a0unknown\u00a0if\u00a0blank,\u00a0unreadable,\u00a0missing,\u00a0mixed,\u00a0or\u00a0if\u00a0Yes/No\u00a0is\u00a0not\u00a0clearly\u00a0paired.\n-\u00a0Do\u00a0not\u00a0infer\u00a0answers\u00a0from\u00a0labels,\u00a0isolated\u00a0Yes/No\u00a0tokens,\u00a0table\u00a0noise,\u00a0or\u00a0repeated\u00a0text.\n-\u00a0Apply\u00a0alerts\u00a0based\u00a0only\u00a0on\u00a0explicit\u00a0extracted\u00a0answers.\n-\u00a0Alert\u00a0rules:\n \u00a01.\u00a0If\u00a0manufacturer\u00a0=\u00a0NO\u00a0\u2192\u00a0\"Supplier\u00a0does\u00a0not\u00a0meet\u00a0DSCSA\u00a0manufacturer\u00a0definition\u00a0\u2013\u00a0reach\u00a0out\u00a0to\u00a0DSCSA\u00a0Team.\"\n \u00a02.\u00a0If\u00a0manufacturer\u00a0=\u00a0YES\u00a0and\u00a0any\u00a0of\u00a0(repackaged,\u00a0exclusive\u00a0distributor,\u00a0FDA\u00a0waiver)\u00a0=\u00a0YES\u00a0\u2192\u00a0\"Conflicting\u00a0DSCSA\u00a0manufacturer\u00a0responses\"\n \u00a03.\u00a0If\u00a0product\u00a0exempt\u00a0=\u00a0YES\u00a0\u2192\u00a0\"Check\u00a0that\u00a0Vendor\u00a0ID\u00a0is\u00a0DSCSA\u00a0EXEMPT\u00a0and\u00a0get\u00a0approval\u00a0from\u00a0DSCSA\u00a0Team\u00a0prior\u00a0to\u00a0setup.\"\n-\u00a0For\u00a0rule\u00a02,\u00a0trigger\u00a0only\u00a0when\u00a0manufacturer\u00a0is\u00a0explicit\u00a0YES\u00a0and\u00a0at\u00a0least\u00a0one\u00a0conflict\u00a0question\u00a0is\u00a0explicit\u00a0YES.\n-\u00a0If\u00a0manufacturer\u00a0is\u00a0unknown,\u00a0do\u00a0not\u00a0trigger\u00a0rules\u00a01\u00a0or\u00a02.\n-\u00a0If\u00a0exemption\u00a0is\u00a0unknown,\u00a0do\u00a0not\u00a0trigger\u00a0rule\u00a03.\n-\u00a0If\u00a0manufacturer\u00a0is\u00a0mixed/unknown\u00a0but\u00a0any\u00a0conflict\u00a0question\u00a0=\u00a0YES,\u00a0prefer\u00a0rule\u00a02.\n-\u00a0Return\u00a0only\u00a0one\u00a0value;\u00a0if\u00a0multiple\u00a0rules\u00a0match,\u00a0return\u00a0the\u00a0first\u00a0in\u00a0the\u00a0above\u00a0order.\n-\u00a0Return\u00a0exactly\u00a0one\u00a0of\u00a0these\u00a0four\u00a0strings\u00a0only in pm_review field:\n \u00a01)\u00a0\"Supplier\u00a0does\u00a0not\u00a0meet\u00a0DSCSA\u00a0manufacturer\u00a0definition\u00a0\u2013\u00a0reach\u00a0out\u00a0to\u00a0DSCSA\u00a0Team.\"\n \u00a02)\u00a0\"Conflicting\u00a0DSCSA\u00a0manufacturer\u00a0responses\"\n \u00a03)\u00a0\"Check\u00a0that\u00a0Vendor\u00a0ID\u00a0is\u00a0DSCSA\u00a0EXEMPT\u00a0and\u00a0get\u00a0approval\u00a0from\u00a0DSCSA\u00a0Team\u00a0prior\u00a0to\u00a0setup.\"\n-\u00a0give the response in pm_review field",
                 "version_example": "",
                 "version_specific_instruction": "",
                 "version_created_by_name": "Admin",
@@ -719,7 +719,7 @@
                     "is_rule_active": true,
                     "rule_create_date": "2026-04-27T18:44:55.951880",
                     "rule_last_update_date": "2026-04-27T18:44:55.952112",
-                    "rule_sequence_number": 34
+                    "rule_sequence_number": 37
                 }
             },
             "status": "Ready For Review",
@@ -744,7 +744,7 @@
                 "version": "0.1",
                 "version_description": " ",
                 "version_role": " ",
-                "version_guidelines": "Under “ADDITIONAL PRODUCT INFORMATION”:\nIf the supplier selects “Drop-Ship Only” in the “Is the Product…” field, set the value to “YES.”\nFor all other selections, set the value to “NO.”\n\nIf Drop Ship = YES, then review Page 3 of the HDA:Order Method Check\nIf all Order Method fields are NO, alert the PM with:\n“Dropship PO Transmission Output is blank on page 3.”\nCut Off Time CheckIf Cut Off Time is blank, alert the PM with:\n“Dropship Cut Off Time is blank on page 3.”",
+                "version_guidelines": "Under \u201cADDITIONAL PRODUCT INFORMATION\u201d:\nIf the supplier selects \u201cDrop-Ship Only\u201d in the \u201cIs the Product\u2026\u201d field, set the value to \u201cYES.\u201d\nFor all other selections, set the value to \u201cNO.\u201d\n\nIf Drop Ship = YES, then review Page 3 of the HDA:Order Method Check\nIf all Order Method fields are NO, alert the PM with:\n\u201cDropship PO Transmission Output is blank on page 3.\u201d\nCut Off Time CheckIf Cut Off Time is blank, alert the PM with:\n\u201cDropship Cut Off Time is blank on page 3.\u201d",
                 "version_example": "",
                 "version_specific_instruction": "",
                 "version_created_by_name": "Admin",
@@ -765,7 +765,7 @@
                     "is_rule_active": true,
                     "rule_create_date": "2026-05-16T07:34:31.788694",
                     "rule_last_update_date": "2026-05-16T07:34:31.788909",
-                    "rule_sequence_number": 35
+                    "rule_sequence_number": 6
                 }
             },
             "status": "Ready For Review",
@@ -790,7 +790,7 @@
                 "version": "0.2",
                 "version_description": " ",
                 "version_role": "You are a master at Item Setup in a Pharmaceutical company",
-                "version_guidelines": "On the second page of the HDA, under the SDS Hazardous Classification section. If the value of the field “Is the product a NIOSH hazardous drug?” is blank, alert the PM with:\\n“NIOSH hazardous field is blank.” in pm_review field. If the value is YES to “Is the product a NIOSH hazardous drug?”, alert the PM with:\\n“Review NIOSH hazardous field.” in pm_review field.",
+                "version_guidelines": "On the second page of the HDA, under the SDS Hazardous Classification section. If the value of the field \u201cIs the product a NIOSH hazardous drug?\u201d is blank, alert the PM with:\\n\u201cNIOSH hazardous field is blank.\u201d in pm_review field. If the value is YES to \u201cIs the product a NIOSH hazardous drug?\u201d, alert the PM with:\\n\u201cReview NIOSH hazardous field.\u201d in pm_review field.",
                 "version_example": "",
                 "version_specific_instruction": "",
                 "version_created_by_name": "Admin",
@@ -808,7 +808,7 @@
                     "is_rule_active": true,
                     "rule_create_date": "2026-05-16T09:08:58.277027",
                     "rule_last_update_date": "2026-05-16T09:08:58.277256",
-                    "rule_sequence_number": 38
+                    "rule_sequence_number": 43
                 }
             },
             "status": "Ready For Review",
@@ -833,7 +833,7 @@
                 "version": "0.4",
                 "version_description": " ",
                 "version_role": "You are a master at Item Setup in a Pharmaceutical company",
-                "version_guidelines": "Extract and construct the EN (selling) Description that needs to Include Drug Name(Shorten) + Dose Form(Abbreviation) + Dosage Strength + Vendor Abbreviation + Dosage Size Should always be in all caps If it's a Premier item, add \"\"PPX\"\" to the beginning of the descriptionIf it's a Novaplus item, add \"\"NOV\"\" to the beginning of the descriptionIf it's a Healthtrust item, add \"\"HLT\"\" to the beginning of the descriptionIf it's a dropship item, add \"\"DS\"\" the end of the item description Note: Add DS only when \"Drop-Ship\" is explicitly mentioned as a standalone supply type.      Do NOT add DS if \"Direct-Ship\"/\"Direct-Ship Only\" appears as part of combined phrases such as \"Direct And Drop-Ship\" or within descriptive text. The below should be referenced as additional notes/examples: - Use tools for abbreviations for wherever it is needed. - Drug Name:  - If a shortened version is available from tools, use it.  - Do NOT manually shorten the drug name.  - If not available, use full drug name.  - Do not consider the words after \"in\" in drug name.  - If multiple representations exist, prioritize the full drug name containing salt forms (e.g., Hydrochloride over base drug name).  - If salt forms like Hydrochloride, Sodium, Sulfate are part of the primary drug name, convert them to standard abbreviations (e.g., Hydrochloride → HCL) where applicable.  - Do NOT introduce or retain salt forms that are not consistently part of the primary drug name.  - Note: If Acid is mentioned, shorten it to AC followed by: - Dose Form Abbreviation:  - If specific dose forms like Single Dose Vial, Multi Dose Vial, Vial, Bag, Bottle, Syringe, PFS, PEN etc. are present, prefer those over Injection.  - If Product Shape or packaging clearly indicates Vial, Bag, Syringe, PFS, PEN etc., use corresponding abbreviations (VL, BG, SDV, MDV, PFS, PEN).  - Only use INJ when no explicit packaging-based dose form is identified.  - If a specific dose form is selected (VL, SDV, MDV, BG, PFS, PEN etc.), DO NOT include INJ along with it.  - Only one final dose form should be present.   Oral Suspension has a higher priority than Suspension.   Special Cases:  - If Lyophilized or Emulsion is mentioned, include their abbreviations before the dose form (e.g., LYO SDV, EMUL PFS).  - Do NOT include any other descriptors.   Note: Single Dose Vial and Vial are different. - Dosage Strength:  - Must always be included if present.  - Do not mention dual formats like 20MG/2ML(10MG/ML), only use 20MG/2ML.  - If denominator is 1 (e.g., 20MG/1ML), convert to 20MG/ML.  - If already MG/ML, DO NOT convert to MG/1ML.  - Do not include commas (1,000 → 1000).  - If strength is expressed using packaging units such as:    \"per vial\", \"mg/vial\", \"per syringe\", etc.:    → treat as total strength and DO NOT convert to MG/VL or MG/VIAL.    → always return only the strength value (e.g., 500MG)   - MG/VL or MG/VIAL format must NEVER be used. - Vendor Abbreviation:    - If vendor name is mentioned as 'Taro Pharmaceutical Industries lTD', use 'TAR' as abbreviation. - Dosage Size:  - Only include numeric value.  - If unit dose is explicitly mentioned, use UD format (UD10, UD100).  - If the strength is expressed in fluid ounces (e.g., \"N fl oz\"), extract the numeric value N and represent it as \"NOZ\" (without spaces).    For example:      - \"1 fl oz\" → \"1OZ\"      - \"4 fl oz\" → \"4OZ\"  - UD must ONLY appear as part of dosage size.  - Do NOT place UD before drug name or dose form.  - Do NOT duplicate UD.   - If only volume (e.g., 50ML, 15G) is present without pack count, the dosage size for that case must be '1'  - Prefer pack/count information (e.g., \"25 vials\" → 25) No spaces inside values (e.g., 500G/10ML) Do NOT include:- PF (Preservative-Free)- USP- Any special symbols like '&' as a separator between words, also words like 'and' must not be included as separator between words- 'Space' must be used as a separator between two consecutive terms in the description, but not within individual terms (e.g., drug name, dose form, strength, vendor, dosage size)- formulation descriptions- sodium chloride / dilution context- any extra clinical descriptors not part of defined output structure- Ensure the \"value\" field contains only the final string output and never a nested JSON object or another \"value\" key inside it. Final output must strictly follow:Drug Name + Dose Form + Strength + Vendor + Dosage Size",
+                "version_guidelines": "Extract and construct the EN (selling) Description that needs to Include Drug Name(Shorten) + Dose Form(Abbreviation) + Dosage Strength + Vendor Abbreviation + Dosage Size\u00a0Should always be in all caps\u00a0If it's a Premier item, add \"\"PPX\"\" to the beginning of the descriptionIf it's a Novaplus item, add \"\"NOV\"\" to the beginning of the descriptionIf it's a Healthtrust item, add \"\"HLT\"\" to the beginning of the descriptionIf it's a dropship item, add \"\"DS\"\" the end of the item description\u00a0Note: Add DS only when \"Drop-Ship\" is explicitly mentioned as a standalone supply type.\u00a0 \u00a0 \u00a0 Do NOT add DS if \"Direct-Ship\"/\"Direct-Ship Only\" appears as part of combined phrases such as \"Direct And Drop-Ship\" or within descriptive text.\u00a0The below should be referenced as additional notes/examples:\u00a0- Use tools for abbreviations for wherever it is needed.\u00a0- Drug Name:\u00a0 - If a shortened version is available from tools, use it.\u00a0 - Do NOT manually shorten the drug name.\u00a0 - If not available, use full drug name.\u00a0 - Do not consider the words after \"in\" in drug name.\u00a0 - If multiple representations exist, prioritize the full drug name containing salt forms (e.g., Hydrochloride over base drug name).\u00a0 - If salt forms like Hydrochloride, Sodium, Sulfate are part of the primary drug name, convert them to standard abbreviations (e.g., Hydrochloride \u2192 HCL) where applicable.\u00a0 - Do NOT introduce or retain salt forms that are not consistently part of the primary drug name.\u00a0 - Note: If Acid is mentioned, shorten it to AC\u00a0followed by:\u00a0- Dose Form Abbreviation:\u00a0 - If specific dose forms like Single Dose Vial, Multi Dose Vial, Vial, Bag, Bottle, Syringe, PFS, PEN etc. are present, prefer those over Injection.\u00a0 - If Product Shape or packaging clearly indicates Vial, Bag, Syringe, PFS, PEN etc., use corresponding abbreviations (VL, BG, SDV, MDV, PFS, PEN).\u00a0 - Only use INJ when no explicit packaging-based dose form is identified.\u00a0 - If a specific dose form is selected (VL, SDV, MDV, BG, PFS, PEN etc.), DO NOT include INJ along with it.\u00a0 - Only one final dose form should be present.\u00a0\u00a0 Oral Suspension has a higher priority than Suspension.\u00a0\u00a0 Special Cases:\u00a0 - If Lyophilized or Emulsion is mentioned, include their abbreviations before the dose form (e.g., LYO SDV, EMUL PFS).\u00a0 - Do NOT include any other descriptors.\u00a0\u00a0 Note: Single Dose Vial and Vial are different.\u00a0- Dosage Strength:\u00a0 - Must always be included if present.\u00a0 - Do not mention dual formats like 20MG/2ML(10MG/ML), only use 20MG/2ML.\u00a0 - If denominator is 1 (e.g., 20MG/1ML), convert to 20MG/ML.\u00a0 - If already MG/ML, DO NOT convert to MG/1ML.\u00a0 - Do not include commas (1,000 \u2192 1000).\u00a0 - If strength is expressed using packaging units such as:\u00a0 \u00a0 \"per vial\", \"mg/vial\", \"per syringe\", etc.:\u00a0 \u00a0 \u2192 treat as total strength and DO NOT convert to MG/VL or MG/VIAL.\u00a0 \u00a0 \u2192 always return only the strength value (e.g., 500MG)\u00a0\u00a0 - MG/VL or MG/VIAL format must NEVER be used.\u00a0- Vendor Abbreviation:\u00a0 \u00a0 - If vendor name is mentioned as 'Taro Pharmaceutical Industries lTD', use 'TAR' as abbreviation.\u00a0- Dosage Size:\u00a0 - Only include numeric value.\u00a0 - If unit dose is explicitly mentioned, use UD format (UD10, UD100).\u00a0 - If the strength is expressed in fluid ounces (e.g., \"N fl oz\"), extract the numeric value N and represent it as \"NOZ\" (without spaces).\u00a0 \u00a0 For example:\u00a0 \u00a0 \u00a0 - \"1 fl oz\" \u2192 \"1OZ\"\u00a0 \u00a0 \u00a0 - \"4 fl oz\" \u2192 \"4OZ\"\u00a0 - UD must ONLY appear as part of dosage size.\u00a0 - Do NOT place UD before drug name or dose form.\u00a0 - Do NOT duplicate UD.\u00a0\u00a0 - If only volume (e.g., 50ML, 15G) is present without pack count, the dosage size for that case must be '1'\u00a0 - Prefer pack/count information (e.g., \"25 vials\" \u2192 25)\u00a0No spaces inside values (e.g., 500G/10ML)\u00a0Do NOT include:- PF (Preservative-Free)- USP- Any special symbols like '&' as a separator between words, also words like 'and' must not be included as separator between words- 'Space' must be used as a separator between two consecutive terms in the description, but not within individual terms (e.g., drug name, dose form, strength, vendor, dosage size)- formulation descriptions- sodium chloride / dilution context- any extra clinical descriptors not part of defined output structure- Ensure the \"value\" field contains only the final string output and never a nested JSON object or another \"value\" key inside it.\u00a0Final output must strictly follow:Drug Name + Dose Form + Strength + Vendor + Dosage Size",
                 "version_example": "Drug Name: 'Acetaminophen Acid'\nDose Form: 'Tab'\nDosage Strength: '500mg'\nVendor: 'XYZ'\nDosage Size: '30'\n \nOutput:\nACETAMINOPHEN AC TB 500MG XYZ 30\n \nIf shortened drug name available:\nACET AC TB 500MG XYZ 30",
                 "version_specific_instruction": "",
                 "version_created_by_name": "Admin",
@@ -851,7 +851,7 @@
                     "is_rule_active": true,
                     "rule_create_date": "2026-04-27T18:44:55.776704",
                     "rule_last_update_date": "2026-04-27T18:44:55.777011",
-                    "rule_sequence_number": 30
+                    "rule_sequence_number": 33
                 }
             },
             "status": "Ready For Review",
@@ -876,7 +876,7 @@
                 "version": "0.3",
                 "version_description": " ",
                 "version_role": " ",
-                "version_guidelines": "Strictly extract Selling Unit (SU) from HDA → Order Information → “What is the NDC selling unit?”. Do NOT infer or assume.\n1. If contains \"bags\" or \"UD cups\" → SU = CS  \n   If also Company = FRESENIUS → SU = CT (override)\n2. Injectable items (vial, syringe, ampule, etc.):\n   - Qty = 1 → SU = EA\n   - Qty > 1 → SU = CT\n   - If Qty > 1 AND Item & Packing Info has EACH + BOX + CASE → SU = EA (override)\n3. Non-injectable items (tablet, capsule, tube, etc.) → SU = EA\n4. Default → SU = EA\nKey Logic:\n- Always determine SU based on the OUTER selling package (Box/Carton/Case)\n- If \"bags\" or \"UD cups\" are the OUTER selling unit → SU = CS\n- If \"bags\" or \"UD cups\" are inside another OUTER package (e.g., carton of bags), then treat based on the outer package and quantity → SU = CT\n- Decide using TOTAL quantity inside\n- Do not assign CS unless explicitly case-level\nExamples:\n- 1 Box of 30 Tablets → Non-injectable → EA  \n- 1 Box of 10 Syringes → Injectable (multiple) → CT  \n- 1 Box/Carton of 1 Vial → Injectable (single) → EA  \n- 1 Box of 10 Vials → Injectable (multiple) → CT  ",
+                "version_guidelines": "Strictly extract Selling Unit (SU) from HDA \u2192 Order Information \u2192 \u201cWhat is the NDC selling unit?\u201d. Do NOT infer or assume.\n1. If contains \"bags\" or \"UD cups\" \u2192 SU = CS  \n   If also Company = FRESENIUS \u2192 SU = CT (override)\n2. Injectable items (vial, syringe, ampule, etc.):\n   - Qty = 1 \u2192 SU = EA\n   - Qty > 1 \u2192 SU = CT\n   - If Qty > 1 AND Item & Packing Info has EACH + BOX + CASE \u2192 SU = EA (override)\n3. Non-injectable items (tablet, capsule, tube, etc.) \u2192 SU = EA\n4. Default \u2192 SU = EA\nKey Logic:\n- Always determine SU based on the OUTER selling package (Box/Carton/Case)\n- If \"bags\" or \"UD cups\" are the OUTER selling unit \u2192 SU = CS\n- If \"bags\" or \"UD cups\" are inside another OUTER package (e.g., carton of bags), then treat based on the outer package and quantity \u2192 SU = CT\n- Decide using TOTAL quantity inside\n- Do not assign CS unless explicitly case-level\nExamples:\n- 1 Box of 30 Tablets \u2192 Non-injectable \u2192 EA  \n- 1 Box of 10 Syringes \u2192 Injectable (multiple) \u2192 CT  \n- 1 Box/Carton of 1 Vial \u2192 Injectable (single) \u2192 EA  \n- 1 Box of 10 Vials \u2192 Injectable (multiple) \u2192 CT  ",
                 "version_example": "",
                 "version_specific_instruction": "",
                 "version_created_by_name": "Admin",
@@ -898,7 +898,7 @@
                     "is_rule_active": true,
                     "rule_create_date": "2026-04-27T18:44:55.737911",
                     "rule_last_update_date": "2026-04-27T18:44:55.738181",
-                    "rule_sequence_number": 29
+                    "rule_sequence_number": 32
                 }
             },
             "status": "Ready For Review",
@@ -923,7 +923,7 @@
                 "version": "0.3",
                 "version_description": " ",
                 "version_role": "You are a master at Item Setup in a Pharmaceutical company",
-                "version_guidelines": "On the second page of the HDA under the REMS or REGISTRY RESTRICTION section.\\n If the document mentions the value as YES to “Is there a REMS on this product” field, alert the PM with:\\n“ This item has been identified as a REMS product. Additional approval and REMS messaging is required.” in the pm_review field",
+                "version_guidelines": "On the second page of the HDA under the REMS or REGISTRY RESTRICTION section.\\n If the document mentions the value as YES to \u201cIs there a REMS on this product\u201d field, alert the PM with:\\n\u201c This item has been identified as a REMS product. Additional approval and REMS messaging is required.\u201d in the pm_review field",
                 "version_example": "",
                 "version_specific_instruction": "",
                 "version_created_by_name": "Admin",
@@ -941,7 +941,7 @@
                     "is_rule_active": true,
                     "rule_create_date": "2026-05-16T09:23:04.663517",
                     "rule_last_update_date": "2026-05-16T09:23:04.663833",
-                    "rule_sequence_number": 42
+                    "rule_sequence_number": 39
                 }
             },
             "status": "Ready For Review",
@@ -966,7 +966,7 @@
                 "version": "0.4",
                 "version_description": " ",
                 "version_role": " ",
-                "version_guidelines": "Extract From HDA, under 'Product Information' Section 'Company Name', check to see if 1) exact match found, if not 2) then the first part of the company name on the HDA matches with the company name on the label - if company name includes \"d/b/a\" or \"D/B/A\" or \"DBA\" or \"doing business as\", the agent must ignore everything before it and extract ONLY the complete company name appearing after \"d/b/a\" or equivalent terms to match with the company name on the label- Use first part of company name ONLY for matching, NOT for output.- Always return the FULL company name after matching.- Do NOT return only the first word.- Do NOT truncate multi-word names.- Preserve meaningful parts of the name like PHARMACEUTICALS, HEALTHCARE, LIMITED.- Remove suffixes like LLC, INC ONLY if clearly not part of required output.- If both \"Company Name\" and \"Manufactured for\" exist, prioritize \"Company Name\".- Final output must be in uppercase. If there's a mismatch, alert PM with \"Manufacturer Name on HDA does not match the label.\"",
+                "version_guidelines": "Extract From HDA, under 'Product Information' Section 'Company Name', check to see if 1) exact match found, if not 2) then the first part of the company name on the HDA matches with the company name on the label\u00a0- if company name includes \"d/b/a\" or \"D/B/A\" or \"DBA\" or \"doing business as\", the agent must ignore everything before it and extract ONLY the complete company name appearing after \"d/b/a\" or equivalent terms to match with the company name on the label- Use first part of company name ONLY for matching, NOT for output.- Always return the FULL company name after matching.- Do NOT return only the first word.- Do NOT truncate multi-word names.- Preserve meaningful parts of the name like PHARMACEUTICALS, HEALTHCARE, LIMITED.- Remove suffixes like LLC, INC ONLY if clearly not part of required output.- If both \"Company Name\" and \"Manufactured for\" exist, prioritize \"Company Name\".- Final output must be in uppercase.\u00a0If there's a mismatch, alert PM with \"Manufacturer Name on HDA does not match the label.\"",
                 "version_example": "Use dynamic search with \"Camber\" instead of \"Camber Pharmaceuticals Inc\"",
                 "version_specific_instruction": "",
                 "version_created_by_name": "Admin",
@@ -984,7 +984,7 @@
                     "is_rule_active": true,
                     "rule_create_date": "2026-04-27T18:44:54.568210",
                     "rule_last_update_date": "2026-04-27T18:44:54.568485",
-                    "rule_sequence_number": 9
+                    "rule_sequence_number": 11
                 }
             },
             "status": "Ready For Review",
@@ -1009,7 +1009,7 @@
                 "version": "0.2",
                 "version_description": " ",
                 "version_role": " ",
-                "version_guidelines": "Extract the following fields from the HDA:\n- From Product Information: Description and Proprietary Name (If Applicable)\n- and Established Name\n- From Product Description Information: Dosage Form\n- From Order Information: What is NDC Selling Unit?\n- From Additional Product Information: Is the Product…\nIf any of the extracted fields contain any of the following terms: Injection, Injectable, Vial, SDV, MDV, single dose vial, multidose vial, cartridge, bags, UD, unit dose, UD Cups, Syringe, PFS, Ampule, Ampul, IV Solution, piggyback, then set the value to \"H- Hospital Item\".If none of these terms appear, set the value to \"G- Generic Item\".",
+                "version_guidelines": "Extract the following fields from the HDA:\n- From Product Information: Description and Proprietary Name (If Applicable)\n- and Established Name\n- From Product Description Information: Dosage Form\n- From Order Information: What is NDC Selling Unit?\n- From Additional Product Information: Is the Product\u2026\nIf any of the extracted fields contain any of the following terms: Injection, Injectable, Vial, SDV, MDV, single dose vial, multidose vial, cartridge, bags, UD, unit dose, UD Cups, Syringe, PFS, Ampule, Ampul, IV Solution, piggyback, then set the value to \"H- Hospital Item\".If none of these terms appear, set the value to \"G- Generic Item\".",
                 "version_example": "",
                 "version_specific_instruction": "",
                 "version_created_by_name": "Admin",
@@ -1030,7 +1030,7 @@
                     "is_rule_active": true,
                     "rule_create_date": "2026-04-27T18:44:55.036315",
                     "rule_last_update_date": "2026-04-27T18:44:55.036600",
-                    "rule_sequence_number": 14
+                    "rule_sequence_number": 17
                 }
             },
             "status": "Ready For Review",
@@ -1055,7 +1055,7 @@
                 "version": "0.3",
                 "version_description": " ",
                 "version_role": "You are a master at Item Setup in a Pharmaceutical company",
-                "version_guidelines": "Extracting from Snowflake: To derive the Inforem value for a new item, the process begins by taking the first word of the active ingredient from the HDA form and using it as a query parameter in a “like item” search in Snowflake to identify similar products. The results are initially filtered using the second word of the ingredient. If this filtering returns records, those results are retained; otherwise, the previous result set is used. From the final filtered results, unique Inforem values are identified, and the value with the highest repetition count is selected as the final Inforem value.\nIf multiple Inforem values are returned, an alert is generated for PM review.\nExample\nSuppose you have a new product with the Active Ingredients: “Albuterol Sulfate ” .\n\nStep 1: Take the first word: “Albuterol”\nStep 2: Query Snowflake for items where the label description starts with “Albuterol”\nStep 3: Filtering result using second word of ingredient, if filter return records, those are retain otherwise previous result\nStep 4: Further identify the “form” from the HDA and label to narrow down the correct Inforem. \nStep 5: Filter Unique Inforem values with occurance count. Highest Occurance one will be Inforem value\nIf multiple unique INFOREM values are returned, alert PM with “multiple INFOREM values returned”\nAlways return values from Snowflake only",
+                "version_guidelines": "Extracting from Snowflake: To derive the Inforem value for a new item, the process begins by taking the first word of the active ingredient from the HDA form and using it as a query parameter in a \u201clike item\u201d search in Snowflake to identify similar products. The results are initially filtered using the second word of the ingredient. If this filtering returns records, those results are retained; otherwise, the previous result set is used. From the final filtered results, unique Inforem values are identified, and the value with the highest repetition count is selected as the final Inforem value.\nIf multiple Inforem values are returned, an alert is generated for PM review.\nExample\nSuppose you have a new product with the Active Ingredients: \u201cAlbuterol Sulfate \u201d .\n\nStep 1: Take the first word: \u201cAlbuterol\u201d\nStep 2: Query Snowflake for items where the label description starts with \u201cAlbuterol\u201d\nStep 3: Filtering result using second word of ingredient, if filter return records, those are retain otherwise previous result\nStep 4: Further identify the \u201cform\u201d from the HDA and label to narrow down the correct Inforem. \nStep 5: Filter Unique Inforem values with occurance count. Highest Occurance one will be Inforem value\nIf multiple unique INFOREM values are returned, alert PM with \u201cmultiple INFOREM values returned\u201d\nAlways return values from Snowflake only",
                 "version_example": "",
                 "version_specific_instruction": "",
                 "version_created_by_name": "Admin",
@@ -1073,7 +1073,7 @@
                     "is_rule_active": true,
                     "rule_create_date": "2026-04-27T18:44:55.330512",
                     "rule_last_update_date": "2026-04-27T18:44:55.330776",
-                    "rule_sequence_number": 19
+                    "rule_sequence_number": 22
                 }
             },
             "status": "Ready For Review",
@@ -1098,7 +1098,7 @@
                 "version": "0.3",
                 "version_description": " ",
                 "version_role": "You are a master at Item Setup in a Pharmaceutical company",
-                "version_guidelines": "Extracting from Snowflake: To derive the MICA value for a new item, the process begins by taking the first word of the active ingredient from the HDA form and using it as a query parameter in a “like item” search in Snowflake to identify similar products. The results are initially filtered using the second word of the ingredient. If this filtering returns records, those results are retained; otherwise, the previous result set is used. The bot needs to further identify the “form” from the HDA and label to narrow down the correct MICA. From the final filtered results, unique MICA values are identified, and the value with the highest repetition count is selected as the final MICA value.\n\nExample:\nSuppose you have a new product with the Active Ingredients: “Albuterol Sulfate”\nStep 1: Take the first word: “Albuterol”\nStep 2: Query Snowflake for items where the description starts with “Albuterol”\nStep 3: Filtering result using second word of ingredient, if filter return records, those are retain otherwise previous result\nStep 4: Further identify the “form” from the HDA and label to narrow down the correct MICA. \nStep 5: Filter Unique Mica values with occurrence count. Highest occurrence one will be MICA value\nStep 6: If we are getting multiple Mica values we are sending an alert to PM for review.\nIf multiple unique MICA values are returned, alert PM with \"multiple MICA values returned\"",
+                "version_guidelines": "Extracting from Snowflake: To derive the MICA value for a new item, the process begins by taking the first word of the active ingredient from the HDA form and using it as a query parameter in a \u201clike item\u201d search in Snowflake to identify similar products. The results are initially filtered using the second word of the ingredient. If this filtering returns records, those results are retained; otherwise, the previous result set is used. The bot needs to further identify the \u201cform\u201d from the HDA and label to narrow down the correct MICA. From the final filtered results, unique MICA values are identified, and the value with the highest repetition count is selected as the final MICA value.\n\nExample:\nSuppose you have a new product with the Active Ingredients: \u201cAlbuterol Sulfate\u201d\nStep 1: Take the first word: \u201cAlbuterol\u201d\nStep 2: Query Snowflake for items where the description starts with \u201cAlbuterol\u201d\nStep 3: Filtering result using second word of ingredient, if filter return records, those are retain otherwise previous result\nStep 4: Further identify the \u201cform\u201d from the HDA and label to narrow down the correct MICA. \nStep 5: Filter Unique Mica values with occurrence count. Highest occurrence one will be MICA value\nStep 6: If we are getting multiple Mica values we are sending an alert to PM for review.\nIf multiple unique MICA values are returned, alert PM with \"multiple MICA values returned\"",
                 "version_example": "",
                 "version_specific_instruction": "",
                 "version_created_by_name": "Admin",
@@ -1116,7 +1116,7 @@
                     "is_rule_active": true,
                     "rule_create_date": "2026-04-27T18:44:55.290860",
                     "rule_last_update_date": "2026-04-27T18:44:55.291190",
-                    "rule_sequence_number": 18
+                    "rule_sequence_number": 21
                 }
             },
             "status": "Ready For Review",
@@ -1162,7 +1162,7 @@
                     "is_rule_active": true,
                     "rule_create_date": "2026-04-27T18:44:55.192738",
                     "rule_last_update_date": "2026-04-27T18:44:55.192957",
-                    "rule_sequence_number": 7
+                    "rule_sequence_number": 8
                 }
             },
             "status": "Ready For Review",
@@ -1187,7 +1187,7 @@
                 "version": "0.2",
                 "version_description": " ",
                 "version_role": "You are a master at Item Setup in a Pharmaceutical company",
-                "version_guidelines": "Always return \"YES\".\nAlerts:\n- If application_type = \"NDA\" → alert: \"NDA Application Type needs review. If it's a 505(b)(2), need Brand's approval prior to setup.\"\n- If application_type = \"DESI\", OR application_type is blank AND application_number contains \"DESI\" or \"UNAPPROVED DRUG OTHER\" → alert: \"This is a DESI product. Supplier is required to fill out the DESI questionnaire.\"\n- If application_type is one of [\"BLA\", \"Med Device\", \"OTC\", \"Blank\"] → alert: \"Application Type needs review.\"\n- If application_type = \"ANDA\" OR None of the above -> don't send alert just return \"YES\" as the value.",
+                "version_guidelines": "Always return \"YES\".\nAlerts:\n- If application_type = \"NDA\" \u2192 alert: \"NDA Application Type needs review. If it's a 505(b)(2), need Brand's approval prior to setup.\"\n- If application_type = \"DESI\", OR application_type is blank AND application_number contains \"DESI\" or \"UNAPPROVED DRUG OTHER\" \u2192 alert: \"This is a DESI product. Supplier is required to fill out the DESI questionnaire.\"\n- If application_type is one of [\"BLA\", \"Med Device\", \"OTC\", \"Blank\"] \u2192 alert: \"Application Type needs review.\"\n- If application_type = \"ANDA\" OR None of the above -> don't send alert just return \"YES\" as the value.",
                 "version_example": "",
                 "version_specific_instruction": "",
                 "version_created_by_name": "Admin",
@@ -1254,7 +1254,7 @@
                     "is_rule_active": true,
                     "rule_create_date": "2026-04-27T18:48:55.636204",
                     "rule_last_update_date": "2026-04-27T18:48:55.636460",
-                    "rule_sequence_number": 13
+                    "rule_sequence_number": 15
                 }
             },
             "status": "Ready For Review",
@@ -1270,7 +1270,7 @@
             "ndc_doc_id": 520,
             "field_name": "Vendor ID",
             "extracted_values": "03121/RX/GEN_DROPSHIP//",
-            "derived_from": "Company Name: Aurobindo Pharma USA, Inc.; Controlled Room - between 20 and 25 C (68° - 77º F); Controlled Substance? No; Is product exempt from DSCSA? No; Drop-Ship Only; These should be loaded as Catalog N and TBA, as the launch is expected on 3/2. All Pomalidomide products for this launch should be dropship only based on the REMS requirements",
+            "derived_from": "Company Name: Aurobindo Pharma USA, Inc.; Controlled Room - between 20 and 25 C (68\u00b0 - 77\u00ba F); Controlled Substance? No; Is product exempt from DSCSA? No; Drop-Ship Only; These should be loaded as Catalog N and TBA, as the launch is expected on 3/2. All Pomalidomide products for this launch should be dropship only based on the REMS requirements",
             "pharmacist_values": "N/A",
             "trust_score": 44.4,
             "rule_version": {
@@ -1279,7 +1279,7 @@
                 "version": "0.4",
                 "version_description": " ",
                 "version_role": "You are a master at Item Setup in a Pharmaceutical company",
-                "version_guidelines": "Data is extracted from Snowflake using the provided query. Dynamic filters are added to the query based on data obtained from HDA.\n\nApply the following rules:\n\n- If supplier responds YES to \"Is product exempt from DSCSA?\", choose vendor ID where Keyword 4 contains \"DSCSA EXEMPT\"\n- If Controlled Substance = YES and Schedule = 2 or 2N → Keyword 3 = \"CLASS II\"\n- If Controlled Substance = YES and Schedule = 3, 3N, 4, or 5 → Keyword 3 = \"CLASS III - V\"\n- If Temperature Range = \"cold\" or \"cool\" → Keyword 2 = \"REF\"\n- If \"Drop-Ship Only\" → Keyword 2 = \"DROPSHIP\"\n- If Controlled by State = YES AND NRDC exists AND drug is on state control list → Keyword 4 = \"STATE CONTROL\"\n- If \"Pseudoephedrine\" or \"PSE\" is detected → Keyword 4 = \"PSE ONLY\"\n- If Company = \"A2A ALLIANCE\" AND DSCSA manufacturer = NO → Keyword 4 = \"RESELLER\"\n- If \"Is product sold by manufacturer's exclusive distributor? Yes\" appears in SAME line → Keyword 4 = \"EXCLUSIVE DISTRIBUTOR\"\n- If Company = \"HIKMA\" AND item is injectable → Keyword 2 = \"INJECTABLE\"\n- If Company = \"KESIN\" or \"NATCO\" AND Repackaged = YES → Keyword 4 = \"REPACK\"\n- If company contains \"d/b/a\", \"DBA\", or \"doing business as\" → use name after it for vendor lookup\n- If Company contains \"Avenacy\", \"Carnegie\", \"Milla\", \"Patriot\" → Keyword 4 = \"TITLE MODEL\"\n- Normalize vendor name:\n    - Replace \"DR.\" → \"DR\"\n    - Replace any \".\" or \"-\" between words with a single space\n      (e.g., \"PD-RX\" → \"PD RX\", \"ABC.LABS\" → \"ABC LABS\")\n    - Ensure no extra or duplicate spaces are created\n- If vendor name contains \"AMERICAN\" → use \"AMERICAN\" + the immediately following word as the vendor prefix for lookup\n  (e.g., \"AMERICAN HEALTH PACKAGING\" → \"AMERICAN HEALTH\")\n\nPM Alerts:\n- If Temperature Range = \"Frozen\", \"Freezer\", or \"Avoid Excessive Heat\" → Alert: \"Temperature Range Field requires review\"\n- If multiple vendor IDs are found → Alert: \"Multiple Vendor IDs have been identified. Please review and choose the correct one.\"\n\nOutput Format (STRICT):\n\n- Do NOT include the text \"Vendor ID:\" anywhere\n- Each vendor entry MUST follow EXACT format:\n\nvendor_id / RX / Keyword2 / Keyword3 / Keyword4\n\n- Keyword1 MUST always be \"RX\" (do NOT skip or change it)\n- Do NOT miss any field → keep empty using \"\" if not applicable\n- Do NOT duplicate values (e.g., avoid: 8106, 8106)\n\n- If multiple vendor IDs exist:\n  → Show ALL entries in a SINGLE LINE\n  → Separate each FULL entry using \"|\"\n",
+                "version_guidelines": "Data is extracted from Snowflake using the provided query. Dynamic filters are added to the query based on data obtained from HDA.\n\nApply the following rules:\n\n- If supplier responds YES to \"Is product exempt from DSCSA?\", choose vendor ID where Keyword 4 contains \"DSCSA EXEMPT\"\n- If Controlled Substance = YES and Schedule = 2 or 2N \u2192 Keyword 3 = \"CLASS II\"\n- If Controlled Substance = YES and Schedule = 3, 3N, 4, or 5 \u2192 Keyword 3 = \"CLASS III - V\"\n- If Temperature Range = \"cold\" or \"cool\" \u2192 Keyword 2 = \"REF\"\n- If \"Drop-Ship Only\" \u2192 Keyword 2 = \"DROPSHIP\"\n- If Controlled by State = YES AND NRDC exists AND drug is on state control list \u2192 Keyword 4 = \"STATE CONTROL\"\n- If \"Pseudoephedrine\" or \"PSE\" is detected \u2192 Keyword 4 = \"PSE ONLY\"\n- If Company = \"A2A ALLIANCE\" AND DSCSA manufacturer = NO \u2192 Keyword 4 = \"RESELLER\"\n- If \"Is product sold by manufacturer's exclusive distributor? Yes\" appears in SAME line \u2192 Keyword 4 = \"EXCLUSIVE DISTRIBUTOR\"\n- If Company = \"HIKMA\" AND item is injectable \u2192 Keyword 2 = \"INJECTABLE\"\n- If Company = \"KESIN\" or \"NATCO\" AND Repackaged = YES \u2192 Keyword 4 = \"REPACK\"\n- If company contains \"d/b/a\", \"DBA\", or \"doing business as\" \u2192 use name after it for vendor lookup\n- If Company contains \"Avenacy\", \"Carnegie\", \"Milla\", \"Patriot\" \u2192 Keyword 4 = \"TITLE MODEL\"\n- Normalize vendor name:\n    - Replace \"DR.\" \u2192 \"DR\"\n    - Replace any \".\" or \"-\" between words with a single space\n      (e.g., \"PD-RX\" \u2192 \"PD RX\", \"ABC.LABS\" \u2192 \"ABC LABS\")\n    - Ensure no extra or duplicate spaces are created\n- If vendor name contains \"AMERICAN\" \u2192 use \"AMERICAN\" + the immediately following word as the vendor prefix for lookup\n  (e.g., \"AMERICAN HEALTH PACKAGING\" \u2192 \"AMERICAN HEALTH\")\n\nPM Alerts:\n- If Temperature Range = \"Frozen\", \"Freezer\", or \"Avoid Excessive Heat\" \u2192 Alert: \"Temperature Range Field requires review\"\n- If multiple vendor IDs are found \u2192 Alert: \"Multiple Vendor IDs have been identified. Please review and choose the correct one.\"\n\nOutput Format (STRICT):\n\n- Do NOT include the text \"Vendor ID:\" anywhere\n- Each vendor entry MUST follow EXACT format:\n\nvendor_id / RX / Keyword2 / Keyword3 / Keyword4\n\n- Keyword1 MUST always be \"RX\" (do NOT skip or change it)\n- Do NOT miss any field \u2192 keep empty using \"\" if not applicable\n- Do NOT duplicate values (e.g., avoid: 8106, 8106)\n\n- If multiple vendor IDs exist:\n  \u2192 Show ALL entries in a SINGLE LINE\n  \u2192 Separate each FULL entry using \"|\"\n",
                 "version_example": "Correct:\n08776/RX/GEN_FDC//STATE CONTROL\n03086/RX/GEN_NRDC//\n\nMultiple (single line):\n19990/RX/GEN_NRDC//|20033/RX/GEN_NRDC//PROPOFOL ITEMS ONLY DO NOT FREEZE|20001/RX/GEN_FDC//NRDC EXCLUSION ITEMS ONLY",
                 "version_specific_instruction": "",
                 "version_created_by_name": "Admin",
@@ -1297,7 +1297,7 @@
                     "is_rule_active": true,
                     "rule_create_date": "2026-04-27T18:44:54.614700",
                     "rule_last_update_date": "2026-04-27T18:44:54.615002",
-                    "rule_sequence_number": 10
+                    "rule_sequence_number": 12
                 }
             },
             "status": "Ready For Review",
@@ -1313,7 +1313,7 @@
             "ndc_doc_id": 520,
             "field_name": "Individual DC",
             "extracted_values": "NONE - DROPSHIP",
-            "derived_from": "Aurobindo Pharma USA, Inc.; Controlled Room - between 20 and 25 C (68° - 77º F); No; No; Drop-Ship Only; All Pomalidomide products for this launch should be dropship only based on the REMS requirements",
+            "derived_from": "Aurobindo Pharma USA, Inc.; Controlled Room - between 20 and 25 C (68\u00b0 - 77\u00ba F); No; No; Drop-Ship Only; All Pomalidomide products for this launch should be dropship only based on the REMS requirements",
             "pharmacist_values": "N/A",
             "trust_score": 43.6,
             "rule_version": {
@@ -1322,7 +1322,7 @@
                 "version": "0.5",
                 "version_description": " ",
                 "version_role": "You are a master at Item Setup in a Pharmaceutical company",
-                "version_guidelines": "Role:\nStrictly determine Individual Distribution Channel (DC) using ONLY Snowflake query output.\nDynamic filters are applied to the query based on HDA data.\n\nPre-Processing Rules (Apply BEFORE Query Execution):\n\n- If supplier responds YES to \"Is product exempt from DSCSA?\" → use Keyword 4 containing \"DSCSA EXEMPT\"\n- If Controlled Substance = YES:\n    - Schedule 2 or 2N → Keyword 3 = \"CLASS II\"\n    - Schedule 3, 3N, 4, or 5 → Keyword 3 = \"CLASS III - V\"\n- If Temperature Range = \"cold\" or \"cool\" → Keyword 2 = \"REF\"\n- If \"Drop-Ship Only\" → Keyword 2 = \"DROPSHIP\"\n- If Controlled by State = YES AND NRDC exists AND drug on state control list → Keyword 4 = \"STATE CONTROL\"\n- If \"Pseudoephedrine\" or \"PSE\" detected → Keyword 4 = \"PSE ONLY\"\n- If Company = \"A2A ALLIANCE\" AND DSCSA manufacturer = NO → Keyword 4 = \"RESELLER\"\n- If \"exclusive distributor = YES\" in SAME line → Keyword 4 = \"EXCLUSIVE DISTRIBUTOR\"\n- If Company = \"HIKMA\" AND item is injectable → Keyword 2 = \"INJECTABLE\"\n- If Company = \"KESIN\" or \"NATCO\" AND Repackaged = YES → Keyword 4 = \"REPACK\"\n- If company contains \"d/b/a\", \"DBA\", or \"doing business as\" → use name after it\n- If Company contains \"Avenacy\", \"Carnegie\", \"Milla\", \"Patriot\" → Keyword 4 = \"TITLE MODEL\"\n\nVendor Name Normalization:\n- Replace any \".\" or \"-\" between words with a single space\n    (e.g., \"PD-RX\" → \"PD RX\", \"Dr. Reddy's\" → \"Dr Reddy's\")\n- If vendor name contains \"AMERICAN\" → use \"AMERICAN\" + next word only\n\nCore Rule:\n\n- Data MUST be extracted ONLY from Snowflake query output\n- DO NOT infer, assume, or override results\n\nKeyword 2 → Individual DC Mapping (STRICT):\n\n- If Keyword 2 contains \"NRDC\" → return: 8106 (NRDC)\n- If Keyword 2 contains \"SRC\" → return: 8107 (SRC)\n- If Keyword 2 contains \"FDC\" → return: NONE - FDC\n- If Keyword 2 contains \"DROPSHIP\" → return: NONE - DROPSHIP\n- If Keyword 2 is NULL or blank → return: NOT FOUND\n\nMultiple Results Handling (STRICT):\n\n- Process ALL rows returned from Snowflake\n- Extract Keyword 2 from EACH row\n- REMOVE duplicate values\n- RETURN only UNIQUE Individual DC values\n\nOutput Format (STRICT):\n\n- Do NOT include any extra text\n- Return ONLY mapped DC values\n- If multiple → use SINGLE LINE separated by \"|\"\n\nPM Alerts:\n\n- If NO rows returned:\n    → Output: NOT FOUND\n    → Alert: \"Empty query results. Review individual DC field.\"\n\n- If multiple rows returned:\n    → Alert:\n      \"Multiple Individual DC values identified.\n       Please review the below results and choose the correct one for setup.\"\n\n- If mixed distribution models exist (NRDC, SRC, FDC together):\n    → Alert:\n      \"Multiple Distribution Models exist. Review individual DC field.\"\n\nStrict Constraints:\n\n- NO hallucination\n- NO inference\n- NO external data\n- NO first-row-only logic\n- Always process full result set",
+                "version_guidelines": "Role:\nStrictly determine Individual Distribution Channel (DC) using ONLY Snowflake query output.\nDynamic filters are applied to the query based on HDA data.\n\nPre-Processing Rules (Apply BEFORE Query Execution):\n\n- If supplier responds YES to \"Is product exempt from DSCSA?\" \u2192 use Keyword 4 containing \"DSCSA EXEMPT\"\n- If Controlled Substance = YES:\n    - Schedule 2 or 2N \u2192 Keyword 3 = \"CLASS II\"\n    - Schedule 3, 3N, 4, or 5 \u2192 Keyword 3 = \"CLASS III - V\"\n- If Temperature Range = \"cold\" or \"cool\" \u2192 Keyword 2 = \"REF\"\n- If \"Drop-Ship Only\" \u2192 Keyword 2 = \"DROPSHIP\"\n- If Controlled by State = YES AND NRDC exists AND drug on state control list \u2192 Keyword 4 = \"STATE CONTROL\"\n- If \"Pseudoephedrine\" or \"PSE\" detected \u2192 Keyword 4 = \"PSE ONLY\"\n- If Company = \"A2A ALLIANCE\" AND DSCSA manufacturer = NO \u2192 Keyword 4 = \"RESELLER\"\n- If \"exclusive distributor = YES\" in SAME line \u2192 Keyword 4 = \"EXCLUSIVE DISTRIBUTOR\"\n- If Company = \"HIKMA\" AND item is injectable \u2192 Keyword 2 = \"INJECTABLE\"\n- If Company = \"KESIN\" or \"NATCO\" AND Repackaged = YES \u2192 Keyword 4 = \"REPACK\"\n- If company contains \"d/b/a\", \"DBA\", or \"doing business as\" \u2192 use name after it\n- If Company contains \"Avenacy\", \"Carnegie\", \"Milla\", \"Patriot\" \u2192 Keyword 4 = \"TITLE MODEL\"\n\nVendor Name Normalization:\n- Replace any \".\" or \"-\" between words with a single space\n    (e.g., \"PD-RX\" \u2192 \"PD RX\", \"Dr. Reddy's\" \u2192 \"Dr Reddy's\")\n- If vendor name contains \"AMERICAN\" \u2192 use \"AMERICAN\" + next word only\n\nCore Rule:\n\n- Data MUST be extracted ONLY from Snowflake query output\n- DO NOT infer, assume, or override results\n\nKeyword 2 \u2192 Individual DC Mapping (STRICT):\n\n- If Keyword 2 contains \"NRDC\" \u2192 return: 8106 (NRDC)\n- If Keyword 2 contains \"SRC\" \u2192 return: 8107 (SRC)\n- If Keyword 2 contains \"FDC\" \u2192 return: NONE - FDC\n- If Keyword 2 contains \"DROPSHIP\" \u2192 return: NONE - DROPSHIP\n- If Keyword 2 is NULL or blank \u2192 return: NOT FOUND\n\nMultiple Results Handling (STRICT):\n\n- Process ALL rows returned from Snowflake\n- Extract Keyword 2 from EACH row\n- REMOVE duplicate values\n- RETURN only UNIQUE Individual DC values\n\nOutput Format (STRICT):\n\n- Do NOT include any extra text\n- Return ONLY mapped DC values\n- If multiple \u2192 use SINGLE LINE separated by \"|\"\n\nPM Alerts:\n\n- If NO rows returned:\n    \u2192 Output: NOT FOUND\n    \u2192 Alert: \"Empty query results. Review individual DC field.\"\n\n- If multiple rows returned:\n    \u2192 Alert:\n      \"Multiple Individual DC values identified.\n       Please review the below results and choose the correct one for setup.\"\n\n- If mixed distribution models exist (NRDC, SRC, FDC together):\n    \u2192 Alert:\n      \"Multiple Distribution Models exist. Review individual DC field.\"\n\nStrict Constraints:\n\n- NO hallucination\n- NO inference\n- NO external data\n- NO first-row-only logic\n- Always process full result set",
                 "version_example": "Single:\n8106 (NRDC)\n\nMultiple:\n8106 (NRDC) | 8107 (SRC)",
                 "version_specific_instruction": "",
                 "version_created_by_name": "Admin",
@@ -1346,7 +1346,7 @@
                     "is_rule_active": true,
                     "rule_create_date": "2026-04-27T18:44:54.722390",
                     "rule_last_update_date": "2026-04-27T18:44:54.722703",
-                    "rule_sequence_number": 12
+                    "rule_sequence_number": 14
                 }
             },
             "status": "Ready For Review",
@@ -1371,7 +1371,7 @@
                 "version": "0.3",
                 "version_description": " ",
                 "version_role": " ",
-                "version_guidelines": "Always \"table 10 (RX)\" unless it's a dropship item.  If `DROP SHIP FLAG`  is YES, then set to \"NONE - DROPSHIP\"",
+                "version_guidelines": "Always \"table 10 (RX)\" unless it's a dropship item.\u00a0 If `DROP SHIP FLAG`  is YES, then set to \"NONE - DROPSHIP\"",
                 "version_example": "",
                 "version_specific_instruction": "",
                 "version_created_by_name": "Admin",
@@ -1394,7 +1394,7 @@
                     "is_rule_active": true,
                     "rule_create_date": "2026-04-27T18:44:54.682491",
                     "rule_last_update_date": "2026-04-27T18:44:54.682764",
-                    "rule_sequence_number": 11
+                    "rule_sequence_number": 13
                 }
             },
             "status": "Ready For Review",
@@ -1439,7 +1439,7 @@
                     "is_rule_active": true,
                     "rule_create_date": "2026-04-27T18:44:55.488705",
                     "rule_last_update_date": "2026-04-27T18:44:55.489023",
-                    "rule_sequence_number": 23
+                    "rule_sequence_number": 26
                 }
             },
             "status": "Ready For Review",
@@ -1484,7 +1484,7 @@
                     "is_rule_active": true,
                     "rule_create_date": "2026-04-27T18:44:55.867323",
                     "rule_last_update_date": "2026-04-27T18:44:55.867571",
-                    "rule_sequence_number": 32
+                    "rule_sequence_number": 35
                 }
             },
             "status": "Ready For Review",
@@ -1509,7 +1509,7 @@
                 "version": "0.3",
                 "version_description": " ",
                 "version_role": "You are a master at Item Setup in a Pharmaceutical company",
-                "version_guidelines": "Derive the Z2 (buying) Description using the `EN (selling) Description` and `NDC` . - First, ensure the EN (selling) Description is already correctly derived and use it as the base. - Remove the Vendor Abbreviation from the EN Description (second last word in EN). - Determine if the product is controlled:  - On the second page of HDA, check the \"ADD'L STORAGE INFORMATION\" section.  - Under this section, locate \"Schedule No.\"  - If Schedule No. is 2, 3, 4, or 5, treat the product as controlled (CII or CIII–V) and DO NOT prepend NDC digits.  - If Schedule No. is not present or is not 2–5, treat the product as non-controlled and proceed with NDC processing. - For non-controlled products:  - Use the NDC value exactly as provided.  - Split the NDC into its 3 segments using hyphens.  - Extract ONLY the second and third segments.  - Preserve both segments exactly as they appear, including all leading zeros.  - Concatenate:      second segment + third segment  - The resulting value must be exactly 6 characters:      - Do NOT remove or add digits.      - Do NOT treat values as numbers.      - Do NOT reformat or recalculate segments.   - Prepend this 6-character value to the EN Description (after vendor removal) with a space. - The final Z2 Description must:  - Be in ALL CAPS  - Not contain the vendor abbreviation  - Preserve all other parts of the EN Description exactly  - Any mathematical operation like converting 10mg/10ml dosage strength converting it to 1mg/1ml in Z2 Description must be strictly avoided. The dosage strength should be preserved exactly as it appears in the EN Description without any alteration.  - Contain EXACTLY 6 characters at the beginning when applicable",
+                "version_guidelines": "Derive the Z2 (buying) Description using the `EN (selling) Description` and `NDC` .\u00a0- First, ensure the EN (selling) Description is already correctly derived and use it as the base.\u00a0- Remove the Vendor Abbreviation from the EN Description (second last word in EN).\u00a0- Determine if the product is controlled:\u00a0 - On the second page of HDA, check the \"ADD'L STORAGE INFORMATION\" section.\u00a0 - Under this section, locate \"Schedule No.\"\u00a0 - If Schedule No. is 2, 3, 4, or 5, treat the product as controlled (CII or CIII\u2013V) and DO NOT prepend NDC digits.\u00a0 - If Schedule No. is not present or is not 2\u20135, treat the product as non-controlled and proceed with NDC processing.\u00a0- For non-controlled products:\u00a0 - Use the NDC value exactly as provided.\u00a0 - Split the NDC into its 3 segments using hyphens.\u00a0 - Extract ONLY the second and third segments.\u00a0 - Preserve both segments exactly as they appear, including all leading zeros.\u00a0 - Concatenate:\u00a0 \u00a0 \u00a0 second segment + third segment\u00a0 - The resulting value must be exactly 6 characters:\u00a0 \u00a0 \u00a0 - Do NOT remove or add digits.\u00a0 \u00a0 \u00a0 - Do NOT treat values as numbers.\u00a0 \u00a0 \u00a0 - Do NOT reformat or recalculate segments.\u00a0\u00a0 - Prepend this 6-character value to the EN Description (after vendor removal) with a space.\u00a0- The final Z2 Description must:\u00a0 - Be in ALL CAPS\u00a0 - Not contain the vendor abbreviation\u00a0 - Preserve all other parts of the EN Description exactly\u00a0 - Any mathematical operation like converting 10mg/10ml dosage strength converting it to 1mg/1ml in Z2 Description must be strictly avoided. The dosage strength should be preserved exactly as it appears in the EN Description without any alteration.\u00a0 - Contain EXACTLY 6 characters at the beginning when applicable",
                 "version_example": "EN: ACET AC TAB 500MG XYZ 30  \nNDC: 12345-0789-01  \nZ2: 078901 ACET AC TAB 500MG 30  ",
                 "version_specific_instruction": "",
                 "version_created_by_name": "Admin",
@@ -1530,7 +1530,7 @@
                     "is_rule_active": true,
                     "rule_create_date": "2026-04-27T18:44:55.833106",
                     "rule_last_update_date": "2026-04-27T18:44:55.833354",
-                    "rule_sequence_number": 31
+                    "rule_sequence_number": 34
                 }
             },
             "status": "Ready For Review",
@@ -1578,7 +1578,7 @@
                     "is_rule_active": true,
                     "rule_create_date": "2026-04-27T18:44:54.974390",
                     "rule_last_update_date": "2026-04-27T18:44:54.974565",
-                    "rule_sequence_number": 6
+                    "rule_sequence_number": 7
                 }
             },
             "status": "Ready For Review",
@@ -1603,7 +1603,7 @@
                 "version": "0.3",
                 "version_description": " ",
                 "version_role": " ",
-                "version_guidelines": "Extracting MOQ from HDA. Follow these steps IN ORDER:\n\nSTEP 1 — QUICK EXITS\n- If `SU` (from dependency rule) is CS → MOQ = 1. Stop.\n- Find 'Minimum Order Quantity?' in the 'Order Information' section.\n- If the answer is 'No' → MOQ = 1. Stop.\n- If the answer is 'Yes' → go to Step 2.\n\nSTEP 2 — CHECK FOR WRITE-IN VALUE\nLook for a direct write-in answer near the MOQ checkboxes:\n- If 'Other: Write In' is followed by a value like '1 Each' or '1 Box', extract the number as MOQ. Stop.\n- If a standalone value like '1 Box' or '1 Carton' appears where the unit word (Box, Carton, etc.) is NOT one of the three checkbox labels (Each, Inner/Carton/Pack, Case), it is a write-in. Extract the number as MOQ. Stop.\nWrite-in values override checkbox parsing. If no write-in is found, continue to Step 3.\n\nSTEP 3 — PARSE THE CHECKBOX SUB-CATEGORIES\nThe three standard sub-category labels are: Each, Inner/Carton/Pack, and Case.\nDetermine which are SELECTED and what number (if any) accompanies each.\n\nSelection rules:\n- ☐ next to a label means UNSELECTED. ABSOLUTE — never override.\n- ☒, X, or a number next to a label means SELECTED.\n- If a label appears with NO checkbox symbol at all (no ☐ and no ☒/X), treat it as SELECTED.\n- Ignore non-standard labels like 'Vial Liquid Multi', 'Vial Powder Sql', etc.\n\nNumber-to-label association — numbers belong to the label AFTER them:\n- 'Each 18 Inner/Carton/Pack' → 18 belongs to Inner/Carton/Pack\n- '18\nInner/Carton/Pack' → 18 belongs to Inner/Carton/Pack\n- 'Inner/Carton/Pack 1 Case' → 1 belongs to Case\n- 'Each ☐ 1 Case' → ☐ belongs to Each (unselected), 1 belongs to Case (selected)\n- A number may be on the same line or the line immediately before the target label; in both cases attach it to the closest label AFTER it.\n- OCR drift rule: patterns like '☐ Each ☐ Inner/Carton/Pack 1 ☐ Case' still mean marker 1 belongs to Case.\n\nSTEP 4 — DETERMINE MOQ VALUE FOR EACH SELECTED SUB-CATEGORY\nFor each selected sub-category:\n\nA) If a number GREATER THAN 1 is associated with this label, that number IS the MOQ. Use it directly. ABSOLUTE PRIORITY — never override with a table lookup.\n        EXAMPLE: '☐ Each 48 Inner/Carton/Pack ☐ Case' → Inner/Carton/Pack has explicit 48 → MOQ = 48. Do NOT look up the packing table. Done.\n\nB) If the marker is 1, X, ☒, or nothing (just means 'checked'), look up Saleable # Pieces from 'ITEM AND PACKING INFORMATION':\n            Each               → 'Item/Each:' row          → Saleable # Pieces\n            Inner/Carton/Pack  → 'Box/Carton/Bundle/ Inner Pack:' row → Saleable # Pieces\n            Case               → 'Case:' row               → Saleable # Pieces\n        These are THREE SEPARATE ROWS. Case always maps to the 'Case:' row — NEVER to 'Box/Carton/Bundle/ Inner Pack:'.\n        EXAMPLE: Case selected with marker 1 and packing table shows Item/Each: 1, Box/Carton/Bundle/ Inner Pack: 12, Case: 48 → Case MOQ = 48 (from 'Case:' row), NOT 12.\n        If a row's Saleable # Pieces is empty, blank, or NA, skip that sub-category.\n                If Case is selected and Case row is missing/blank but Box/Carton/Bundle/ Inner Pack has a value, use that as fallback for Case. Never fallback Case to Item/Each.\n\nSTEP 5 — RESOLVE FINAL MOQ\n- If one sub-category is selected, use its Step 4 value.\n- If multiple are selected, take the HIGHER value and alert PM.\n\nCRITICAL WARNINGS:\n- ☐ = UNSELECTED. Always. Even if the Case row has a big number, if ☐ is next to Case, do NOT use it.\n- NEVER use values from 'What is the NDC selling unit?' or GTIN Saleable Quantity as MOQ.\n- If page 3 has a 'Minimum Order Quantity' field, use it only as confirmation. Do NOT multiply pack counts.\n- if MOQ is over 199 for any type, alert the PM with \"MOQ is greater than 199.\"\n- If multiple fields are filled out, select the higher value and alert PM with \"multiple MOQ values exist.\"\n- If an explicit >1 number is tied to a selected sub-category, do not override it with any table value.\n- If Case is selected, do not return Item/Each value for MOQ.",
+                "version_guidelines": "Extracting MOQ from HDA. Follow these steps IN ORDER:\n\nSTEP 1 \u2014 QUICK EXITS\n- If `SU` (from dependency rule) is CS \u2192 MOQ = 1. Stop.\n- Find 'Minimum Order Quantity?' in the 'Order Information' section.\n- If the answer is 'No' \u2192 MOQ = 1. Stop.\n- If the answer is 'Yes' \u2192 go to Step 2.\n\nSTEP 2 \u2014 CHECK FOR WRITE-IN VALUE\nLook for a direct write-in answer near the MOQ checkboxes:\n- If 'Other: Write In' is followed by a value like '1 Each' or '1 Box', extract the number as MOQ. Stop.\n- If a standalone value like '1 Box' or '1 Carton' appears where the unit word (Box, Carton, etc.) is NOT one of the three checkbox labels (Each, Inner/Carton/Pack, Case), it is a write-in. Extract the number as MOQ. Stop.\nWrite-in values override checkbox parsing. If no write-in is found, continue to Step 3.\n\nSTEP 3 \u2014 PARSE THE CHECKBOX SUB-CATEGORIES\nThe three standard sub-category labels are: Each, Inner/Carton/Pack, and Case.\nDetermine which are SELECTED and what number (if any) accompanies each.\n\nSelection rules:\n- \u2610 next to a label means UNSELECTED. ABSOLUTE \u2014 never override.\n- \u2612, X, or a number next to a label means SELECTED.\n- If a label appears with NO checkbox symbol at all (no \u2610 and no \u2612/X), treat it as SELECTED.\n- Ignore non-standard labels like 'Vial Liquid Multi', 'Vial Powder Sql', etc.\n\nNumber-to-label association \u2014 numbers belong to the label AFTER them:\n- 'Each 18 Inner/Carton/Pack' \u2192 18 belongs to Inner/Carton/Pack\n- '18\nInner/Carton/Pack' \u2192 18 belongs to Inner/Carton/Pack\n- 'Inner/Carton/Pack 1 Case' \u2192 1 belongs to Case\n- 'Each \u2610 1 Case' \u2192 \u2610 belongs to Each (unselected), 1 belongs to Case (selected)\n- A number may be on the same line or the line immediately before the target label; in both cases attach it to the closest label AFTER it.\n- OCR drift rule: patterns like '\u2610 Each \u2610 Inner/Carton/Pack 1 \u2610 Case' still mean marker 1 belongs to Case.\n\nSTEP 4 \u2014 DETERMINE MOQ VALUE FOR EACH SELECTED SUB-CATEGORY\nFor each selected sub-category:\n\nA) If a number GREATER THAN 1 is associated with this label, that number IS the MOQ. Use it directly. ABSOLUTE PRIORITY \u2014 never override with a table lookup.\n        EXAMPLE: '\u2610 Each 48 Inner/Carton/Pack \u2610 Case' \u2192 Inner/Carton/Pack has explicit 48 \u2192 MOQ = 48. Do NOT look up the packing table. Done.\n\nB) If the marker is 1, X, \u2612, or nothing (just means 'checked'), look up Saleable # Pieces from 'ITEM AND PACKING INFORMATION':\n            Each               \u2192 'Item/Each:' row          \u2192 Saleable # Pieces\n            Inner/Carton/Pack  \u2192 'Box/Carton/Bundle/ Inner Pack:' row \u2192 Saleable # Pieces\n            Case               \u2192 'Case:' row               \u2192 Saleable # Pieces\n        These are THREE SEPARATE ROWS. Case always maps to the 'Case:' row \u2014 NEVER to 'Box/Carton/Bundle/ Inner Pack:'.\n        EXAMPLE: Case selected with marker 1 and packing table shows Item/Each: 1, Box/Carton/Bundle/ Inner Pack: 12, Case: 48 \u2192 Case MOQ = 48 (from 'Case:' row), NOT 12.\n        If a row's Saleable # Pieces is empty, blank, or NA, skip that sub-category.\n                If Case is selected and Case row is missing/blank but Box/Carton/Bundle/ Inner Pack has a value, use that as fallback for Case. Never fallback Case to Item/Each.\n\nSTEP 5 \u2014 RESOLVE FINAL MOQ\n- If one sub-category is selected, use its Step 4 value.\n- If multiple are selected, take the HIGHER value and alert PM.\n\nCRITICAL WARNINGS:\n- \u2610 = UNSELECTED. Always. Even if the Case row has a big number, if \u2610 is next to Case, do NOT use it.\n- NEVER use values from 'What is the NDC selling unit?' or GTIN Saleable Quantity as MOQ.\n- If page 3 has a 'Minimum Order Quantity' field, use it only as confirmation. Do NOT multiply pack counts.\n- if MOQ is over 199 for any type, alert the PM with \"MOQ is greater than 199.\"\n- If multiple fields are filled out, select the higher value and alert PM with \"multiple MOQ values exist.\"\n- If an explicit >1 number is tied to a selected sub-category, do not override it with any table value.\n- If Case is selected, do not return Item/Each value for MOQ.",
                 "version_example": "",
                 "version_specific_instruction": "",
                 "version_created_by_name": "Admin",
@@ -1623,7 +1623,7 @@
                     "is_rule_active": true,
                     "rule_create_date": "2026-04-27T18:44:55.586582",
                     "rule_last_update_date": "2026-04-27T18:44:55.586752",
-                    "rule_sequence_number": 25
+                    "rule_sequence_number": 28
                 }
             },
             "status": "Ready For Review",
@@ -1672,7 +1672,7 @@
                     "is_rule_active": true,
                     "rule_create_date": "2026-04-27T18:44:55.113673",
                     "rule_last_update_date": "2026-04-27T18:44:55.113926",
-                    "rule_sequence_number": 15
+                    "rule_sequence_number": 18
                 }
             },
             "status": "Ready For Review",
@@ -1718,7 +1718,7 @@
                     "is_rule_active": true,
                     "rule_create_date": "2026-04-27T18:44:55.442471",
                     "rule_last_update_date": "2026-04-27T18:44:55.442774",
-                    "rule_sequence_number": 22
+                    "rule_sequence_number": 25
                 }
             },
             "status": "Ready For Review",
@@ -1763,7 +1763,7 @@
                     "is_rule_active": true,
                     "rule_create_date": "2026-05-19T14:35:21.961377",
                     "rule_last_update_date": "2026-05-19T14:35:21.961614",
-                    "rule_sequence_number": 43
+                    "rule_sequence_number": 38
                 }
             },
             "status": "Ready For Review",
@@ -1788,7 +1788,7 @@
                 "version": "0.5",
                 "version_description": " ",
                 "version_role": "You are a master at Item Setup in a Pharmaceutical company",
-                "version_guidelines": "Extract from HDA, under \\'Item and Packing Information\\' Section getting \\'Saleable Pieces\\' value against \\'Pallet\\'. The agent needs to compare with \\'Saleable Qty\\' Under \\'GTIN AND HIBCC PRODUCT INFORMATION\\'\nIf the value on HDA is blank then set field to \"BLANK\"\n\nIf the value of Pallet Quantity is mentioned in \"cases\", then multiply that value by the value of the `CS QTY` . For example: If the pallet value is \"108 cases\" and the value of 'CS QTY' is 24, then multiply the value of pallet with CS QTY now, the pallet qty value is 4,320 (108 x 24 = 4,320)\n\nIf the saleable # of pieces is expressed as \"A x B\", extract the exact value directly from the field and alert PM with \"Pallet Qty requires review\" Ex- HDA says \"9 x10\" for pallet quantitiy and the value returned should be \"9 x 10\"\n\nIf a value exists for the Pallet 'Saleable Pieces' under Item and Packing Information but the Saleable Qty is blank under GTIN AND HIBCC PRODUCT INFORMATION, no PM alert is needed since the supplier is not required to have a PALLET GTIN and complete extracted value should be return for 'Saleable Pieces'\n\nIf the Saleable qty under Item and Packing Information is mismatched with Saleable Qty under GTIN AND HIBCC PRODUCT INFORMATION (Compare ONLY when BOTH values explicitly represent PALLET level), the value is set to \"MISMATCH\" and alert PM with \"there is a mismatch with the Pallet saleable # of pieces.\nOVERRIDE RULE (Highest Priority - Must Always Apply):\n- If mismatch condition is triggered at any point:\n  → The final returned value MUST be \"MISMATCH\"\n  → Do NOT return extracted or computed values\n\nFinal Reminder:\n- If the value of Pallet Quantity is mentioned in \"cases\", then multiply that value by the value of the 'CS QTY'. For example: If the pallet value is \"108 cases\" and the value of 'CS QTY' is 24, then multiply the value of pallet with CS QTY now, the pallet qty value is 4,320 (108 x 24 = 4,320)",
+                "version_guidelines": "Extract from HDA, under \\'Item and Packing Information\\' Section getting \\'Saleable Pieces\\' value against \\'Pallet\\'. The agent needs to compare with \\'Saleable Qty\\' Under \\'GTIN AND HIBCC PRODUCT INFORMATION\\'\nIf the value on HDA is blank then set field to \"BLANK\"\n\nIf the value of Pallet Quantity is mentioned in \"cases\", then multiply that value by the value of the `CS QTY` . For example: If the pallet value is \"108 cases\" and the value of 'CS QTY' is 24, then multiply the value of pallet with CS QTY now, the pallet qty value is 4,320 (108 x 24 = 4,320)\n\nIf the saleable # of pieces is expressed as \"A x B\", extract the exact value directly from the field and alert PM with \"Pallet Qty requires review\" Ex- HDA says \"9 x10\" for pallet quantitiy and the value returned should be \"9 x 10\"\n\nIf a value exists for the Pallet 'Saleable Pieces' under Item and Packing Information but the Saleable Qty is blank under GTIN AND HIBCC PRODUCT INFORMATION, no PM alert is needed since the supplier is not required to have a PALLET GTIN and complete extracted value should be return for 'Saleable Pieces'\n\nIf the Saleable qty under Item and Packing Information is mismatched with Saleable Qty under GTIN AND HIBCC PRODUCT INFORMATION (Compare ONLY when BOTH values explicitly represent PALLET level), the value is set to \"MISMATCH\" and alert PM with \"there is a mismatch with the Pallet saleable # of pieces.\nOVERRIDE RULE (Highest Priority - Must Always Apply):\n- If mismatch condition is triggered at any point:\n  \u2192 The final returned value MUST be \"MISMATCH\"\n  \u2192 Do NOT return extracted or computed values\n\nFinal Reminder:\n- If the value of Pallet Quantity is mentioned in \"cases\", then multiply that value by the value of the 'CS QTY'. For example: If the pallet value is \"108 cases\" and the value of 'CS QTY' is 24, then multiply the value of pallet with CS QTY now, the pallet qty value is 4,320 (108 x 24 = 4,320)",
                 "version_example": "",
                 "version_specific_instruction": "",
                 "version_created_by_name": "Admin",
@@ -1808,7 +1808,7 @@
                     "is_rule_active": true,
                     "rule_create_date": "2026-04-27T18:44:55.530979",
                     "rule_last_update_date": "2026-04-27T18:44:55.531173",
-                    "rule_sequence_number": 24
+                    "rule_sequence_number": 27
                 }
             },
             "status": "Ready For Review",
