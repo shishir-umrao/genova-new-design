@@ -2487,11 +2487,11 @@
             }
 
             // Build FIELDS from first JSON's details array
-            // Exclude fields where pm_alert_required != null AND rule_version.version_rule_class == "Alert"
+            // Exclude Alert-class fields — they appear only in PM Review, not the table
             const firstData = jsonData[0];
             if (firstData.details && firstData.details.length > 0) {
                 FIELDS = firstData.details
-                    .filter(detail => !(detail.pm_alert_required != null && detail.rule_version?.version_rule_class === 'Alert'))
+                    .filter(detail => detail.rule_version?.version_rule_class !== 'Alert')
                     .sort((a, b) => {
                         const seqA = a.rule_version?.rule_master?.rule_sequence_number || 0;
                         const seqB = b.rule_version?.rule_master?.rule_sequence_number || 0;
@@ -2527,8 +2527,8 @@
 
                 if (data.details && data.details.length > 0) {
                     data.details.forEach((detail, index) => {
-                        // Skip Alert fields that have pm_alert_required
-                        if (detail.pm_alert_required != null && detail.rule_version?.version_rule_class === 'Alert') {
+                        // Alert-class fields are PM Review only — skip table cells
+                        if (detail.rule_version?.version_rule_class === 'Alert') {
                             return;
                         }
                         const key = detail.field_name.toLowerCase().replace(/[^a-z0-9]/g, '_');
@@ -2570,7 +2570,7 @@
             const avgConf = count > 0 ? Math.round(totalConf / count) : 0;
             document.getElementById('docAvgConf').textContent = avgConf;
 
-            // Build PM Review items (where pm_alert_required != null)
+            // Build PM Review items (pm_alert_required != null OR Alert-class fields)
             const pmItems = [];
             // Clear previous PM alert fields
             Object.keys(pmAlertFields).forEach(key => delete pmAlertFields[key]);
@@ -2580,15 +2580,16 @@
                 const ndcId = `NDC ${ndcNumber}`;
                 if (data.details && data.details.length > 0) {
                     data.details.forEach(detail => {
-                        if (detail.pm_alert_required != null) {
+                        const isAlertField = detail.rule_version?.version_rule_class === 'Alert';
+                        if (detail.pm_alert_required != null || isAlertField) {
                             pmItems.push({
                                 ndc: ndcId,
                                 field: detail.field_name,
-                                alert: detail.pm_alert_required,
+                                alert: detail.pm_alert_required ?? detail.extracted_values ?? '—',
                                 extracted: detail.extracted_values,
                                 detailId: detail.detail_id
                             });
-                            // Track this field for the warning icon
+                            // Track this field for the warning icon / NDC PM count
                             const fieldKey = detail.field_name.toLowerCase().replace(/[^a-z0-9]/g, '_');
                             if (!pmAlertFields[ndcId]) pmAlertFields[ndcId] = new Set();
                             pmAlertFields[ndcId].add(fieldKey);
