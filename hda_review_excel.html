@@ -389,7 +389,7 @@
             background: var(--bg-c);
             color: var(--t2);
             cursor: pointer;
-            transition: background-color .25s cubic-bezier(.4, 0, .2, 1), 0, .2, 1), border-color .25s;
+            transition: background-color .25s cubic-bezier(.4, 0, .2, 1), border-color .25s cubic-bezier(.4, 0, .2, 1);
             display: inline-flex;
             align-items: center;
             gap: 6px;
@@ -449,8 +449,14 @@
             background: var(--mk-blue);
         }
 
-        .btn-done:hover {
+        .btn-done:hover:not(:disabled) {
             background: var(--mk-blue-dk);
+        }
+
+        .btn-done:disabled {
+            opacity: .45;
+            cursor: not-allowed;
+            background: var(--mk-blue);
         }
 
         /* PROGRESS BAR STRIP */
@@ -902,8 +908,8 @@
         .col-chk:checked::after {
             content: '';
             position: absolute;
-            left: 2px;
-            top: -1px;
+            left: 4px;
+            top: 0px;
             width: 5px;
             height: 9px;
             border: 2px solid #fff;
@@ -1240,7 +1246,7 @@
             font-family: var(--fb);
             border-radius: 4px;
             cursor: pointer;
-            transition: background-color .25s cubic-bezier(.4, 0, .2, 1), 0, .2, 1);
+            transition: background-color .25s cubic-bezier(.4, 0, .2, 1), border-color .25s cubic-bezier(.4, 0, .2, 1);
             border: 1px solid var(--bdr-m);
             background: var(--bg-c);
             color: var(--t2);
@@ -1743,8 +1749,6 @@
             position: relative
         }
 
-        .ep-opt:hover .eo-rd {}
-
         .ep-opt.sel .eo-rd {
             border-color: var(--ac)
         }
@@ -1782,6 +1786,33 @@
         .man-sec {
             display: none;
             padding-top: 6px
+        }
+
+        .man-or {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 4px 0 8px;
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--t2);
+            letter-spacing: .04em
+        }
+
+        .man-or::before,
+        .man-or::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--bdr)
+        }
+
+        .man-or span {
+            padding: 2px 8px;
+            border: 1px solid var(--bdr);
+            border-radius: 4px;
+            background: var(--bg-c);
+            font-size: 10px
         }
 
         /* ── MUI-style Text Input ── */
@@ -2139,7 +2170,7 @@
             <tr class="case-row"
                 data-case="CASE-2026-00089"
                 data-status="processing"
-                onclick="if(!event.target.closest('.editable-note') &amp;&amp; !event.target.closest('.cell-actions')) toggleCaseRow(this)">
+                onclick="if(!event.target.closest('.editable-note') && !event.target.closest('.cell-actions')) toggleCaseRow(this)">
                 <td>
                     <div class="doc-ic">
                         <svg viewBox="0 0 24 24">
@@ -2192,9 +2223,11 @@
                 <td>
                     <div class="doc-acts">
                         <button class="btn"
-                                style="margin-left:auto">Download</button>
+                                style="margin-left:auto"
+                                onclick="downloadSampleXlsx()">Download</button>
                         <button class="btn btn-done"
-                                id="submitBtn">Submit Review</button>
+                                id="submitBtn"
+                                disabled>Approve Case</button>
                     </div>
                 </td>
             </tr>
@@ -2407,6 +2440,17 @@
                          id="mEpOpts"></div>
                     <div class="man-sec"
                          id="mManSec">
+                        <div id="mManSelWrap"
+                             style="display:none">
+                            <select class="rea-sel"
+                                    id="mManSel"
+                                    onchange="handleManSel(this)">
+                                <option value="">— Select a value —</option>
+                            </select>
+                        </div>
+                        <div class="man-or"
+                             id="mManOr"
+                             style="display:none"><span>OR</span></div>
                         <input class="man-inp"
                                id="mManInp"
                                placeholder="Type the correct value…"
@@ -2927,6 +2971,13 @@
             }
         }
 
+        function downloadSampleXlsx() {
+            const link = document.createElement('a');
+            link.href = 'sample/sample.xlsx';
+            link.download = 'sample.xlsx';
+            link.click();
+        }
+
         function openDocViewer(ndcId) {
             const base = window.location.href.replace(/[^/]*$/, '');
             const defaultPdf = base + 'sample/sample.pdf';
@@ -3080,6 +3131,7 @@
                 sel.clear();
             }
             refreshColCells(fieldKey);
+            updateColChk(fieldKey);
             updateApproveBtn(fieldKey);
             updateToast();
         }
@@ -3123,6 +3175,30 @@
             if (sel.size === 0) { chk.checked = false; chk.indeterminate = false; }
             else if (sel.size === total) { chk.checked = true; chk.indeterminate = false; }
             else { chk.checked = false; chk.indeterminate = true; }
+            updateSelectAllChk();
+        }
+
+        function updateSelectAllChk() {
+            const chk = document.getElementById('selAllChk');
+            if (!chk) return;
+            const totalPossible = FIELDS.length * NDCS.length;
+            if (totalPossible === 0) {
+                chk.checked = false;
+                chk.indeterminate = false;
+                return;
+            }
+            let totalSelected = 0;
+            FIELDS.forEach(f => { totalSelected += colSel[f.key].size; });
+            if (totalSelected === 0) {
+                chk.checked = false;
+                chk.indeterminate = false;
+            } else if (totalSelected === totalPossible) {
+                chk.checked = true;
+                chk.indeterminate = false;
+            } else {
+                chk.checked = false;
+                chk.indeterminate = true;
+            }
         }
 
         function updateApproveBtn(fieldKey) {
@@ -3175,7 +3251,6 @@
                 updateApproveBtn(f.key);
                 refreshColCells(f.key);
             });
-            document.getElementById('selAllChk').checked = false;
             updateToast();
         }
 
@@ -3212,6 +3287,7 @@
             if (el('ftAccepted')) el('ftAccepted').textContent = ac;
             if (el('ftRejected')) el('ftRejected').textContent = rj;
             if (el('ftPending')) el('ftPending').textContent = total - done;
+            if (el('submitBtn')) el('submitBtn').disabled = total === 0 || ac !== total;
         }
 
         // ─── MODAL ───────────────────────────────────────────────────────────────────
@@ -3311,48 +3387,52 @@
     </div>
   `;
 
-            // EP options — use available_values radios when populated, otherwise manual entry
+            // EP options — transformed value + manual select/enter
             const opts = document.getElementById('mEpOpts');
             const availableValues = field.ruleVersion?.available_values;
             const hasAvailableValues = Array.isArray(availableValues) && availableValues.length > 0;
             const currentVal = cellValue[ndcId][fieldKey];
             const isPending = cell.state === 'pending';
+            const transformedSel = isPending || currentVal === cell.ex;
+            const isManual = !isPending && currentVal !== cell.ex;
+            const manualDisplay = isManual ? currentVal : '—';
+            const manSelWrap = document.getElementById('mManSelWrap');
+            const manOr = document.getElementById('mManOr');
+            const manSel = document.getElementById('mManSel');
+            const manInp = document.getElementById('mManInp');
 
-            const extractedSel = isPending || currentVal === cell.ex;
             let optsHtml = `
-    <div class="ep-opt ${extractedSel ? 'sel' : ''}" onclick="mSelOpt(this)" data-val="${escAttr(cell.ex)}">
+    <div class="ep-opt ${transformedSel ? 'sel' : ''}" onclick="mSelOpt(this)" data-val="${escAttr(cell.ex)}">
       <div class="eo-rd"><div class="eo-dt"></div></div>
-      <div class="eo-b"><div class="eo-lbl">Accept extracted value</div><div class="eo-val">${cell.ex}</div></div>
-    </div>`;
-
-            if (hasAvailableValues) {
-                availableValues.forEach(val => {
-                    const isSel = !isPending && !extractedSel && currentVal === val;
-                    optsHtml += `
-    <div class="ep-opt ${isSel ? 'sel' : ''}" onclick="mSelOpt(this)" data-val="${escAttr(val)}">
-      <div class="eo-rd"><div class="eo-dt"></div></div>
-      <div class="eo-b"><div class="eo-lbl">${val}</div></div>
-    </div>`;
-                });
-            } else {
-                const isManual = !isPending && currentVal !== cell.ex;
-                const manualDisplay = isManual ? currentVal : '—';
-                optsHtml += `
+      <div class="eo-b"><div class="eo-lbl">Accept transformed value</div><div class="eo-val">${cell.ex}</div></div>
+    </div>
     <div class="ep-opt ${isManual ? 'sel' : ''}" onclick="mSelOpt(this)" data-type="manual">
       <div class="eo-rd"><div class="eo-dt"></div></div>
-      <div class="eo-b"><div class="eo-lbl">Manually enter value</div><div class="eo-val mpv">${manualDisplay}</div></div>
+      <div class="eo-b"><div class="eo-lbl">${hasAvailableValues ? 'Manually select value' : 'Manually enter value'}</div><div class="eo-val mpv">${manualDisplay}</div></div>
     </div>`;
-                document.getElementById('mManInp').value = isManual ? currentVal : '';
-            }
 
             opts.innerHTML = optsHtml;
+
             if (hasAvailableValues) {
-                document.getElementById('mManSec').style.display = 'none';
-                document.getElementById('mManInp').value = '';
+                manSelWrap.style.display = 'block';
+                manOr.style.display = 'flex';
+                manSel.innerHTML = '<option value="">— Select a value —</option>' +
+                    availableValues.map(val => `<option value="${escAttr(val)}">${escHtml(val)}</option>`).join('');
+                if (isManual && availableValues.includes(currentVal)) {
+                    manSel.value = currentVal;
+                    manInp.value = '';
+                } else {
+                    manSel.value = '';
+                    manInp.value = isManual ? currentVal : '';
+                }
             } else {
-                const isManual = !isPending && currentVal !== cell.ex;
-                document.getElementById('mManSec').style.display = isManual ? 'block' : 'none';
+                manSelWrap.style.display = 'none';
+                manOr.style.display = 'none';
+                manSel.innerHTML = '<option value="">— Select a value —</option>';
+                manInp.value = isManual ? currentVal : '';
             }
+
+            document.getElementById('mManSec').style.display = isManual ? 'block' : 'none';
 
             syncManCharCount(fieldKey);
 
@@ -3370,10 +3450,17 @@
             if (modalCell) syncManCharCount(modalCell.fieldKey);
         }
 
+        function getManualEntryVal() {
+            const textVal = document.getElementById('mManInp').value.trim();
+            if (textVal) return textVal;
+            const selVal = document.getElementById('mManSel').value;
+            return selVal || null;
+        }
+
         function getModalSelectedVal() {
             const sel = document.getElementById('mEpOpts').querySelector('.ep-opt.sel');
             if (!sel) return null;
-            if (sel.dataset.type === 'manual') return document.getElementById('mManInp').value.trim() || null;
+            if (sel.dataset.type === 'manual') return getManualEntryVal();
             return sel.dataset.val;
         }
 
@@ -3431,10 +3518,20 @@
             el.classList.toggle('over', count > DESC_CHAR_LIMIT);
         }
 
-        function liveP(inp) {
+        function syncManualPreview() {
             const p = document.getElementById('mEpOpts').querySelector('.mpv');
-            if (p) p.textContent = inp.value || '—';
+            if (!p) return;
+            const val = getManualEntryVal();
+            p.textContent = val || '—';
+        }
+
+        function liveP(inp) {
+            syncManualPreview();
             if (modalCell) syncManCharCount(modalCell.fieldKey);
+        }
+
+        function handleManSel(sel) {
+            syncManualPreview();
         }
         function toggleRvAcc() { document.getElementById('rvAcc').classList.toggle('open'); }
         function handleR(sel) { sel.closest('.man-sec').querySelector('.cust-wrap').style.display = sel.value === 'custom' ? 'block' : 'none'; }
