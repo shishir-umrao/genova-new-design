@@ -2,1818 +2,1842 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-  <title>Cases — Mckesson</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
-
-  <style>
-    :root {
-      --mk-blue: #005a8c;
-      --mk-blue-dk: #003d61;
-      --mk-blue-lt: #cce4f0;
-      --mk-blue-pale: #e6f2f8;
-      --mk-or: #F29130;
-      --mk-or-dk: #c4711a;
-      --mk-or-lt: #fde9cf;
-      --mk-or-pale: #fff5eb;
-      --bg: #f4f6fa;
-      --bg-p: #ffffff;
-      --bg-c: #ffffff;
-      --bg-h: #f3f4f6;
-      --bdr: #e5e7eb;
-      --bdr-m: #d1d5db;
-      --t1: #111111;
-      --t2: #111111;
-      --t3: #111111;
-      --ph: #9ca3af;
-      --ac: #005a8c;
-      --ac-lt: #cce4f0;
-      --ac-pale: #e6f2f8;
-      --gr: #16a34a;
-      --gr-lt: #dcfce7;
-      --gr-pale: #f0fdf4;
-      --am: #b45309;
-      --am-lt: #fde68a;
-      --am-pale: #fffbeb;
-      --rd: #dc2626;
-      --rd-lt: #fecaca;
-      --rd-pale: #fef2f2;
-      --pu: #7c3aed;
-      --pu-lt: #ede9fe;
-      --pu-pale: #f5f3ff;
-      --cy: #0891b2;
-      --cy-lt: #cffafe;
-      --cy-pale: #ecfeff;
-      --sh-md: 0 4px 14px rgba(14, 30, 60, .1), 0 2px 5px rgba(14, 30, 60, .06);
-      --r: 10px;
-      --rs: 6px;
-      --fh: 'Inter', sans-serif;
-      --fb: 'Inter', sans-serif;
-      --fm: 'Inter', sans-serif;
-    }
-
-    [data-theme=dark] {
-      --bg: #0c0e14;
-      --bg-p: #161b27;
-      --bg-c: #1e2333;
-      --bg-h: #252d40;
-      --bdr: #2e3650;
-      --bdr-m: #3a4560;
-      --t1: #f0f0f0;
-      --t2: #f0f0f0;
-      --t3: #f0f0f0;
-      --ph: #6b7280;
-      --ac: #4f8ef7;
-      --ac-lt: #172040;
-      --ac-pale: #0e1528;
-      --gr: #34d474;
-      --gr-lt: #0c2e1a;
-      --gr-pale: #081810;
-      --am: #fbbf24;
-      --am-lt: #322208;
-      --am-pale: #1e1404;
-      --rd: #f87171;
-      --rd-lt: #320c0c;
-      --rd-pale: #1e0808;
-      --pu: #a78bfa;
-      --pu-lt: #2e1065;
-      --pu-pale: #1a0a3d;
-      --cy: #22d3ee;
-      --cy-lt: #083344;
-      --cy-pale: #042230;
-      --mk-blue-lt: #172040;
-      --mk-blue-pale: #0e1528;
-      --mk-or-lt: #3a2008;
-      --mk-or-pale: #211204;
-      --sh-md: 0 4px 14px rgba(0, 0, 0, .45);
-    }
-
-    *,
-    *::before,
-    *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0
-    }
-
-    html,
-    body {
-      height: 100%
-    }
-
-    body {
-      font-family: var(--fb);
-      background: var(--bg);
-      color: var(--t1);
-      font-size: 14px;
-      font-weight: 400;
-      line-height: 1.5;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      transition: background .2s, color .2s
-    }
-
-    /* NAV */
-    .nav {
-      height: 52px;
-      background: var(--mk-blue);
-      display: flex;
-      align-items: center;
-      padding: 0 16px;
-      flex-shrink: 0;
-      z-index: 20
-    }
-
-    .n-logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-right: 18px
-    }
-
-    .n-mark {
-      width: 30px;
-      height: 30px;
-      border-radius: 7px;
-      overflow: hidden;
-      flex-shrink: 0
-    }
-
-    .n-mark svg {
-      display: block
-    }
-
-    .n-txt {
-      font-family: var(--fh);
-      font-size: 14px;
-      font-weight: 700;
-      color: #fff;
-      letter-spacing: -.02em;
-      white-space: nowrap
-    }
-
-    .n-txt span {
-      color: var(--mk-or)
-    }
-
-    .n-div {
-      width: 1px;
-      height: 18px;
-      background: rgba(255, 255, 255, .22);
-      margin: 0 14px;
-      flex-shrink: 0
-    }
-
-    .n-prod {
-      font-size: 12px;
-      color: rgba(255, 255, 255, .65);
-      letter-spacing: 0;
-      font-weight: 400;
-      white-space: nowrap
-    }
-
-    .n-tabs {
-      display: flex;
-      align-items: center;
-      gap: 2px;
-      flex: 1;
-      margin-left: 18px
-    }
-
-    .n-tab {
-      padding: 5px 12px;
-      font-size: 12px;
-      color: rgba(255, 255, 255, .65);
-      background: none;
-      border: none;
-      border-radius: var(--rs);
-      cursor: pointer;
-      font-family: var(--fb);
-      font-weight: 400;
-      transition: all .15s
-    }
-
-    .n-tab:hover {
-      color: #fff;
-      background: rgba(255, 255, 255, .12)
-    }
-
-    .n-tab.active {
-      color: #fff;
-      background: rgba(255, 255, 255, .18)
-    }
-
-    .n-right {
-      display: flex;
-      align-items: center;
-      gap: 8px
-    }
-
-    .n-badge {
-      background: var(--mk-or);
-      color: #fff;
-      font-size: 12px;
-      font-weight: 700;
-      padding: 3px 10px;
-      border-radius: 99px;
-      font-family: var(--fm)
-    }
-
-    .t-btn {
-      width: 30px;
-      height: 30px;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, .15);
-      border: none;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #fff;
-      transition: background .15s;
-      flex-shrink: 0
-    }
-
-    .t-btn:hover {
-      background: rgba(255, 255, 255, .25)
-    }
-
-    .t-btn svg {
-      width: 15px;
-      height: 15px;
-      fill: none;
-      stroke: currentColor;
-      stroke-width: 2
-    }
-
-    .n-av {
-      width: 30px;
-      height: 30px;
-      border-radius: 50%;
-      background: var(--mk-or);
-      font-size: 12px;
-      font-weight: 700;
-      color: #fff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: var(--fh);
-      border: 2px solid rgba(255, 255, 255, .3);
-      flex-shrink: 0
-    }
-
-    .pg {
-      display: flex;
-      flex-direction: column;
-      flex: 1;
-      overflow-y: auto;
-      min-height: 0
-    }
-
-    .pg::-webkit-scrollbar {
-      width: 4px
-    }
-
-    .pg::-webkit-scrollbar-thumb {
-      background: var(--bdr-m);
-      border-radius: 99px
-    }
-
-    .page-head {
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      flex-shrink: 0;
-      background: var(--bg-p)
-    }
-
-    /* TOOLBAR */
-    .tb {
-      padding: 13px 24px;
-      background: var(--bg-p);
-      border-bottom: 1px solid var(--bdr);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-shrink: 0
-    }
-
-    .tb-l {
-      display: flex;
-      align-items: center;
-      gap: 16px
-    }
-
-    .pg-ttl {
-      font-family: var(--fh);
-      font-size: 14px;
-      font-weight: 700;
-      color: var(--t1);
-      letter-spacing: -.02em
-    }
-
-    .pg-sub {
-      font-size: 12px;
-      color: var(--t3);
-      font-family: var(--fm);
-      font-weight: 400;
-      margin-top: 1px
-    }
-
-    .tb-stats {
-      display: flex;
-      gap: 8px
-    }
-
-    .ts {
-      padding: 3px 10px;
-      border-radius: 99px;
-      font-size: 12px;
-      font-family: var(--fb);
-      font-weight: 400;
-      border: 1px solid transparent
-    }
-
-    .ts-proc {
-      background: var(--pu-pale);
-      color: var(--pu);
-      border-color: var(--pu)
-    }
-
-    .ts-rdy {
-      background: var(--am-pale);
-      color: var(--am);
-      border-color: var(--am)
-    }
-
-    .ts-rev {
-      background: var(--ac-pale);
-      color: var(--ac);
-      border-color: var(--ac)
-    }
-
-    .ts-done {
-      background: var(--gr-pale);
-      color: var(--gr);
-      border-color: var(--gr)
-    }
-
-    .tb-r {
-      display: flex;
-      align-items: center;
-      gap: 8px
-    }
-
-    .srch {
-      position: relative
-    }
-
-    .srch-ic {
-      position: absolute;
-      left: 9px;
-      top: 50%;
-      transform: translateY(-50%);
-      color: var(--t3);
-      pointer-events: none
-    }
-
-    .srch-ic svg {
-      width: 12px;
-      height: 12px;
-      fill: none;
-      stroke: currentColor;
-      stroke-width: 1.8
-    }
-
-    /* ── MUI-style Search Input ── */
-    .srch-inp {
-      padding: 8px 10px 8px 32px;
-      background: var(--bg-c);
-      border: 1px solid rgba(0, 0, 0, .23);
-      border-radius: 4px;
-      color: var(--t1);
-      font-size: 13px;
-      font-family: var(--fb);
-      outline: none;
-      width: 200px;
-      transition: border-color .2s
-    }
-
-    ::placeholder {
-      color: var(--ph);
-      opacity: 1
-    }
-
-    .srch-inp::placeholder {
-      color: var(--ph)
-    }
-
-    .srch-inp:hover {
-      border-color: var(--t1)
-    }
-
-    .srch-inp:focus {
-      border-color: var(--ac);
-      border-width: 2px;
-      padding: 7px 9px 7px 31px
-    }
-
-    /* ── MUI-style Buttons ── */
-    .btn {
-      padding: 5px 15px;
-      font-size: 13px;
-      font-weight: 500;
-      font-family: var(--fb);
-      border-radius: 4px;
-      border: 1px solid rgba(0, 0, 0, .23);
-      background: transparent;
-      color: var(--t2);
-      cursor: pointer;
-      transition: background-color .25s cubic-bezier(.4, 0, .2, 1), border-color .25s;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      letter-spacing: .02em;
-      line-height: 1.75;
-      position: relative;
-      overflow: hidden;
-      user-select: none
-    }
-
-    .btn::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: currentColor;
-      opacity: 0;
-      transition: opacity .2s
-    }
-
-    .btn:hover::after {
-      opacity: .06
-    }
-
-    .btn:active::after {
-      opacity: .12
-    }
-
-    .btn svg {
-      width: 13px;
-      height: 13px;
-      fill: none;
-      stroke: currentColor;
-      stroke-width: 2;
-      flex-shrink: 0
-    }
-
-    .btn:hover {
-      border-color: var(--t2)
-    }
-
-    .btn-pri {
-      background: var(--mk-blue);
-      color: #fff;
-      border: none;
-    }
-
-    .btn-pri:hover {
-      background: var(--mk-blue-dk);
-    }
-
-    /* FILTERS */
-    .fc-row {
-      padding: 10px 24px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      border-bottom: 1px solid var(--bdr);
-      background: var(--bg-p);
-      flex-shrink: 0;
-      flex-wrap: wrap
-    }
-
-    .fc-lbl {
-      font-size: 12px;
-      font-weight: 400;
-      color: var(--t3);
-      white-space: nowrap
-    }
-
-    .filter-group {
-      display: flex;
-      align-items: center;
-      gap: 6px
-    }
-
-    /* ── MUI-style Custom Select/Dropdown ── */
-    .custom-select {
-      position: relative;
-      min-width: 140px
-    }
-
-    .select-trigger {
-      padding: 7px 32px 7px 12px;
-      font-size: 13px;
-      font-weight: 400;
-      border: 1px solid rgba(0, 0, 0, .23);
-      border-radius: 4px;
-      background: var(--bg-c);
-      color: var(--t1);
-      cursor: pointer;
-      font-family: var(--fb);
-      white-space: nowrap;
-      position: relative;
-      transition: border-color .2s
-    }
-
-    .select-trigger:hover {
-      border-color: var(--t1)
-    }
-
-    .select-trigger::after {
-      content: '';
-      position: absolute;
-      right: 12px;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 0;
-      height: 0;
-      border-left: 4px solid transparent;
-      border-right: 4px solid transparent;
-      border-top: 5px solid var(--t3)
-    }
-
-    .select-dropdown {
-      position: absolute;
-      top: 100%;
-      left: 0;
-      right: 0;
-      margin-top: 4px;
-      background: var(--bg-p);
-      border: 1px solid rgba(0, 0, 0, .15);
-      border-radius: 4px;
-      z-index: 100;
-      display: none;
-      max-height: 250px;
-      overflow-y: auto
-    }
-
-    .custom-select.open .select-dropdown {
-      display: block
-    }
-
-    .select-option {
-      padding: 8px 14px;
-      font-size: 13px;
-      font-weight: 400;
-      color: var(--t2);
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      transition: background .15s
-    }
-
-    .select-option:hover {
-      background: var(--bg-h)
-    }
-
-    /* MUI-style inline checkbox in dropdown */
-    .select-option input[type="checkbox"] {
-      width: 16px;
-      height: 16px;
-      border-radius: 2px;
-      border: 2px solid var(--bdr-m);
-      background: transparent;
-      cursor: pointer;
-      appearance: none;
-      -webkit-appearance: none;
-      flex-shrink: 0;
-      transition: background-color .15s, border-color .15s;
-      position: relative;
-      vertical-align: middle
-    }
-
-    .select-option input[type="checkbox"]:checked {
-      background: var(--ac);
-      border-color: var(--ac)
-    }
-
-    .select-option input[type="checkbox"]:checked::after {
-      content: '';
-      position: absolute;
-      left: 2px;
-      top: -1px;
-      width: 5px;
-      height: 9px;
-      border: 2px solid #fff;
-      border-top: none;
-      border-left: none;
-      transform: rotate(43deg)
-    }
-
-    .select-option.selected {
-      color: var(--ac);
-      background: var(--ac-pale)
-    }
-
-    /* ── MUI-style Date Input ── */
-    .date-range {
-      display: flex;
-      align-items: center;
-      gap: 6px
-    }
-
-    .date-field {
-      position: relative;
-      display: inline-flex;
-      align-items: center
-    }
-
-    .date-input {
-      padding: 7px 26px 7px 10px;
-      font-size: 13px;
-      font-weight: 400;
-      border: 1px solid rgba(0, 0, 0, .23);
-      border-radius: 4px;
-      background: var(--bg-c);
-      color: var(--t1);
-      font-family: var(--fb);
-      outline: none;
-      width: 108px;
-      transition: border-color .2s
-    }
-
-    .date-input:hover {
-      border-color: var(--t1)
-    }
-
-    .date-input:focus {
-      border-color: var(--ac);
-      border-width: 2px;
-      padding: 6px 25px 6px 9px
-    }
-
-    .date-cal-btn {
-      position: absolute;
-      right: 4px;
-      top: 50%;
-      transform: translateY(-50%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 22px;
-      height: 22px;
-      padding: 0;
-      border: none;
-      background: transparent;
-      color: var(--t3);
-      cursor: pointer;
-      border-radius: 2px
-    }
-
-    .date-cal-btn:hover {
-      color: var(--ac)
-    }
-
-    .date-cal-btn svg {
-      width: 16px;
-      height: 16px;
-      fill: none;
-      stroke: currentColor;
-      stroke-width: 2
-    }
-
-    .date-picker-native {
-      position: absolute;
-      opacity: 0;
-      width: 0;
-      height: 0;
-      pointer-events: none;
-      border: none;
-      padding: 0
-    }
-
-    .date-sep {
-      color: var(--t3);
-      font-size: 12px
-    }
-
-    /* ── MUI-style Clear Filters (Text Button) ── */
-    .clear-filters {
-      padding: 5px 12px;
-      font-size: 13px;
-      font-weight: 500;
-      color: var(--ac);
-      background: transparent;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      font-family: var(--fb);
-      transition: background-color .2s;
-      letter-spacing: .02em;
-      position: relative;
-      overflow: hidden
-    }
-
-    .clear-filters::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: currentColor;
-      opacity: 0;
-      transition: opacity .2s
-    }
-
-    .clear-filters:hover::after {
-      opacity: .06
-    }
-
-    .fc-sep {
-      width: 1px;
-      height: 14px;
-      background: var(--bdr);
-      margin: 0 2px
-    }
-
-    /* CONTENT */
-    .content {
-      padding: 20px 24px;
-      flex-shrink: 0
-    }
-
-    /* CASE TABLE */
-    .case-table {
-      width: 100%;
-      border-collapse: collapse;
-      background: var(--bg-p);
-      border: 1px solid var(--bdr);
-      border-radius: 4px;
-      table-layout: fixed;
-    }
-
-    .case-table thead th {
-      position: sticky;
-      top: var(--page-head-h, 0px);
-      z-index: 5;
-      padding: 12px 16px;
-      font-size: 12px;
-      font-weight: 700;
-      color: var(--t3);
-      text-align: left;
-      border-bottom: 1px solid var(--bdr);
-      white-space: nowrap;
-      background: var(--bg);
-      box-shadow: 0 1px 0 var(--bdr);
-    }
-
-    .case-table thead th:nth-child(1) {
-      width: 50px;
-      padding-left: 18px;
-    }
-
-    .case-table thead th:nth-child(2) {
-      width: 18%;
-    }
-
-    .case-table thead th:nth-child(3) {
-      width: 14%;
-    }
-
-    .case-table thead th:nth-child(4) {
-      width: 11%;
-    }
-
-    .case-table thead th:nth-child(5) {
-      width: 14%;
-    }
-
-    .case-table thead th:nth-child(6) {
-      width: 14%;
-    }
-
-    .case-table thead th:nth-child(7) {
-      width: 14%;
-    }
-
-    .case-table thead th:nth-child(8) {
-      width: 7%;
-    }
-
-    .case-table thead th:nth-child(9) {
-      width: 8%;
-      padding-right: 18px;
-    }
-
-    .case-row {
-      border-bottom: 1px solid var(--bdr);
-      cursor: pointer;
-      transition: background-color .15s;
-    }
-
-    .case-row:hover {
-      background: var(--bg-h);
-    }
-
-    .case-row:last-child {
-      border-bottom: none;
-    }
-
-    .case-row td {
-      padding: 12px 16px;
-      vertical-align: middle;
-      font-size: 13px;
-      color: var(--t1);
-    }
-
-    .case-row td:first-child {
-      padding-left: 18px;
-    }
-
-    .case-row td:last-child {
-      padding-right: 18px;
-    }
-
-    /* ── MUI expand icon ── */
-    .caret {
-      width: 18px;
-      height: 18px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--t3);
-      transition: transform .25s cubic-bezier(.4, 0, .2, 1);
-      flex-shrink: 0;
-      margin-right: 8px;
-    }
-
-    .caret svg {
-      width: 13px;
-      height: 13px;
-      fill: none;
-      stroke: currentColor;
-      stroke-width: 2
-    }
-
-    .case-row.expanded .caret {
-      transform: rotate(90deg)
-    }
-
-    /* Expandable NDC row - aligns with main table columns */
-    .ndc-expand-row {
-      display: none;
-      background: var(--bg);
-    }
-
-    .ndc-expand-row.expanded {
-      display: table-row;
-    }
-
-    .ndc-expand-row td {
-      padding: 0;
-      border-bottom: none;
-    }
-
-
-    /* NDC nested table - same structure as main table for perfect alignment */
-    .ndc-nested-table {
-      width: 100%;
-      border-collapse: collapse;
-      table-layout: fixed;
-    }
-
-    .ndc-nested-table td {
-      padding: 12px 16px;
-      border-bottom: none;
-      vertical-align: middle;
-    }
-
-    .ndc-nested-table td:nth-child(1) {
-      width: 50px;
-      padding-left: 18px;
-    }
-
-    .ndc-nested-table td:nth-child(2) {
-      width: 18%;
-    }
-
-    .ndc-nested-table td:nth-child(3) {
-      width: 14%;
-    }
-
-    .ndc-nested-table td:nth-child(4) {
-      width: 11%;
-    }
-
-    .ndc-nested-table td:nth-child(5) {
-      width: 14%;
-    }
-
-    .ndc-nested-table td:nth-child(6) {
-      width: 14%;
-    }
-
-    .ndc-nested-table td:nth-child(7) {
-      width: 10%;
-    }
-
-    .ndc-nested-table td:nth-child(8) {
-      width: 10%;
-    }
-
-    .ndc-nested-table td:nth-child(9) {
-      width: 9%;
-      padding-right: 18px;
-      text-align: right;
-    }
-
-    /* Delete link styling */
-    .ndc-del-link {
-      font-size: 12px;
-      color: var(--rd);
-      text-decoration: none;
-      cursor: pointer;
-    }
-
-    .ndc-del-link:hover {
-      text-decoration: underline;
-    }
-
-    .ndc-del-link:disabled,
-    .ndc-del-link[disabled] {
-      color: var(--bdr-m);
-      cursor: not-allowed;
-      text-decoration: none;
-    }
-
-    /* Editable note cells */
-    .editable-note {
-      cursor: default;
-      position: relative;
-    }
-
-    .editable-note:hover {
-      background: var(--bg-h);
-      cursor: text;
-    }
-
-    .editable-note.placeholder {
-      color: var(--bdr-m);
-    }
-
-    .editable-note.editing {
-      background: var(--bg-p);
-      outline: 2px solid var(--ac);
-      outline-offset: -2px;
-    }
-
-    .editable-note input {
-      width: 100%;
-      padding: 0;
-      border: none;
-      background: transparent;
-      font-size: 13px;
-      font-family: inherit;
-      color: var(--t1);
-      outline: none;
-    }
-
-    .ndc-ic {
-      width: 36px;
-      height: 36px;
-      background: var(--ac-pale);
-      border: none;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0
-    }
-
-    .ndc-ic svg {
-      width: 15px;
-      height: 15px;
-      fill: none;
-      stroke: var(--ac);
-      stroke-width: 1.8
-    }
-
-    .case-id {
-      font-family: var(--fh);
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--t1);
-      letter-spacing: -.01em
-    }
-
-    .case-meta {
-      font-size: 11px;
-      color: var(--t3);
-      font-family: var(--fm);
-      font-weight: 400;
-      margin-top: 2px
-    }
-
-    /* CASE STATUS CHIP */
-    .cs-chip {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-      width: 128px;
-      padding: 3px 10px;
-      border-radius: 99px;
-      font-size: 11px;
-      font-weight: 400;
-      font-family: var(--fb);
-      border: 1px solid transparent;
-      white-space: nowrap;
-      letter-spacing: .01em
-    }
-
-    .cs-chip.cs-proc {
-      background: #fef9c3;
-      color: #854d0e;
-      border-color: #854d0e
-    }
-
-    [data-theme=dark] .cs-chip.cs-proc {
-      background: #1e1a04;
-      color: #fde047;
-      border-color: #3a3208
-    }
-
-    .cs-chip.cs-rdy {
-      background: var(--mk-or-pale);
-      color: var(--mk-or-dk);
-      border-color: var(--mk-or-dk)
-    }
-
-    .cs-chip.cs-ur {
-      background: var(--mk-blue-lt);
-      color: var(--mk-blue-dk);
-      border-color: var(--mk-blue-dk);
-    }
-
-    .cs-chip.cs-fail {
-      background: var(--rd-pale);
-      color: var(--rd);
-      border-color: var(--rd);
-      cursor: help;
-    }
-
-    .cs-chip.cs-done {
-      background: var(--gr-pale);
-      color: var(--gr);
-      border-color: var(--gr)
-    }
-
-    .cs-spin {
-      width: 9px;
-      height: 9px;
-      border-radius: 50%;
-      border: 2px solid var(--bdr-m);
-      border-top-color: var(--t3);
-      animation: spin .7s linear infinite;
-      flex-shrink: 0;
-      display: none;
-    }
-
-    @keyframes spin {
-      to {
-        transform: rotate(360deg)
-      }
-    }
-
-    /* CASE ACTIONS */
-    .case-acts {
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-      gap: 8px
-    }
-
-    .cell-actions {
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-      gap: 8px;
-    }
-
-    .act-link {
-      font-size: 12px;
-      color: var(--ac);
-      text-decoration: none;
-      cursor: pointer;
-    }
-
-    .act-link:hover {
-      text-decoration: underline;
-    }
-
-    .act-sep {
-      color: var(--bdr-m);
-      font-size: 12px;
-    }
-
-    /* ── MUI small outlined/text Buttons — case actions ── */
-    .ca-btn {
-      height: 30px;
-      padding: 0 12px;
-      border-radius: 4px;
-      font-size: 12px;
-      font-weight: 500;
-      font-family: var(--fb);
-      border: 1px solid rgba(0, 0, 0, .23);
-      background: transparent;
-      color: var(--t2);
-      cursor: pointer;
-      transition: background-color .2s, border-color .2s;
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      white-space: nowrap;
-      letter-spacing: .02em;
-      position: relative;
-      overflow: hidden
-    }
-
-    .ca-btn::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: currentColor;
-      opacity: 0;
-      transition: opacity .15s
-    }
-
-    .ca-btn:hover::after {
-      opacity: .06
-    }
-
-    .ca-btn svg {
-      width: 11px;
-      height: 11px;
-      fill: none;
-      stroke: currentColor;
-      stroke-width: 2;
-      flex-shrink: 0
-    }
-
-    .ca-btn:hover {
-      border-color: var(--t2)
-    }
-
-    .ca-btn.ab-ps {
-      border-color: var(--pu);
-      color: var(--pu)
-    }
-
-    .ca-btn.ab-ps:hover {
-      border-color: var(--pu)
-    }
-
-    .ca-btn.ab-rs {
-      border-color: var(--gr);
-      color: var(--gr)
-    }
-
-    .ca-btn.ab-rs:hover {
-      border-color: var(--gr)
-    }
-
-    .ca-btn.ab-rw {
-      border-color: var(--am);
-      color: var(--am)
-    }
-
-    .ca-btn.ab-rw:hover {
-      border-color: var(--am)
-    }
-
-    .ca-btn.ab-rv {
-      border: none;
-      color: #fff;
-      background: var(--ac);
-      font-weight: 500;
-    }
-
-    .ca-btn.ab-rv:hover {
-      background: var(--mk-blue-dk);
-    }
-
-    /* ── MUI IconButton — delete ── */
-    .ca-del {
-      width: 30px;
-      height: 30px;
-      border-radius: 4px;
-      border: 1px solid var(--rd);
-      background: transparent;
-      color: var(--rd);
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      transition: background-color .15s;
-      flex-shrink: 0;
-      position: relative;
-      overflow: hidden
-    }
-
-    .ca-del::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      border-radius: 4px;
-      background: currentColor;
-      opacity: 0;
-      transition: opacity .15s
-    }
-
-    .ca-del:hover::after {
-      opacity: .08
-    }
-
-    .ca-del:disabled,
-    .ca-del:disabled:hover {
-      border-color: var(--bdr-m);
-      color: var(--bdr-m);
-      cursor: not-allowed
-    }
-
-    .ca-del:disabled::after {
-      display: none
-    }
-
-    .ca-del svg {
-      width: 13px;
-      height: 13px;
-      fill: none;
-      stroke: currentColor;
-      stroke-width: 2
-    }
-
-    /* NDC Delete Button */
-    /* ── MUI IconButton — ndc delete ── */
-    .ndc-del {
-      width: 28px;
-      height: 28px;
-      border-radius: 4px;
-      border: 1px solid var(--rd);
-      background: transparent;
-      color: var(--rd);
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      transition: background-color .15s;
-      flex-shrink: 0;
-      position: relative;
-      overflow: hidden
-    }
-
-    .ndc-del::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      border-radius: 4px;
-      background: currentColor;
-      opacity: 0;
-      transition: opacity .15s
-    }
-
-    .ndc-del:hover::after {
-      opacity: .08
-    }
-
-    .ndc-del:disabled,
-    .ndc-del:disabled:hover {
-      border-color: var(--bdr-m);
-      color: var(--bdr-m);
-      cursor: not-allowed
-    }
-
-    .ndc-del:disabled::after {
-      display: none
-    }
-
-    .ndc-del svg {
-      width: 12px;
-      height: 12px;
-      fill: none;
-      stroke: currentColor;
-      stroke-width: 2
-    }
-
-    /* ── NDC View icon button (filled) ── */
-    .ndc-view {
-      width: 28px;
-      height: 28px;
-      border-radius: 4px;
-      border: none;
-      background: var(--ac);
-      color: #fff;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      transition: background-color .15s;
-      flex-shrink: 0;
-      position: relative;
-      overflow: hidden
-    }
-
-    .ndc-view::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      border-radius: 4px;
-      background: currentColor;
-      opacity: 0;
-      transition: opacity .15s
-    }
-
-    .ndc-view:hover::after {
-      opacity: .12
-    }
-
-    .ndc-view svg {
-      width: 13px;
-      height: 13px;
-      fill: none;
-      stroke: currentColor;
-      stroke-width: 2
-    }
-
-    .ndc-view:disabled {
-      background: var(--bdr-m);
-      color: var(--t3);
-      cursor: not-allowed
-    }
-
-    .ndc-view:disabled::after {
-      display: none
-    }
-
-    /* ── Review icon button (filled) ── */
-    .ca-rv {
-      width: 30px;
-      height: 30px;
-      border-radius: 4px;
-      border: none;
-      background: var(--ac);
-      color: #fff;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      transition: background-color .15s;
-      flex-shrink: 0;
-      position: relative;
-      overflow: hidden
-    }
-
-    .ca-rv::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      border-radius: 4px;
-      background: currentColor;
-      opacity: 0;
-      transition: opacity .15s
-    }
-
-    .ca-rv:hover::after {
-      opacity: .12
-    }
-
-    .ca-rv svg {
-      width: 14px;
-      height: 14px;
-      fill: none;
-      stroke: currentColor;
-      stroke-width: 2
-    }
-
-    .ca-rv:disabled,
-    .ca-rv:disabled:hover {
-      border: 1px solid var(--bdr-m);
-      background: transparent;
-      color: var(--bdr-m);
-      cursor: not-allowed
-    }
-
-    .ca-rv:disabled::after {
-      display: none
-    }
-
-    .ndc-actions {
-      text-align: right
-    }
-
-    /* NDC wrap inside expanded row */
-    .ndc-wrap {
-      padding: 0;
-    }
-
-    .ndc-n {
-      font-family: var(--fh);
-      font-size: 12px;
-      font-weight: 400;
-      color: var(--t1);
-    }
-
-    .ndc-s {
-      font-size: 11px;
-      color: var(--t3);
-      font-family: var(--fm);
-      font-weight: 400;
-      margin-top: 1px;
-    }
-
-    .sbdg {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-      width: 128px;
-      padding: 3px 10px;
-      font-size: 11px;
-      font-family: var(--fb);
-      font-weight: 400;
-      border-radius: 99px;
-      border: 1px solid transparent;
-      letter-spacing: .01em
-    }
-
-    .sbdg-dot {
-      display: none
-    }
-
-    .sbdg-spin {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      border: 2px solid var(--bdr-m);
-      border-top-color: var(--t3);
-      animation: spin .7s linear infinite;
-      flex-shrink: 0;
-      display: none;
-    }
-
-    @keyframes pulse {
-
-      0%,
-      100% {
-        opacity: 1
-      }
-
-      50% {
-        opacity: .4
-      }
-    }
-
-    .sbdg.s-proc .sbdg-dot {
-      display: none
-    }
-
-    .sbdg.s-proc {
-      background: #fef9c3;
-      color: #854d0e;
-      border-color: #854d0e
-    }
-
-    .sbdg.s-extr .sbdg-dot {
-      background: var(--cy)
-    }
-
-    .sbdg.s-extr {
-      background: var(--cy-pale);
-      color: var(--cy);
-      border-color: var(--cy-lt);
-      animation: pulse 1.4s ease infinite
-    }
-
-    .sbdg.s-vali .sbdg-dot {
-      background: var(--mk-or)
-    }
-
-    .sbdg.s-vali {
-      background: var(--mk-or-pale);
-      color: var(--mk-or);
-      border-color: var(--mk-or);
-      animation: pulse 1.4s ease infinite
-    }
-
-    .sbdg.s-rdy {
-      background: var(--mk-or-pale);
-      color: var(--mk-or-dk);
-      border-color: var(--mk-or-dk);
-    }
-
-    .sbdg.s-rdy .sbdg-dot {
-      background: var(--am)
-    }
-
-    .sbdg.s-ur {
-      background: var(--mk-blue-lt);
-      color: var(--mk-blue-dk);
-      border-color: var(--mk-blue-dk);
-    }
-
-    .sbdg.s-ur .sbdg-dot {
-      background: var(--mk-blue-dk)
-    }
-
-    .sbdg.s-que {
-      background: var(--ac-pale);
-      color: var(--ac);
-      border-color: var(--ac)
-    }
-
-    .sbdg.s-que .sbdg-dot {
-      background: var(--ac)
-    }
-
-    .sbdg.s-done {
-      background: var(--gr-pale);
-      color: var(--gr);
-      border-color: var(--gr)
-    }
-
-    .sbdg.s-done .sbdg-dot {
-      background: var(--gr)
-    }
-
-    .sbdg.s-err {
-      background: var(--rd-pale);
-      color: var(--rd);
-      border-color: var(--rd);
-      cursor: help;
-    }
-
-    .sbdg.s-err .sbdg-dot {
-      background: var(--rd)
-    }
-
-    .sbdg.s-paus {
-      background: var(--bg-h);
-      color: var(--t2);
-      border-color: var(--bdr-m)
-    }
-
-    .sbdg.s-paus .sbdg-dot {
-      background: var(--t3)
-    }
-
-    /* PROGRESS */
-    .prog-cell {
-      display: flex;
-      align-items: center;
-      gap: 6px
-    }
-
-    .prog-bar {
-      width: 56px;
-      height: 3px;
-      background: var(--bdr);
-      border-radius: 99px;
-      overflow: hidden;
-      flex-shrink: 0
-    }
-
-    .prog-fill {
-      height: 100%;
-      border-radius: 99px
-    }
-
-    .pf-done {
-      background: var(--gr)
-    }
-
-    .pf-act {
-      background: linear-gradient(90deg, var(--mk-blue), var(--mk-or))
-    }
-
-    .pf-err {
-      background: var(--rd)
-    }
-
-    .prog-pct {
-      font-size: 12px;
-      font-family: var(--fb);
-      color: var(--t3)
-    }
-
-    /* MODAL */
-    .overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, .35);
-      z-index: 100;
-      display: none;
-      align-items: center;
-      justify-content: center
-    }
-
-    .overlay.show {
-      display: flex
-    }
-
-    .modal {
-      background: var(--bg-p);
-      border: 1px solid var(--bdr);
-      border-radius: 12px;
-      padding: 22px 24px;
-      width: 360px;
-      animation: ms .18s ease
-    }
-
-    @keyframes ms {
-      from {
-        opacity: 0;
-        transform: scale(.95)
-      }
-
-      to {
-        opacity: 1;
-        transform: scale(1)
-      }
-    }
-
-    .modal-ttl {
-      font-family: var(--fh);
-      font-size: 14px;
-      font-weight: 700;
-      color: var(--t1);
-      margin-bottom: 6px
-    }
-
-    .modal-body {
-      font-size: 12px;
-      font-weight: 400;
-      color: var(--t2);
-      line-height: 1.6;
-      margin-bottom: 18px
-    }
-
-    .modal-body strong {
-      color: var(--rd)
-    }
-
-    .modal-ftr {
-      display: flex;
-      gap: 8px;
-      justify-content: flex-end
-    }
-
-    .mb {
-      padding: 7px 14px;
-      font-size: 12px;
-      font-weight: 700;
-      font-family: var(--fb);
-      border-radius: var(--rs);
-      cursor: pointer;
-      border: 1px solid;
-      transition: all .15s
-    }
-
-    .mb-cn {
-      border-color: var(--bdr-m);
-      background: var(--bg-c);
-      color: var(--t2)
-    }
-
-    .mb-cn:hover {
-      background: var(--bg-h)
-    }
-
-    .mb-del {
-      border-color: var(--rd);
-      background: var(--rd);
-      color: #fff
-    }
-
-    .mb-del:hover {
-      background: #b91c1c;
-      border-color: #b91c1c
-    }
-
-    /* TOAST */
-    .toast {
-      position: fixed;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: var(--t1);
-      color: var(--bg-p);
-      font-size: 12px;
-      font-weight: 400;
-      padding: 9px 16px;
-      border-radius: var(--rs);
-      z-index: 200;
-      display: none
-    }
-
-    .toast.show {
-      display: block
-    }
-
-    @keyframes fu {
-      from {
-        opacity: 0;
-        transform: translateY(8px)
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0)
-      }
-    }
-
-    .case-row {
-      animation: fu .22s ease both
-    }
-
-    .case-row:nth-child(1) {
-      animation-delay: .04s
-    }
-
-    .case-row:nth-child(3) {
-      animation-delay: .09s
-    }
-
-    .case-row:nth-child(5) {
-      animation-delay: .14s
-    }
-
-    .case-row:nth-child(7) {
-      animation-delay: .19s
-    }
-
-    .case-row:nth-child(9) {
-      animation-delay: .24s
-    }
-  </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1.0" />
+    <title>Cases — Mckesson</title>
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com" />
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap"
+          rel="stylesheet" />
+
+    <style>
+        :root {
+            --mk-blue: #005a8c;
+            --mk-blue-dk: #003d61;
+            --mk-blue-lt: #cce4f0;
+            --mk-blue-pale: #e6f2f8;
+            --mk-or: #F29130;
+            --mk-or-dk: #c4711a;
+            --mk-or-lt: #fde9cf;
+            --mk-or-pale: #fff5eb;
+            --bg: #f4f6fa;
+            --bg-p: #ffffff;
+            --bg-c: #ffffff;
+            --bg-h: #f3f4f6;
+            --bdr: #e5e7eb;
+            --bdr-m: #d1d5db;
+            --t1: #111111;
+            --t2: #111111;
+            --t3: #111111;
+            --ph: #9ca3af;
+            --ac: #005a8c;
+            --ac-lt: #cce4f0;
+            --ac-pale: #e6f2f8;
+            --gr: #16a34a;
+            --gr-lt: #dcfce7;
+            --gr-pale: #f0fdf4;
+            --am: #b45309;
+            --am-lt: #fde68a;
+            --am-pale: #fffbeb;
+            --rd: #dc2626;
+            --rd-lt: #fecaca;
+            --rd-pale: #fef2f2;
+            --pu: #7c3aed;
+            --pu-lt: #ede9fe;
+            --pu-pale: #f5f3ff;
+            --cy: #0891b2;
+            --cy-lt: #cffafe;
+            --cy-pale: #ecfeff;
+            --sh-md: 0 4px 14px rgba(14, 30, 60, .1), 0 2px 5px rgba(14, 30, 60, .06);
+            --r: 10px;
+            --rs: 6px;
+            --fh: 'Inter', sans-serif;
+            --fb: 'Inter', sans-serif;
+            --fm: 'Inter', sans-serif;
+        }
+
+        [data-theme=dark] {
+            --bg: #0c0e14;
+            --bg-p: #161b27;
+            --bg-c: #1e2333;
+            --bg-h: #252d40;
+            --bdr: #2e3650;
+            --bdr-m: #3a4560;
+            --t1: #f0f0f0;
+            --t2: #f0f0f0;
+            --t3: #f0f0f0;
+            --ph: #6b7280;
+            --ac: #4f8ef7;
+            --ac-lt: #172040;
+            --ac-pale: #0e1528;
+            --gr: #34d474;
+            --gr-lt: #0c2e1a;
+            --gr-pale: #081810;
+            --am: #fbbf24;
+            --am-lt: #322208;
+            --am-pale: #1e1404;
+            --rd: #f87171;
+            --rd-lt: #320c0c;
+            --rd-pale: #1e0808;
+            --pu: #a78bfa;
+            --pu-lt: #2e1065;
+            --pu-pale: #1a0a3d;
+            --cy: #22d3ee;
+            --cy-lt: #083344;
+            --cy-pale: #042230;
+            --mk-blue-lt: #172040;
+            --mk-blue-pale: #0e1528;
+            --mk-or-lt: #3a2008;
+            --mk-or-pale: #211204;
+            --sh-md: 0 4px 14px rgba(0, 0, 0, .45);
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0
+        }
+
+        html,
+        body {
+            height: 100%
+        }
+
+        body {
+            font-family: var(--fb);
+            background: var(--bg);
+            color: var(--t1);
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 1.5;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: background .2s, color .2s
+        }
+
+        /* NAV */
+        .nav {
+            height: 52px;
+            background: var(--mk-blue);
+            display: flex;
+            align-items: center;
+            padding: 0 16px;
+            flex-shrink: 0;
+            z-index: 20
+        }
+
+        .n-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-right: 18px
+        }
+
+        .n-mark {
+            width: 30px;
+            height: 30px;
+            border-radius: 7px;
+            overflow: hidden;
+            flex-shrink: 0
+        }
+
+        .n-mark svg {
+            display: block
+        }
+
+        .n-txt {
+            font-family: var(--fh);
+            font-size: 14px;
+            font-weight: 700;
+            color: #fff;
+            letter-spacing: -.02em;
+            white-space: nowrap
+        }
+
+        .n-txt span {
+            color: var(--mk-or)
+        }
+
+        .n-div {
+            width: 1px;
+            height: 18px;
+            background: rgba(255, 255, 255, .22);
+            margin: 0 14px;
+            flex-shrink: 0
+        }
+
+        .n-prod {
+            font-size: 12px;
+            color: rgba(255, 255, 255, .65);
+            letter-spacing: 0;
+            font-weight: 400;
+            white-space: nowrap
+        }
+
+        .n-tabs {
+            display: flex;
+            align-items: center;
+            gap: 2px;
+            flex: 1;
+            margin-left: 18px
+        }
+
+        .n-tab {
+            padding: 5px 12px;
+            font-size: 12px;
+            color: rgba(255, 255, 255, .65);
+            background: none;
+            border: none;
+            border-radius: var(--rs);
+            cursor: pointer;
+            font-family: var(--fb);
+            font-weight: 400;
+            transition: all .15s
+        }
+
+        .n-tab:hover {
+            color: #fff;
+            background: rgba(255, 255, 255, .12)
+        }
+
+        .n-tab.active {
+            color: #fff;
+            background: rgba(255, 255, 255, .18)
+        }
+
+        .n-right {
+            display: flex;
+            align-items: center;
+            gap: 8px
+        }
+
+        .n-badge {
+            background: var(--mk-or);
+            color: #fff;
+            font-size: 12px;
+            font-weight: 700;
+            padding: 3px 10px;
+            border-radius: 99px;
+            font-family: var(--fm)
+        }
+
+        .t-btn {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, .15);
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            transition: background .15s;
+            flex-shrink: 0
+        }
+
+        .t-btn:hover {
+            background: rgba(255, 255, 255, .25)
+        }
+
+        .t-btn svg {
+            width: 15px;
+            height: 15px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2
+        }
+
+        .n-av {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: var(--mk-or);
+            font-size: 12px;
+            font-weight: 700;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--fh);
+            border: 2px solid rgba(255, 255, 255, .3);
+            flex-shrink: 0
+        }
+
+        .pg {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            overflow-y: auto;
+            min-height: 0
+        }
+
+        .pg::-webkit-scrollbar {
+            width: 4px
+        }
+
+        .pg::-webkit-scrollbar-thumb {
+            background: var(--bdr-m);
+            border-radius: 99px
+        }
+
+        .page-head {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            flex-shrink: 0;
+            background: var(--bg-p)
+        }
+
+        /* TOOLBAR */
+        .tb {
+            padding: 13px 24px;
+            background: var(--bg-p);
+            border-bottom: 1px solid var(--bdr);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-shrink: 0
+        }
+
+        .tb-l {
+            display: flex;
+            align-items: center;
+            gap: 16px
+        }
+
+        .pg-ttl {
+            font-family: var(--fh);
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--t1);
+            letter-spacing: -.02em
+        }
+
+        .pg-sub {
+            font-size: 12px;
+            color: var(--t3);
+            font-family: var(--fm);
+            font-weight: 400;
+            margin-top: 1px
+        }
+
+        .tb-stats {
+            display: flex;
+            gap: 8px
+        }
+
+        .ts {
+            padding: 3px 10px;
+            border-radius: 99px;
+            font-size: 12px;
+            font-family: var(--fb);
+            font-weight: 400;
+            border: 1px solid transparent
+        }
+
+        .ts-proc {
+            background: var(--pu-pale);
+            color: var(--pu);
+            border-color: var(--pu)
+        }
+
+        .ts-rdy {
+            background: var(--am-pale);
+            color: var(--am);
+            border-color: var(--am)
+        }
+
+        .ts-rev {
+            background: var(--ac-pale);
+            color: var(--ac);
+            border-color: var(--ac)
+        }
+
+        .ts-done {
+            background: var(--gr-pale);
+            color: var(--gr);
+            border-color: var(--gr)
+        }
+
+        .tb-r {
+            display: flex;
+            align-items: center;
+            gap: 8px
+        }
+
+        .srch {
+            position: relative
+        }
+
+        .srch-ic {
+            position: absolute;
+            left: 9px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--t3);
+            pointer-events: none
+        }
+
+        .srch-ic svg {
+            width: 12px;
+            height: 12px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 1.8
+        }
+
+        /* ── MUI-style Search Input ── */
+        .srch-inp {
+            padding: 8px 10px 8px 32px;
+            background: var(--bg-c);
+            border: 1px solid rgba(0, 0, 0, .23);
+            border-radius: 4px;
+            color: var(--t1);
+            font-size: 13px;
+            font-family: var(--fb);
+            outline: none;
+            width: 200px;
+            transition: border-color .2s
+        }
+
+        ::placeholder {
+            color: var(--ph);
+            opacity: 1
+        }
+
+        .srch-inp::placeholder {
+            color: var(--ph)
+        }
+
+        .srch-inp:hover {
+            border-color: var(--t1)
+        }
+
+        .srch-inp:focus {
+            border-color: var(--ac);
+            border-width: 2px;
+            padding: 7px 9px 7px 31px
+        }
+
+        /* ── MUI-style Buttons ── */
+        .btn {
+            padding: 5px 15px;
+            font-size: 13px;
+            font-weight: 500;
+            font-family: var(--fb);
+            border-radius: 4px;
+            border: 1px solid rgba(0, 0, 0, .23);
+            background: transparent;
+            color: var(--t2);
+            cursor: pointer;
+            transition: background-color .25s cubic-bezier(.4, 0, .2, 1), border-color .25s;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            letter-spacing: .02em;
+            line-height: 1.75;
+            position: relative;
+            overflow: hidden;
+            user-select: none
+        }
+
+        .btn::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: currentColor;
+            opacity: 0;
+            transition: opacity .2s
+        }
+
+        .btn:hover::after {
+            opacity: .06
+        }
+
+        .btn:active::after {
+            opacity: .12
+        }
+
+        .btn svg {
+            width: 13px;
+            height: 13px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2;
+            flex-shrink: 0
+        }
+
+        .btn:hover {
+            border-color: var(--t2)
+        }
+
+        .btn-pri {
+            background: var(--mk-blue);
+            color: #fff;
+            border: none;
+        }
+
+        .btn-pri:hover {
+            background: var(--mk-blue-dk);
+        }
+
+        /* FILTERS */
+        .fc-row {
+            padding: 10px 24px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-bottom: 1px solid var(--bdr);
+            background: var(--bg-p);
+            flex-shrink: 0;
+            flex-wrap: wrap
+        }
+
+        .fc-lbl {
+            font-size: 12px;
+            font-weight: 400;
+            color: var(--t3);
+            white-space: nowrap
+        }
+
+        .filter-group {
+            display: flex;
+            align-items: center;
+            gap: 6px
+        }
+
+        /* ── MUI-style Custom Select/Dropdown ── */
+        .custom-select {
+            position: relative;
+            min-width: 140px
+        }
+
+        .select-trigger {
+            padding: 7px 32px 7px 12px;
+            font-size: 13px;
+            font-weight: 400;
+            border: 1px solid rgba(0, 0, 0, .23);
+            border-radius: 4px;
+            background: var(--bg-c);
+            color: var(--t1);
+            cursor: pointer;
+            font-family: var(--fb);
+            white-space: nowrap;
+            position: relative;
+            transition: border-color .2s
+        }
+
+        .select-trigger:hover {
+            border-color: var(--t1)
+        }
+
+        .select-trigger::after {
+            content: '';
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 0;
+            height: 0;
+            border-left: 4px solid transparent;
+            border-right: 4px solid transparent;
+            border-top: 5px solid var(--t3)
+        }
+
+        .select-dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            margin-top: 4px;
+            background: var(--bg-p);
+            border: 1px solid rgba(0, 0, 0, .15);
+            border-radius: 4px;
+            z-index: 100;
+            display: none;
+            max-height: 250px;
+            overflow-y: auto
+        }
+
+        .custom-select.open .select-dropdown {
+            display: block
+        }
+
+        .select-option {
+            padding: 8px 14px;
+            font-size: 13px;
+            font-weight: 400;
+            color: var(--t2);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: background .15s
+        }
+
+        .select-option:hover {
+            background: var(--bg-h)
+        }
+
+        /* MUI-style inline checkbox in dropdown */
+        .select-option input[type="checkbox"] {
+            width: 16px;
+            height: 16px;
+            border-radius: 2px;
+            border: 2px solid var(--bdr-m);
+            background: transparent;
+            cursor: pointer;
+            appearance: none;
+            -webkit-appearance: none;
+            flex-shrink: 0;
+            transition: background-color .15s, border-color .15s;
+            position: relative;
+            vertical-align: middle
+        }
+
+        .select-option input[type="checkbox"]:checked {
+            background: var(--ac);
+            border-color: var(--ac)
+        }
+
+        .select-option input[type="checkbox"]:checked::after {
+            content: '';
+            position: absolute;
+            left: 4px;
+            top: 0px;
+            width: 5px;
+            height: 9px;
+            border: 2px solid #fff;
+            border-top: none;
+            border-left: none;
+            transform: rotate(43deg)
+        }
+
+        .select-option.selected {
+            color: var(--ac);
+            background: var(--ac-pale)
+        }
+
+        /* ── MUI-style Date Input ── */
+        .date-range {
+            display: flex;
+            align-items: center;
+            gap: 6px
+        }
+
+        .date-field {
+            position: relative;
+            display: inline-flex;
+            align-items: center
+        }
+
+        .date-input {
+            padding: 7px 26px 7px 10px;
+            font-size: 13px;
+            font-weight: 400;
+            border: 1px solid rgba(0, 0, 0, .23);
+            border-radius: 4px;
+            background: var(--bg-c);
+            color: var(--t1);
+            font-family: var(--fb);
+            outline: none;
+            width: 108px;
+            transition: border-color .2s
+        }
+
+        .date-input:hover {
+            border-color: var(--t1)
+        }
+
+        .date-input:focus {
+            border-color: var(--ac);
+            border-width: 2px;
+            padding: 6px 25px 6px 9px
+        }
+
+        .date-cal-btn {
+            position: absolute;
+            right: 4px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 22px;
+            height: 22px;
+            padding: 0;
+            border: none;
+            background: transparent;
+            color: var(--t3);
+            cursor: pointer;
+            border-radius: 2px
+        }
+
+        .date-cal-btn:hover {
+            color: var(--ac)
+        }
+
+        .date-cal-btn svg {
+            width: 16px;
+            height: 16px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2
+        }
+
+        .date-picker-native {
+            position: absolute;
+            opacity: 0;
+            width: 0;
+            height: 0;
+            pointer-events: none;
+            border: none;
+            padding: 0
+        }
+
+        .date-sep {
+            color: var(--t3);
+            font-size: 12px
+        }
+
+        /* ── MUI-style Clear Filters (Text Button) ── */
+        .clear-filters {
+            padding: 5px 12px;
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--ac);
+            background: transparent;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-family: var(--fb);
+            transition: background-color .2s;
+            letter-spacing: .02em;
+            position: relative;
+            overflow: hidden
+        }
+
+        .clear-filters::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: currentColor;
+            opacity: 0;
+            transition: opacity .2s
+        }
+
+        .clear-filters:hover::after {
+            opacity: .06
+        }
+
+        .fc-sep {
+            width: 1px;
+            height: 14px;
+            background: var(--bdr);
+            margin: 0 2px
+        }
+
+        /* CONTENT */
+        .content {
+            padding: 20px 24px;
+            flex-shrink: 0
+        }
+
+        /* CASE TABLE */
+        .case-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--bg-p);
+            border: 1px solid var(--bdr);
+            border-radius: 4px;
+            table-layout: fixed;
+        }
+
+        .case-table thead th {
+            position: sticky;
+            top: var(--page-head-h, 0px);
+            z-index: 5;
+            padding: 12px 16px;
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--t3);
+            text-align: left;
+            border-bottom: 1px solid var(--bdr);
+            white-space: nowrap;
+            background: var(--bg);
+            box-shadow: 0 1px 0 var(--bdr);
+        }
+
+        .case-table thead th:nth-child(1) {
+            width: 50px;
+            padding-left: 18px;
+        }
+
+        .case-table thead th:nth-child(2) {
+            width: 18%;
+        }
+
+        .case-table thead th:nth-child(3) {
+            width: 14%;
+        }
+
+        .case-table thead th:nth-child(4) {
+            width: 11%;
+        }
+
+        .case-table thead th:nth-child(5) {
+            width: 14%;
+        }
+
+        .case-table thead th:nth-child(6) {
+            width: 14%;
+        }
+
+        .case-table thead th:nth-child(7) {
+            width: 14%;
+        }
+
+        .case-table thead th:nth-child(8) {
+            width: 7%;
+        }
+
+        .case-table thead th:nth-child(9) {
+            width: 8%;
+            padding-right: 18px;
+        }
+
+        .case-row {
+            border-bottom: 1px solid var(--bdr);
+            cursor: pointer;
+            transition: background-color .15s;
+        }
+
+        .case-row:hover {
+            background: var(--bg-h);
+        }
+
+        .case-row:last-child {
+            border-bottom: none;
+        }
+
+        .case-row td {
+            padding: 12px 16px;
+            vertical-align: middle;
+            font-size: 13px;
+            color: var(--t1);
+        }
+
+        .case-row td:first-child {
+            padding-left: 18px;
+        }
+
+        .case-row td:last-child {
+            padding-right: 18px;
+        }
+
+        /* ── MUI expand icon ── */
+        .caret {
+            width: 18px;
+            height: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--t3);
+            transition: transform .25s cubic-bezier(.4, 0, .2, 1);
+            flex-shrink: 0;
+            margin-right: 8px;
+        }
+
+        .caret svg {
+            width: 13px;
+            height: 13px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2
+        }
+
+        .case-row.expanded .caret {
+            transform: rotate(90deg)
+        }
+
+        /* Expandable NDC row - aligns with main table columns */
+        .ndc-expand-row {
+            display: none;
+            background: var(--bg);
+        }
+
+        .ndc-expand-row.expanded {
+            display: table-row;
+        }
+
+        .ndc-expand-row td {
+            padding: 0;
+            border-bottom: none;
+        }
+
+
+        /* NDC nested table - same structure as main table for perfect alignment */
+        .ndc-nested-table {
+            width: 100%;
+            border-collapse: collapse;
+            table-layout: fixed;
+        }
+
+        .ndc-nested-table td {
+            padding: 12px 16px;
+            border-bottom: none;
+            vertical-align: middle;
+        }
+
+        .ndc-nested-table td:nth-child(1) {
+            width: 50px;
+            padding-left: 18px;
+        }
+
+        .ndc-nested-table td:nth-child(2) {
+            width: 18%;
+        }
+
+        .ndc-nested-table td:nth-child(3) {
+            width: 14%;
+        }
+
+        .ndc-nested-table td:nth-child(4) {
+            width: 11%;
+        }
+
+        .ndc-nested-table td:nth-child(5) {
+            width: 14%;
+        }
+
+        .ndc-nested-table td:nth-child(6) {
+            width: 14%;
+        }
+
+        .ndc-nested-table td:nth-child(7) {
+            width: 10%;
+        }
+
+        .ndc-nested-table td:nth-child(8) {
+            width: 10%;
+        }
+
+        .ndc-nested-table td:nth-child(9) {
+            width: 9%;
+            padding-right: 18px;
+            text-align: right;
+        }
+
+        /* Delete link styling */
+        .ndc-del-link {
+            font-size: 12px;
+            color: var(--rd);
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .ndc-del-link:hover {
+            text-decoration: underline;
+        }
+
+        .ndc-del-link:disabled,
+        .ndc-del-link[disabled] {
+            color: var(--bdr-m);
+            cursor: not-allowed;
+            text-decoration: none;
+        }
+
+        /* Editable note cells */
+        .editable-note {
+            cursor: default;
+            position: relative;
+        }
+
+        .editable-note:hover {
+            background: var(--bg-h);
+            cursor: text;
+        }
+
+        .editable-note.placeholder {
+            color: var(--bdr-m);
+        }
+
+        .editable-note.editing {
+            background: var(--bg-p);
+            outline: 2px solid var(--ac);
+            outline-offset: -2px;
+        }
+
+        .editable-note input {
+            width: 100%;
+            padding: 0;
+            border: none;
+            background: transparent;
+            font-size: 13px;
+            font-family: inherit;
+            color: var(--t1);
+            outline: none;
+        }
+
+        .ndc-ic {
+            width: 36px;
+            height: 36px;
+            background: var(--ac-pale);
+            border: none;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0
+        }
+
+        .ndc-ic svg {
+            width: 15px;
+            height: 15px;
+            fill: none;
+            stroke: var(--ac);
+            stroke-width: 1.8
+        }
+
+        .case-id {
+            font-family: var(--fh);
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--t1);
+            letter-spacing: -.01em
+        }
+
+        .case-meta {
+            font-size: 11px;
+            color: var(--t3);
+            font-family: var(--fm);
+            font-weight: 400;
+            margin-top: 2px
+        }
+
+        /* CASE STATUS CHIP */
+        .cs-chip {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            width: 128px;
+            padding: 3px 10px;
+            border-radius: 99px;
+            font-size: 11px;
+            font-weight: 400;
+            font-family: var(--fb);
+            border: 1px solid transparent;
+            white-space: nowrap;
+            letter-spacing: .01em
+        }
+
+        .cs-chip.cs-proc {
+            background: #fef9c3;
+            color: #854d0e;
+            border-color: #854d0e
+        }
+
+        [data-theme=dark] .cs-chip.cs-proc {
+            background: #1e1a04;
+            color: #fde047;
+            border-color: #3a3208
+        }
+
+        .cs-chip.cs-rdy {
+            background: var(--mk-or-pale);
+            color: var(--mk-or-dk);
+            border-color: var(--mk-or-dk)
+        }
+
+        .cs-chip.cs-ur {
+            background: var(--mk-blue-lt);
+            color: var(--mk-blue-dk);
+            border-color: var(--mk-blue-dk);
+        }
+
+        .cs-chip.cs-fail {
+            background: var(--rd-pale);
+            color: var(--rd);
+            border-color: var(--rd);
+            cursor: help;
+        }
+
+        .cs-chip.cs-done {
+            background: var(--gr-pale);
+            color: var(--gr);
+            border-color: var(--gr)
+        }
+
+        .cs-spin {
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+            border: 2px solid var(--bdr-m);
+            border-top-color: var(--t3);
+            animation: spin .7s linear infinite;
+            flex-shrink: 0;
+            display: none;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg)
+            }
+        }
+
+        /* CASE ACTIONS */
+        .case-acts {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 8px
+        }
+
+        .cell-actions {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 8px;
+        }
+
+        .act-link {
+            font-size: 12px;
+            color: var(--ac);
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .act-link:hover {
+            text-decoration: underline;
+        }
+
+        .act-sep {
+            color: var(--bdr-m);
+            font-size: 12px;
+        }
+
+        /* ── MUI small outlined/text Buttons — case actions ── */
+        .ca-btn {
+            height: 30px;
+            padding: 0 12px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 500;
+            font-family: var(--fb);
+            border: 1px solid rgba(0, 0, 0, .23);
+            background: transparent;
+            color: var(--t2);
+            cursor: pointer;
+            transition: background-color .2s, border-color .2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            white-space: nowrap;
+            letter-spacing: .02em;
+            position: relative;
+            overflow: hidden
+        }
+
+        .ca-btn::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: currentColor;
+            opacity: 0;
+            transition: opacity .15s
+        }
+
+        .ca-btn:hover::after {
+            opacity: .06
+        }
+
+        .ca-btn svg {
+            width: 11px;
+            height: 11px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2;
+            flex-shrink: 0
+        }
+
+        .ca-btn:hover {
+            border-color: var(--t2)
+        }
+
+        .ca-btn.ab-ps {
+            border-color: var(--pu);
+            color: var(--pu)
+        }
+
+        .ca-btn.ab-ps:hover {
+            border-color: var(--pu)
+        }
+
+        .ca-btn.ab-rs {
+            border-color: var(--gr);
+            color: var(--gr)
+        }
+
+        .ca-btn.ab-rs:hover {
+            border-color: var(--gr)
+        }
+
+        .ca-btn.ab-rw {
+            border-color: var(--am);
+            color: var(--am)
+        }
+
+        .ca-btn.ab-rw:hover {
+            border-color: var(--am)
+        }
+
+        .ca-btn.ab-rv {
+            border: none;
+            color: #fff;
+            background: var(--ac);
+            font-weight: 500;
+        }
+
+        .ca-btn.ab-rv:hover {
+            background: var(--mk-blue-dk);
+        }
+
+        /* ── MUI IconButton — delete ── */
+        .ca-del {
+            width: 30px;
+            height: 30px;
+            border-radius: 4px;
+            border: 1px solid var(--rd);
+            background: transparent;
+            color: var(--rd);
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color .15s;
+            flex-shrink: 0;
+            position: relative;
+            overflow: hidden
+        }
+
+        .ca-del::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 4px;
+            background: currentColor;
+            opacity: 0;
+            transition: opacity .15s
+        }
+
+        .ca-del:hover::after {
+            opacity: .08
+        }
+
+        .ca-del:disabled,
+        .ca-del:disabled:hover {
+            border-color: var(--bdr-m);
+            color: var(--bdr-m);
+            cursor: not-allowed
+        }
+
+        .ca-del:disabled::after {
+            display: none
+        }
+
+        .ca-del svg {
+            width: 13px;
+            height: 13px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2
+        }
+
+        /* NDC Delete Button */
+        /* ── MUI IconButton — ndc delete ── */
+        .ndc-del {
+            width: 28px;
+            height: 28px;
+            border-radius: 4px;
+            border: 1px solid var(--rd);
+            background: transparent;
+            color: var(--rd);
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color .15s;
+            flex-shrink: 0;
+            position: relative;
+            overflow: hidden
+        }
+
+        .ndc-del::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 4px;
+            background: currentColor;
+            opacity: 0;
+            transition: opacity .15s
+        }
+
+        .ndc-del:hover::after {
+            opacity: .08
+        }
+
+        .ndc-del:disabled,
+        .ndc-del:disabled:hover {
+            border-color: var(--bdr-m);
+            color: var(--bdr-m);
+            cursor: not-allowed
+        }
+
+        .ndc-del:disabled::after {
+            display: none
+        }
+
+        .ndc-del svg {
+            width: 12px;
+            height: 12px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2
+        }
+
+        /* ── NDC View icon button (filled) ── */
+        .ndc-view {
+            width: 28px;
+            height: 28px;
+            border-radius: 4px;
+            border: none;
+            background: var(--ac);
+            color: #fff;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color .15s;
+            flex-shrink: 0;
+            position: relative;
+            overflow: hidden
+        }
+
+        .ndc-view::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 4px;
+            background: currentColor;
+            opacity: 0;
+            transition: opacity .15s
+        }
+
+        .ndc-view:hover::after {
+            opacity: .12
+        }
+
+        .ndc-view svg {
+            width: 13px;
+            height: 13px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2
+        }
+
+        .ndc-view:disabled {
+            background: var(--bdr-m);
+            color: var(--t3);
+            cursor: not-allowed
+        }
+
+        .ndc-view:disabled::after {
+            display: none
+        }
+
+        /* ── Review icon button (filled) ── */
+        .ca-rv {
+            width: 30px;
+            height: 30px;
+            border-radius: 4px;
+            border: none;
+            background: var(--ac);
+            color: #fff;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color .15s;
+            flex-shrink: 0;
+            position: relative;
+            overflow: hidden
+        }
+
+        .ca-rv::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 4px;
+            background: currentColor;
+            opacity: 0;
+            transition: opacity .15s
+        }
+
+        .ca-rv:hover::after {
+            opacity: .12
+        }
+
+        .ca-rv svg {
+            width: 14px;
+            height: 14px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2
+        }
+
+        .ca-rv:disabled,
+        .ca-rv:disabled:hover {
+            border: 1px solid var(--bdr-m);
+            background: transparent;
+            color: var(--bdr-m);
+            cursor: not-allowed
+        }
+
+        .ca-rv:disabled::after {
+            display: none
+        }
+
+        .ndc-actions {
+            text-align: right
+        }
+
+        /* NDC wrap inside expanded row */
+        .ndc-wrap {
+            padding: 0;
+        }
+
+        .ndc-n {
+            font-family: var(--fh);
+            font-size: 12px;
+            font-weight: 400;
+            color: var(--t1);
+        }
+
+        .ndc-s {
+            font-size: 11px;
+            color: var(--t3);
+            font-family: var(--fm);
+            font-weight: 400;
+            margin-top: 1px;
+        }
+
+        .sbdg {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            width: 128px;
+            padding: 3px 10px;
+            font-size: 11px;
+            font-family: var(--fb);
+            font-weight: 400;
+            border-radius: 99px;
+            border: 1px solid transparent;
+            letter-spacing: .01em
+        }
+
+        .sbdg-dot {
+            display: none
+        }
+
+        .sbdg-spin {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            border: 2px solid var(--bdr-m);
+            border-top-color: var(--t3);
+            animation: spin .7s linear infinite;
+            flex-shrink: 0;
+            display: none;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 1
+            }
+
+            50% {
+                opacity: .4
+            }
+        }
+
+        .sbdg.s-proc .sbdg-dot {
+            display: none
+        }
+
+        .sbdg.s-proc {
+            background: #fef9c3;
+            color: #854d0e;
+            border-color: #854d0e
+        }
+
+        .sbdg.s-extr .sbdg-dot {
+            background: var(--cy)
+        }
+
+        .sbdg.s-extr {
+            background: var(--cy-pale);
+            color: var(--cy);
+            border-color: var(--cy-lt);
+            animation: pulse 1.4s ease infinite
+        }
+
+        .sbdg.s-vali .sbdg-dot {
+            background: var(--mk-or)
+        }
+
+        .sbdg.s-vali {
+            background: var(--mk-or-pale);
+            color: var(--mk-or);
+            border-color: var(--mk-or);
+            animation: pulse 1.4s ease infinite
+        }
+
+        .sbdg.s-rdy {
+            background: var(--mk-or-pale);
+            color: var(--mk-or-dk);
+            border-color: var(--mk-or-dk);
+        }
+
+        .sbdg.s-rdy .sbdg-dot {
+            background: var(--am)
+        }
+
+        .sbdg.s-ur {
+            background: var(--mk-blue-lt);
+            color: var(--mk-blue-dk);
+            border-color: var(--mk-blue-dk);
+        }
+
+        .sbdg.s-ur .sbdg-dot {
+            background: var(--mk-blue-dk)
+        }
+
+        .sbdg.s-que {
+            background: var(--ac-pale);
+            color: var(--ac);
+            border-color: var(--ac)
+        }
+
+        .sbdg.s-que .sbdg-dot {
+            background: var(--ac)
+        }
+
+        .sbdg.s-done {
+            background: var(--gr-pale);
+            color: var(--gr);
+            border-color: var(--gr)
+        }
+
+        .sbdg.s-done .sbdg-dot {
+            background: var(--gr)
+        }
+
+        .sbdg.s-err {
+            background: var(--rd-pale);
+            color: var(--rd);
+            border-color: var(--rd);
+            cursor: help;
+        }
+
+        .sbdg.s-err .sbdg-dot {
+            background: var(--rd)
+        }
+
+        .sbdg.s-paus {
+            background: var(--bg-h);
+            color: var(--t2);
+            border-color: var(--bdr-m)
+        }
+
+        .sbdg.s-paus .sbdg-dot {
+            background: var(--t3)
+        }
+
+        .sbdg.s-canceled {
+            background: #e5e7eb;
+            color: #6b7280;
+            border-color: #6b7280
+        }
+
+        .sbdg.s-canceled .sbdg-dot {
+            background: #6b7280
+        }
+
+        /* PROGRESS */
+        .prog-cell {
+            display: flex;
+            align-items: center;
+            gap: 6px
+        }
+
+        .prog-bar {
+            width: 56px;
+            height: 3px;
+            background: var(--bdr);
+            border-radius: 99px;
+            overflow: hidden;
+            flex-shrink: 0
+        }
+
+        .prog-fill {
+            height: 100%;
+            border-radius: 99px
+        }
+
+        .pf-done {
+            background: var(--gr)
+        }
+
+        .pf-act {
+            background: linear-gradient(90deg, var(--mk-blue), var(--mk-or))
+        }
+
+        .pf-err {
+            background: var(--rd)
+        }
+
+        .prog-pct {
+            font-size: 12px;
+            font-family: var(--fb);
+            color: var(--t3)
+        }
+
+        /* MODAL */
+        .overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, .35);
+            z-index: 100;
+            display: none;
+            align-items: center;
+            justify-content: center
+        }
+
+        .overlay.show {
+            display: flex
+        }
+
+        .modal {
+            background: var(--bg-p);
+            border: 1px solid var(--bdr);
+            border-radius: 12px;
+            padding: 22px 24px;
+            width: 360px;
+            animation: ms .18s ease
+        }
+
+        @keyframes ms {
+            from {
+                opacity: 0;
+                transform: scale(.95)
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1)
+            }
+        }
+
+        .modal-ttl {
+            font-family: var(--fh);
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--t1);
+            margin-bottom: 6px
+        }
+
+        .modal-body {
+            font-size: 12px;
+            font-weight: 400;
+            color: var(--t2);
+            line-height: 1.6;
+            margin-bottom: 18px
+        }
+
+        .modal-body strong {
+            color: var(--rd)
+        }
+
+        .modal-ftr {
+            display: flex;
+            gap: 8px;
+            justify-content: flex-end
+        }
+
+        .mb {
+            padding: 7px 14px;
+            font-size: 12px;
+            font-weight: 700;
+            font-family: var(--fb);
+            border-radius: var(--rs);
+            cursor: pointer;
+            border: 1px solid;
+            transition: all .15s
+        }
+
+        .mb-cn {
+            border-color: var(--bdr-m);
+            background: var(--bg-c);
+            color: var(--t2)
+        }
+
+        .mb-cn:hover {
+            background: var(--bg-h)
+        }
+
+        .mb-del {
+            border-color: var(--rd);
+            background: var(--rd);
+            color: #fff
+        }
+
+        .mb-del:hover {
+            background: #b91c1c;
+            border-color: #b91c1c
+        }
+
+        /* TOAST */
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--t1);
+            color: var(--bg-p);
+            font-size: 12px;
+            font-weight: 400;
+            padding: 9px 16px;
+            border-radius: var(--rs);
+            z-index: 200;
+            display: none
+        }
+
+        .toast.show {
+            display: block
+        }
+
+        @keyframes fu {
+            from {
+                opacity: 0;
+                transform: translateY(8px)
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0)
+            }
+        }
+
+        .case-row {
+            animation: fu .22s ease both
+        }
+
+        .case-row:nth-child(1) {
+            animation-delay: .04s
+        }
+
+        .case-row:nth-child(3) {
+            animation-delay: .09s
+        }
+
+        .case-row:nth-child(5) {
+            animation-delay: .14s
+        }
+
+        .case-row:nth-child(7) {
+            animation-delay: .19s
+        }
+
+        .case-row:nth-child(9) {
+            animation-delay: .24s
+        }
+    </style>
 </head>
 
 <body data-theme="light">
 
-  <nav class="nav">
-    <div class="n-logo">
-      <!-- <div class="n-mark">
+    <nav class="nav">
+        <div class="n-logo">
+            <!-- <div class="n-mark">
         <svg width="30" height="30" viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg">
           <rect width="30" height="30" fill="#174EA0" />
           <text x="4" y="22" font-family="Georgia,serif" font-size="20" font-weight="900" fill="#fff">M</text>
           <rect x="0" y="26" width="30" height="4" fill="#F29130" />
         </svg>
       </div> -->
-      <img src="mck-logo.png" alt="McKesson" style="height:20px;width:auto;display:block" />
-      <span class="n-txt">Gx Product Set-up</span>
-    </div>
-    <div class="n-div"></div>
-    <div class="n-tabs">
-      <button class="n-tab ">Business Insights</button>
-      <button class="n-tab active">Workflow Pipeline</button>
-      <button class="n-tab">Rule Tower</button>
-      <button class="n-tab">Trust Score Framework</button>
-      <button class="n-tab">Trust Score Configuration</button>
-      <button class="n-tab">Abbreviations</button>
-
-    </div>
-    <div class="n-right">
-      <div class="n-av">RP</div>
-    </div>
-  </nav>
-
-  <div class="pg">
-    <div class="page-head">
-    <div class="tb">
-      <div class="tb-l">
-        <div>
-          <div class="pg-ttl">Case Inbox</div>
-          <div class="pg-sub">5 cases &middot; 12 NDCs &middot; Last updated 2 min ago</div>
+            <img src="mck-logo.png"
+                 alt="McKesson"
+                 style="height:20px;width:auto;display:block" />
+            <span class="n-txt">Gx Product Set-up</span>
         </div>
-        <!-- <div class="tb-stats">
+        <div class="n-div"></div>
+        <div class="n-tabs">
+            <button class="n-tab ">Business Insights</button>
+            <button class="n-tab active">Workflow Pipeline</button>
+            <button class="n-tab">Rule Tower</button>
+            <button class="n-tab">Trust Score Framework</button>
+            <button class="n-tab">Trust Score Configuration</button>
+            <button class="n-tab">Abbreviations</button>
+
+        </div>
+        <div class="n-right">
+            <div class="n-av">RP</div>
+        </div>
+    </nav>
+
+    <div class="pg">
+        <div class="page-head">
+            <div class="tb">
+                <div class="tb-l">
+                    <div>
+                        <div class="pg-ttl">Case Inbox</div>
+                        <div class="pg-sub">5 cases &middot; 12 NDCs &middot; Last updated 2 min ago</div>
+                    </div>
+                    <!-- <div class="tb-stats">
           <span class="ts ts-proc">4 processing</span>
           <span class="ts ts-rdy">5 ready</span>
           <span class="ts ts-rev">3 under review</span>
           <span class="ts ts-done">16 reviewed</span>
         </div> -->
-      </div>
-      <div class="tb-r">
-        <div class="srch">
-          <span class="srch-ic"><svg viewBox="0 0 24 24">
-              <circle cx="11" cy="11" r="8" />
-              <line x1="21" y1="21" x2="16.65" y2="16.65" />
-            </svg></span>
-          <input class="srch-inp" placeholder="Search case, NDC, vendor&#8230;" oninput="filterCases(this.value)" />
-        </div>
-        <!-- <button class="btn">
+                </div>
+                <div class="tb-r">
+                    <div class="srch">
+                        <span class="srch-ic"><svg viewBox="0 0 24 24">
+                                <circle cx="11"
+                                        cy="11"
+                                        r="8" />
+                                <line x1="21"
+                                      y1="21"
+                                      x2="16.65"
+                                      y2="16.65" />
+                            </svg></span>
+                        <input class="srch-inp"
+                               placeholder="Search case, NDC, vendor&#8230;"
+                               oninput="filterCases(this.value)" />
+                    </div>
+                    <!-- <button class="btn">
           <svg viewBox="0 0 24 24">
             <line x1="8" y1="6" x2="21" y2="6" />
             <line x1="8" y1="12" x2="21" y2="12" />
@@ -1831,990 +1855,1158 @@
           </svg>
           New Case
         </button> -->
-      </div>
-    </div>
+                </div>
+            </div>
 
-    <div class="fc-row">
-      <div class="filter-group">
-        <span class="fc-lbl">Status:</span>
-        <div class="custom-select" id="statusSelect">
-          <div class="select-trigger" onclick="toggleDropdown('statusSelect')">In Progress, +2</div>
-          <div class="select-dropdown" style="min-width:180px">
-            <div class="select-option" onclick="selectStatus('all', this)"><input type="checkbox"
-                onchange="selectStatus('all', this.parentElement)"> All Statuses</div>
-            <div class="select-option" onclick="selectStatus('queued', this)"><input type="checkbox"
-                onchange="selectStatus('queued', this.parentElement)"> Queued</div>
-            <div class="select-option" onclick="selectStatus('processing', this)"><input type="checkbox" checked
-                onchange="selectStatus('processing', this.parentElement)"> In progress</div>
-            <div class="select-option" onclick="selectStatus('ready', this)"><input type="checkbox" checked
-                onchange="selectStatus('ready', this.parentElement)"> Ready for Review</div>
-            <div class="select-option" onclick="selectStatus('review', this)"><input type="checkbox" checked
-                onchange="selectStatus('review', this.parentElement)"> Under Review</div>
-            <div class="select-option" onclick="selectStatus('reviewed', this)"><input type="checkbox"
-                onchange="selectStatus('reviewed', this.parentElement)"> PM Reviewed</div>
-            <div class="select-option" onclick="selectStatus('failed', this)"><input type="checkbox"
-                onchange="selectStatus('failed', this.parentElement)"> Failed</div>
-          </div>
+            <div class="fc-row">
+                <div class="filter-group">
+                    <span class="fc-lbl">Status:</span>
+                    <div class="custom-select"
+                         id="statusSelect">
+                        <div class="select-trigger"
+                             onclick="toggleDropdown('statusSelect')">All Statuses</div>
+                        <div class="select-dropdown"
+                             style="min-width:180px">
+                            <div class="select-option"
+                                 onclick="selectStatus('all', this)"><input type="checkbox"
+                                       checked
+                                       onchange="selectStatus('all', this.parentElement)"> All Statuses</div>
+                            <div class="select-option"
+                                 onclick="selectStatus('queued', this)"><input type="checkbox"
+                                       checked
+                                       onchange="selectStatus('queued', this.parentElement)"> Queued</div>
+                            <div class="select-option"
+                                 onclick="selectStatus('processing', this)"><input type="checkbox"
+                                       checked
+                                       onchange="selectStatus('processing', this.parentElement)"> In progress</div>
+                            <div class="select-option"
+                                 onclick="selectStatus('ready', this)"><input type="checkbox"
+                                       checked
+                                       onchange="selectStatus('ready', this.parentElement)"> Ready for Review</div>
+                            <div class="select-option"
+                                 onclick="selectStatus('review', this)"><input type="checkbox"
+                                       checked
+                                       onchange="selectStatus('review', this.parentElement)"> Under Review</div>
+                            <div class="select-option"
+                                 onclick="selectStatus('reviewed', this)"><input type="checkbox"
+                                       checked
+                                       onchange="selectStatus('reviewed', this.parentElement)"> PM Reviewed</div>
+                            <div class="select-option"
+                                 onclick="selectStatus('failed', this)"><input type="checkbox"
+                                       checked
+                                       onchange="selectStatus('failed', this.parentElement)"> Failed</div>
+                            <div class="select-option"
+                                 onclick="selectStatus('cancelled', this)"><input type="checkbox"
+                                       checked
+                                       onchange="selectStatus('cancelled', this.parentElement)"> Cancelled</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="fc-sep"></div>
+
+                <div class="filter-group">
+                    <span class="fc-lbl">Vendor:</span>
+                    <div class="custom-select"
+                         id="vendorSelect">
+                        <div class="select-trigger"
+                             onclick="toggleDropdown('vendorSelect')">All Vendors</div>
+                        <div class="select-dropdown"
+                             style="min-width:280px">
+                            <div class="select-option"
+                                 onclick="selectVendor('all', this)"><input type="checkbox"
+                                       checked
+                                       onchange="toggleVendorCheckbox('all', this)"> All Vendors</div>
+                            <div class="select-option"
+                                 onclick="selectVendor('Bryant Ranch Prepack, Inc', this)"><input type="checkbox"
+                                       onchange="toggleVendorCheckbox('Bryant Ranch Prepack, Inc', this)"> Bryant Ranch Prepack, Inc</div>
+                            <div class="select-option"
+                                 onclick="selectVendor('Heritage Pharmaceuticals Inc. d/b/a Avet Pharmaceuticals Inc.', this)"><input type="checkbox"
+                                       onchange="toggleVendorCheckbox('Heritage Pharmaceuticals Inc. d/b/a Avet Pharmaceuticals Inc.', this)">
+                                Heritage Pharmaceuticals Inc.</div>
+                            <div class="select-option"
+                                 onclick="selectVendor('Method Pharmaceuticals, LLC', this)"><input type="checkbox"
+                                       onchange="toggleVendorCheckbox('Method Pharmaceuticals, LLC', this)"> Method
+                                Pharmaceuticals, LLC</div>
+                            <div class="select-option"
+                                 onclick="selectVendor('Sagent Pharmaceuticals', this)"><input type="checkbox"
+                                       onchange="toggleVendorCheckbox('Sagent Pharmaceuticals', this)"> Sagent Pharmaceuticals</div>
+                            <div class="select-option"
+                                 onclick="selectVendor('Westminster Pharmaceuticals, LLC', this)"><input type="checkbox"
+                                       onchange="toggleVendorCheckbox('Westminster Pharmaceuticals, LLC', this)"> Westminster
+                                Pharmaceuticals, LLC</div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="fc-sep"></div>
+
+                <div class="filter-group">
+                    <span class="fc-lbl">Date Range:</span>
+                    <div class="date-range">
+                        <div class="date-field">
+                            <input type="text"
+                                   value="05/01/26"
+                                   class="date-input"
+                                   id="dateFrom"
+                                   placeholder="MM/DD/YY"
+                                   data-iso="2026-05-01"
+                                   maxlength="8"
+                                   onblur="normalizeDateInput(this); applyFilters()">
+                            <button type="button"
+                                    class="date-cal-btn"
+                                    onclick="openDatePicker('dateFrom')"
+                                    aria-label="Open calendar">
+                                <svg viewBox="0 0 24 24">
+                                    <rect x="3"
+                                          y="4"
+                                          width="18"
+                                          height="18"
+                                          rx="2"
+                                          ry="2" />
+                                    <line x1="16"
+                                          y1="2"
+                                          x2="16"
+                                          y2="6" />
+                                    <line x1="8"
+                                          y1="2"
+                                          x2="8"
+                                          y2="6" />
+                                    <line x1="3"
+                                          y1="10"
+                                          x2="21"
+                                          y2="10" />
+                                </svg>
+                            </button>
+                            <input type="date"
+                                   id="dateFromPicker"
+                                   class="date-picker-native"
+                                   value="2026-05-01"
+                                   tabindex="-1"
+                                   onchange="syncDatePicker('dateFrom', this)">
+                        </div>
+                        <span class="date-sep">to</span>
+                        <div class="date-field">
+                            <input type="text"
+                                   value="05/10/26"
+                                   class="date-input"
+                                   id="dateTo"
+                                   placeholder="MM/DD/YY"
+                                   data-iso="2026-05-10"
+                                   maxlength="8"
+                                   onblur="normalizeDateInput(this); applyFilters()">
+                            <button type="button"
+                                    class="date-cal-btn"
+                                    onclick="openDatePicker('dateTo')"
+                                    aria-label="Open calendar">
+                                <svg viewBox="0 0 24 24">
+                                    <rect x="3"
+                                          y="4"
+                                          width="18"
+                                          height="18"
+                                          rx="2"
+                                          ry="2" />
+                                    <line x1="16"
+                                          y1="2"
+                                          x2="16"
+                                          y2="6" />
+                                    <line x1="8"
+                                          y1="2"
+                                          x2="8"
+                                          y2="6" />
+                                    <line x1="3"
+                                          y1="10"
+                                          x2="21"
+                                          y2="10" />
+                                </svg>
+                            </button>
+                            <input type="date"
+                                   id="dateToPicker"
+                                   class="date-picker-native"
+                                   value="2026-05-10"
+                                   tabindex="-1"
+                                   onchange="syncDatePicker('dateTo', this)">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="fc-sep"></div>
+
+                <button class="clear-filters"
+                        onclick="clearAllFilters()">Clear All</button>
+            </div>
         </div>
-      </div>
 
-      <div class="fc-sep"></div>
+        <div class="content"
+             id="caseList">
 
-      <div class="filter-group">
-        <span class="fc-lbl">Vendor:</span>
-        <div class="custom-select" id="vendorSelect">
-          <div class="select-trigger" onclick="toggleDropdown('vendorSelect')">All Vendors</div>
-          <div class="select-dropdown" style="min-width:280px">
-            <div class="select-option" onclick="selectVendor('all', this)"><input type="checkbox" checked
-                onchange="toggleVendorCheckbox('all', this)"> All Vendors</div>
-            <div class="select-option" onclick="selectVendor('Bryant Ranch Prepack, Inc', this)"><input type="checkbox"
-                onchange="toggleVendorCheckbox('Bryant Ranch Prepack, Inc', this)"> Bryant Ranch Prepack, Inc</div>
-            <div class="select-option"
-              onclick="selectVendor('Heritage Pharmaceuticals Inc. d/b/a Avet Pharmaceuticals Inc.', this)"><input
-                type="checkbox"
-                onchange="toggleVendorCheckbox('Heritage Pharmaceuticals Inc. d/b/a Avet Pharmaceuticals Inc.', this)">
-              Heritage Pharmaceuticals Inc.</div>
-            <div class="select-option" onclick="selectVendor('Method Pharmaceuticals, LLC', this)"><input
-                type="checkbox" onchange="toggleVendorCheckbox('Method Pharmaceuticals, LLC', this)"> Method
-              Pharmaceuticals, LLC</div>
-            <div class="select-option" onclick="selectVendor('Sagent Pharmaceuticals', this)"><input type="checkbox"
-                onchange="toggleVendorCheckbox('Sagent Pharmaceuticals', this)"> Sagent Pharmaceuticals</div>
-            <div class="select-option" onclick="selectVendor('Westminster Pharmaceuticals, LLC', this)"><input
-                type="checkbox" onchange="toggleVendorCheckbox('Westminster Pharmaceuticals, LLC', this)"> Westminster
-              Pharmaceuticals, LLC</div>
+            <table class="case-table">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Vendor Name</th>
+                        <th>Generic Name</th>
+                        <th># of NDCs</th>
+                        <th>Status</th>
+                        <th>TimeStamp</th>
+                        <th>Notes</th>
+                        <th>Case #</th>
+                        <th style="text-align:right">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
 
-          </div>
+                    <!-- CASE 1 — Processing -->
+                    <tr class="case-row"
+                        data-case="CASE-2026-00089"
+                        data-status="processing"
+                        onclick="if(!event.target.closest('.editable-note') && !event.target.closest('.cell-actions')) toggleCaseRow(this)">
+                        <td>
+                            <div class="caret"><svg viewBox="0 0 24 24">
+                                    <polyline points="9 18 15 12 9 6" />
+                                </svg></div>
+                        </td>
+                        <td>Sagent Pharmaceuticals</td>
+                        <td>-</td>
+                        <td>3</td>
+                        <td><span class="cs-chip cs-proc"><span class="cs-spin"></span>In Progress</span></td>
+                        <td>05/05/26 09:14 AM</td>
+                        <td class="editable-note placeholder"
+                            data-case="CASE-2026-00089"
+                            title="double click to edit">Add Notes
+                        </td>
+                        <td>26-0089</td>
+                        <td>
+                            <div class="cell-actions"
+                                 onclick="event.stopPropagation()">
+                                <button class="ca-rv"
+                                        disabled><svg viewBox="0 0 24 24">
+                                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                                        <circle cx="12"
+                                                cy="12"
+                                                r="3" />
+                                    </svg></button>
+                                <button class="ca-del"
+                                        disabled
+                                        onclick="confirmDelete('CASE-2026-00089')"><svg viewBox="0 0 24 24">
+                                        <path d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M10 11v6M14 11v6" />
+                                    </svg></button>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr class="ndc-expand-row"
+                        data-case="CASE-2026-00089">
+                        <td colspan="9">
+                            <table class="ndc-nested-table">
+                                <tbody>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>
+                                            <div class="ndc-n">72789-0475-30</div>
+                                        </td>
+                                        <td><span class="sbdg s-rdy"><span class="sbdg-dot"></span>Ready for Review</span></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>
+                                            <button class="ca-del"
+                                                    onclick="confirmDeleteNDC('NDC 57894-0001-01')">
+                                                <svg viewBox="0 0 24 24">
+                                                    <path d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M10 11v6M14 11v6" />
+                                                </svg>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>
+                                            <div class="ndc-n">72789-0475-31</div>
+                                        </td>
+                                        <td><span class="sbdg s-proc"><span class="sbdg-spin"></span>In Progress</span></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>
+                                            <button disabled
+                                                    class="ca-del"
+                                                    onclick="confirmDeleteNDC('NDC 57894-0001-01')">
+                                                <svg viewBox="0 0 24 24">
+                                                    <path d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M10 11v6M14 11v6" />
+                                                </svg>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>
+                                            <div class="ndc-n">72789-0475-33</div>
+                                        </td>
+                                        <td><span class="sbdg s-que"><span class="sbdg-dot"></span>Queued</span></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>
+                                            <button disabled
+                                                    class="ca-del"
+                                                    onclick="confirmDeleteNDC('NDC 57894-0001-01')">
+                                                <svg viewBox="0 0 24 24">
+                                                    <path d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M10 11v6M14 11v6" />
+                                                </svg>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+
+                    <!-- CASE 2 — Ready -->
+                    <tr class="case-row"
+                        data-case="CASE-2026-00088"
+                        data-status="ready"
+                        onclick="if(!event.target.closest('.editable-note') && !event.target.closest('.cell-actions')) toggleCaseRow(this)">
+                        <td>
+                            <div class="caret"><svg viewBox="0 0 24 24">
+                                    <polyline points="9 18 15 12 9 6" />
+                                </svg></div>
+                        </td>
+                        <td>Bryant Ranch Prepack, Inc</td>
+                        <td>-</td>
+                        <td>2</td>
+                        <td><span class="cs-chip cs-rdy">Ready for Review</span></td>
+                        <td>05/06/26 07:55 AM</td>
+                        <td class="editable-note placeholder"
+                            data-case="CASE-2026-00088"
+                            title="double click to edit">Add Notes
+                        </td>
+                        <td>26-0088</td>
+                        <td>
+                            <div class="cell-actions"
+                                 onclick="event.stopPropagation()">
+                                <button class="ca-rv"
+                                        onclick="caseAction('review','CASE-2026-00088')"><svg viewBox="0 0 24 24">
+                                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                                        <circle cx="12"
+                                                cy="12"
+                                                r="3" />
+                                    </svg></button>
+                                <button class="ca-del"
+                                        onclick="confirmDelete('CASE-2026-00088')"><svg viewBox="0 0 24 24">
+                                        <path d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M10 11v6M14 11v6" />
+                                    </svg></button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr class="ndc-expand-row"
+                        data-case="CASE-2026-00088">
+                        <td colspan="9">
+                            <table class="ndc-nested-table">
+                                <tbody>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>
+                                            <div class="ndc-n">72789-0475-30</div>
+                                        </td>
+                                        <td><span class="sbdg s-rdy"><span class="sbdg-dot"></span>Ready for Review</span></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>
+                                            <button class="ca-del"
+                                                    onclick="confirmDeleteNDC('NDC 57894-0001-01')">
+                                                <svg viewBox="0 0 24 24">
+                                                    <path d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M10 11v6M14 11v6" />
+                                                </svg>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>
+                                            <div class="ndc-n">72789-0475-31</div>
+                                        </td>
+                                        <td><span class="sbdg s-rdy"><span class="sbdg-dot"></span>Ready for Review</span></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>
+                                            <button class="ca-del"
+                                                    onclick="confirmDeleteNDC('NDC 57894-0001-01')">
+                                                <svg viewBox="0 0 24 24">
+                                                    <path d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M10 11v6M14 11v6" />
+                                                </svg>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+
+                    <!-- CASE 3 — Under Review -->
+                    <tr class="case-row"
+                        data-case="CASE-2026-00085"
+                        data-status="review"
+                        onclick="if(!event.target.closest('.editable-note') && !event.target.closest('.cell-actions')) toggleCaseRow(this)">
+                        <td>
+                            <div class="caret"><svg viewBox="0 0 24 24">
+                                    <polyline points="9 18 15 12 9 6" />
+                                </svg></div>
+                        </td>
+                        <td>Method Pharmaceuticals, LLC</td>
+                        <td>-</td>
+                        <td>4</td>
+                        <td><span class="cs-chip cs-ur">Under Review</span></td>
+                        <td>05/07/26 02:22 PM</td>
+                        <td class="editable-note placeholder"
+                            data-case="CASE-2026-00085"
+                            title="double click to edit">Add Notes
+                        </td>
+                        <td>26-0085</td>
+                        <td>
+                            <div class="cell-actions"
+                                 onclick="event.stopPropagation()">
+                                <button class="ca-rv"
+                                        onclick="caseAction('review','CASE-2026-00085')"><svg viewBox="0 0 24 24">
+                                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                                        <circle cx="12"
+                                                cy="12"
+                                                r="3" />
+                                    </svg></button>
+                                <button class="ca-del"
+                                        onclick="confirmDelete('CASE-2026-00085')"><svg viewBox="0 0 24 24">
+                                        <path d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M10 11v6M14 11v6" />
+                                    </svg></button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr class="ndc-expand-row"
+                        data-case="CASE-2026-00085">
+                        <td colspan="9">
+                            <table class="ndc-nested-table">
+                                <tbody>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>
+                                            <div class="ndc-n">72789-0475-30</div>
+                                        </td>
+                                        <td><span class="sbdg s-ur"><span class="sbdg-dot"></span>Under Review</span></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>
+                                            <button class="ca-del"
+                                                    onclick="confirmDeleteNDC('NDC 57894-0001-01')">
+                                                <svg viewBox="0 0 24 24">
+                                                    <path d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M10 11v6M14 11v6" />
+                                                </svg>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>
+                                            <div class="ndc-n">72789-0475-31</div>
+                                        </td>
+                                        <td><span class="sbdg s-ur"><span class="sbdg-dot"></span>Under Review</span></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>
+                                            <button class="ca-del"
+                                                    onclick="confirmDeleteNDC('NDC 57894-0001-01')">
+                                                <svg viewBox="0 0 24 24">
+                                                    <path d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M10 11v6M14 11v6" />
+                                                </svg>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>
+                                            <div class="ndc-n">72789-0475-33</div>
+                                        </td>
+                                        <td><span class="sbdg s-canceled"><span class="sbdg-dot"></span>Cancelled</span></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>
+                                            <button class="ca-del"
+                                                    disabled
+                                                    onclick="confirmDeleteNDC('NDC 57894-0001-01')">
+                                                <svg viewBox="0 0 24 24">
+                                                    <path d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M10 11v6M14 11v6" />
+                                                </svg>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>
+                                            <div class="ndc-n">72789-0475-34</div>
+                                        </td>
+                                        <td><span class="sbdg s-done"><span class="sbdg-dot"></span>Reviewed</span></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>
+                                            <button class="ca-del"
+                                                    onclick="confirmDeleteNDC('NDC 57894-0001-01')">
+                                                <svg viewBox="0 0 24 24">
+                                                    <path d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M10 11v6M14 11v6" />
+                                                </svg>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+
+                    <!-- CASE 4 — Error -->
+                    <tr class="case-row"
+                        data-case="CASE-2026-00082"
+                        data-status="processing"
+                        onclick="if(!event.target.closest('.editable-note') && !event.target.closest('.cell-actions')) toggleCaseRow(this)">
+                        <td>
+                            <div class="caret"><svg viewBox="0 0 24 24">
+                                    <polyline points="9 18 15 12 9 6" />
+                                </svg></div>
+                        </td>
+                        <td>Westminster Pharmaceuticals, LLC</td>
+                        <td>-</td>
+                        <td>2</td>
+                        <td><span class="cs-chip cs-fail"
+                                  title="Reason Code: 501">Failed</span></td>
+                        <td>05/08/26 11:30 AM</td>
+                        <td class="editable-note placeholder"
+                            data-case="CASE-2026-00082"
+                            title="double click to edit">Add Notes
+                        </td>
+                        <td>26-0082</td>
+                        <td>
+                            <div class="cell-actions"
+                                 onclick="event.stopPropagation()">
+                                <button class="ca-rv"
+                                        disabled
+                                        onclick="caseAction('review','CASE-2026-00085')">
+                                    <svg viewBox="0 0 24 24">
+                                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                                        <circle cx="12"
+                                                cy="12"
+                                                r="3" />
+                                    </svg>
+                                </button>
+                                <button class="ca-del"
+                                        onclick="confirmDelete('CASE-2026-00085')">
+                                    <svg viewBox="0 0 24 24">
+                                        <path d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M10 11v6M14 11v6" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr class="ndc-expand-row"
+                        data-case="CASE-2026-00082">
+                        <td colspan="9">
+                            <table class="ndc-nested-table">
+                                <tbody>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>
+                                            <div class="ndc-n">72789-0475-30</div>
+                                        </td>
+                                        <td><span class="sbdg s-err"
+                                                  title="Reason Code: 501"><span class="sbdg-dot"></span>Failed</span>
+                                        </td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>
+                                            <button class="ca-del"
+                                                    onclick="confirmDeleteNDC('NDC 57894-0001-01')">
+                                                <svg viewBox="0 0 24 24">
+                                                    <path d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M10 11v6M14 11v6" />
+                                                </svg>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>
+                                            <div class="ndc-n">72789-0475-31</div>
+                                        </td>
+                                        <td><span class="sbdg s-err"
+                                                  title="Reason Code: 502"><span class="sbdg-dot"></span>Failed</span>
+                                        </td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>
+                                            <button class="ca-del"
+                                                    onclick="confirmDeleteNDC('NDC 57894-0001-01')">
+                                                <svg viewBox="0 0 24 24">
+                                                    <path d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M10 11v6M14 11v6" />
+                                                </svg>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+
+                    <!-- CASE 5 — Reviewed -->
+                    <tr class="case-row"
+                        data-case="CASE-2026-00079"
+                        data-status="reviewed"
+                        onclick="if(!event.target.closest('.editable-note') && !event.target.closest('.cell-actions')) toggleCaseRow(this)">
+                        <td>
+                            <div class="caret"><svg viewBox="0 0 24 24">
+                                    <polyline points="9 18 15 12 9 6" />
+                                </svg></div>
+                        </td>
+                        <td>Heritage Pharmaceuticals Inc. d/b/a Avet Pharmaceuticals Inc.</td>
+                        <td>-</td>
+                        <td>1</td>
+                        <td><span class="cs-chip cs-done">PM Reviewed</span></td>
+                        <td> 05/09/26 09:03 AM</td>
+                        <td class="editable-note placeholder"
+                            data-case="CASE-2026-00079"
+                            title="double click to edit">Add Notes
+                        </td>
+                        <td>26-0079</td>
+                        <td>
+                            <div class="cell-actions"
+                                 onclick="event.stopPropagation()">
+                                <button class="ca-rv"
+                                        onclick="caseAction('review','CASE-2026-00085')">
+                                    <svg viewBox="0 0 24 24">
+                                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                                        <circle cx="12"
+                                                cy="12"
+                                                r="3" />
+                                    </svg>
+                                </button>
+                                <button class="ca-del"
+                                        disabled
+                                        onclick="confirmDelete('CASE-2026-00085')">
+                                    <svg viewBox="0 0 24 24">
+                                        <path d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M10 11v6M14 11v6" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr class=" ndc-expand-row"
+                        data-case="CASE-2026-00079">
+                        <td colspan="9">
+                            <table class="ndc-nested-table">
+                                <tbody>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>
+                                            <div class="ndc-n">72789-0475-30</div>
+                                        </td>
+                                        <td><span class="sbdg s-done"><span class="sbdg-dot"></span>Reviewed</span></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>
+                                            <button class="ca-del"
+                                                    disabled
+                                                    onclick="confirmDeleteNDC('NDC 57894-0001-01')">
+                                                <svg viewBox="0 0 24 24">
+                                                    <path d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M10 11v6M14 11v6" />
+                                                </svg>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+
         </div>
-      </div>
+    </div>
 
-      <div class="fc-sep"></div>
-
-      <div class="filter-group">
-        <span class="fc-lbl">Date Range:</span>
-        <div class="date-range">
-          <div class="date-field">
-            <input type="text" value="05/01/26" class="date-input" id="dateFrom" placeholder="MM/DD/YY"
-              data-iso="2026-05-01" maxlength="8" onblur="normalizeDateInput(this); applyFilters()">
-            <button type="button" class="date-cal-btn" onclick="openDatePicker('dateFrom')" aria-label="Open calendar">
-              <svg viewBox="0 0 24 24">
-                <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
-                <line x1="16" y1="2" x2="16" y2="6" />
-                <line x1="8" y1="2" x2="8" y2="6" />
-                <line x1="3" y1="10" x2="21" y2="10" />
-              </svg>
-            </button>
-            <input type="date" id="dateFromPicker" class="date-picker-native" value="2026-05-01" tabindex="-1"
-              onchange="syncDatePicker('dateFrom', this)">
-          </div>
-          <span class="date-sep">to</span>
-          <div class="date-field">
-            <input type="text" value="05/10/26" class="date-input" id="dateTo" placeholder="MM/DD/YY"
-              data-iso="2026-05-10" maxlength="8" onblur="normalizeDateInput(this); applyFilters()">
-            <button type="button" class="date-cal-btn" onclick="openDatePicker('dateTo')" aria-label="Open calendar">
-              <svg viewBox="0 0 24 24">
-                <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
-                <line x1="16" y1="2" x2="16" y2="6" />
-                <line x1="8" y1="2" x2="8" y2="6" />
-                <line x1="3" y1="10" x2="21" y2="10" />
-              </svg>
-            </button>
-            <input type="date" id="dateToPicker" class="date-picker-native" value="2026-05-10" tabindex="-1"
-              onchange="syncDatePicker('dateTo', this)">
-          </div>
+    <div class="overlay"
+         id="delOverlay">
+        <div class="modal">
+            <div class="modal-ttl">Delete Case?</div>
+            <div class="modal-body">This will permanently remove <strong id="delTarget"></strong> and all its NDCs. This
+                cannot be undone.</div>
+            <div class="modal-ftr">
+                <button class="mb mb-cn"
+                        onclick="closeModal()">Cancel</button>
+                <button class="mb mb-del"
+                        onclick="doDelete()">Delete</button>
+            </div>
         </div>
-      </div>
-
-      <div class="fc-sep"></div>
-
-      <button class="clear-filters" onclick="clearAllFilters()">Clear All</button>
     </div>
-    </div>
+    <div class="toast"
+         id="toast"></div>
 
-    <div class="content" id="caseList">
+    <script>
+        const SUN = 'M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4 22 19.78l1.42-1.42M18.36 5.64l1.42-1.42M12 7a5 5 0 100 10A5 5 0 0012 7z';
+        const MOON = 'M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z';
+        let dark = false;
 
-      <table class="case-table">
-        <thead>
-          <tr>
-            <th></th>
-            <th>Vendor Name</th>
-            <th>Generic Name</th>
-            <th># of NDCs</th>
-            <th>Status</th>
-            <th>TimeStamp</th>
-            <th>Notes</th>
-            <th>Case #</th>
-            <th style="text-align:right">Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-
-          <!-- CASE 1 — Processing -->
-          <tr class="case-row" data-case="CASE-2026-00089" data-status="processing"
-            onclick="if(!event.target.closest('.editable-note') && !event.target.closest('.cell-actions')) toggleCaseRow(this)">
-            <td>
-              <div class="caret"><svg viewBox="0 0 24 24">
-                  <polyline points="9 18 15 12 9 6" />
-                </svg></div>
-            </td>
-            <td>Sagent Pharmaceuticals</td>
-            <td>-</td>
-            <td>3</td>
-            <td><span class="cs-chip cs-proc"><span class="cs-spin"></span>In Progress</span></td>
-            <td>05/05/26 09:14 AM</td>
-            <td class="editable-note placeholder" data-case="CASE-2026-00089" title="double click to edit">Add Notes
-            </td>
-            <td>26-0089</td>
-            <td>
-              <div class="cell-actions" onclick="event.stopPropagation()">
-                <button class="ca-rv" disabled><svg viewBox="0 0 24 24">
-                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
-                    <circle cx="12" cy="12" r="3" />
-                  </svg></button>
-                <button class="ca-del" disabled onclick="confirmDelete('CASE-2026-00089')"><svg viewBox="0 0 24 24">
-                    <path
-                      d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M10 11v6M14 11v6" />
-                  </svg></button>
-              </div>
-            </td>
-          </tr>
-
-          <tr class="ndc-expand-row" data-case="CASE-2026-00089">
-            <td colspan="9">
-              <table class="ndc-nested-table">
-                <tbody>
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>
-                      <div class="ndc-n">72789-0475-30</div>
-                    </td>
-                    <td><span class="sbdg s-rdy"><span class="sbdg-dot"></span>Ready for Review</span></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>
-                      <button class="ca-del" onclick="confirmDeleteNDC('NDC 57894-0001-01')">
-                        <svg viewBox="0 0 24 24">
-                          <path
-                            d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M10 11v6M14 11v6" />
-                        </svg>
-                      </button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>
-                      <div class="ndc-n">72789-0475-31</div>
-                    </td>
-                    <td><span class="sbdg s-proc"><span class="sbdg-spin"></span>In Progress</span></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>
-                      <button disabled class="ca-del" onclick="confirmDeleteNDC('NDC 57894-0001-01')">
-                        <svg viewBox="0 0 24 24">
-                          <path
-                            d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M10 11v6M14 11v6" />
-                        </svg>
-                      </button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>
-                      <div class="ndc-n">72789-0475-33</div>
-                    </td>
-                    <td><span class="sbdg s-que"><span class="sbdg-dot"></span>Queued</span></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>
-                      <button disabled class="ca-del" onclick="confirmDeleteNDC('NDC 57894-0001-01')">
-                        <svg viewBox="0 0 24 24">
-                          <path
-                            d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M10 11v6M14 11v6" />
-                        </svg>
-                      </button>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </td>
-          </tr>
-
-          <!-- CASE 2 — Ready -->
-          <tr class="case-row" data-case="CASE-2026-00088" data-status="ready"
-            onclick="if(!event.target.closest('.editable-note') && !event.target.closest('.cell-actions')) toggleCaseRow(this)">
-            <td>
-              <div class="caret"><svg viewBox="0 0 24 24">
-                  <polyline points="9 18 15 12 9 6" />
-                </svg></div>
-            </td>
-            <td>Bryant Ranch Prepack, Inc</td>
-            <td>-</td>
-            <td>2</td>
-            <td><span class="cs-chip cs-rdy">Ready for Review</span></td>
-            <td>05/06/26 07:55 AM</td>
-            <td class="editable-note placeholder" data-case="CASE-2026-00088" title="double click to edit">Add Notes
-            </td>
-            <td>26-0088</td>
-            <td>
-              <div class="cell-actions" onclick="event.stopPropagation()">
-                <button class="ca-rv" onclick="caseAction('review','CASE-2026-00088')"><svg viewBox="0 0 24 24">
-                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
-                    <circle cx="12" cy="12" r="3" />
-                  </svg></button>
-                <button class="ca-del" onclick="confirmDelete('CASE-2026-00088')"><svg viewBox="0 0 24 24">
-                    <path
-                      d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M10 11v6M14 11v6" />
-                  </svg></button>
-              </div>
-            </td>
-          </tr>
-          <tr class="ndc-expand-row" data-case="CASE-2026-00088">
-            <td colspan="9">
-              <table class="ndc-nested-table">
-                <tbody>
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>
-                      <div class="ndc-n">72789-0475-30</div>
-                    </td>
-                    <td><span class="sbdg s-rdy"><span class="sbdg-dot"></span>Ready for Review</span></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>
-                      <button class="ca-del" onclick="confirmDeleteNDC('NDC 57894-0001-01')">
-                        <svg viewBox="0 0 24 24">
-                          <path
-                            d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M10 11v6M14 11v6" />
-                        </svg>
-                      </button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>
-                      <div class="ndc-n">72789-0475-31</div>
-                    </td>
-                    <td><span class="sbdg s-rdy"><span class="sbdg-dot"></span>Ready for Review</span></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>
-                      <button class="ca-del" onclick="confirmDeleteNDC('NDC 57894-0001-01')">
-                        <svg viewBox="0 0 24 24">
-                          <path
-                            d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M10 11v6M14 11v6" />
-                        </svg>
-                      </button>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </td>
-          </tr>
-
-          <!-- CASE 3 — Under Review -->
-          <tr class="case-row" data-case="CASE-2026-00085" data-status="review"
-            onclick="if(!event.target.closest('.editable-note') && !event.target.closest('.cell-actions')) toggleCaseRow(this)">
-            <td>
-              <div class="caret"><svg viewBox="0 0 24 24">
-                  <polyline points="9 18 15 12 9 6" />
-                </svg></div>
-            </td>
-            <td>Method Pharmaceuticals, LLC</td>
-            <td>-</td>
-            <td>4</td>
-            <td><span class="cs-chip cs-ur">Under Review</span></td>
-            <td>05/07/26 02:22 PM</td>
-            <td class="editable-note placeholder" data-case="CASE-2026-00085" title="double click to edit">Add Notes
-            </td>
-            <td>26-0085</td>
-            <td>
-              <div class="cell-actions" onclick="event.stopPropagation()">
-                <button class="ca-rv" onclick="caseAction('review','CASE-2026-00085')"><svg viewBox="0 0 24 24">
-                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
-                    <circle cx="12" cy="12" r="3" />
-                  </svg></button>
-                <button class="ca-del" onclick="confirmDelete('CASE-2026-00085')"><svg viewBox="0 0 24 24">
-                    <path
-                      d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M10 11v6M14 11v6" />
-                  </svg></button>
-              </div>
-            </td>
-          </tr>
-          <tr class="ndc-expand-row" data-case="CASE-2026-00085">
-            <td colspan="9">
-              <table class="ndc-nested-table">
-                <tbody>
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>
-                      <div class="ndc-n">72789-0475-30</div>
-                    </td>
-                    <td><span class="sbdg s-ur"><span class="sbdg-dot"></span>Under Review</span></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>
-                      <button class="ca-del" onclick="confirmDeleteNDC('NDC 57894-0001-01')">
-                        <svg viewBox="0 0 24 24">
-                          <path
-                            d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M10 11v6M14 11v6" />
-                        </svg>
-                      </button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>
-                      <div class="ndc-n">72789-0475-31</div>
-                    </td>
-                    <td><span class="sbdg s-ur"><span class="sbdg-dot"></span>Under Review</span></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>
-                      <button class="ca-del" onclick="confirmDeleteNDC('NDC 57894-0001-01')">
-                        <svg viewBox="0 0 24 24">
-                          <path
-                            d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M10 11v6M14 11v6" />
-                        </svg>
-                      </button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>
-                      <div class="ndc-n">72789-0475-33</div>
-                    </td>
-                    <td><span class="sbdg s-ur"><span class="sbdg-dot"></span>Under Review</span></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>
-                      <button class="ca-del" onclick="confirmDeleteNDC('NDC 57894-0001-01')">
-                        <svg viewBox="0 0 24 24">
-                          <path
-                            d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M10 11v6M14 11v6" />
-                        </svg>
-                      </button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>
-                      <div class="ndc-n">72789-0475-34</div>
-                    </td>
-                    <td><span class="sbdg s-done"><span class="sbdg-dot"></span>PM Reviewed</span></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>
-                      <button class="ca-del" onclick="confirmDeleteNDC('NDC 57894-0001-01')">
-                        <svg viewBox="0 0 24 24">
-                          <path
-                            d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M10 11v6M14 11v6" />
-                        </svg>
-                      </button>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </td>
-          </tr>
-
-          <!-- CASE 4 — Error -->
-          <tr class="case-row" data-case="CASE-2026-00082" data-status="processing"
-            onclick="if(!event.target.closest('.editable-note') && !event.target.closest('.cell-actions')) toggleCaseRow(this)">
-            <td>
-              <div class="caret"><svg viewBox="0 0 24 24">
-                  <polyline points="9 18 15 12 9 6" />
-                </svg></div>
-            </td>
-            <td>Westminster Pharmaceuticals, LLC</td>
-            <td>-</td>
-            <td>2</td>
-            <td><span class="cs-chip cs-fail" title="Reason Code: 501">Failed</span></td>
-            <td>05/08/26 11:30 AM</td>
-            <td class="editable-note placeholder" data-case="CASE-2026-00082" title="double click to edit">Add Notes
-            </td>
-            <td>26-0082</td>
-            <td>
-              <div class="cell-actions" onclick="event.stopPropagation()">
-                <button class="ca-rv" disabled onclick="caseAction('review','CASE-2026-00085')">
-                  <svg viewBox="0 0 24 24">
-                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
-                    <circle cx="12" cy="12" r="3" />
-                  </svg>
-                </button>
-                <button class="ca-del" onclick="confirmDelete('CASE-2026-00085')">
-                  <svg viewBox="0 0 24 24">
-                    <path
-                      d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M10 11v6M14 11v6" />
-                  </svg>
-                </button>
-              </div>
-            </td>
-          </tr>
-          <tr class="ndc-expand-row" data-case="CASE-2026-00082">
-            <td colspan="9">
-              <table class="ndc-nested-table">
-                <tbody>
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>
-                      <div class="ndc-n">72789-0475-30</div>
-                    </td>
-                    <td><span class="sbdg s-err" title="Reason Code: 501"><span class="sbdg-dot"></span>Failed</span>
-                    </td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>
-                      <button class="ca-del" onclick="confirmDeleteNDC('NDC 57894-0001-01')">
-                        <svg viewBox="0 0 24 24">
-                          <path
-                            d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M10 11v6M14 11v6" />
-                        </svg>
-                      </button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>
-                      <div class="ndc-n">72789-0475-31</div>
-                    </td>
-                    <td><span class="sbdg s-err" title="Reason Code: 502"><span class="sbdg-dot"></span>Failed</span>
-                    </td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>
-                      <button class="ca-del" onclick="confirmDeleteNDC('NDC 57894-0001-01')">
-                        <svg viewBox="0 0 24 24">
-                          <path
-                            d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M10 11v6M14 11v6" />
-                        </svg>
-                      </button>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </td>
-          </tr>
-
-          <!-- CASE 5 — Reviewed -->
-          <tr class="case-row" data-case="CASE-2026-00079" data-status="reviewed"
-            onclick="if(!event.target.closest('.editable-note') && !event.target.closest('.cell-actions')) toggleCaseRow(this)">
-            <td>
-              <div class="caret"><svg viewBox="0 0 24 24">
-                  <polyline points="9 18 15 12 9 6" />
-                </svg></div>
-            </td>
-            <td>Heritage Pharmaceuticals Inc. d/b/a Avet Pharmaceuticals Inc.</td>
-            <td>-</td>
-            <td>1</td>
-            <td><span class="cs-chip cs-done">PM Reviewed</span></td>
-            <td> 05/09/26 09:03 AM</td>
-            <td class="editable-note placeholder" data-case="CASE-2026-00079" title="double click to edit">Add Notes
-            </td>
-            <td>26-0079</td>
-            <td>
-              <div class="cell-actions" onclick="event.stopPropagation()">
-                <button class="ca-rv" onclick="caseAction('review','CASE-2026-00085')">
-                  <svg viewBox="0 0 24 24">
-                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
-                    <circle cx="12" cy="12" r="3" />
-                  </svg>
-                </button>
-                <button class="ca-del" disabled onclick="confirmDelete('CASE-2026-00085')">
-                  <svg viewBox="0 0 24 24">
-                    <path
-                      d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M10 11v6M14 11v6" />
-                  </svg>
-                </button>
-              </div>
-            </td>
-          </tr>
-          <tr class=" ndc-expand-row" data-case="CASE-2026-00079">
-            <td colspan="9">
-              <table class="ndc-nested-table">
-                <tbody>
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>
-                      <div class="ndc-n">72789-0475-30</div>
-                    </td>
-                    <td><span class="sbdg s-done"><span class="sbdg-dot"></span>PM Reviewed</span></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>
-                      <button class="ca-del" disabled onclick="confirmDeleteNDC('NDC 57894-0001-01')">
-                        <svg viewBox="0 0 24 24">
-                          <path
-                            d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M10 11v6M14 11v6" />
-                        </svg>
-                      </button>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </td>
-          </tr>
-
-        </tbody>
-      </table>
-
-    </div>
-  </div>
-
-  <div class="overlay" id="delOverlay">
-    <div class="modal">
-      <div class="modal-ttl">Delete Case?</div>
-      <div class="modal-body">This will permanently remove <strong id="delTarget"></strong> and all its NDCs. This
-        cannot be undone.</div>
-      <div class="modal-ftr">
-        <button class="mb mb-cn" onclick="closeModal()">Cancel</button>
-        <button class="mb mb-del" onclick="doDelete()">Delete</button>
-      </div>
-    </div>
-  </div>
-  <div class="toast" id="toast"></div>
-
-  <script>
-    const SUN = 'M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4 22 19.78l1.42-1.42M18.36 5.64l1.42-1.42M12 7a5 5 0 100 10A5 5 0 0012 7z';
-    const MOON = 'M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z';
-    let dark = false;
-
-    function toggleCase(hd) { hd.closest('.case-card').classList.toggle('open') }
-    function toggleCaseRow(row) {
-      row.classList.toggle('expanded');
-      const caseId = row.dataset.case;
-      const expandRow = document.querySelector('.ndc-expand-row[data-case="' + caseId + '"]');
-      if (expandRow) {
-        expandRow.classList.toggle('expanded');
-      }
-    }
-
-    // Editable note functionality
-    function setupEditableNotes() {
-      const PLACEHOLDER_TEXT = 'Add Notes';
-      document.querySelectorAll('.editable-note').forEach(cell => {
-        cell.title = 'double click to edit';
-        if (!cell.textContent.trim()) {
-          cell.textContent = PLACEHOLDER_TEXT;
-          cell.classList.add('placeholder');
+        function toggleCase(hd) { hd.closest('.case-card').classList.toggle('open') }
+        function toggleCaseRow(row) {
+            row.classList.toggle('expanded');
+            const caseId = row.dataset.case;
+            const expandRow = document.querySelector('.ndc-expand-row[data-case="' + caseId + '"]');
+            if (expandRow) {
+                expandRow.classList.toggle('expanded');
+            }
         }
 
-        cell.addEventListener('dblclick', function (e) {
-          e.stopPropagation();
-          e.preventDefault();
-          if (this.classList.contains('editing')) return;
+        // Editable note functionality
+        function setupEditableNotes() {
+            const PLACEHOLDER_TEXT = 'Add Notes';
+            document.querySelectorAll('.editable-note').forEach(cell => {
+                cell.title = 'double click to edit';
+                if (!cell.textContent.trim()) {
+                    cell.textContent = PLACEHOLDER_TEXT;
+                    cell.classList.add('placeholder');
+                }
 
-          const currentText = this.classList.contains('placeholder') ? '' : this.textContent;
-          const caseId = this.dataset.case;
+                cell.addEventListener('dblclick', function (e) {
+                    e.stopPropagation();
+                    e.preventDefault();
+                    if (this.classList.contains('editing')) return;
 
-          this.classList.add('editing');
-          this.classList.remove('placeholder');
-          this.innerHTML = `<input type="text" value="${currentText}" id="note-input-${caseId}">`;
+                    const currentText = this.classList.contains('placeholder') ? '' : this.textContent;
+                    const caseId = this.dataset.case;
 
-          const input = this.querySelector('input');
-          input.focus();
-          input.select();
+                    this.classList.add('editing');
+                    this.classList.remove('placeholder');
+                    this.innerHTML = `<input type="text" value="${currentText}" id="note-input-${caseId}">`;
 
-          const saveNote = () => {
-            const newText = input.value.trim();
-            this.classList.remove('editing');
-            this.title = 'double click to edit';
-            if (newText) {
-              this.textContent = newText;
-              this.classList.remove('placeholder');
+                    const input = this.querySelector('input');
+                    input.focus();
+                    input.select();
+
+                    const saveNote = () => {
+                        const newText = input.value.trim();
+                        this.classList.remove('editing');
+                        this.title = 'double click to edit';
+                        if (newText) {
+                            this.textContent = newText;
+                            this.classList.remove('placeholder');
+                        } else {
+                            this.textContent = PLACEHOLDER_TEXT;
+                            this.classList.add('placeholder');
+                        }
+                        // Here you can add API call to save the note
+                        console.log(`Saving note for ${caseId}: ${newText}`);
+                    };
+
+                    input.addEventListener('keydown', function (e) {
+                        if (e.key === 'Enter') {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            saveNote();
+                        } else if (e.key === 'Escape') {
+                            e.stopPropagation();
+                            this.value = currentText;
+                            saveNote();
+                        }
+                    });
+
+                    input.addEventListener('blur', saveNote);
+                });
+            });
+        }
+
+        function updatePageHeadHeight() {
+            const head = document.querySelector('.page-head');
+            if (head) {
+                document.documentElement.style.setProperty('--page-head-h', head.offsetHeight + 'px');
+            }
+        }
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function () {
+            const tBtn = document.getElementById('tBtn');
+            if (tBtn) {
+                tBtn.addEventListener('click', () => {
+                    dark = !dark;
+                    document.body.dataset.theme = dark ? 'dark' : 'light';
+                    document.getElementById('tIco').innerHTML = dark ? '<path d="' + SUN + '"/>' : '<path d="' + MOON + '"/>';
+                });
+            }
+            updatePageHeadHeight();
+            window.addEventListener('resize', updatePageHeadHeight);
+            const pageHead = document.querySelector('.page-head');
+            if (pageHead && window.ResizeObserver) {
+                new ResizeObserver(updatePageHeadHeight).observe(pageHead);
+            }
+            setupEditableNotes();
+        });
+        function isoToDisplay(iso) {
+            if (!iso) return '';
+            const [y, m, d] = iso.split('-');
+            return `${m}/${d}/${y.slice(-2)}`;
+        }
+
+        function displayToIso(display) {
+            const match = display.trim().match(/^(\d{1,2})\/(\d{1,2})\/(\d{2})$/);
+            if (!match) return null;
+            const year = 2000 + parseInt(match[3], 10);
+            const month = parseInt(match[1], 10) - 1;
+            const day = parseInt(match[2], 10);
+            const date = new Date(year, month, day);
+            if (date.getFullYear() !== year || date.getMonth() !== month || date.getDate() !== day) return null;
+            return `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+        }
+
+        function syncDatePickerInput(el) {
+            const picker = document.getElementById(el.id + 'Picker');
+            if (picker) picker.value = el.dataset.iso || '';
+        }
+
+        function openDatePicker(id) {
+            const picker = document.getElementById(id + 'Picker');
+            const textEl = document.getElementById(id);
+            picker.value = textEl.dataset.iso || '';
+            try {
+                if (typeof picker.showPicker === 'function') {
+                    picker.showPicker();
+                } else {
+                    picker.click();
+                }
+            } catch (e) {
+                picker.click();
+            }
+        }
+
+        function syncDatePicker(id, picker) {
+            const textEl = document.getElementById(id);
+            if (picker.value) {
+                textEl.dataset.iso = picker.value;
+                textEl.value = isoToDisplay(picker.value);
             } else {
-              this.textContent = PLACEHOLDER_TEXT;
-              this.classList.add('placeholder');
+                textEl.dataset.iso = '';
+                textEl.value = '';
             }
-            // Here you can add API call to save the note
-            console.log(`Saving note for ${caseId}: ${newText}`);
-          };
+            applyFilters();
+        }
 
-          input.addEventListener('keydown', function (e) {
-            if (e.key === 'Enter') {
-              e.preventDefault();
-              e.stopPropagation();
-              saveNote();
-            } else if (e.key === 'Escape') {
-              e.stopPropagation();
-              this.value = currentText;
-              saveNote();
+        function normalizeDateInput(el) {
+            const trimmed = el.value.trim();
+            if (!trimmed) {
+                el.value = '';
+                el.dataset.iso = '';
+                syncDatePickerInput(el);
+                return;
             }
-          });
+            const iso = displayToIso(trimmed);
+            if (iso) {
+                el.value = isoToDisplay(iso);
+                el.dataset.iso = iso;
+                syncDatePickerInput(el);
+            } else {
+                el.value = el.dataset.iso ? isoToDisplay(el.dataset.iso) : '';
+            }
+        }
 
-          input.addEventListener('blur', saveNote);
+        function getDateInputIso(id) {
+            const el = document.getElementById(id);
+            if (el.dataset.iso) return el.dataset.iso;
+            const iso = displayToIso(el.value.trim());
+            return iso || null;
+        }
+
+        // Filter State
+        let filterState = {
+            status: 'all',
+            vendors: [],
+            dateFrom: null,
+            dateTo: null,
+            searchQuery: ''
+        };
+
+        // Dropdown Toggle
+        function toggleDropdown(id) {
+            document.querySelectorAll('.custom-select').forEach(el => {
+                if (el.id !== id) el.classList.remove('open');
+            });
+            document.getElementById(id).classList.toggle('open');
+        }
+
+        // Close dropdowns on outside click
+        document.addEventListener('click', function (e) {
+            if (!e.target.closest('.custom-select')) {
+                document.querySelectorAll('.custom-select').forEach(el => el.classList.remove('open'));
+            }
         });
-      });
-    }
-
-    function updatePageHeadHeight() {
-      const head = document.querySelector('.page-head');
-      if (head) {
-        document.documentElement.style.setProperty('--page-head-h', head.offsetHeight + 'px');
-      }
-    }
-
-    // Initialize on page load
-    document.addEventListener('DOMContentLoaded', function () {
-      const tBtn = document.getElementById('tBtn');
-      if (tBtn) {
-        tBtn.addEventListener('click', () => {
-          dark = !dark;
-          document.body.dataset.theme = dark ? 'dark' : 'light';
-          document.getElementById('tIco').innerHTML = dark ? '<path d="' + SUN + '"/>' : '<path d="' + MOON + '"/>';
-        });
-      }
-      updatePageHeadHeight();
-      window.addEventListener('resize', updatePageHeadHeight);
-      const pageHead = document.querySelector('.page-head');
-      if (pageHead && window.ResizeObserver) {
-        new ResizeObserver(updatePageHeadHeight).observe(pageHead);
-      }
-      setupEditableNotes();
-    });
-    function isoToDisplay(iso) {
-      if (!iso) return '';
-      const [y, m, d] = iso.split('-');
-      return `${m}/${d}/${y.slice(-2)}`;
-    }
-
-    function displayToIso(display) {
-      const match = display.trim().match(/^(\d{1,2})\/(\d{1,2})\/(\d{2})$/);
-      if (!match) return null;
-      const year = 2000 + parseInt(match[3], 10);
-      const month = parseInt(match[1], 10) - 1;
-      const day = parseInt(match[2], 10);
-      const date = new Date(year, month, day);
-      if (date.getFullYear() !== year || date.getMonth() !== month || date.getDate() !== day) return null;
-      return `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
-    }
-
-    function syncDatePickerInput(el) {
-      const picker = document.getElementById(el.id + 'Picker');
-      if (picker) picker.value = el.dataset.iso || '';
-    }
-
-    function openDatePicker(id) {
-      const picker = document.getElementById(id + 'Picker');
-      const textEl = document.getElementById(id);
-      picker.value = textEl.dataset.iso || '';
-      try {
-        if (typeof picker.showPicker === 'function') {
-          picker.showPicker();
-        } else {
-          picker.click();
-        }
-      } catch (e) {
-        picker.click();
-      }
-    }
-
-    function syncDatePicker(id, picker) {
-      const textEl = document.getElementById(id);
-      if (picker.value) {
-        textEl.dataset.iso = picker.value;
-        textEl.value = isoToDisplay(picker.value);
-      } else {
-        textEl.dataset.iso = '';
-        textEl.value = '';
-      }
-      applyFilters();
-    }
-
-    function normalizeDateInput(el) {
-      const trimmed = el.value.trim();
-      if (!trimmed) {
-        el.value = '';
-        el.dataset.iso = '';
-        syncDatePickerInput(el);
-        return;
-      }
-      const iso = displayToIso(trimmed);
-      if (iso) {
-        el.value = isoToDisplay(iso);
-        el.dataset.iso = iso;
-        syncDatePickerInput(el);
-      } else {
-        el.value = el.dataset.iso ? isoToDisplay(el.dataset.iso) : '';
-      }
-    }
-
-    function getDateInputIso(id) {
-      const el = document.getElementById(id);
-      if (el.dataset.iso) return el.dataset.iso;
-      const iso = displayToIso(el.value.trim());
-      return iso || null;
-    }
-
-    // Filter State
-    let filterState = {
-      status: 'all',
-      vendors: [],
-      dateFrom: null,
-      dateTo: null,
-      searchQuery: ''
-    };
-
-    // Dropdown Toggle
-    function toggleDropdown(id) {
-      document.querySelectorAll('.custom-select').forEach(el => {
-        if (el.id !== id) el.classList.remove('open');
-      });
-      document.getElementById(id).classList.toggle('open');
-    }
-
-    // Close dropdowns on outside click
-    document.addEventListener('click', function (e) {
-      if (!e.target.closest('.custom-select')) {
-        document.querySelectorAll('.custom-select').forEach(el => el.classList.remove('open'));
-      }
-    });
-
-    // Status Filter
-    function selectStatus(status, optionEl) {
-      const checkbox = optionEl.querySelector('input[type="checkbox"]');
-      const trigger = document.querySelector('#statusSelect .select-trigger');
-      const options = document.querySelectorAll('#statusSelect .select-option');
-
-      if (status === 'all') {
-        filterState.status = 'all';
-        options.forEach(opt => opt.querySelector('input').checked = (opt === optionEl));
-        trigger.textContent = 'All Statuses';
-      } else {
-        const allOption = options[0];
-        allOption.querySelector('input').checked = false;
-
-        const checkedStatuses = Array.from(options).slice(1).filter(opt => opt.querySelector('input').checked);
-
-        if (checkedStatuses.length === 0) {
-          filterState.status = 'all';
-          allOption.querySelector('input').checked = true;
-          trigger.textContent = 'All Statuses';
-        } else {
-          filterState.status = checkedStatuses.map(opt => {
-            const text = opt.textContent.trim();
-            if (text.includes('Processing')) return 'processing';
-            if (text.includes('Ready')) return 'ready';
-            if (text.includes('Under Review')) return 'review';
-            if (text.includes('Reviewed')) return 'reviewed';
-            return '';
-          }).filter(s => s);
-          trigger.textContent = checkedStatuses.length === 1 ? checkedStatuses[0].textContent.trim() : `${checkedStatuses.length} selected`;
-        }
-      }
-      applyFilters();
-    }
-
-    // Vendor Filter
-    function toggleVendorCheckbox(vendor, checkbox) {
-      const optionEl = checkbox.closest('.select-option');
-      selectVendor(vendor, optionEl);
-    }
-
-    function selectVendor(vendor, optionEl) {
-      const checkbox = optionEl.querySelector('input[type="checkbox"]');
-      const trigger = document.querySelector('#vendorSelect .select-trigger');
-      const options = document.querySelectorAll('#vendorSelect .select-option');
-
-      if (vendor === 'all') {
-        filterState.vendors = [];
-        options.forEach(opt => opt.querySelector('input').checked = (opt === optionEl));
-        trigger.textContent = 'All Vendors';
-      } else {
-        const allOption = options[0];
-        allOption.querySelector('input').checked = false;
-        checkbox.checked = !checkbox.checked;
-
-        const checkedVendors = Array.from(options).slice(1).filter(opt => opt.querySelector('input').checked).map(opt => opt.textContent.trim());
-
-        if (checkedVendors.length === 0) {
-          filterState.vendors = [];
-          allOption.querySelector('input').checked = true;
-          trigger.textContent = 'All Vendors';
-        } else {
-          filterState.vendors = checkedVendors;
-          trigger.textContent = checkedVendors.length === 1 ? checkedVendors[0] : `${checkedVendors.length} vendors selected`;
-        }
-      }
-      applyFilters();
-    }
-
-    // Search Filter
-    function filterCases(q) {
-      filterState.searchQuery = q.toLowerCase();
-      applyFilters();
-    }
-
-    // Apply All Filters
-    function applyFilters() {
-      filterState.dateFrom = getDateInputIso('dateFrom');
-      filterState.dateTo = getDateInputIso('dateTo');
-
-      document.querySelectorAll('.case-row').forEach(row => {
-        const status = row.dataset.status;
-        const vendor = row.cells[1].textContent.trim();
-        const timestamp = row.cells[5].textContent.trim();
-        const caseId = row.dataset.case.toLowerCase();
 
         // Status Filter
-        let statusMatch = false;
-        if (filterState.status === 'all') {
-          statusMatch = true;
-        } else if (Array.isArray(filterState.status)) {
-          statusMatch = filterState.status.includes(status);
-        } else {
-          statusMatch = filterState.status === status;
+        function selectStatus(status, optionEl) {
+            const checkbox = optionEl.querySelector('input[type="checkbox"]');
+            const trigger = document.querySelector('#statusSelect .select-trigger');
+            const options = document.querySelectorAll('#statusSelect .select-option');
+
+            if (status === 'all') {
+                filterState.status = 'all';
+                options.forEach(opt => opt.querySelector('input').checked = (opt === optionEl));
+                trigger.textContent = 'All Statuses';
+            } else {
+                const allOption = options[0];
+                allOption.querySelector('input').checked = false;
+
+                const checkedStatuses = Array.from(options).slice(1).filter(opt => opt.querySelector('input').checked);
+
+                if (checkedStatuses.length === 0) {
+                    filterState.status = 'all';
+                    allOption.querySelector('input').checked = true;
+                    trigger.textContent = 'All Statuses';
+                } else {
+                    filterState.status = checkedStatuses.map(opt => {
+                        const text = opt.textContent.trim();
+                        if (text.includes('Queued')) return 'queued';
+                        if (text.includes('progress')) return 'processing';
+                        if (text.includes('Ready')) return 'ready';
+                        if (text.includes('Under Review')) return 'review';
+                        if (text.includes('Reviewed')) return 'reviewed';
+                        if (text.includes('Failed')) return 'failed';
+                        if (text.includes('Cancelled')) return 'cancelled';
+                        return '';
+                    }).filter(s => s);
+                    trigger.textContent = checkedStatuses.length === 1 ? checkedStatuses[0].textContent.trim() : `${checkedStatuses.length} selected`;
+                }
+            }
+            applyFilters();
         }
 
         // Vendor Filter
-        let vendorMatch = false;
-        if (filterState.vendors.length === 0) {
-          vendorMatch = true;
-        } else {
-          vendorMatch = filterState.vendors.some(v => vendor.includes(v));
+        function toggleVendorCheckbox(vendor, checkbox) {
+            const optionEl = checkbox.closest('.select-option');
+            selectVendor(vendor, optionEl);
         }
 
-        // Date Filter
-        let dateMatchFilter = true;
-        const dateMatch = timestamp.match(/(\d{2}) (\w{3}) (\d{4})/);
-        if (dateMatch && (filterState.dateFrom || filterState.dateTo)) {
-          const months = { 'Jan': 0, 'Feb': 1, 'Mar': 2, 'Apr': 3, 'May': 4, 'Jun': 5, 'Jul': 6, 'Aug': 7, 'Sep': 8, 'Oct': 9, 'Nov': 10, 'Dec': 11 };
-          const rowDate = new Date(parseInt(dateMatch[3]), months[dateMatch[2]], parseInt(dateMatch[1]));
+        function selectVendor(vendor, optionEl) {
+            const checkbox = optionEl.querySelector('input[type="checkbox"]');
+            const trigger = document.querySelector('#vendorSelect .select-trigger');
+            const options = document.querySelectorAll('#vendorSelect .select-option');
 
-          if (filterState.dateFrom) {
-            const fromDate = new Date(filterState.dateFrom);
-            if (rowDate < fromDate) dateMatchFilter = false;
-          }
-          if (filterState.dateTo) {
-            const toDate = new Date(filterState.dateTo);
-            toDate.setHours(23, 59, 59);
-            if (rowDate > toDate) dateMatchFilter = false;
-          }
+            if (vendor === 'all') {
+                filterState.vendors = [];
+                options.forEach(opt => opt.querySelector('input').checked = (opt === optionEl));
+                trigger.textContent = 'All Vendors';
+            } else {
+                const allOption = options[0];
+                allOption.querySelector('input').checked = false;
+                checkbox.checked = !checkbox.checked;
+
+                const checkedVendors = Array.from(options).slice(1).filter(opt => opt.querySelector('input').checked).map(opt => opt.textContent.trim());
+
+                if (checkedVendors.length === 0) {
+                    filterState.vendors = [];
+                    allOption.querySelector('input').checked = true;
+                    trigger.textContent = 'All Vendors';
+                } else {
+                    filterState.vendors = checkedVendors;
+                    trigger.textContent = checkedVendors.length === 1 ? checkedVendors[0] : `${checkedVendors.length} vendors selected`;
+                }
+            }
+            applyFilters();
         }
 
         // Search Filter
-        let searchMatch = true;
-        if (filterState.searchQuery) {
-          const rowText = (caseId + ' ' + vendor + ' ' + timestamp).toLowerCase();
-          searchMatch = rowText.includes(filterState.searchQuery);
+        function filterCases(q) {
+            filterState.searchQuery = q.toLowerCase();
+            applyFilters();
         }
 
-        const shouldShow = statusMatch && vendorMatch && dateMatchFilter && searchMatch;
-        row.style.display = shouldShow ? '' : 'none';
-        // Also hide the corresponding expand row
-        const expandRow = document.querySelector('.ndc-expand-row[data-case="' + row.dataset.case + '"]');
-        if (expandRow) {
-          expandRow.style.display = shouldShow ? '' : 'none';
+        // Apply All Filters
+        function applyFilters() {
+            filterState.dateFrom = getDateInputIso('dateFrom');
+            filterState.dateTo = getDateInputIso('dateTo');
+
+            document.querySelectorAll('.case-row').forEach(row => {
+                const status = row.dataset.status;
+                const vendor = row.cells[1].textContent.trim();
+                const timestamp = row.cells[5].textContent.trim();
+                const caseId = row.dataset.case.toLowerCase();
+
+                // Status Filter
+                let statusMatch = false;
+                const expandRow = document.querySelector('.ndc-expand-row[data-case="' + row.dataset.case + '"]');
+                const hasCancelledNdc = expandRow && expandRow.querySelector('.s-canceled');
+                if (filterState.status === 'all') {
+                    statusMatch = true;
+                } else if (Array.isArray(filterState.status)) {
+                    statusMatch = filterState.status.includes(status);
+                    if (!statusMatch && filterState.status.includes('cancelled') && hasCancelledNdc) {
+                        statusMatch = true;
+                    }
+                } else {
+                    statusMatch = filterState.status === status;
+                    if (!statusMatch && filterState.status === 'cancelled' && hasCancelledNdc) {
+                        statusMatch = true;
+                    }
+                }
+
+                // Vendor Filter
+                let vendorMatch = false;
+                if (filterState.vendors.length === 0) {
+                    vendorMatch = true;
+                } else {
+                    vendorMatch = filterState.vendors.some(v => vendor.includes(v));
+                }
+
+                // Date Filter
+                let dateMatchFilter = true;
+                const dateMatch = timestamp.match(/(\d{2}) (\w{3}) (\d{4})/);
+                if (dateMatch && (filterState.dateFrom || filterState.dateTo)) {
+                    const months = { 'Jan': 0, 'Feb': 1, 'Mar': 2, 'Apr': 3, 'May': 4, 'Jun': 5, 'Jul': 6, 'Aug': 7, 'Sep': 8, 'Oct': 9, 'Nov': 10, 'Dec': 11 };
+                    const rowDate = new Date(parseInt(dateMatch[3]), months[dateMatch[2]], parseInt(dateMatch[1]));
+
+                    if (filterState.dateFrom) {
+                        const fromDate = new Date(filterState.dateFrom);
+                        if (rowDate < fromDate) dateMatchFilter = false;
+                    }
+                    if (filterState.dateTo) {
+                        const toDate = new Date(filterState.dateTo);
+                        toDate.setHours(23, 59, 59);
+                        if (rowDate > toDate) dateMatchFilter = false;
+                    }
+                }
+
+                // Search Filter
+                let searchMatch = true;
+                if (filterState.searchQuery) {
+                    const rowText = (caseId + ' ' + vendor + ' ' + timestamp).toLowerCase();
+                    searchMatch = rowText.includes(filterState.searchQuery);
+                }
+
+                const shouldShow = statusMatch && vendorMatch && dateMatchFilter && searchMatch;
+                row.style.display = shouldShow ? '' : 'none';
+                if (expandRow) {
+                    expandRow.style.display = shouldShow ? '' : 'none';
+                }
+            });
+
+            const statusFilter = filterState.status;
+            const onlyCancelled = statusFilter === 'cancelled' ||
+                (Array.isArray(statusFilter) && statusFilter.length === 1 && statusFilter[0] === 'cancelled');
+
+            document.querySelectorAll('.ndc-expand-row').forEach(expandRow => {
+                if (expandRow.style.display === 'none') return;
+                expandRow.querySelectorAll('tbody tr').forEach(ndcRow => {
+                    if (onlyCancelled) {
+                        ndcRow.style.display = ndcRow.querySelector('.s-canceled') ? '' : 'none';
+                    } else {
+                        ndcRow.style.display = '';
+                    }
+                });
+            });
         }
-      });
-    }
 
-    // Clear All Filters
-    function clearAllFilters() {
-      filterState = { status: 'all', vendors: [], dateFrom: null, dateTo: null, searchQuery: '' };
+        // Clear All Filters
+        function clearAllFilters() {
+            filterState = { status: 'all', vendors: [], dateFrom: null, dateTo: null, searchQuery: '' };
 
-      // Reset status dropdown
-      document.querySelectorAll('#statusSelect .select-option').forEach((opt, i) => {
-        opt.querySelector('input').checked = (i === 0);
-      });
-      document.querySelector('#statusSelect .select-trigger').textContent = 'All Statuses';
+            // Reset status dropdown
+            document.querySelectorAll('#statusSelect .select-option').forEach((opt, i) => {
+                opt.querySelector('input').checked = (i === 0);
+            });
+            document.querySelector('#statusSelect .select-trigger').textContent = 'All Statuses';
 
-      // Reset vendor dropdown
-      document.querySelectorAll('#vendorSelect .select-option').forEach((opt, i) => {
-        opt.querySelector('input').checked = (i === 0);
-      });
-      document.querySelector('#vendorSelect .select-trigger').textContent = 'All Vendors';
+            // Reset vendor dropdown
+            document.querySelectorAll('#vendorSelect .select-option').forEach((opt, i) => {
+                opt.querySelector('input').checked = (i === 0);
+            });
+            document.querySelector('#vendorSelect .select-trigger').textContent = 'All Vendors';
 
-      // Reset date inputs
-      ['dateFrom', 'dateTo'].forEach(id => {
-        const el = document.getElementById(id);
-        el.value = '';
-        el.dataset.iso = '';
-        syncDatePickerInput(el);
-      });
+            // Reset date inputs
+            ['dateFrom', 'dateTo'].forEach(id => {
+                const el = document.getElementById(id);
+                el.value = '';
+                el.dataset.iso = '';
+                syncDatePickerInput(el);
+            });
 
-      // Reset search
-      document.querySelector('.srch-inp').value = '';
+            // Reset search
+            document.querySelector('.srch-inp').value = '';
 
-      applyFilters();
-    }
-    let pendingId = null;
-    let pendingNDC = null;
-    let pendingNDCRow = null;
+            applyFilters();
+        }
+        let pendingId = null;
+        let pendingNDC = null;
+        let pendingNDCRow = null;
 
-    function confirmDelete(id) { pendingId = id; pendingNDC = null; document.getElementById('delTarget').textContent = id; document.getElementById('delOverlay').classList.add('show') }
+        function confirmDelete(id) { pendingId = id; pendingNDC = null; document.getElementById('delTarget').textContent = id; document.getElementById('delOverlay').classList.add('show') }
 
-    function confirmDeleteNDC(ndcId) {
-      pendingNDC = ndcId;
-      pendingId = null;
-      pendingNDCRow = event.target.closest('.ndc-row');
-      document.getElementById('delTarget').textContent = ndcId;
-      document.getElementById('delOverlay').classList.add('show');
-      event.stopPropagation();
-    }
-    function closeModal() { document.getElementById('delOverlay').classList.remove('show'); pendingId = null }
-    function doDelete() {
-      if (pendingId) {
-        const c = document.querySelector('[data-case="' + pendingId + '"]');
-        if (c) { c.style.opacity = '0'; c.style.transition = 'opacity .2s'; setTimeout(() => c.remove(), 200); }
-        showToast(pendingId + ' deleted');
-      } else if (pendingNDC && pendingNDCRow) {
-        pendingNDCRow.style.opacity = '0';
-        pendingNDCRow.style.transition = 'opacity .2s';
-        setTimeout(() => pendingNDCRow.remove(), 200);
-        showToast(pendingNDC + ' deleted');
-      }
-      closeModal();
-    }
+        function confirmDeleteNDC(ndcId) {
+            pendingNDC = ndcId;
+            pendingId = null;
+            pendingNDCRow = event.target.closest('.ndc-row');
+            document.getElementById('delTarget').textContent = ndcId;
+            document.getElementById('delOverlay').classList.add('show');
+            event.stopPropagation();
+        }
+        function closeModal() { document.getElementById('delOverlay').classList.remove('show'); pendingId = null }
+        function doDelete() {
+            if (pendingId) {
+                const c = document.querySelector('[data-case="' + pendingId + '"]');
+                if (c) { c.style.opacity = '0'; c.style.transition = 'opacity .2s'; setTimeout(() => c.remove(), 200); }
+                showToast(pendingId + ' deleted');
+            } else if (pendingNDC && pendingNDCRow) {
+                pendingNDCRow.style.opacity = '0';
+                pendingNDCRow.style.transition = 'opacity .2s';
+                setTimeout(() => pendingNDCRow.remove(), 200);
+                showToast(pendingNDC + ' deleted');
+            }
+            closeModal();
+        }
 
-    function closeModal() {
-      document.getElementById('delOverlay').classList.remove('show');
-      pendingId = null;
-      pendingNDC = null;
-      pendingNDCRow = null;
-    }
-    document.getElementById('delOverlay').addEventListener('click', function (e) { if (e.target === this) closeModal() });
-    function caseAction(action, id) {
-      const m = { pause: 'All NDCs paused', resume: 'Resuming processing', reprocess: 'Reprocess queued', review: 'Opening case review…', view: 'Loading review…' };
-      showToast((m[action] || 'Done') + ' — ' + id);
-    }
-    let tt;
-    function showToast(msg) { const t = document.getElementById('toast'); t.textContent = msg; t.classList.add('show'); clearTimeout(tt); tt = setTimeout(() => t.classList.remove('show'), 2400) }
-  </script>
+        function closeModal() {
+            document.getElementById('delOverlay').classList.remove('show');
+            pendingId = null;
+            pendingNDC = null;
+            pendingNDCRow = null;
+        }
+        document.getElementById('delOverlay').addEventListener('click', function (e) { if (e.target === this) closeModal() });
+        function caseAction(action, id) {
+            const m = { pause: 'All NDCs paused', resume: 'Resuming processing', reprocess: 'Reprocess queued', review: 'Opening case review…', view: 'Loading review…' };
+            showToast((m[action] || 'Done') + ' — ' + id);
+        }
+        let tt;
+        function showToast(msg) { const t = document.getElementById('toast'); t.textContent = msg; t.classList.add('show'); clearTimeout(tt); tt = setTimeout(() => t.classList.remove('show'), 2400) }
+    </script>
 </body>
 
 </html>
