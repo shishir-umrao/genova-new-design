@@ -990,7 +990,7 @@
             "status": "Ready For Review",
             "accepted_value": null,
             "is_extracted_accepted": null,
-            "pm_alert_required": "Email includes prior selling description with DS and also says \"Please do not load DS indicator- we will circle back when it's time to turn it on.\" HDA shows \"Drop-Ship Only\" and designated drop ship page is completed. Please review whether DS should be added now.",
+            "pm_alert_required": null,
             "feedback_items": [],
             "confidence_score": 0.99,
             "competency_score": 0.1
