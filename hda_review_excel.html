@@ -2217,7 +2217,7 @@
                 <td>
                     <div class="doc-cell">
                         <div class="doc-lbl">Case #</div>
-                        <div class="doc-val">26-0089</div>
+                        <div class="doc-val">26-00089</div>
                     </div>
                 </td>
                 <td>
@@ -2615,9 +2615,10 @@
             document.getElementById('docAvgConf').textContent = avgConf;
 
             // Build PM Review items (pm_alert_required != null OR Alert-class fields)
-            const pmItems = [];
-            // Clear previous PM alert fields
+            basePmItems.length = 0;
+            Object.keys(basePmAlertFields).forEach(key => delete basePmAlertFields[key]);
             Object.keys(pmAlertFields).forEach(key => delete pmAlertFields[key]);
+            Object.keys(descCharLimitAlerts).forEach(key => delete descCharLimitAlerts[key]);
 
             jsonData.forEach(data => {
                 const ndcNumber = data.ndc_number || data.doc_id;
@@ -2626,22 +2627,25 @@
                     data.details.forEach(detail => {
                         const isAlertField = detail.rule_version?.version_rule_class === 'Alert';
                         if (detail.pm_alert_required != null || isAlertField) {
-                            pmItems.push({
+                            basePmItems.push({
                                 ndc: ndcId,
                                 field: detail.field_name,
                                 alert: detail.pm_alert_required ?? detail.extracted_values ?? '—',
                                 extracted: detail.extracted_values,
                                 detailId: detail.detail_id
                             });
-                            // Track this field for the warning icon / NDC PM count
                             const fieldKey = detail.field_name.toLowerCase().replace(/[^a-z0-9]/g, '_');
+                            if (!basePmAlertFields[ndcId]) basePmAlertFields[ndcId] = new Set();
+                            basePmAlertFields[ndcId].add(fieldKey);
                             if (!pmAlertFields[ndcId]) pmAlertFields[ndcId] = new Set();
                             pmAlertFields[ndcId].add(fieldKey);
                         }
                     });
                 }
             });
-            renderPmReview(pmItems);
+
+            syncAllDescCharLimitAlerts();
+            renderPmReview(buildMergedPmItems());
 
             renderWorkTabs();
             setActiveWorkTab('extracted', null);
@@ -2807,6 +2811,9 @@
         const cellValue = {};
         const colSel = {};
         const pmAlertFields = {}; // ndcId -> Set of fieldKeys needing PM review
+        const basePmItems = [];
+        const basePmAlertFields = {}; // ndcId -> Set of fieldKeys from JSON pm_alert_required
+        const descCharLimitAlerts = {}; // ndcId -> Set of fieldKeys exceeding desc char limit
         const caseAlertFieldKeys = new Set(); // fieldKeys with same alert across all NDCs
 
         function fieldNameToKey(name) {
@@ -2894,6 +2901,103 @@
         let modalCell = null; // {ndcId, fieldKey}
         const DESC_CHAR_LIMIT_FIELDS = new Set(['EN (selling) Description', 'Z2 (buying) Description']);
         const DESC_CHAR_LIMIT = 30;
+        const DESC_CHAR_LIMIT_ALERT_MSG = 'Exceeds 30 Characters Limit';
+
+        function exceedsDescCharLimit(value) {
+            return String(value ?? '').length > DESC_CHAR_LIMIT;
+        }
+
+        function isDescCharLimitField(fieldKey) {
+            const field = FIELDS.find(f => f.key === fieldKey);
+            return field && DESC_CHAR_LIMIT_FIELDS.has(field.label);
+        }
+
+        function syncDescCharLimitAlert(ndcId, fieldKey) {
+            if (!isDescCharLimitField(fieldKey)) return;
+
+            const val = cellValue[ndcId]?.[fieldKey] ?? '';
+            const over = exceedsDescCharLimit(val);
+
+            if (!descCharLimitAlerts[ndcId]) descCharLimitAlerts[ndcId] = new Set();
+
+            if (over) {
+                descCharLimitAlerts[ndcId].add(fieldKey);
+                if (!pmAlertFields[ndcId]) pmAlertFields[ndcId] = new Set();
+                pmAlertFields[ndcId].add(fieldKey);
+            } else if (descCharLimitAlerts[ndcId].has(fieldKey)) {
+                descCharLimitAlerts[ndcId].delete(fieldKey);
+                if (!basePmAlertFields[ndcId]?.has(fieldKey)) {
+                    pmAlertFields[ndcId]?.delete(fieldKey);
+                    if (pmAlertFields[ndcId]?.size === 0) delete pmAlertFields[ndcId];
+                }
+            }
+        }
+
+        function syncAllDescCharLimitAlerts() {
+            Object.keys(descCharLimitAlerts).forEach(key => delete descCharLimitAlerts[key]);
+            Object.keys(pmAlertFields).forEach(key => delete pmAlertFields[key]);
+            Object.entries(basePmAlertFields).forEach(([ndcId, fields]) => {
+                pmAlertFields[ndcId] = new Set(fields);
+            });
+
+            NDCS.forEach(n => {
+                FIELDS.forEach(f => {
+                    if (!DESC_CHAR_LIMIT_FIELDS.has(f.label)) return;
+                    const val = cellValue[n.id]?.[f.key] ?? '';
+                    if (exceedsDescCharLimit(val)) {
+                        if (!descCharLimitAlerts[n.id]) descCharLimitAlerts[n.id] = new Set();
+                        descCharLimitAlerts[n.id].add(f.key);
+                        if (!pmAlertFields[n.id]) pmAlertFields[n.id] = new Set();
+                        pmAlertFields[n.id].add(f.key);
+                    }
+                });
+            });
+        }
+
+        function buildMergedPmItems() {
+            const pmItems = [...basePmItems];
+            NDCS.forEach(n => {
+                const fieldKeys = descCharLimitAlerts[n.id];
+                if (!fieldKeys) return;
+                fieldKeys.forEach(fieldKey => {
+                    const field = FIELDS.find(f => f.key === fieldKey);
+                    if (!field) return;
+                    const exists = pmItems.some(item => item.ndc === n.id && item.field === field.label);
+                    if (!exists) {
+                        pmItems.push({
+                            ndc: n.id,
+                            field: field.label,
+                            alert: DESC_CHAR_LIMIT_ALERT_MSG,
+                            extracted: cellValue[n.id][fieldKey]
+                        });
+                    }
+                });
+            });
+            return pmItems;
+        }
+
+        function updateNdcPmBadge(ndcId) {
+            const tr = document.querySelector(`tr[data-ndc="${ndcId}"]`);
+            if (!tr) return;
+            const tdNdc = tr.querySelector('.ndc-cell');
+            if (!tdNdc) return;
+            const ndc = NDCS.find(n => n.id === ndcId);
+            if (!ndc) return;
+            const pmCount = pmAlertFields[ndcId]
+                ? [...pmAlertFields[ndcId]].filter(k => !caseAlertFieldKeys.has(k)).length
+                : 0;
+            const safeId = ndcToSafeId(ndcId);
+            const pmBadge = pmCount > 0
+                ? ` <span class="ndc-pm-sep">|</span> <span class="ndc-pm-count" data-ndc-safe-id="${safeId}" title="${pmCount} field(s) need PM review">⚠️ ${pmCount}</span>`
+                : '';
+            tdNdc.innerHTML = `<span class="ndc-id-link" onclick="event.stopPropagation();openDocViewer('${ndcId.replace(/'/g, "\\'")}')"
+          title="Open document viewer">${ndc.label}</span>${pmBadge}`;
+        }
+
+        function refreshPmReviewUI(affectedNdcIds) {
+            renderPmReview(buildMergedPmItems());
+            (affectedNdcIds || NDCS.map(n => n.id)).forEach(updateNdcPmBadge);
+        }
         const CELL_CLICK_DELAY_MS = 220;
         let pendingCellClick = null;
         let activeWorkTab = { type: 'extracted', ndcId: null };
@@ -3404,11 +3508,11 @@
             let optsHtml = `
     <div class="ep-opt ${transformedSel ? 'sel' : ''}" onclick="mSelOpt(this)" data-val="${escAttr(cell.ex)}">
       <div class="eo-rd"><div class="eo-dt"></div></div>
-      <div class="eo-b"><div class="eo-lbl">Accept transformed value</div><div class="eo-val">${cell.ex}</div></div>
+      <div class="eo-b"><div class="eo-lbl">Accept Transformed Value</div><div class="eo-val">${cell.ex}</div></div>
     </div>
     <div class="ep-opt ${isManual ? 'sel' : ''}" onclick="mSelOpt(this)" data-type="manual">
       <div class="eo-rd"><div class="eo-dt"></div></div>
-      <div class="eo-b"><div class="eo-lbl">${hasAvailableValues ? 'Manually select value' : 'Manually enter value'}</div><div class="eo-val mpv">${manualDisplay}</div></div>
+      <div class="eo-b"><div class="eo-lbl">${hasAvailableValues ? 'Manually Select Value' : 'Manually Enter Value'}</div><div class="eo-val mpv">${manualDisplay}</div></div>
     </div>`;
 
             opts.innerHTML = optsHtml;
@@ -3477,6 +3581,11 @@
                 if (v !== null) cellValue[ndcId][fieldKey] = v;
                 cellState[ndcId][fieldKey] = 'ac';
             });
+
+            if (isDescCharLimitField(fieldKey)) {
+                targetNdcIds.forEach(ndcId => syncDescCharLimitAlert(ndcId, fieldKey));
+                refreshPmReviewUI(targetNdcIds);
+            }
 
             if (applyAll) refreshColCells(fieldKey);
             else refreshCell(modalCell.ndcId, fieldKey);
